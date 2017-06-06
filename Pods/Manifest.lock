@@ -1,0 +1,57 @@
+PODS:
+  - ACFloatingTextfield-Objc (1.4)
+  - ActionSheetPicker-3.0 (2.2.0)
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
+  - GoogleMaps (2.2.0):
+    - GoogleMaps/Maps (= 2.2.0)
+  - GoogleMaps/Base (2.2.0)
+  - GoogleMaps/Maps (2.2.0):
+    - GoogleMaps/Base
+  - GooglePlaces (2.2.0):
+    - GoogleMaps/Base (= 2.2.0)
+  - HCSStarRatingView (1.5)
+  - HMSegmentedControl (1.5.4)
+  - LGSideMenuController (2.1.1)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
+
+DEPENDENCIES:
+  - ACFloatingTextfield-Objc (~> 1.4)
+  - ActionSheetPicker-3.0 (~> 2.2.0)
+  - AFNetworking (~> 3.0)
+  - GoogleMaps
+  - GooglePlaces
+  - HCSStarRatingView (~> 1.5)
+  - HMSegmentedControl
+  - LGSideMenuController
+  - SDWebImage (~> 3.8)
+
+SPEC CHECKSUMS:
+  ACFloatingTextfield-Objc: 4f8ad8327ac57119c901f2e6109b017cc98c3f12
+  ActionSheetPicker-3.0: d11a4c12c6aaf704b8a3f56d179198c99f3e41e6
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  GoogleMaps: 104c418d61ab8a05dff06ed0784c25ea9d37da45
+  GooglePlaces: bca867d5e9da15384c794b945e4226848bc6e9d9
+  HCSStarRatingView: 1d18f79654735514cd6f00e6d90e38cb6320dc31
+  HMSegmentedControl: b25bc4ec44766e073d62c473188fb354ee244b76
+  LGSideMenuController: ae40c80983ab8b8801c7cef0a6804d43aaa72d45
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+
+PODFILE CHECKSUM: 82d001c2a317a4a7faf6c929e1fde413d4ceb922
+
+COCOAPODS: 1.1.1

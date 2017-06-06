@@ -1,0 +1,592 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AE3098C81EE5C63600BA8609 /* WMCampaignDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE3098C71EE5C63600BA8609 /* WMCampaignDetailsViewController.m */; };
+		AE820FD61ED48DA900AE2BA2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AE820FD51ED48DA900AE2BA2 /* main.m */; };
+		AE820FD91ED48DA900AE2BA2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AE820FD81ED48DA900AE2BA2 /* AppDelegate.m */; };
+		AE820FDC1ED48DA900AE2BA2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE820FDB1ED48DA900AE2BA2 /* ViewController.m */; };
+		AE820FDF1ED48DA900AE2BA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE820FDD1ED48DA900AE2BA2 /* Main.storyboard */; };
+		AE820FE21ED48DA900AE2BA2 /* Wemark.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AE820FE01ED48DA900AE2BA2 /* Wemark.xcdatamodeld */; };
+		AE820FE41ED48DA900AE2BA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE820FE31ED48DA900AE2BA2 /* Assets.xcassets */; };
+		AE820FE71ED48DA900AE2BA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE820FE51ED48DA900AE2BA2 /* LaunchScreen.storyboard */; };
+		AE820FF41ED4A3E100AE2BA2 /* WMSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE820FF31ED4A3E100AE2BA2 /* WMSignupViewController.m */; };
+		AE91CCBE1ED9E42F00BB9585 /* BaseFrontViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE91CCBD1ED9E42F00BB9585 /* BaseFrontViewController.m */; };
+		AE91CCC31ED9E44000BB9585 /* WMHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE91CCC01ED9E44000BB9585 /* WMHomeViewController.m */; };
+		AE91CCC41ED9E44000BB9585 /* WMMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE91CCC21ED9E44000BB9585 /* WMMenuViewController.m */; };
+		AE91CCC71ED9F9F900BB9585 /* WMMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE91CCC61ED9F9F900BB9585 /* WMMenuCell.xib */; };
+		AE91CCC91EDA9E4A00BB9585 /* WMAssignCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE91CCC81EDA9E4A00BB9585 /* WMAssignCell.xib */; };
+		AE91CCCC1EDAAC7A00BB9585 /* WMAssignCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE91CCCB1EDAAC7A00BB9585 /* WMAssignCell.m */; };
+		AE91CCCF1EDABBDB00BB9585 /* WMLocationSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE91CCCE1EDABBDB00BB9585 /* WMLocationSearchViewController.m */; };
+		AE91CCD21EDAE1EF00BB9585 /* WMLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = AE91CCD11EDAE1EF00BB9585 /* WMLocation.m */; };
+		AE91CCD51EDB138200BB9585 /* WMAssignment.m in Sources */ = {isa = PBXBuildFile; fileRef = AE91CCD41EDB138200BB9585 /* WMAssignment.m */; };
+		AEC379EB1ED5F78C00A33A11 /* WMWebservicesHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC379EA1ED5F78C00A33A11 /* WMWebservicesHelper.m */; };
+		AEDD5D451EE3B58800AA8E44 /* WMNotificationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDD5D441EE3B58800AA8E44 /* WMNotificationsViewController.m */; };
+		AEDD5D481EE3B59F00AA8E44 /* WMMyAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDD5D471EE3B59F00AA8E44 /* WMMyAccountViewController.m */; };
+		AEDD5D4B1EE3B5AE00AA8E44 /* WMAssistanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDD5D4A1EE3B5AE00AA8E44 /* WMAssistanceViewController.m */; };
+		AEDD5D4E1EE3B5C100AA8E44 /* WMMyAssignmentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDD5D4D1EE3B5C100AA8E44 /* WMMyAssignmentsViewController.m */; };
+		AEDD5D511EE4389E00AA8E44 /* WMEditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDD5D501EE4389E00AA8E44 /* WMEditProfileViewController.m */; };
+		AEDF42A91ED6998F008A4596 /* WMConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDF42A81ED6998F008A4596 /* WMConstants.m */; };
+		AEDF42AD1ED742AA008A4596 /* WMUser.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDF42AC1ED742AA008A4596 /* WMUser.m */; };
+		AEDF42B01ED746B1008A4596 /* WMDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDF42AF1ED746B1008A4596 /* WMDataHelper.m */; };
+		AEFEBC331EE1950100EB0F31 /* WMSearchAssignmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFEBC321EE1950100EB0F31 /* WMSearchAssignmentViewController.m */; };
+		AEFEBC361EE2913500EB0F31 /* WMIndustrySelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFEBC351EE2913500EB0F31 /* WMIndustrySelectorViewController.m */; };
+		AEFEBC391EE2914B00EB0F31 /* WMBrandSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFEBC381EE2914B00EB0F31 /* WMBrandSelectorViewController.m */; };
+		AEFEBC3C1EE2974A00EB0F31 /* WMSearchResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFEBC3B1EE2974A00EB0F31 /* WMSearchResultsViewController.m */; };
+		B41A7A7E2DB30BAD11A8BEDE /* Pods_Wemark.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 781C5F1411792A100DC52639 /* Pods_Wemark.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		6722D7BF283A5991E0DE32AC /* Pods-Wemark.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wemark.release.xcconfig"; path = "Pods/Target Support Files/Pods-Wemark/Pods-Wemark.release.xcconfig"; sourceTree = "<group>"; };
+		781C5F1411792A100DC52639 /* Pods_Wemark.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wemark.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		824B39E8876A8CA7A183BAA5 /* Pods-Wemark.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wemark.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wemark/Pods-Wemark.debug.xcconfig"; sourceTree = "<group>"; };
+		AE3098C61EE5C63600BA8609 /* WMCampaignDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMCampaignDetailsViewController.h; sourceTree = "<group>"; };
+		AE3098C71EE5C63600BA8609 /* WMCampaignDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMCampaignDetailsViewController.m; sourceTree = "<group>"; };
+		AE820FD11ED48DA900AE2BA2 /* Wemark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wemark.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE820FD51ED48DA900AE2BA2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AE820FD71ED48DA900AE2BA2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		AE820FD81ED48DA900AE2BA2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		AE820FDA1ED48DA900AE2BA2 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		AE820FDB1ED48DA900AE2BA2 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		AE820FDE1ED48DA900AE2BA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AE820FE11ED48DA900AE2BA2 /* Wemark.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Wemark.xcdatamodel; sourceTree = "<group>"; };
+		AE820FE31ED48DA900AE2BA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AE820FE61ED48DA900AE2BA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AE820FE81ED48DA900AE2BA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE820FF21ED4A3E100AE2BA2 /* WMSignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMSignupViewController.h; sourceTree = "<group>"; };
+		AE820FF31ED4A3E100AE2BA2 /* WMSignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMSignupViewController.m; sourceTree = "<group>"; };
+		AE91CCBC1ED9E42F00BB9585 /* BaseFrontViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BaseFrontViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		AE91CCBD1ED9E42F00BB9585 /* BaseFrontViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BaseFrontViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		AE91CCBF1ED9E44000BB9585 /* WMHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = WMHomeViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		AE91CCC01ED9E44000BB9585 /* WMHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = WMHomeViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		AE91CCC11ED9E44000BB9585 /* WMMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = WMMenuViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		AE91CCC21ED9E44000BB9585 /* WMMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = WMMenuViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		AE91CCC61ED9F9F900BB9585 /* WMMenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WMMenuCell.xib; sourceTree = "<group>"; };
+		AE91CCC81EDA9E4A00BB9585 /* WMAssignCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WMAssignCell.xib; sourceTree = "<group>"; };
+		AE91CCCA1EDAAC7A00BB9585 /* WMAssignCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMAssignCell.h; sourceTree = "<group>"; };
+		AE91CCCB1EDAAC7A00BB9585 /* WMAssignCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMAssignCell.m; sourceTree = "<group>"; };
+		AE91CCCD1EDABBDB00BB9585 /* WMLocationSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMLocationSearchViewController.h; sourceTree = "<group>"; };
+		AE91CCCE1EDABBDB00BB9585 /* WMLocationSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMLocationSearchViewController.m; sourceTree = "<group>"; };
+		AE91CCD01EDAE1EF00BB9585 /* WMLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMLocation.h; sourceTree = "<group>"; };
+		AE91CCD11EDAE1EF00BB9585 /* WMLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMLocation.m; sourceTree = "<group>"; };
+		AE91CCD31EDB137C00BB9585 /* WMAssignment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMAssignment.h; sourceTree = "<group>"; };
+		AE91CCD41EDB138200BB9585 /* WMAssignment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMAssignment.m; sourceTree = "<group>"; };
+		AEC379E91ED5F78C00A33A11 /* WMWebservicesHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMWebservicesHelper.h; sourceTree = "<group>"; };
+		AEC379EA1ED5F78C00A33A11 /* WMWebservicesHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMWebservicesHelper.m; sourceTree = "<group>"; };
+		AEDD5D431EE3B58800AA8E44 /* WMNotificationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMNotificationsViewController.h; sourceTree = "<group>"; };
+		AEDD5D441EE3B58800AA8E44 /* WMNotificationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMNotificationsViewController.m; sourceTree = "<group>"; };
+		AEDD5D461EE3B59F00AA8E44 /* WMMyAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMMyAccountViewController.h; sourceTree = "<group>"; };
+		AEDD5D471EE3B59F00AA8E44 /* WMMyAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMMyAccountViewController.m; sourceTree = "<group>"; };
+		AEDD5D491EE3B5AE00AA8E44 /* WMAssistanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMAssistanceViewController.h; sourceTree = "<group>"; };
+		AEDD5D4A1EE3B5AE00AA8E44 /* WMAssistanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMAssistanceViewController.m; sourceTree = "<group>"; };
+		AEDD5D4C1EE3B5C100AA8E44 /* WMMyAssignmentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMMyAssignmentsViewController.h; sourceTree = "<group>"; };
+		AEDD5D4D1EE3B5C100AA8E44 /* WMMyAssignmentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMMyAssignmentsViewController.m; sourceTree = "<group>"; };
+		AEDD5D4F1EE4389E00AA8E44 /* WMEditProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMEditProfileViewController.h; sourceTree = "<group>"; };
+		AEDD5D501EE4389E00AA8E44 /* WMEditProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMEditProfileViewController.m; sourceTree = "<group>"; };
+		AEDF42A71ED6998F008A4596 /* WMConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMConstants.h; sourceTree = "<group>"; };
+		AEDF42A81ED6998F008A4596 /* WMConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMConstants.m; sourceTree = "<group>"; };
+		AEDF42AB1ED742AA008A4596 /* WMUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMUser.h; sourceTree = "<group>"; };
+		AEDF42AC1ED742AA008A4596 /* WMUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMUser.m; sourceTree = "<group>"; };
+		AEDF42AE1ED746B1008A4596 /* WMDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMDataHelper.h; sourceTree = "<group>"; };
+		AEDF42AF1ED746B1008A4596 /* WMDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMDataHelper.m; sourceTree = "<group>"; };
+		AEFEBC311EE1950100EB0F31 /* WMSearchAssignmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMSearchAssignmentViewController.h; sourceTree = "<group>"; };
+		AEFEBC321EE1950100EB0F31 /* WMSearchAssignmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMSearchAssignmentViewController.m; sourceTree = "<group>"; };
+		AEFEBC341EE2913500EB0F31 /* WMIndustrySelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMIndustrySelectorViewController.h; sourceTree = "<group>"; };
+		AEFEBC351EE2913500EB0F31 /* WMIndustrySelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMIndustrySelectorViewController.m; sourceTree = "<group>"; };
+		AEFEBC371EE2914B00EB0F31 /* WMBrandSelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMBrandSelectorViewController.h; sourceTree = "<group>"; };
+		AEFEBC381EE2914B00EB0F31 /* WMBrandSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMBrandSelectorViewController.m; sourceTree = "<group>"; };
+		AEFEBC3A1EE2974A00EB0F31 /* WMSearchResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMSearchResultsViewController.h; sourceTree = "<group>"; };
+		AEFEBC3B1EE2974A00EB0F31 /* WMSearchResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMSearchResultsViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AE820FCE1ED48DA900AE2BA2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B41A7A7E2DB30BAD11A8BEDE /* Pods_Wemark.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		37FA03C078C307AD23B5D69D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				781C5F1411792A100DC52639 /* Pods_Wemark.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6D420A8842311834B2EE17E0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				824B39E8876A8CA7A183BAA5 /* Pods-Wemark.debug.xcconfig */,
+				6722D7BF283A5991E0DE32AC /* Pods-Wemark.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		AE820FC81ED48DA800AE2BA2 = {
+			isa = PBXGroup;
+			children = (
+				AE820FD31ED48DA900AE2BA2 /* Wemark */,
+				AE820FD21ED48DA900AE2BA2 /* Products */,
+				6D420A8842311834B2EE17E0 /* Pods */,
+				37FA03C078C307AD23B5D69D /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		AE820FD21ED48DA900AE2BA2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AE820FD11ED48DA900AE2BA2 /* Wemark.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AE820FD31ED48DA900AE2BA2 /* Wemark */ = {
+			isa = PBXGroup;
+			children = (
+				AE91CCC51ED9F9D800BB9585 /* Views */,
+				AEDF42AA1ED74289008A4596 /* Models */,
+				AEC379E81ED5F67C00A33A11 /* WebServicesHelper */,
+				AE820FEE1ED4A3A200AE2BA2 /* Controllers */,
+				AE820FD71ED48DA900AE2BA2 /* AppDelegate.h */,
+				AE820FD81ED48DA900AE2BA2 /* AppDelegate.m */,
+				AE820FDA1ED48DA900AE2BA2 /* ViewController.h */,
+				AE820FDB1ED48DA900AE2BA2 /* ViewController.m */,
+				AE820FDD1ED48DA900AE2BA2 /* Main.storyboard */,
+				AE820FE31ED48DA900AE2BA2 /* Assets.xcassets */,
+				AE820FE51ED48DA900AE2BA2 /* LaunchScreen.storyboard */,
+				AE820FE81ED48DA900AE2BA2 /* Info.plist */,
+				AE820FE01ED48DA900AE2BA2 /* Wemark.xcdatamodeld */,
+				AE820FD41ED48DA900AE2BA2 /* Supporting Files */,
+			);
+			path = Wemark;
+			sourceTree = "<group>";
+		};
+		AE820FD41ED48DA900AE2BA2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AE820FD51ED48DA900AE2BA2 /* main.m */,
+				AEDF42A71ED6998F008A4596 /* WMConstants.h */,
+				AEDF42A81ED6998F008A4596 /* WMConstants.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AE820FEE1ED4A3A200AE2BA2 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AE91CCBF1ED9E44000BB9585 /* WMHomeViewController.h */,
+				AE91CCC01ED9E44000BB9585 /* WMHomeViewController.m */,
+				AE91CCC11ED9E44000BB9585 /* WMMenuViewController.h */,
+				AE91CCC21ED9E44000BB9585 /* WMMenuViewController.m */,
+				AE91CCBC1ED9E42F00BB9585 /* BaseFrontViewController.h */,
+				AE91CCBD1ED9E42F00BB9585 /* BaseFrontViewController.m */,
+				AE820FF21ED4A3E100AE2BA2 /* WMSignupViewController.h */,
+				AE820FF31ED4A3E100AE2BA2 /* WMSignupViewController.m */,
+				AE91CCCD1EDABBDB00BB9585 /* WMLocationSearchViewController.h */,
+				AE91CCCE1EDABBDB00BB9585 /* WMLocationSearchViewController.m */,
+				AEFEBC311EE1950100EB0F31 /* WMSearchAssignmentViewController.h */,
+				AEFEBC321EE1950100EB0F31 /* WMSearchAssignmentViewController.m */,
+				AEFEBC341EE2913500EB0F31 /* WMIndustrySelectorViewController.h */,
+				AEFEBC351EE2913500EB0F31 /* WMIndustrySelectorViewController.m */,
+				AEFEBC371EE2914B00EB0F31 /* WMBrandSelectorViewController.h */,
+				AEFEBC381EE2914B00EB0F31 /* WMBrandSelectorViewController.m */,
+				AEFEBC3A1EE2974A00EB0F31 /* WMSearchResultsViewController.h */,
+				AEFEBC3B1EE2974A00EB0F31 /* WMSearchResultsViewController.m */,
+				AEDD5D431EE3B58800AA8E44 /* WMNotificationsViewController.h */,
+				AEDD5D441EE3B58800AA8E44 /* WMNotificationsViewController.m */,
+				AEDD5D461EE3B59F00AA8E44 /* WMMyAccountViewController.h */,
+				AEDD5D471EE3B59F00AA8E44 /* WMMyAccountViewController.m */,
+				AEDD5D491EE3B5AE00AA8E44 /* WMAssistanceViewController.h */,
+				AEDD5D4A1EE3B5AE00AA8E44 /* WMAssistanceViewController.m */,
+				AEDD5D4C1EE3B5C100AA8E44 /* WMMyAssignmentsViewController.h */,
+				AEDD5D4D1EE3B5C100AA8E44 /* WMMyAssignmentsViewController.m */,
+				AEDD5D4F1EE4389E00AA8E44 /* WMEditProfileViewController.h */,
+				AEDD5D501EE4389E00AA8E44 /* WMEditProfileViewController.m */,
+				AE3098C61EE5C63600BA8609 /* WMCampaignDetailsViewController.h */,
+				AE3098C71EE5C63600BA8609 /* WMCampaignDetailsViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		AE91CCC51ED9F9D800BB9585 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AE91CCC61ED9F9F900BB9585 /* WMMenuCell.xib */,
+				AE91CCC81EDA9E4A00BB9585 /* WMAssignCell.xib */,
+				AE91CCCA1EDAAC7A00BB9585 /* WMAssignCell.h */,
+				AE91CCCB1EDAAC7A00BB9585 /* WMAssignCell.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		AEC379E81ED5F67C00A33A11 /* WebServicesHelper */ = {
+			isa = PBXGroup;
+			children = (
+				AEC379E91ED5F78C00A33A11 /* WMWebservicesHelper.h */,
+				AEC379EA1ED5F78C00A33A11 /* WMWebservicesHelper.m */,
+			);
+			name = WebServicesHelper;
+			sourceTree = "<group>";
+		};
+		AEDF42AA1ED74289008A4596 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AE91CCD41EDB138200BB9585 /* WMAssignment.m */,
+				AE91CCD31EDB137C00BB9585 /* WMAssignment.h */,
+				AEDF42AB1ED742AA008A4596 /* WMUser.h */,
+				AEDF42AC1ED742AA008A4596 /* WMUser.m */,
+				AEDF42AE1ED746B1008A4596 /* WMDataHelper.h */,
+				AEDF42AF1ED746B1008A4596 /* WMDataHelper.m */,
+				AE91CCD01EDAE1EF00BB9585 /* WMLocation.h */,
+				AE91CCD11EDAE1EF00BB9585 /* WMLocation.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AE820FD01ED48DA900AE2BA2 /* Wemark */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AE820FEB1ED48DA900AE2BA2 /* Build configuration list for PBXNativeTarget "Wemark" */;
+			buildPhases = (
+				97FCD3FA9AD6577B4C79C441 /* [CP] Check Pods Manifest.lock */,
+				AE820FCD1ED48DA900AE2BA2 /* Sources */,
+				AE820FCE1ED48DA900AE2BA2 /* Frameworks */,
+				AE820FCF1ED48DA900AE2BA2 /* Resources */,
+				F3204DB79CC72F6D25C87D5B /* [CP] Embed Pods Frameworks */,
+				E346D16210257185F24C6D11 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Wemark;
+			productName = Wemark;
+			productReference = AE820FD11ED48DA900AE2BA2 /* Wemark.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AE820FC91ED48DA800AE2BA2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Trion Technologies";
+				TargetAttributes = {
+					AE820FD01ED48DA900AE2BA2 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 885E593235;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = AE820FCC1ED48DA800AE2BA2 /* Build configuration list for PBXProject "Wemark" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AE820FC81ED48DA800AE2BA2;
+			productRefGroup = AE820FD21ED48DA900AE2BA2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AE820FD01ED48DA900AE2BA2 /* Wemark */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AE820FCF1ED48DA900AE2BA2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE91CCC71ED9F9F900BB9585 /* WMMenuCell.xib in Resources */,
+				AE820FE71ED48DA900AE2BA2 /* LaunchScreen.storyboard in Resources */,
+				AE820FE41ED48DA900AE2BA2 /* Assets.xcassets in Resources */,
+				AE91CCC91EDA9E4A00BB9585 /* WMAssignCell.xib in Resources */,
+				AE820FDF1ED48DA900AE2BA2 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		97FCD3FA9AD6577B4C79C441 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E346D16210257185F24C6D11 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Wemark/Pods-Wemark-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F3204DB79CC72F6D25C87D5B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Wemark/Pods-Wemark-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AE820FCD1ED48DA900AE2BA2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AEDD5D481EE3B59F00AA8E44 /* WMMyAccountViewController.m in Sources */,
+				AEFEBC391EE2914B00EB0F31 /* WMBrandSelectorViewController.m in Sources */,
+				AEDD5D451EE3B58800AA8E44 /* WMNotificationsViewController.m in Sources */,
+				AEFEBC3C1EE2974A00EB0F31 /* WMSearchResultsViewController.m in Sources */,
+				AEC379EB1ED5F78C00A33A11 /* WMWebservicesHelper.m in Sources */,
+				AE3098C81EE5C63600BA8609 /* WMCampaignDetailsViewController.m in Sources */,
+				AEFEBC361EE2913500EB0F31 /* WMIndustrySelectorViewController.m in Sources */,
+				AE820FDC1ED48DA900AE2BA2 /* ViewController.m in Sources */,
+				AE820FD91ED48DA900AE2BA2 /* AppDelegate.m in Sources */,
+				AE91CCC31ED9E44000BB9585 /* WMHomeViewController.m in Sources */,
+				AE91CCCC1EDAAC7A00BB9585 /* WMAssignCell.m in Sources */,
+				AEDD5D511EE4389E00AA8E44 /* WMEditProfileViewController.m in Sources */,
+				AE91CCC41ED9E44000BB9585 /* WMMenuViewController.m in Sources */,
+				AE91CCD51EDB138200BB9585 /* WMAssignment.m in Sources */,
+				AEFEBC331EE1950100EB0F31 /* WMSearchAssignmentViewController.m in Sources */,
+				AE820FE21ED48DA900AE2BA2 /* Wemark.xcdatamodeld in Sources */,
+				AE820FF41ED4A3E100AE2BA2 /* WMSignupViewController.m in Sources */,
+				AEDD5D4E1EE3B5C100AA8E44 /* WMMyAssignmentsViewController.m in Sources */,
+				AEDD5D4B1EE3B5AE00AA8E44 /* WMAssistanceViewController.m in Sources */,
+				AE91CCCF1EDABBDB00BB9585 /* WMLocationSearchViewController.m in Sources */,
+				AEDF42A91ED6998F008A4596 /* WMConstants.m in Sources */,
+				AEDF42B01ED746B1008A4596 /* WMDataHelper.m in Sources */,
+				AE91CCBE1ED9E42F00BB9585 /* BaseFrontViewController.m in Sources */,
+				AE91CCD21EDAE1EF00BB9585 /* WMLocation.m in Sources */,
+				AEDF42AD1ED742AA008A4596 /* WMUser.m in Sources */,
+				AE820FD61ED48DA900AE2BA2 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		AE820FDD1ED48DA900AE2BA2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AE820FDE1ED48DA900AE2BA2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AE820FE51ED48DA900AE2BA2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AE820FE61ED48DA900AE2BA2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AE820FE91ED48DA900AE2BA2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AE820FEA1ED48DA900AE2BA2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AE820FEC1ED48DA900AE2BA2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 824B39E8876A8CA7A183BAA5 /* Pods-Wemark.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 885E593235;
+				INFOPLIST_FILE = Wemark/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cigniti.verita;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		AE820FED1ED48DA900AE2BA2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6722D7BF283A5991E0DE32AC /* Pods-Wemark.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 885E593235;
+				INFOPLIST_FILE = Wemark/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cigniti.verita;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AE820FCC1ED48DA800AE2BA2 /* Build configuration list for PBXProject "Wemark" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE820FE91ED48DA900AE2BA2 /* Debug */,
+				AE820FEA1ED48DA900AE2BA2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AE820FEB1ED48DA900AE2BA2 /* Build configuration list for PBXNativeTarget "Wemark" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE820FEC1ED48DA900AE2BA2 /* Debug */,
+				AE820FED1ED48DA900AE2BA2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		AE820FE01ED48DA900AE2BA2 /* Wemark.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				AE820FE11ED48DA900AE2BA2 /* Wemark.xcdatamodel */,
+			);
+			currentVersion = AE820FE11ED48DA900AE2BA2 /* Wemark.xcdatamodel */;
+			path = Wemark.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = AE820FC91ED48DA800AE2BA2 /* Project object */;
+}
