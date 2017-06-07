@@ -91,10 +91,6 @@
 }
 
 - (IBAction)loginAction :(id)sender {
-//    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-//
-//    [appDelegate loadhomeScreenWithSidemenu];
-//    return;
     
     self.emailIdTextField.text = @"aa@a.com";
     self.passwordTextField.text = @"123456";

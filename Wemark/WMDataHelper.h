@@ -15,4 +15,6 @@
 - (NSArray *)saveLocations:(NSArray *)locarray;
 - (NSArray *)saveAssignments:(NSArray *)assgnArray;
 - (NSString *)getAuditorId;
+- (NSString *)getAuditorAssignments:(NSArray *)auditorAssgnArray;
 @end
+

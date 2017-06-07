@@ -138,7 +138,7 @@
 
 - (NSString *)getAuthKey {
     if (auditor ) {
-        return auditor.authkey;
+        return @"N1_EfKJU3ktZSU-yJw_VTJz63M5ZLsId";// auditor.authkey;
     } else {
 //        NSAssert(auditor, @"authkey key  not found as auditor object is empty");
         return @"";
@@ -153,6 +153,7 @@
         return @"";
     }
 }
+
 
 - (NSString *)convertToString:(id)value {
     if (value == (id)[NSNull null]) {

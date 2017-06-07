@@ -73,4 +73,23 @@
  */
 - (void)getNotifications:(NSString *)authKey byAuditorId:(NSString *)audId completionBlock:(void (^) (BOOL, id, NSError*))completionBlock;
 
+/**
+ get Auditor Assignments
+ 
+ @param authKey authkey
+ @param audId audtor id
+ @param completionBlock callback
+ */
+- (void)getAuditorAssignments:(NSString *)authKey paramsDict:(id)paramsDict completionBlock:(void (^) (BOOL, id, NSError*))completionBlock;
+
+
+/**
+ get All Assignments By Client Id
+ 
+ @param authKey authkey
+ @param audId audtor id
+ @param completionBlock callback
+ */
+- (void)getAllAssignmentsByClientId:(NSString *)clientId authKey:(NSString *)authKey completionBlock:(void (^)(BOOL, id, NSError *))completionBlock;
+
 @end

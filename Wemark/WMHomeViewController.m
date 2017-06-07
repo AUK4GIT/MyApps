@@ -49,22 +49,22 @@
     self.selfAssign = false;
     self.apply = false;
     
-    [self getCurrentPosition];
-//    CLLocation *location = [[CLLocation alloc] initWithLatitude:28.4595 longitude:77.0266];
-//    [self showCurrentPositionOnMap:location];
+//    [self getCurrentPosition];
+    CLLocation *location = [[CLLocation alloc] initWithLatitude:28.4595 longitude:77.0266];
+   [self showCurrentPositionOnMap:location];
 }
 
-- (void)getCurrentPosition {
-    self.locationManager = [[CLLocationManager alloc] init];
-    if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
-        [self.locationManager requestWhenInUseAuthorization];
-    }
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    self.locationManager.distanceFilter = kCLDistanceFilterNone;
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters; // 100 m
-    self.locationManager.delegate = self;
-    [self.locationManager startUpdatingLocation];
-}
+//- (void)getCurrentPosition {
+//    self.locationManager = [[CLLocationManager alloc] init];
+//    if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+//        [self.locationManager requestWhenInUseAuthorization];
+//    }
+//    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+//    self.locationManager.distanceFilter = kCLDistanceFilterNone;
+//    self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters; // 100 m
+//    self.locationManager.delegate = self;
+//    [self.locationManager startUpdatingLocation];
+//}
 
 - (void)showCurrentPositionOnMap:(CLLocation*)location{
     // Create a GMSCameraPosition that tells the map to display the
@@ -225,6 +225,8 @@
     id assignObj = self.assignmentsArray[indexPath.row];
     WMCampaignDetailsViewController *cVC = [self.storyboard instantiateViewControllerWithIdentifier:@"WMCampaignDetailsViewController"];
     cVC.campaignid = [assignObj valueForKey:@"campaignid"];
+    cVC.clientid = [assignObj valueForKey:@"clientid"];
+
     [self.navigationController pushViewController:cVC animated:true];
     }
 

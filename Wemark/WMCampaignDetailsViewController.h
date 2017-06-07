@@ -10,4 +10,5 @@
 
 @interface WMCampaignDetailsViewController : UIViewController
 @property(nonatomic, strong)NSString *campaignid;
+@property(nonatomic, strong)NSString *clientid;
 @end
