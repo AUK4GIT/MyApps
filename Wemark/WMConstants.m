@@ -17,5 +17,7 @@ NSString * const getAllSearchParams = @"auditor-api/campaigns/get-all-search-par
 NSString * const searchCampaignAssignmentsURL = @"auditor-api/campaigns/search-campaign-assignments";
 NSString * const getNotificationsforAuditorURL = @"auditor-api/notification/get-notification-by-auditor-id";
 NSString * const getAssignmentsforAuditorURL = @"auditor-api/assignments/my-assignments";
-//NSString * const getAllAssignmentsByLocationIdURL = @"auditor-api/assignments/get-all-assignment-from-location-id";
 NSString * const getAllAssignmentsByClientIdURL = @"auditor-api/assignments/get-all-assignment-from-client-id";
+NSString * const getAuditorCampaignViewDetails = @"auditor-api/campaigns/campaign-view-details";
+
+

@@ -1,18 +1,18 @@
 //
-//  WMAppliedViewController.m
+//  WMStartSurveyViewController.m
 //  Wemark
 //
-//  Created by Ashish on 06/06/17.
+//  Created by Ashish on 07/06/17.
 //  Copyright © 2017 Trion Technologies. All rights reserved.
 //
 
-#import "WMAppliedViewController.h"
+#import "WMStartSurveyViewController.h"
 
-@interface WMAppliedViewController ()
+@interface WMStartSurveyViewController ()
 
 @end
 
-@implementation WMAppliedViewController
+@implementation WMStartSurveyViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

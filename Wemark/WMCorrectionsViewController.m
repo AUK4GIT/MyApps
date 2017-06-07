@@ -1,18 +1,18 @@
 //
-//  WMAssignedViewController.m
+//  WMCorrectionsViewController.m
 //  Wemark
 //
-//  Created by Ashish on 06/06/17.
+//  Created by Ashish on 07/06/17.
 //  Copyright © 2017 Trion Technologies. All rights reserved.
 //
 
-#import "WMAssignedViewController.h"
+#import "WMCorrectionsViewController.h"
 
-@interface WMAssignedViewController ()
+@interface WMCorrectionsViewController ()
 
 @end
 
-@implementation WMAssignedViewController
+@implementation WMCorrectionsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

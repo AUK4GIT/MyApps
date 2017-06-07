@@ -17,5 +17,5 @@ extern NSString * const getAllSearchParams;
 extern NSString * const searchCampaignAssignmentsURL;
 extern NSString * const getNotificationsforAuditorURL;
 extern NSString * const getAssignmentsforAuditorURL;
-//extern NSString * const getAllAssignmentsByLocationIdURL;
 extern NSString * const getAllAssignmentsByClientIdURL;
+extern NSString * const getAuditorCampaignViewDetails;

@@ -10,6 +10,10 @@
 #import "HMSegmentedControl.h"
 #import "WMWebservicesHelper.h"
 #import "WMDataHelper.h"
+#import "WMAppliedCell.h"
+#import "WMAssignedCell.h"
+#import "WMAcceptedCell.h"
+#import "WMRejectedCell.h"
 
 @interface WMMyAssignmentsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -51,18 +55,18 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (void)appliedTapped:(id)sender {
-    [self performSegueWithIdentifier:@"APPLIED" sender:nil];
-}
-- (void)assignedTapped:(id)sender {
-    [self performSegueWithIdentifier:@"ASSIGNED" sender:nil];
-}
--(void)acceptedTapped:(id)sender {
-    [self performSegueWithIdentifier:@"ACCEPTED" sender:nil];
-}
--(void)rejectedTapped:(id)sender {
-    [self performSegueWithIdentifier:@"REJECTED" sender:nil];
-}
+//- (void)appliedTapped:(id)sender {
+//    [self performSegueWithIdentifier:@"APPLIED" sender:nil];
+//}
+//- (void)assignedTapped:(id)sender {
+//    [self performSegueWithIdentifier:@"ASSIGNED" sender:nil];
+//}
+//-(void)acceptedTapped:(id)sender {
+//    [self performSegueWithIdentifier:@"ACCEPTED" sender:nil];
+//}
+//-(void)rejectedTapped:(id)sender {
+//    [self performSegueWithIdentifier:@"REJECTED" sender:nil];
+//}
 - (void)segmentedControlChangedValue:(HMSegmentedControl *)segmentedControl {
     self.Applied = false;
     self.Assigned = false;

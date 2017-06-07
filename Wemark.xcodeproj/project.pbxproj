@@ -39,10 +39,16 @@
 		AEFEBC391EE2914B00EB0F31 /* WMBrandSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFEBC381EE2914B00EB0F31 /* WMBrandSelectorViewController.m */; };
 		AEFEBC3C1EE2974A00EB0F31 /* WMSearchResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFEBC3B1EE2974A00EB0F31 /* WMSearchResultsViewController.m */; };
 		B41A7A7E2DB30BAD11A8BEDE /* Pods_Wemark.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 781C5F1411792A100DC52639 /* Pods_Wemark.framework */; };
-		C55E46EC1EE6C3C9002E2258 /* WMAppliedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C55E46EB1EE6C3C9002E2258 /* WMAppliedViewController.m */; };
-		C55E46EF1EE6C3F4002E2258 /* WMAssignedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C55E46EE1EE6C3F4002E2258 /* WMAssignedViewController.m */; };
-		C55E46F21EE6C40C002E2258 /* WMAcceptedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C55E46F11EE6C40C002E2258 /* WMAcceptedViewController.m */; };
-		C55E46F51EE6C420002E2258 /* WMRejectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C55E46F41EE6C420002E2258 /* WMRejectedViewController.m */; };
+		C509CAF11EE7BEAB002D4F86 /* WMAssignedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C509CAF01EE7BEAB002D4F86 /* WMAssignedCell.xib */; };
+		C509CAF31EE7BED2002D4F86 /* WMAcceptedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C509CAF21EE7BED2002D4F86 /* WMAcceptedCell.xib */; };
+		C509CAF51EE7BEFE002D4F86 /* WMRejectedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C509CAF41EE7BEFE002D4F86 /* WMRejectedCell.xib */; };
+		C509CAF71EE802BF002D4F86 /* WMAppliedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C509CAF61EE802BF002D4F86 /* WMAppliedCell.xib */; };
+		C509CAFA1EE81443002D4F86 /* WMAppliedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C509CAF91EE81443002D4F86 /* WMAppliedCell.m */; };
+		C509CAFD1EE81477002D4F86 /* WMAssignedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C509CAFC1EE81477002D4F86 /* WMAssignedCell.m */; };
+		C509CB001EE81498002D4F86 /* WMAcceptedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C509CAFF1EE81498002D4F86 /* WMAcceptedCell.m */; };
+		C509CB031EE814B6002D4F86 /* WMRejectedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C509CB021EE814B6002D4F86 /* WMRejectedCell.m */; };
+		C509CB061EE82F5D002D4F86 /* WMStartSurveyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C509CB051EE82F5D002D4F86 /* WMStartSurveyViewController.m */; };
+		C509CB091EE82F8F002D4F86 /* WMCorrectionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C509CB081EE82F8F002D4F86 /* WMCorrectionsViewController.m */; };
 		C55E46F81EE6E1F0002E2258 /* WMAllAssignmentsClientIdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C55E46F71EE6E1F0002E2258 /* WMAllAssignmentsClientIdViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -107,14 +113,22 @@
 		AEFEBC381EE2914B00EB0F31 /* WMBrandSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMBrandSelectorViewController.m; sourceTree = "<group>"; };
 		AEFEBC3A1EE2974A00EB0F31 /* WMSearchResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMSearchResultsViewController.h; sourceTree = "<group>"; };
 		AEFEBC3B1EE2974A00EB0F31 /* WMSearchResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMSearchResultsViewController.m; sourceTree = "<group>"; };
-		C55E46EA1EE6C3C9002E2258 /* WMAppliedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMAppliedViewController.h; sourceTree = "<group>"; };
-		C55E46EB1EE6C3C9002E2258 /* WMAppliedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMAppliedViewController.m; sourceTree = "<group>"; };
-		C55E46ED1EE6C3F4002E2258 /* WMAssignedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMAssignedViewController.h; sourceTree = "<group>"; };
-		C55E46EE1EE6C3F4002E2258 /* WMAssignedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMAssignedViewController.m; sourceTree = "<group>"; };
-		C55E46F01EE6C40C002E2258 /* WMAcceptedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMAcceptedViewController.h; sourceTree = "<group>"; };
-		C55E46F11EE6C40C002E2258 /* WMAcceptedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMAcceptedViewController.m; sourceTree = "<group>"; };
-		C55E46F31EE6C420002E2258 /* WMRejectedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMRejectedViewController.h; sourceTree = "<group>"; };
-		C55E46F41EE6C420002E2258 /* WMRejectedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMRejectedViewController.m; sourceTree = "<group>"; };
+		C509CAF01EE7BEAB002D4F86 /* WMAssignedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WMAssignedCell.xib; sourceTree = "<group>"; };
+		C509CAF21EE7BED2002D4F86 /* WMAcceptedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WMAcceptedCell.xib; sourceTree = "<group>"; };
+		C509CAF41EE7BEFE002D4F86 /* WMRejectedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WMRejectedCell.xib; sourceTree = "<group>"; };
+		C509CAF61EE802BF002D4F86 /* WMAppliedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WMAppliedCell.xib; sourceTree = "<group>"; };
+		C509CAF81EE81443002D4F86 /* WMAppliedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMAppliedCell.h; sourceTree = "<group>"; };
+		C509CAF91EE81443002D4F86 /* WMAppliedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMAppliedCell.m; sourceTree = "<group>"; };
+		C509CAFB1EE81477002D4F86 /* WMAssignedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMAssignedCell.h; sourceTree = "<group>"; };
+		C509CAFC1EE81477002D4F86 /* WMAssignedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMAssignedCell.m; sourceTree = "<group>"; };
+		C509CAFE1EE81498002D4F86 /* WMAcceptedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMAcceptedCell.h; sourceTree = "<group>"; };
+		C509CAFF1EE81498002D4F86 /* WMAcceptedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMAcceptedCell.m; sourceTree = "<group>"; };
+		C509CB011EE814B6002D4F86 /* WMRejectedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMRejectedCell.h; sourceTree = "<group>"; };
+		C509CB021EE814B6002D4F86 /* WMRejectedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMRejectedCell.m; sourceTree = "<group>"; };
+		C509CB041EE82F5D002D4F86 /* WMStartSurveyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMStartSurveyViewController.h; sourceTree = "<group>"; };
+		C509CB051EE82F5D002D4F86 /* WMStartSurveyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMStartSurveyViewController.m; sourceTree = "<group>"; };
+		C509CB071EE82F8F002D4F86 /* WMCorrectionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMCorrectionsViewController.h; sourceTree = "<group>"; };
+		C509CB081EE82F8F002D4F86 /* WMCorrectionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMCorrectionsViewController.m; sourceTree = "<group>"; };
 		C55E46F61EE6E1F0002E2258 /* WMAllAssignmentsClientIdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMAllAssignmentsClientIdViewController.h; sourceTree = "<group>"; };
 		C55E46F71EE6E1F0002E2258 /* WMAllAssignmentsClientIdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMAllAssignmentsClientIdViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -226,14 +240,10 @@
 				AEDD5D4A1EE3B5AE00AA8E44 /* WMAssistanceViewController.m */,
 				AEDD5D4C1EE3B5C100AA8E44 /* WMMyAssignmentsViewController.h */,
 				AEDD5D4D1EE3B5C100AA8E44 /* WMMyAssignmentsViewController.m */,
-				C55E46EA1EE6C3C9002E2258 /* WMAppliedViewController.h */,
-				C55E46EB1EE6C3C9002E2258 /* WMAppliedViewController.m */,
-				C55E46ED1EE6C3F4002E2258 /* WMAssignedViewController.h */,
-				C55E46EE1EE6C3F4002E2258 /* WMAssignedViewController.m */,
-				C55E46F01EE6C40C002E2258 /* WMAcceptedViewController.h */,
-				C55E46F11EE6C40C002E2258 /* WMAcceptedViewController.m */,
-				C55E46F31EE6C420002E2258 /* WMRejectedViewController.h */,
-				C55E46F41EE6C420002E2258 /* WMRejectedViewController.m */,
+				C509CB041EE82F5D002D4F86 /* WMStartSurveyViewController.h */,
+				C509CB051EE82F5D002D4F86 /* WMStartSurveyViewController.m */,
+				C509CB071EE82F8F002D4F86 /* WMCorrectionsViewController.h */,
+				C509CB081EE82F8F002D4F86 /* WMCorrectionsViewController.m */,
 				AEDD5D4F1EE4389E00AA8E44 /* WMEditProfileViewController.h */,
 				AEDD5D501EE4389E00AA8E44 /* WMEditProfileViewController.m */,
 				AE3098C61EE5C63600BA8609 /* WMCampaignDetailsViewController.h */,
@@ -249,8 +259,20 @@
 			children = (
 				AE91CCC61ED9F9F900BB9585 /* WMMenuCell.xib */,
 				AE91CCC81EDA9E4A00BB9585 /* WMAssignCell.xib */,
+				C509CAF61EE802BF002D4F86 /* WMAppliedCell.xib */,
+				C509CAF01EE7BEAB002D4F86 /* WMAssignedCell.xib */,
+				C509CAF21EE7BED2002D4F86 /* WMAcceptedCell.xib */,
+				C509CAF41EE7BEFE002D4F86 /* WMRejectedCell.xib */,
 				AE91CCCA1EDAAC7A00BB9585 /* WMAssignCell.h */,
 				AE91CCCB1EDAAC7A00BB9585 /* WMAssignCell.m */,
+				C509CAF81EE81443002D4F86 /* WMAppliedCell.h */,
+				C509CAF91EE81443002D4F86 /* WMAppliedCell.m */,
+				C509CAFB1EE81477002D4F86 /* WMAssignedCell.h */,
+				C509CAFC1EE81477002D4F86 /* WMAssignedCell.m */,
+				C509CAFE1EE81498002D4F86 /* WMAcceptedCell.h */,
+				C509CAFF1EE81498002D4F86 /* WMAcceptedCell.m */,
+				C509CB011EE814B6002D4F86 /* WMRejectedCell.h */,
+				C509CB021EE814B6002D4F86 /* WMRejectedCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -342,10 +364,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE91CCC71ED9F9F900BB9585 /* WMMenuCell.xib in Resources */,
+				C509CAF11EE7BEAB002D4F86 /* WMAssignedCell.xib in Resources */,
 				AE820FE71ED48DA900AE2BA2 /* LaunchScreen.storyboard in Resources */,
 				AE820FE41ED48DA900AE2BA2 /* Assets.xcassets in Resources */,
 				AE91CCC91EDA9E4A00BB9585 /* WMAssignCell.xib in Resources */,
+				C509CAF71EE802BF002D4F86 /* WMAppliedCell.xib in Resources */,
+				C509CAF51EE7BEFE002D4F86 /* WMRejectedCell.xib in Resources */,
 				AE820FDF1ED48DA900AE2BA2 /* Main.storyboard in Resources */,
+				C509CAF31EE7BED2002D4F86 /* WMAcceptedCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,6 +432,8 @@
 			files = (
 				AEDD5D481EE3B59F00AA8E44 /* WMMyAccountViewController.m in Sources */,
 				AEFEBC391EE2914B00EB0F31 /* WMBrandSelectorViewController.m in Sources */,
+				C509CB001EE81498002D4F86 /* WMAcceptedCell.m in Sources */,
+				C509CB061EE82F5D002D4F86 /* WMStartSurveyViewController.m in Sources */,
 				AEDD5D451EE3B58800AA8E44 /* WMNotificationsViewController.m in Sources */,
 				AEFEBC3C1EE2974A00EB0F31 /* WMSearchResultsViewController.m in Sources */,
 				AEC379EB1ED5F78C00A33A11 /* WMWebservicesHelper.m in Sources */,
@@ -413,28 +441,28 @@
 				AEFEBC361EE2913500EB0F31 /* WMIndustrySelectorViewController.m in Sources */,
 				AE820FDC1ED48DA900AE2BA2 /* ViewController.m in Sources */,
 				AE820FD91ED48DA900AE2BA2 /* AppDelegate.m in Sources */,
-				C55E46F21EE6C40C002E2258 /* WMAcceptedViewController.m in Sources */,
 				AE91CCC31ED9E44000BB9585 /* WMHomeViewController.m in Sources */,
-				C55E46EF1EE6C3F4002E2258 /* WMAssignedViewController.m in Sources */,
-				C55E46F51EE6C420002E2258 /* WMRejectedViewController.m in Sources */,
+				C509CAFA1EE81443002D4F86 /* WMAppliedCell.m in Sources */,
 				C55E46F81EE6E1F0002E2258 /* WMAllAssignmentsClientIdViewController.m in Sources */,
 				AE91CCCC1EDAAC7A00BB9585 /* WMAssignCell.m in Sources */,
 				AEDD5D511EE4389E00AA8E44 /* WMEditProfileViewController.m in Sources */,
 				AE91CCC41ED9E44000BB9585 /* WMMenuViewController.m in Sources */,
 				AE91CCD51EDB138200BB9585 /* WMAssignment.m in Sources */,
-				C55E46EC1EE6C3C9002E2258 /* WMAppliedViewController.m in Sources */,
 				AEFEBC331EE1950100EB0F31 /* WMSearchAssignmentViewController.m in Sources */,
 				AE820FE21ED48DA900AE2BA2 /* Wemark.xcdatamodeld in Sources */,
 				AE820FF41ED4A3E100AE2BA2 /* WMSignupViewController.m in Sources */,
 				AEDD5D4E1EE3B5C100AA8E44 /* WMMyAssignmentsViewController.m in Sources */,
+				C509CAFD1EE81477002D4F86 /* WMAssignedCell.m in Sources */,
 				AEDD5D4B1EE3B5AE00AA8E44 /* WMAssistanceViewController.m in Sources */,
 				AE91CCCF1EDABBDB00BB9585 /* WMLocationSearchViewController.m in Sources */,
 				AEDF42A91ED6998F008A4596 /* WMConstants.m in Sources */,
 				AEDF42B01ED746B1008A4596 /* WMDataHelper.m in Sources */,
 				AE91CCBE1ED9E42F00BB9585 /* BaseFrontViewController.m in Sources */,
+				C509CB031EE814B6002D4F86 /* WMRejectedCell.m in Sources */,
 				AE91CCD21EDAE1EF00BB9585 /* WMLocation.m in Sources */,
 				AEDF42AD1ED742AA008A4596 /* WMUser.m in Sources */,
 				AE820FD61ED48DA900AE2BA2 /* main.m in Sources */,
+				C509CB091EE82F8F002D4F86 /* WMCorrectionsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

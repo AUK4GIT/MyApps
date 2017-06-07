@@ -1,15 +1,15 @@
 //
-//  WMAssignCell.m
+//  WMRejectedCell.m
 //  Wemark
 //
-//  Created by Uday Kiran Ailapaka on 28/05/17.
+//  Created by Ashish on 07/06/17.
 //  Copyright © 2017 Trion Technologies. All rights reserved.
 //
 
-#import "WMAssignCell.h"
+#import "WMRejectedCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
-@implementation WMAssignCell
+@implementation WMRejectedCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -24,7 +24,6 @@
 
 - (void)setClientImageWithURL:(NSString *)urlString {
     [self.imgView sd_setImageWithURL:[NSURL URLWithString:urlString]
-                 placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+                    placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
 }
-
 @end
