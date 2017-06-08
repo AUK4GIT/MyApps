@@ -14,6 +14,9 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    UIView *bgView  = [self.contentView viewWithTag:11];
+    bgView.layer.shadowColor = [UIColor grayColor].CGColor;
+    bgView.layer.shadowOffset = CGSizeMake(1, 1);
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
