@@ -16,5 +16,5 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imgView;
 - (void)setClientImageWithURL:(NSString *)urlString;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (nonatomic, strong) IBOutlet UIButton *bottomButton;
+
 @end

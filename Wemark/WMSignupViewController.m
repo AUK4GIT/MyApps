@@ -147,8 +147,6 @@ userid password:(NSString *)password firstName:(NSString *)firstname lastName:(N
         picker.delegate = self;
         picker.allowsEditing = YES;
         
-        
-        
         UIAlertAction *saveAction = [UIAlertAction actionWithTitle:@"Album" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
             [self presentViewController:picker animated:YES completion:NULL];

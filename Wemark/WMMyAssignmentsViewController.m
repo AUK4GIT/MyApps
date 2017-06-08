@@ -61,18 +61,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-//- (void)appliedTapped:(id)sender {
-//    [self performSegueWithIdentifier:@"APPLIED" sender:nil];
-//}
-//- (void)assignedTapped:(id)sender {
-//    [self performSegueWithIdentifier:@"ASSIGNED" sender:nil];
-//}
-//-(void)acceptedTapped:(id)sender {
-//    [self performSegueWithIdentifier:@"ACCEPTED" sender:nil];
-//}
-//-(void)rejectedTapped:(id)sender {
-//    [self performSegueWithIdentifier:@"REJECTED" sender:nil];
-//}
+
 - (void)segmentedControlChangedValue:(HMSegmentedControl *)segmentedControl {
     self.Applied = false;
     self.Assigned = false;

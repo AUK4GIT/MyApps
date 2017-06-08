@@ -10,7 +10,7 @@
 
 @interface WMAssignedCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *moneyLabel;
-@property (weak, nonatomic) IBOutlet UILabel *assignStatus;
+
 @property (weak, nonatomic) IBOutlet UILabel *calData;
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *imgView;

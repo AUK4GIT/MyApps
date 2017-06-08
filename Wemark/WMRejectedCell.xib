@@ -100,6 +100,7 @@
             <connections>
                 <outlet property="bottomButton" destination="joE-8o-YkX" id="2xr-yT-Pkm"/>
                 <outlet property="calData" destination="OEb-wl-Euj" id="vk1-3G-VWv"/>
+                <outlet property="imgView" destination="ai6-ho-cca" id="6Tc-cc-Lg3"/>
                 <outlet property="moneyLabel" destination="2pk-Hg-7oa" id="9ZL-vw-9IB"/>
                 <outlet property="titleLabel" destination="ELE-ne-Pez" id="hu1-Dc-m0h"/>
             </connections>
