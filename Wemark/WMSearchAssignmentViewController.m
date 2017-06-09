@@ -20,7 +20,6 @@
 @property(nonatomic, strong) NSArray *fees;
 @property(nonatomic, strong) NSArray *reimbursements;
 @property (nonatomic, assign) NSInteger numberOfQuestions;
-
 @property (nonatomic, strong) NSDate *startDate;
 @property (nonatomic, strong) NSDate *endDate;
 @property (nonatomic, strong) NSString *industryid;
@@ -92,16 +91,16 @@
     UISlider *slider = [[cell.contentView viewWithTag:1] viewWithTag:2];
     [slider setMaximumValue:self.numberOfQuestions];
     [slider setMinimumValue:0];
-    [slider setValue:self.numberOfQuestions/2];
+    [slider setValue:0];
     
     UILabel *lbl1 = [[cell.contentView viewWithTag:1] viewWithTag:3];
     UILabel *lbl2 = [[cell.contentView viewWithTag:1] viewWithTag:4];
     UILabel *lbl3 = [[cell.contentView viewWithTag:1] viewWithTag:5];
     
     lbl1.text = @"0";
-    lbl2.text = [NSString stringWithFormat:@"%d",self.numberOfQuestions/2];
-    lbl3.text = [NSString stringWithFormat:@"%d",self.numberOfQuestions];
-    self.selectedNumberOfQuestions = [NSString stringWithFormat:@"%d",self.numberOfQuestions/2];
+    lbl2.text = [NSString stringWithFormat:@"%ld",self.numberOfQuestions/2];
+    lbl3.text = [NSString stringWithFormat:@"%ld",(long)self.numberOfQuestions];
+    self.selectedNumberOfQuestions = @"0";
 }
 
 - (IBAction)applyFilter {
@@ -164,17 +163,27 @@
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"yyyy/MM/dd"];
         
-        NSString *startDate = [formatter stringFromDate:self.startDate];
-        NSString *endDate = [formatter stringFromDate:self.endDate];
+        NSString *startDate;
+        NSString *endDate;
+        if (self.startDate == nil) {
+            startDate = @"";
+        } else {
+            startDate = [formatter stringFromDate:self.startDate];
+        }
+        if (self.endDate == nil) {
+            endDate = @"";
+        } else {
+            endDate = [formatter stringFromDate:self.endDate];
+        }
 
         NSMutableDictionary *mDict = [[NSMutableDictionary alloc] init];
         [mDict setObject:startDate forKey:@"start_date"];
         [mDict setObject:endDate forKey:@"end_date"];
-        [mDict setObject:self.industryid forKey:@"industry_id"];
-        [mDict setObject:self.brandid forKey:@"client_id"];
-        [mDict setObject:self.selectedFees forKey:@"fees"];
-        [mDict setObject:self.selectedReimbursement forKey:@"reimbursement_amount"];
-        [mDict setObject:self.selectedNumberOfQuestions forKey:@"no_of_questions"];
+        [mDict setObject:(self.industryid ? self.industryid : @"") forKey:@"industry_id"];
+        [mDict setObject:(self.brandid ? self.brandid : @"") forKey:@"client_id"];
+        [mDict setObject:(self.selectedFees ? self.selectedFees : @"") forKey:@"fees"];
+        [mDict setObject:(self.selectedReimbursement ? self.selectedReimbursement : @"") forKey:@"reimbursement_amount"];
+        [mDict setObject:(self.selectedNumberOfQuestions ? self.selectedNumberOfQuestions : @"0") forKey:@"no_of_questions"];
         vc.dict = [NSDictionary dictionaryWithDictionary:mDict];
     }
 }
@@ -238,6 +247,14 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 
 #pragma mark - UICollectionViewDelegate 
 
+- (CGSize)collectionView:(UICollectionView *)collectionView
+                  layout:(UICollectionViewLayout *)collectionViewLayout
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return CGSizeMake(self.view.bounds.size.width/4 - 20, 50);
+}
+
+
 - (void)collectionView:(UICollectionView *)collectionView
 didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (collectionView.tag == 1) {
@@ -245,6 +262,8 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     } else if (collectionView.tag == 2) {
         self.selectedReimbursement = [self.reimbursements[indexPath.row] objectForKey:@"reimbursement_amount"];
     }
+//    [self.reimbursements[indexPath.row] objectForKey:@"reimbursement_amount"]
+//    [self.fees[indexPath.row] objectForKey:@"fees"]
 }
 
 #pragma mark - UICollectionViewDatasource
@@ -265,10 +284,27 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PriceCell" forIndexPath:indexPath];
         UILabel *lbl = [cell viewWithTag:1];
         lbl.text = [self.fees[indexPath.row] objectForKey:@"fees"];
+        
+//        NSMutableString *rupee = [NSMutableString stringWithString:@"₹"];
+//        for (int i = 0; i<indexPath.row; i++) {
+//            [rupee appendString:@"₹"];
+//        }
+//        
+//        UILabel *lbl2 = [cell viewWithTag:2];
+//        lbl2.text = rupee;
+        
     } else if (collectionView.tag == 2) {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ReimburseCell" forIndexPath:indexPath];
         UILabel *lbl = [cell viewWithTag:1];
         lbl.text = [self.reimbursements[indexPath.row] objectForKey:@"reimbursement_amount"];
+        
+//        NSMutableString *rupee = [NSMutableString stringWithString:@"₹"];
+//        for (int i = 0; i<indexPath.row; i++) {
+//            [rupee appendString:@"₹"];
+//        }
+//        
+//        UILabel *lbl2 = [cell viewWithTag:2];
+//        lbl2.text = rupee;
     }
     UIView *bgView = [[UIView alloc] init];
     bgView.backgroundColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];

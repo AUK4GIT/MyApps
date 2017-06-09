@@ -29,7 +29,8 @@
     // Do any additional setup after loading the view.
     
     self.title = @"Search result";
-    
+    [self.tableView registerNib:[UINib nibWithNibName:@"WMAssignCell" bundle:nil] forCellReuseIdentifier:@"WMAssignCell"];
+    self.tableView.rowHeight = 124;
     NSString *authKey = [[WMDataHelper sharedInstance] getAuthKey];
     [[WMWebservicesHelper sharedInstance] getSearchCampaignAssignments:self.dict forAuthKey:authKey completionBlock:^(BOOL result, id responseDict, NSError *error) {
         if (result) {
@@ -46,7 +47,7 @@
         }
         dispatch_async(dispatch_get_main_queue(), ^{
 //            [activityView stopAnimating];
-            self.assignmentsLabel.text = [NSString stringWithFormat:@"%d Assignments found in your location ",self.assignmentsArray.count];
+            self.assignmentsLabel.text = [NSString stringWithFormat:@"%lu Assignments found in your location ",(unsigned long)self.assignmentsArray.count];
             [self.tableView reloadData];
         });
     }];
