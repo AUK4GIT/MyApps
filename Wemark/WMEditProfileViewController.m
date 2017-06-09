@@ -7,6 +7,7 @@
 //
 
 #import "WMEditProfileViewController.h"
+#import "AFNetworking.h"
 
 @interface WMEditProfileViewController ()
 
@@ -25,13 +26,34 @@
 }
 
 /*
-#pragma mark - Navigation
+ NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:@"http:example.com/upload" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+ [formData appendPartWithFileURL:[NSURL fileURLWithPath:@"file:path/to/image.jpg"] name:@"file" fileName:@"filename.jpg" mimeType:@"image/jpeg" error:nil];
+ } error:nil];
+ 
+ AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+ 
+ NSURLSessionUploadTask *uploadTask;
+ uploadTask = [manager
+ uploadTaskWithStreamedRequest:request
+ progress:^(NSProgress * _Nonnull uploadProgress) {
+  This is not called back on the main queue.
+  You are responsible for dispatching to the main queue for UI updates
+ dispatch_async(dispatch_get_main_queue(), ^{
+ Update the progress view
+ [progressView setProgress:uploadProgress.fractionCompleted];
+ });
+ }
+ completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+ if (error) {
+ NSLog(@"Error: %@", error);
+ } else {
+ NSLog(@"%@ %@", response, responseObject);
+ }
+ }];
+ 
+ [uploadTask resume];
+ 
+ */
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
