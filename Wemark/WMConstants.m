@@ -19,5 +19,9 @@ NSString * const getNotificationsforAuditorURL = @"auditor-api/notification/get-
 NSString * const getAssignmentsforAuditorURL = @"auditor-api/assignments/my-assignments";
 NSString * const getAllAssignmentsByClientIdURL = @"auditor-api/assignments/get-all-assignment-from-client-id";
 NSString * const getAuditorCampaignViewDetails = @"auditor-api/campaigns/campaign-view-details";
-
-
+NSString * const getAllCountriesURL = @"auditor-api/campaigns/get-all-countries";
+NSString * const getAllStatesByCountryNameURL = @"auditor-api/campaigns/get-all-states-by-country-name";
+NSString * const getAllCitiesByStateNameURL = @"auditor-api/campaigns/get-all-cities-by-state-name";
+NSString * const getAuditorTransactionHistoryURL = @"auditor-api/transaction/auditor-transaction-history";
+NSString * const editProfileURL = @"auditor-api/auditor/edit-profile";
+NSString * const submitQuestionnaireAnswerURL = @"auditor-api/questionnaire/questions-answers";

@@ -10,6 +10,11 @@
 #import "AFNetworking.h"
 
 @interface WMEditProfileViewController ()
+@property (strong, nonatomic) IBOutlet UITextField *fullNameTextField;
+@property (strong, nonatomic) IBOutlet UITextField *lastNameTextField;
+@property (strong, nonatomic) IBOutlet UITextField *emailIdTextField;
+@property (strong, nonatomic) IBOutlet UITextField *mobileNoTextField;
+- (IBAction)editSaveBtnTapped:(id)sender;
 
 @end
 
@@ -56,4 +61,6 @@
  */
 
 
+- (IBAction)editSaveBtnTapped:(id)sender {
+}
 @end

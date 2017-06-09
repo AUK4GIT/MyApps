@@ -49,6 +49,11 @@
 		C509CB031EE814B6002D4F86 /* WMRejectedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C509CB021EE814B6002D4F86 /* WMRejectedCell.m */; };
 		C509CB061EE82F5D002D4F86 /* WMStartSurveyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C509CB051EE82F5D002D4F86 /* WMStartSurveyViewController.m */; };
 		C509CB091EE82F8F002D4F86 /* WMCorrectionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C509CB081EE82F8F002D4F86 /* WMCorrectionsViewController.m */; };
+		C54CD0951EEAC38E0004AEE7 /* WMCountryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C54CD0941EEAC38E0004AEE7 /* WMCountryViewController.m */; };
+		C54CD0981EEAC3C30004AEE7 /* WMStateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C54CD0971EEAC3C30004AEE7 /* WMStateViewController.m */; };
+		C54CD09B1EEAC3E00004AEE7 /* WMCityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C54CD09A1EEAC3E00004AEE7 /* WMCityViewController.m */; };
+		C54CD09E1EEAC81C0004AEE7 /* WMChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C54CD09D1EEAC81C0004AEE7 /* WMChangePasswordViewController.m */; };
+		C54CD0A11EEAC8490004AEE7 /* WMTransactionHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C54CD0A01EEAC8490004AEE7 /* WMTransactionHistoryViewController.m */; };
 		C55E46F81EE6E1F0002E2258 /* WMAllAssignmentsClientIdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C55E46F71EE6E1F0002E2258 /* WMAllAssignmentsClientIdViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -129,6 +134,16 @@
 		C509CB051EE82F5D002D4F86 /* WMStartSurveyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMStartSurveyViewController.m; sourceTree = "<group>"; };
 		C509CB071EE82F8F002D4F86 /* WMCorrectionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMCorrectionsViewController.h; sourceTree = "<group>"; };
 		C509CB081EE82F8F002D4F86 /* WMCorrectionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMCorrectionsViewController.m; sourceTree = "<group>"; };
+		C54CD0931EEAC38E0004AEE7 /* WMCountryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMCountryViewController.h; sourceTree = "<group>"; };
+		C54CD0941EEAC38E0004AEE7 /* WMCountryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMCountryViewController.m; sourceTree = "<group>"; };
+		C54CD0961EEAC3C30004AEE7 /* WMStateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMStateViewController.h; sourceTree = "<group>"; };
+		C54CD0971EEAC3C30004AEE7 /* WMStateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMStateViewController.m; sourceTree = "<group>"; };
+		C54CD0991EEAC3E00004AEE7 /* WMCityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMCityViewController.h; sourceTree = "<group>"; };
+		C54CD09A1EEAC3E00004AEE7 /* WMCityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMCityViewController.m; sourceTree = "<group>"; };
+		C54CD09C1EEAC81C0004AEE7 /* WMChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMChangePasswordViewController.h; sourceTree = "<group>"; };
+		C54CD09D1EEAC81C0004AEE7 /* WMChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMChangePasswordViewController.m; sourceTree = "<group>"; };
+		C54CD09F1EEAC8490004AEE7 /* WMTransactionHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMTransactionHistoryViewController.h; sourceTree = "<group>"; };
+		C54CD0A01EEAC8490004AEE7 /* WMTransactionHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMTransactionHistoryViewController.m; sourceTree = "<group>"; };
 		C55E46F61EE6E1F0002E2258 /* WMAllAssignmentsClientIdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMAllAssignmentsClientIdViewController.h; sourceTree = "<group>"; };
 		C55E46F71EE6E1F0002E2258 /* WMAllAssignmentsClientIdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMAllAssignmentsClientIdViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -236,6 +251,10 @@
 				AEDD5D441EE3B58800AA8E44 /* WMNotificationsViewController.m */,
 				AEDD5D461EE3B59F00AA8E44 /* WMMyAccountViewController.h */,
 				AEDD5D471EE3B59F00AA8E44 /* WMMyAccountViewController.m */,
+				C54CD09C1EEAC81C0004AEE7 /* WMChangePasswordViewController.h */,
+				C54CD09D1EEAC81C0004AEE7 /* WMChangePasswordViewController.m */,
+				C54CD09F1EEAC8490004AEE7 /* WMTransactionHistoryViewController.h */,
+				C54CD0A01EEAC8490004AEE7 /* WMTransactionHistoryViewController.m */,
 				AEDD5D491EE3B5AE00AA8E44 /* WMAssistanceViewController.h */,
 				AEDD5D4A1EE3B5AE00AA8E44 /* WMAssistanceViewController.m */,
 				AEDD5D4C1EE3B5C100AA8E44 /* WMMyAssignmentsViewController.h */,
@@ -246,6 +265,12 @@
 				C509CB081EE82F8F002D4F86 /* WMCorrectionsViewController.m */,
 				AEDD5D4F1EE4389E00AA8E44 /* WMEditProfileViewController.h */,
 				AEDD5D501EE4389E00AA8E44 /* WMEditProfileViewController.m */,
+				C54CD0931EEAC38E0004AEE7 /* WMCountryViewController.h */,
+				C54CD0941EEAC38E0004AEE7 /* WMCountryViewController.m */,
+				C54CD0961EEAC3C30004AEE7 /* WMStateViewController.h */,
+				C54CD0971EEAC3C30004AEE7 /* WMStateViewController.m */,
+				C54CD0991EEAC3E00004AEE7 /* WMCityViewController.h */,
+				C54CD09A1EEAC3E00004AEE7 /* WMCityViewController.m */,
 				AE3098C61EE5C63600BA8609 /* WMCampaignDetailsViewController.h */,
 				AE3098C71EE5C63600BA8609 /* WMCampaignDetailsViewController.m */,
 				C55E46F61EE6E1F0002E2258 /* WMAllAssignmentsClientIdViewController.h */,
@@ -439,8 +464,10 @@
 				AEC379EB1ED5F78C00A33A11 /* WMWebservicesHelper.m in Sources */,
 				AE3098C81EE5C63600BA8609 /* WMCampaignDetailsViewController.m in Sources */,
 				AEFEBC361EE2913500EB0F31 /* WMIndustrySelectorViewController.m in Sources */,
+				C54CD09B1EEAC3E00004AEE7 /* WMCityViewController.m in Sources */,
 				AE820FDC1ED48DA900AE2BA2 /* ViewController.m in Sources */,
 				AE820FD91ED48DA900AE2BA2 /* AppDelegate.m in Sources */,
+				C54CD0951EEAC38E0004AEE7 /* WMCountryViewController.m in Sources */,
 				AE91CCC31ED9E44000BB9585 /* WMHomeViewController.m in Sources */,
 				C509CAFA1EE81443002D4F86 /* WMAppliedCell.m in Sources */,
 				C55E46F81EE6E1F0002E2258 /* WMAllAssignmentsClientIdViewController.m in Sources */,
@@ -450,6 +477,7 @@
 				AE91CCD51EDB138200BB9585 /* WMAssignment.m in Sources */,
 				AEFEBC331EE1950100EB0F31 /* WMSearchAssignmentViewController.m in Sources */,
 				AE820FE21ED48DA900AE2BA2 /* Wemark.xcdatamodeld in Sources */,
+				C54CD0981EEAC3C30004AEE7 /* WMStateViewController.m in Sources */,
 				AE820FF41ED4A3E100AE2BA2 /* WMSignupViewController.m in Sources */,
 				AEDD5D4E1EE3B5C100AA8E44 /* WMMyAssignmentsViewController.m in Sources */,
 				C509CAFD1EE81477002D4F86 /* WMAssignedCell.m in Sources */,
@@ -459,7 +487,9 @@
 				AEDF42B01ED746B1008A4596 /* WMDataHelper.m in Sources */,
 				AE91CCBE1ED9E42F00BB9585 /* BaseFrontViewController.m in Sources */,
 				C509CB031EE814B6002D4F86 /* WMRejectedCell.m in Sources */,
+				C54CD0A11EEAC8490004AEE7 /* WMTransactionHistoryViewController.m in Sources */,
 				AE91CCD21EDAE1EF00BB9585 /* WMLocation.m in Sources */,
+				C54CD09E1EEAC81C0004AEE7 /* WMChangePasswordViewController.m in Sources */,
 				AEDF42AD1ED742AA008A4596 /* WMUser.m in Sources */,
 				AE820FD61ED48DA900AE2BA2 /* main.m in Sources */,
 				C509CB091EE82F8F002D4F86 /* WMCorrectionsViewController.m in Sources */,

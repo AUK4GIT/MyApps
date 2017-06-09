@@ -92,4 +92,5 @@
  */
 - (void)getAllAssignmentsByClientId:(NSString *)clientId authKey:(NSString *)authKey completionBlock:(void (^)(BOOL, id, NSError *))completionBlock;
 
+
 @end
