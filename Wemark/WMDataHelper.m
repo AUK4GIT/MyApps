@@ -147,7 +147,7 @@
 
 - (NSString *)getAuditorId {
     if (auditor ) {
-        return auditor.userid;
+        return @"7";//auditor.userid;
     } else {
         //        NSAssert(auditor, @"authkey key  not found as auditor object is empty");
         return @"";

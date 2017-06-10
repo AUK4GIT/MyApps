@@ -31,8 +31,21 @@
     self.title = @"Search result";
     [self.tableView registerNib:[UINib nibWithNibName:@"WMAssignCell" bundle:nil] forCellReuseIdentifier:@"WMAssignCell"];
     self.tableView.rowHeight = 124;
+    [self getAssignmentsforSelfAssign:@"0" forApply:@"0"];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (void)getAssignmentsforSelfAssign:(NSString *)selfAssign forApply:(NSString *)applyStatus {
     NSString *authKey = [[WMDataHelper sharedInstance] getAuthKey];
-    [[WMWebservicesHelper sharedInstance] getSearchCampaignAssignments:self.dict forAuthKey:authKey completionBlock:^(BOOL result, id responseDict, NSError *error) {
+    NSMutableDictionary *mDict = [NSMutableDictionary dictionaryWithDictionary:self.dict];
+    [mDict setObject:selfAssign forKey:@"self_assign"];
+    [mDict setObject:applyStatus forKey:@"apply"];
+    [self showActivity];
+    [[WMWebservicesHelper sharedInstance] getSearchCampaignAssignments:mDict forAuthKey:authKey completionBlock:^(BOOL result, id responseDict, NSError *error) {
         if (result) {
             self.assignmentsArray = [NSMutableArray arrayWithArray:responseDict];
         }else{
@@ -46,18 +59,12 @@
             }
         }
         dispatch_async(dispatch_get_main_queue(), ^{
-//            [activityView stopAnimating];
+            [self hideActivity];
             self.assignmentsLabel.text = [NSString stringWithFormat:@"%lu Assignments found in your location ",(unsigned long)self.assignmentsArray.count];
             [self.tableView reloadData];
         });
     }];
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 
 - (IBAction)assignmentFilterAction:(UIButton *)sender {
     [self.assignFilterButton setSelected:false];
@@ -69,15 +76,14 @@
         self.selfAssign = true;
         self.apply = false;
         [self.assignFilterButton setBackgroundColor:[UIColor colorWithRed:52/255.0 green:0.0 blue:110/255.0 alpha:1.0]];
+        [self getAssignmentsforSelfAssign:@"1" forApply:@"0"];
+
     } else {
         self.apply = true;
         self.selfAssign = true;
         [self.applyFilterButton setBackgroundColor:[UIColor colorWithRed:27/255.0 green:122.0/255.0 blue:226/255.0 alpha:1.0]];
-    }
-    if (self.locationId) {
-//        [self getAssignmentsByLocationid:self.locationId forSelfAssign:[NSString stringWithFormat:@"%d",self.selfAssign] forApply:[NSString stringWithFormat:@"%d",self.apply]];
-    } else {
-        //        [self getAssignmentsByLocationid:self.locationId forSelfAssign:[NSString stringWithFormat:@"%d",self.selfAssign] forApply:[NSString stringWithFormat:@"%d",self.apply]];
+        [self getAssignmentsforSelfAssign:@"0" forApply:@"1"];
+
     }
 }
 
@@ -114,16 +120,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-}
-
-- (void)showErrorMessage:(NSString *)msg {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Wemark" message:msg preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-    }];
-    [alertController addAction:cancelAction];
-//    [alertController addAction:saveAction];
-    [self presentViewController:alertController animated:true completion:^{
-    }];
 }
 
 @end

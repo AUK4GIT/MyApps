@@ -552,7 +552,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="OAH-XH-s4Z" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="back-button-image" backIndicatorTransitionMaskImage="back-button-image" id="yhV-EL-ALH">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" backIndicatorImage="back-button-image" backIndicatorTransitionMaskImage="back-button-image" id="yhV-EL-ALH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1330,7 +1330,7 @@
             <objects>
                 <navigationController storyboardIdentifier="SideMenuNavController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="g2i-yh-G7w" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" backIndicatorImage="back-button-image" backIndicatorTransitionMaskImage="back-button-image" id="0ad-8w-Cnn">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" backIndicatorImage="back-button-image" backIndicatorTransitionMaskImage="back-button-image" id="0ad-8w-Cnn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.86274509803921573" green="0.0" blue="0.23529411764705882" alpha="1" colorSpace="calibratedRGB"/>
@@ -1849,7 +1849,7 @@
             <objects>
                 <navigationController storyboardIdentifier="NotificationsNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="c9l-Ec-Gtp" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" backIndicatorImage="back-button-image" backIndicatorTransitionMaskImage="back-button-image" id="6F2-Fb-PaG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" backIndicatorImage="back-button-image" backIndicatorTransitionMaskImage="back-button-image" id="6F2-Fb-PaG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.86274509799999999" green="0.0" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -1882,55 +1882,73 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PcL-gu-RMI">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="sectionIndexBackgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NotificationsCell" rowHeight="100" id="8cB-Hx-Ss2">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="100"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NotificationsCell" rowHeight="108" id="6uy-2a-Uca">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="108"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8cB-Hx-Ss2" id="Lp4-Lp-0zP">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="99.666666666666671"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6uy-2a-Uca" id="3zZ-Tf-LM7">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="107.66666666666667"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kkP-qn-lFc">
-                                                    <rect key="frame" x="4" y="4" width="100" height="91"/>
-                                                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BPY-bV-Ymw">
+                                                    <rect key="frame" x="8" y="4" width="398" height="68"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" tag="5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="icl-Zc-UTS">
+                                                            <rect key="frame" x="16" y="16" width="80" height="80"/>
+                                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="80" id="8O6-L1-TQa"/>
+                                                                <constraint firstAttribute="height" constant="80" id="DRy-m9-Bdu"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I31-Nl-YfA">
+                                                            <rect key="frame" x="112" y="16" width="42" height="20"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oSn-ce-dbF">
+                                                            <rect key="frame" x="352" y="16.333333333333336" width="42" height="20"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vvb-7V-6pn">
+                                                            <rect key="frame" x="111.99999999999999" y="44" width="41.666666666666643" height="20"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="100" id="BFb-To-aQm"/>
+                                                        <constraint firstAttribute="trailing" secondItem="oSn-ce-dbF" secondAttribute="trailing" constant="4" id="2Gp-n6-OKH"/>
+                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Vvb-7V-6pn" secondAttribute="trailing" constant="4" id="Btn-9p-Dwt"/>
+                                                        <constraint firstItem="icl-Zc-UTS" firstAttribute="top" secondItem="BPY-bV-Ymw" secondAttribute="top" constant="16" id="DEY-AL-mH4"/>
+                                                        <constraint firstItem="I31-Nl-YfA" firstAttribute="top" secondItem="icl-Zc-UTS" secondAttribute="top" id="IuX-sv-iqF"/>
+                                                        <constraint firstItem="Vvb-7V-6pn" firstAttribute="top" secondItem="I31-Nl-YfA" secondAttribute="bottom" constant="8" id="KgN-pE-8R5"/>
+                                                        <constraint firstItem="I31-Nl-YfA" firstAttribute="leading" secondItem="icl-Zc-UTS" secondAttribute="trailing" constant="16" id="O2l-hu-9Bv"/>
+                                                        <constraint firstItem="oSn-ce-dbF" firstAttribute="centerY" secondItem="I31-Nl-YfA" secondAttribute="centerY" id="Ou1-KP-DLM"/>
+                                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Vvb-7V-6pn" secondAttribute="bottom" constant="4" id="PH3-RI-yVQ"/>
+                                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="icl-Zc-UTS" secondAttribute="bottom" constant="8" id="YCc-fI-tGy"/>
+                                                        <constraint firstAttribute="height" priority="250" constant="50" id="avJ-oq-obn"/>
+                                                        <constraint firstItem="Vvb-7V-6pn" firstAttribute="leading" secondItem="icl-Zc-UTS" secondAttribute="trailing" constant="16" id="df0-ln-HsY"/>
+                                                        <constraint firstItem="icl-Zc-UTS" firstAttribute="leading" secondItem="BPY-bV-Ymw" secondAttribute="leading" constant="16" id="xwn-pU-4pY"/>
                                                     </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Notification Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2h1-Ae-UuZ">
-                                                    <rect key="frame" x="112" y="4" width="109" height="18"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 min ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uzh-Vv-Jua">
-                                                    <rect key="frame" x="348" y="5" width="58" height="16"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All their equipment and instruments are alive. A red flair silhouetted the jagged edge of a wing." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IdL-As-XtY">
-                                                    <rect key="frame" x="112" y="30" width="294" height="52.666666666666671"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                </view>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstItem="kkP-qn-lFc" firstAttribute="leading" secondItem="Lp4-Lp-0zP" secondAttribute="leading" constant="4" id="4y0-7y-uoD"/>
-                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="IdL-As-XtY" secondAttribute="bottom" constant="8" id="Q5W-vA-O3E"/>
-                                                <constraint firstItem="2h1-Ae-UuZ" firstAttribute="top" secondItem="Lp4-Lp-0zP" secondAttribute="top" constant="4" id="Qef-SJ-sI4"/>
-                                                <constraint firstItem="Uzh-Vv-Jua" firstAttribute="centerY" secondItem="2h1-Ae-UuZ" secondAttribute="centerY" id="bbe-z8-Wh0"/>
-                                                <constraint firstItem="IdL-As-XtY" firstAttribute="top" secondItem="2h1-Ae-UuZ" secondAttribute="bottom" constant="8" id="bwh-gx-dnZ"/>
-                                                <constraint firstItem="IdL-As-XtY" firstAttribute="leading" secondItem="2h1-Ae-UuZ" secondAttribute="leading" id="hWW-WU-rdv"/>
-                                                <constraint firstAttribute="trailing" secondItem="IdL-As-XtY" secondAttribute="trailing" constant="8" id="kHE-Qm-vgh"/>
-                                                <constraint firstItem="2h1-Ae-UuZ" firstAttribute="leading" secondItem="kkP-qn-lFc" secondAttribute="trailing" constant="8" id="lg5-wV-gKW"/>
-                                                <constraint firstAttribute="bottom" secondItem="kkP-qn-lFc" secondAttribute="bottom" constant="4" id="qVd-IN-dnF"/>
-                                                <constraint firstAttribute="trailing" secondItem="Uzh-Vv-Jua" secondAttribute="trailing" constant="8" id="y8b-Ir-TUK"/>
-                                                <constraint firstItem="kkP-qn-lFc" firstAttribute="top" secondItem="Lp4-Lp-0zP" secondAttribute="top" constant="4" id="zjl-al-SZw"/>
+                                                <constraint firstAttribute="trailing" secondItem="BPY-bV-Ymw" secondAttribute="trailing" constant="8" id="cz7-2A-GVQ"/>
+                                                <constraint firstItem="BPY-bV-Ymw" firstAttribute="leading" secondItem="3zZ-Tf-LM7" secondAttribute="leading" constant="8" id="faQ-vB-doA"/>
+                                                <constraint firstAttribute="bottom" secondItem="BPY-bV-Ymw" secondAttribute="bottom" constant="4" id="fcv-69-akC"/>
+                                                <constraint firstItem="BPY-bV-Ymw" firstAttribute="top" secondItem="3zZ-Tf-LM7" secondAttribute="top" constant="4" id="kFr-Mf-Eag"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -1954,14 +1972,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dCJ-CS-gIl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="210" y="-2536"/>
+            <point key="canvasLocation" x="208.69565217391306" y="-2536.1413043478265"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Rze-EO-zLR">
             <objects>
                 <navigationController storyboardIdentifier="MyAccountNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gKY-VP-T3T" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" backIndicatorImage="back-button-image" backIndicatorTransitionMaskImage="back-button-image" id="BH3-Tx-ZO8">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" backIndicatorImage="back-button-image" backIndicatorTransitionMaskImage="back-button-image" id="BH3-Tx-ZO8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.86274509799999999" green="0.0" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -2890,7 +2908,7 @@
             <objects>
                 <navigationController storyboardIdentifier="AssistanceNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="M4G-n4-q7O" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" backIndicatorImage="back-button-image" backIndicatorTransitionMaskImage="back-button-image" id="TlS-2x-WTo">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" backIndicatorImage="back-button-image" backIndicatorTransitionMaskImage="back-button-image" id="TlS-2x-WTo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.86274509799999999" green="0.0" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -2933,7 +2951,7 @@
             <objects>
                 <navigationController storyboardIdentifier="MyAssignmentsNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dv0-Mo-lBn" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" backIndicatorImage="back-button-image" backIndicatorTransitionMaskImage="back-button-image" id="ndp-wy-w8f">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" backIndicatorImage="back-button-image" backIndicatorTransitionMaskImage="back-button-image" id="ndp-wy-w8f">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.86274509799999999" green="0.0" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>

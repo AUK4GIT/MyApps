@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface WMSearchResultsViewController : UIViewController
+@interface WMSearchResultsViewController : BaseViewController
 @property (nonatomic, strong) NSDictionary *dict;
 @end

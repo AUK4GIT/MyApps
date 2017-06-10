@@ -55,6 +55,7 @@
 		C54CD09E1EEAC81C0004AEE7 /* WMChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C54CD09D1EEAC81C0004AEE7 /* WMChangePasswordViewController.m */; };
 		C54CD0A11EEAC8490004AEE7 /* WMTransactionHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C54CD0A01EEAC8490004AEE7 /* WMTransactionHistoryViewController.m */; };
 		C55E46F81EE6E1F0002E2258 /* WMAllAssignmentsClientIdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C55E46F71EE6E1F0002E2258 /* WMAllAssignmentsClientIdViewController.m */; };
+		C56A605F1EEBDD0500F7F163 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C56A605E1EEBDD0500F7F163 /* BaseViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -146,6 +147,8 @@
 		C54CD0A01EEAC8490004AEE7 /* WMTransactionHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMTransactionHistoryViewController.m; sourceTree = "<group>"; };
 		C55E46F61EE6E1F0002E2258 /* WMAllAssignmentsClientIdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMAllAssignmentsClientIdViewController.h; sourceTree = "<group>"; };
 		C55E46F71EE6E1F0002E2258 /* WMAllAssignmentsClientIdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMAllAssignmentsClientIdViewController.m; sourceTree = "<group>"; };
+		C56A605D1EEBDD0500F7F163 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		C56A605E1EEBDD0500F7F163 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,6 +232,8 @@
 		AE820FEE1ED4A3A200AE2BA2 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C56A605D1EEBDD0500F7F163 /* BaseViewController.h */,
+				C56A605E1EEBDD0500F7F163 /* BaseViewController.m */,
 				AE91CCBF1ED9E44000BB9585 /* WMHomeViewController.h */,
 				AE91CCC01ED9E44000BB9585 /* WMHomeViewController.m */,
 				AE91CCC11ED9E44000BB9585 /* WMMenuViewController.h */,
@@ -477,6 +482,7 @@
 				AE91CCD51EDB138200BB9585 /* WMAssignment.m in Sources */,
 				AEFEBC331EE1950100EB0F31 /* WMSearchAssignmentViewController.m in Sources */,
 				AE820FE21ED48DA900AE2BA2 /* Wemark.xcdatamodeld in Sources */,
+				C56A605F1EEBDD0500F7F163 /* BaseViewController.m in Sources */,
 				C54CD0981EEAC3C30004AEE7 /* WMStateViewController.m in Sources */,
 				AE820FF41ED4A3E100AE2BA2 /* WMSignupViewController.m in Sources */,
 				AEDD5D4E1EE3B5C100AA8E44 /* WMMyAssignmentsViewController.m in Sources */,

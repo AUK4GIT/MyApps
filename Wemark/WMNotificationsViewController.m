@@ -13,19 +13,27 @@
 
 @interface WMNotificationsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) NSArray *notificationsArray;
+@property (strong, nonatomic) NSArray *notificationsArray;
 @end
 
 @implementation WMNotificationsViewController
+{
+    NSDateFormatter *dateFormatter;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"Notifications";
-    self.tableView.rowHeight = 100;
+    self.tableView.estimatedRowHeight = 108;
     NSString *authKey = [[WMDataHelper sharedInstance] getAuthKey];
     NSString *auditorId = [[WMDataHelper sharedInstance] getAuditorId];
 
+    
+    dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    [dateFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US"]];
+                              
     [[WMWebservicesHelper sharedInstance] getNotifications:authKey byAuditorId:auditorId completionBlock:^(BOOL result, id responseDict, NSError *error) {
         NSLog(@"result:-> %@",result ? @"success" : @"Failed");
         if (result) {
@@ -71,18 +79,47 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NotificationsCell"];
-    cell.textLabel.textColor = [UIColor grayColor];
+    cell.backgroundColor = [UIColor clearColor];
+    cell.contentView.backgroundColor = [UIColor clearColor];
     
     id locObj = self.notificationsArray[indexPath.row];
-    
-    UILabel *title = [cell.contentView viewWithTag:2];
-    UILabel *time = [cell.contentView viewWithTag:3];
-    UILabel *descr = [cell.contentView viewWithTag:4];
-    UIImageView *imgView = [cell.contentView viewWithTag:4];
-
+    UIView *bgView = [cell.contentView viewWithTag:1];
+    UILabel *title = [bgView viewWithTag:2];
+    UILabel *time = [bgView viewWithTag:3];
+    UILabel *descr = [bgView viewWithTag:4];
+    UIImageView *imgView = [bgView viewWithTag:5];
+    imgView.layer.cornerRadius = 40.0;
     title.text = [locObj valueForKey:@"notification_title"];
-    time.text = [locObj valueForKey:@"timestamp"];
     descr.text = [locObj valueForKey:@"notification_description"];
+
+    NSDate *givenDate = [dateFormatter dateFromString:[locObj valueForKey:@"timestamp"]];
+    if (givenDate) {
+
+//    NSDate *currentDate = [NSDate date];
+    // Get the Gregorian calendar
+    NSCalendar *cal = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    // Get the date
+    NSDate* now = [NSDate date];
+    // Get the hours, minutes, seconds
+    NSDateComponents *components = [cal components:NSCalendarUnitDay|NSCalendarUnitHour|NSCalendarUnitMinute|NSCalendarUnitSecond
+                                                            fromDate:givenDate
+                                                              toDate:now
+                                                             options:0];
+        
+        if (components.day > 0) {
+            time.text = [NSString stringWithFormat:@"%ld days ago",(long)components.day];
+        } else if (components.hour > 0) {
+            time.text = [NSString stringWithFormat:@"%ld hours ago",(long)components.hour];
+        }else if (components.minute > 0 ) {
+            time.text = [NSString stringWithFormat:@"%ld mins ago",(long)components.minute];
+        }else {
+            time.text = [NSString stringWithFormat:@"%ld days ago",(long)components.day];
+        }
+
+} else {
+    time.text = @"--- --- ago";
+    NSLog(@"Date Format Error");
+}
 
     [imgView sd_setImageWithURL:[NSURL URLWithString:[locObj valueForKey:@"notification_image"]]
                     placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
@@ -93,16 +130,6 @@
 #pragma mark - UITbleView Delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-}
-
-- (void)showErrorMessage:(NSString *)msg {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Wemark" message:msg preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-    }];
-    [alertController addAction:cancelAction];
-    //    [alertController addAction:saveAction];
-    [self presentViewController:alertController animated:true completion:^{
-    }];
 }
 
 @end
