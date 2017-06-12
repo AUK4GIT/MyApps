@@ -17,6 +17,8 @@
     UIView *bgView  = [self.contentView viewWithTag:11];
     bgView.layer.shadowColor = [UIColor grayColor].CGColor;
     bgView.layer.shadowOffset = CGSizeMake(1, 1);
+    bgView.layer.shadowOpacity = 1.0f;
+
 }
 
 - (void)layoutSubviews {

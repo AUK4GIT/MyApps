@@ -8,9 +8,14 @@
 
 #import "WMMenuViewController.h"
 #import "AppDelegate.h"
+#import "WMDataHelper.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface WMMenuViewController ()
+@property (weak, nonatomic) IBOutlet UIImageView *profilePic;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UILabel *username;
+@property (weak, nonatomic) IBOutlet UILabel *emailAddress;
 @end
 
 @implementation WMMenuViewController
@@ -24,7 +29,24 @@
     
     appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
+    self.profilePic.layer.cornerRadius = self.profilePic.bounds.size.width/2;
+    self.profilePic.layer.borderWidth = 4.0f;
+    self.profilePic.layer.masksToBounds = true;
+    self.profilePic.clipsToBounds = true;
+    self.profilePic.layer.borderColor = [UIColor whiteColor].CGColor;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    id auditor = [[WMDataHelper sharedInstance] getAuditor];
+    
+    self.username.text = [auditor valueForKey:@"username"];
+    self.emailAddress.text = [auditor valueForKey:@"usermailid"];
+    NSString *profilePicImgURL = [auditor valueForKey:@"profileImageurlstring"];
+    [self.profilePic sd_setImageWithURL:[NSURL URLWithString:profilePicImgURL]
+                       placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
 }
 
 - (void)didReceiveMemoryWarning {

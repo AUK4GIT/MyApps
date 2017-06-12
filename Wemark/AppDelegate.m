@@ -58,15 +58,27 @@
     
        WMMenuViewController *rvc = [mainStoryboard instantiateViewControllerWithIdentifier:@"WMMenuViewController"];
     self.swController = [[LGSideMenuController alloc] initWithRootViewController:fvc leftViewController:rvc rightViewController:nil];
-//    [fvc.view addGestureRecognizer:self.swController.panGestureRecognizer];
-    //    [fvc.view addGestureRecognizer:swController.tapGestureRecognizer];
-    self.window.rootViewController = self.swController;
+    
+    [UIView transitionWithView:self.window
+                      duration:0.5
+                       options:UIViewAnimationOptionTransitionFlipFromLeft
+                    animations:^{ self.window.rootViewController = self.swController; }
+                    completion:nil];
     
     fvc.navigationBar.backIndicatorImage = [UIImage imageNamed:@"back-button-image"];
     fvc.navigationBar.backIndicatorTransitionMaskImage = [UIImage imageNamed:@"back-button-image"];
     fvc.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-    
+}
 
+- (void)logout {
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main"
+                                                             bundle: nil];
+    UINavigationController *fvc = [mainStoryboard instantiateViewControllerWithIdentifier:@"LoginControler"];
+    [UIView transitionWithView:self.window
+                      duration:0.5
+                       options:UIViewAnimationOptionTransitionFlipFromLeft
+                    animations:^{ self.window.rootViewController = fvc; }
+                    completion:nil];
 }
 
 - (UIImage *)imageFromColor:(UIColor *)color {

@@ -12,4 +12,6 @@
 - (void)showErrorMessage:(NSString *)msg;
 - (void)showActivity;
 - (void)hideActivity;
+- (NSString *)convertToString:(id)value;
+
 @end

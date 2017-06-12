@@ -20,5 +20,6 @@
 
 - (void)saveContext;
 - (void)loadhomeScreenWithSidemenu;
+- (void)logout;
 @end
 

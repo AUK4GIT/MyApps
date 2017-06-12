@@ -40,11 +40,14 @@
 
 #pragma mark :- Drawing Text Rect
 - (CGRect)textRectForBounds:(CGRect)bounds {
-    return CGRectMake(4, 4, bounds.size.width, bounds.size.height);
+    CGFloat width = self.showsDropDown ? bounds.size.width-20 : bounds.size.width;
+    return CGRectMake(4, 4, width, bounds.size.height);
 }
 
 - (CGRect)editingRectForBounds:(CGRect)bounds {
-    return CGRectMake(4, 4, bounds.size.width, bounds.size.height);
+    CGFloat width = self.showsDropDown ? bounds.size.width-20 : bounds.size.width;
+
+    return CGRectMake(4, 4, width, bounds.size.height);
 }
 
 #pragma mark  Override Set text
@@ -123,6 +126,9 @@
         [self floatTheLabel];
     }
     
+    if (self.showsDropDown) {
+        [self addDropDownImage];
+    }
 }
 
 #pragma mark :- Private Methods
@@ -134,6 +140,17 @@
     bottomLineView.backgroundColor = _lineColor;
     [self addSubview:bottomLineView];
 }
+-(void)addDropDownImage{
+    
+    [dropDownImgView removeFromSuperview];
+    dropDownImgView = [[UIImageView alloc] initWithFrame:CGRectMake(self.frame.size.width-20, self.frame.size.height/2-5, 20, 20)];
+//    dropDownImgView.backgroundColor = [UIColor blackColor];
+    UIImage *img = [UIImage imageNamed:@"ic_arrow_drop_down.png"];
+    dropDownImgView.image = img;
+    dropDownImgView.tintColor = [UIColor redColor];
+    [self addSubview:dropDownImgView];
+}
+
 -(void)addPlaceholderLabel{
     
     [_labelPlaceholder removeFromSuperview];
@@ -277,6 +294,9 @@
     
     CGRect frame = self.labelPlaceholder.frame;
     frame.size.height = 12;
+    if (self.expandLabel) {
+        frame.size.width = 100;
+    }
 
     [UIView animateWithDuration:0.2 animations:^{
         _labelPlaceholder.frame = frame;

@@ -145,6 +145,15 @@
     }
 }
 
+- (id)getAuditor {
+    if (auditor ) {
+        return auditor;
+    } else {
+            NSAssert(auditor, @"auditor object is empty");
+        return @"";
+    }
+}
+
 - (NSString *)getAuditorId {
     if (auditor ) {
         return @"7";//auditor.userid;

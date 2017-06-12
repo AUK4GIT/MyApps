@@ -14,6 +14,7 @@ IB_DESIGNABLE
 {
     UIView *bottomLineView;
     BOOL showingError;
+    UIImageView *dropDownImgView;
 }
 /*
  * Change the Bottom line color. Default is Black Color.
@@ -47,7 +48,15 @@ IB_DESIGNABLE
  * Shake line when showing error?.
  */
 @property (assign) IBInspectable  BOOL disableShakeWithError;
+/*
+ * Shows Drop Down
+ */
+@property (assign) IBInspectable  BOOL showsDropDown;
 
+/*
+ * expandLabel
+ */
+@property (assign) IBInspectable  BOOL expandLabel;
 
 @property (nonatomic,strong) UILabel *labelPlaceholder;
 @property (nonatomic,strong) UILabel *labelErrorPlaceholder;

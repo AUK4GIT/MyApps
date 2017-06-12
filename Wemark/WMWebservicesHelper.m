@@ -299,4 +299,27 @@
     [dataTask resume];
 }
 
+- (void)getAuditorProfileforauthKey:(NSString *)authKey completionBlock:(void (^)(BOOL, id, NSError *))completionBlock {
+    
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    
+    NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"GET" URLString:[NSString stringWithFormat:@"%@%@",baseURL,getProfileURL] parameters:nil error:nil];
+    [request addValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request addValue:authKey forHTTPHeaderField:@"Auth-key"];
+    
+    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+        if (error) {
+            NSLog(@"Error: %@\nMessage: %@", error.localizedDescription, responseObject[@"meta"]);
+            NSDictionary *codeDict = responseObject[@"meta"];
+            completionBlock(false,codeDict,error);
+        } else {
+            NSLog(@"%@ ** %@", response, responseObject);
+            completionBlock(true,responseObject[@"data"],nil);
+        }
+    }];
+    [dataTask resume];
+}
+
 @end

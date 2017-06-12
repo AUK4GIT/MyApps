@@ -8,12 +8,27 @@
 
 #import "WMEditProfileViewController.h"
 #import "AFNetworking.h"
+#import "ACFloatingTextField.h"
+#import "ActionSheetPicker.h"
 
-@interface WMEditProfileViewController ()
-@property (strong, nonatomic) IBOutlet UITextField *fullNameTextField;
-@property (strong, nonatomic) IBOutlet UITextField *lastNameTextField;
-@property (strong, nonatomic) IBOutlet UITextField *emailIdTextField;
-@property (strong, nonatomic) IBOutlet UITextField *mobileNoTextField;
+@interface WMEditProfileViewController () <UIImagePickerControllerDelegate>
+@property (strong, nonatomic) IBOutlet ACFloatingTextField *fullNameTextField;
+@property (strong, nonatomic) IBOutlet ACFloatingTextField *lastNameTextField;
+@property (strong, nonatomic) IBOutlet ACFloatingTextField *emailIdTextField;
+@property (strong, nonatomic) IBOutlet ACFloatingTextField *mobileNoTextField;
+@property (strong, nonatomic) IBOutlet ACFloatingTextField *dobTextField;
+@property (strong, nonatomic) IBOutlet ACFloatingTextField *countryTextField;
+@property (strong, nonatomic) IBOutlet ACFloatingTextField *stateTextField;
+@property (strong, nonatomic) IBOutlet ACFloatingTextField *cityTextField;
+@property (strong, nonatomic) IBOutlet ACFloatingTextField *pincodeTextField;
+@property (strong, nonatomic) IBOutlet ACFloatingTextField *phoneCodeTextField;
+@property (weak, nonatomic) IBOutlet UIImageView *profilePic;
+@property (strong, nonatomic) ActionSheetDatePicker *actionSheetPicker;
+@property (strong, nonatomic) NSArray *mobileCodes;
+@property (strong, nonatomic) NSArray *countries;
+@property (strong, nonatomic) NSArray *states;
+@property (strong, nonatomic) NSArray *cities;
+
 - (IBAction)editSaveBtnTapped:(id)sender;
 
 @end
@@ -23,11 +38,88 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.profilePic.layer.cornerRadius = self.profilePic.bounds.size.width/2;
+    self.profilePic.layer.borderWidth = 4.0f;
+    self.profilePic.layer.masksToBounds = true;
+    self.profilePic.clipsToBounds = true;
+
+    self.profilePic.layer.borderColor = [UIColor colorWithRed:220/255.0 green:0.0 blue:60/255.0 alpha:1.0].CGColor;
+    
+    UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(profilePicTapped:)];
+    [self.profilePic addGestureRecognizer:tapGes];
+}
+- (void)profilePicTapped:(id)gesture {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Wemark" message:@"Please select a photo source" preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    
+    UIAlertAction *saveAction = [UIAlertAction actionWithTitle:@"Album" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        [self presentViewController:picker animated:YES completion:NULL];
+        
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Camera" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        [self presentViewController:picker animated:YES completion:NULL];
+    }];
+    
+    [alertController addAction:cancelAction];
+    [alertController addAction:saveAction];
+    
+    [self presentViewController:alertController animated:true completion:^{
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)selectADateofBirth:(id)sender {
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *minimumDateComponents = [calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:[NSDate date]];
+    [minimumDateComponents setYear:2000];
+    NSDate *minDate = [calendar dateFromComponents:minimumDateComponents];
+    NSDate *maxDate = [NSDate date];
+    
+    
+    self.actionSheetPicker = [[ActionSheetDatePicker alloc] initWithTitle:@"" datePickerMode:UIDatePickerModeDate selectedDate:maxDate
+                                                               target:self action:@selector(dateWasSelected:element:) origin:sender];
+    
+    
+    [(ActionSheetDatePicker *) self.actionSheetPicker setMinimumDate:minDate];
+    [(ActionSheetDatePicker *) self.actionSheetPicker setMaximumDate:maxDate];
+    
+//    self.actionSheetPicker.hideCancel = YES;
+    [self.actionSheetPicker showActionSheetPicker];
+}
+
+-(void)dateWasSelected:(NSDate *)selectedTime element:(id)element {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd MMM yyyy"];
+        self.dobTextField.text = [dateFormatter stringFromDate:selectedTime];
+}
+
+
+
+- (void)showListPickerWithList:(NSArray *)listArray andTitle:(NSString *)title textField:(UITextField *)txtField{
+    
+    [ActionSheetStringPicker showPickerWithTitle:title
+                                            rows:listArray
+                                initialSelection:0
+                                       doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
+                                           NSLog(@"Picker: %@, Index: %ld, value: %@",
+                                                 picker, (long)selectedIndex, selectedValue);
+                                           txtField.text = selectedValue;
+                                       }
+                                     cancelBlock:^(ActionSheetStringPicker *picker) {
+                                         NSLog(@"Block Picker Canceled");
+                                     }
+                                          origin:txtField];
 }
 
 /*
@@ -62,5 +154,70 @@
 
 
 - (IBAction)editSaveBtnTapped:(id)sender {
+    if (![self isValidEmail:self.emailIdTextField.text]) {
+        NSLog(@"Invalid Email Address");
+        [self.emailIdTextField showErrorWithText:@"Please type a valid email id"];
+    }  else if (self.fullNameTextField.text.length == 0){
+        [self.fullNameTextField showErrorWithText:@"First name cannot be empty"];
+    } else if (self.lastNameTextField.text.length == 0){
+        [self.lastNameTextField showErrorWithText:@"Last name cannot be empty"];
+    } else {
+        
+    }
 }
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:true];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [self.view endEditing:true];
+}
+
+-(BOOL)isValidEmail:(NSString *)checkString
+{
+    BOOL stricterFilter = NO;
+    NSString *stricterFilterString = @"^[A-Z0-9a-z\\._%+-]+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}$";
+    NSString *laxString = @"^.+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2}[A-Za-z]*$";
+    NSString *emailRegex = stricterFilter ? stricterFilterString : laxString;
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+    return [emailTest evaluateWithObject:checkString];
+}
+
+#pragma mark - UIImagePickerDelegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    NSString *imgURL = info[UIImagePickerControllerReferenceURL];
+    self.profilePic.image = chosenImage;
+    
+    [picker dismissViewControllerAnimated:YES completion:^{
+    }];
+    
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
+}
+
+#pragma mark - UITextField Delegates 
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    if (textField == self.countryTextField) {
+        [self showListPickerWithList:@[@"1",@"2",@"3"] andTitle:@"Select a Country" textField:textField];
+        return false;
+    } else if (textField == self.dobTextField) {
+        [self selectADateofBirth:textField];
+        return  false;
+    }
+    return true;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+   
+}
+
 @end

@@ -24,4 +24,5 @@ NSString * const getAllStatesByCountryNameURL = @"auditor-api/campaigns/get-all-
 NSString * const getAllCitiesByStateNameURL = @"auditor-api/campaigns/get-all-cities-by-state-name";
 NSString * const getAuditorTransactionHistoryURL = @"auditor-api/transaction/auditor-transaction-history";
 NSString * const editProfileURL = @"auditor-api/auditor/edit-profile";
+NSString * const getProfileURL = @"auditor-api/auditor/get-auditor-profile";
 NSString * const submitQuestionnaireAnswerURL = @"auditor-api/questionnaire/questions-answers";

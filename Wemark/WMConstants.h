@@ -24,4 +24,5 @@ extern NSString * const getAllStatesByCountryNameURL;
 extern NSString * const getAllCitiesByStateNameURL;
 extern NSString * const getAuditorTransactionHistoryURL;
 extern NSString * const editProfileURL;
+extern NSString * const getProfileURL;
 extern NSString * const submitQuestionnaireAnswerURL;

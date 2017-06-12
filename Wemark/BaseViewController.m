@@ -66,4 +66,17 @@
 }
 */
 
+- (NSString *)convertToString:(id)value {
+    if (value == (id)[NSNull null]) {
+        return @"";
+    } else if ([value isKindOfClass:[NSNumber class]]){
+        return [value stringValue];
+    } else if ([value isKindOfClass:[NSString class]]){
+        return value;
+    } else {
+        return value;
+    }
+}
+
+
 @end
