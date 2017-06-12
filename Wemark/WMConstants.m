@@ -23,6 +23,8 @@ NSString * const getAllCountriesURL = @"auditor-api/campaigns/get-all-countries"
 NSString * const getAllStatesByCountryNameURL = @"auditor-api/campaigns/get-all-states-by-country-name";
 NSString * const getAllCitiesByStateNameURL = @"auditor-api/campaigns/get-all-cities-by-state-name";
 NSString * const getAuditorTransactionHistoryURL = @"auditor-api/transaction/auditor-transaction-history";
+NSString * const changeAuditorPasswordURL = @"auditor-api/auditor/change-auditor-password";
 NSString * const editProfileURL = @"auditor-api/auditor/edit-profile";
 NSString * const getProfileURL = @"auditor-api/auditor/get-auditor-profile";
 NSString * const submitQuestionnaireAnswerURL = @"auditor-api/questionnaire/questions-answers";
+

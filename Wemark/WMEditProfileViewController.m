@@ -7,6 +7,7 @@
 //
 
 #import "WMEditProfileViewController.h"
+#import "WMWebservicesHelper.h"
 #import "AFNetworking.h"
 #import "ACFloatingTextField.h"
 #import "ActionSheetPicker.h"
@@ -34,6 +35,10 @@
 @end
 
 @implementation WMEditProfileViewController
+
+{
+    UIActivityIndicatorView * activityView;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -79,10 +84,29 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)showActivity {
+    [self.view bringSubviewToFront:activityView];
+    [activityView startAnimating];
+}
+
+- (void)hideActivity {
+    [activityView stopAnimating];
+}
+
+- (void)showErrorMessage:(NSString *)msg {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Wemark" message:msg preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    [alertController addAction:cancelAction];
+    //    [alertController addAction:saveAction];
+    [self presentViewController:alertController animated:true completion:^{
+    }];
+}
+
 - (void)selectADateofBirth:(id)sender {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *minimumDateComponents = [calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:[NSDate date]];
-    [minimumDateComponents setYear:2000];
+    [minimumDateComponents setYear:1900];
     NSDate *minDate = [calendar dateFromComponents:minimumDateComponents];
     NSDate *maxDate = [NSDate date];
     
@@ -121,6 +145,7 @@
                                      }
                                           origin:txtField];
 }
+
 
 /*
  NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:@"http:example.com/upload" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
@@ -207,15 +232,132 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     if (textField == self.countryTextField) {
-        [self showListPickerWithList:@[@"1",@"2",@"3"] andTitle:@"Select a Country" textField:textField];
+        if (self.countries == nil || self.countries.count == 0) {
+            [self getCountriesAndPresentListPicker];
+        } else {
+            [self showListPickerWithList:self.countries andTitle:@"Select a Country" textField:textField];
+        }
         return false;
     } else if (textField == self.dobTextField) {
         [self selectADateofBirth:textField];
-        return  false;
+        return false;
     }
     return true;
+    
+     if (textField == self.stateTextField) {
+        if (self.states == nil || self.states.count == 1) {
+            [self getStatesAndPresentListPicker];
+        } else {
+            [self showListPickerWithList:self.states andTitle:@"Select a State" textField:textField];
+        }
+        return false;
+    } else if (textField == self.dobTextField) {
+        [self selectADateofBirth:textField];
+        return false;
+    }
+    return true;
+//        [self showListPickerWithList:@[@"1",@"2",@"3"] andTitle:@"Select a Country" textField:textField];
+//        return false;
+//    } else if (textField == self.dobTextField) {
+//        [self selectADateofBirth:textField];
+//        return  false;
+//    }
+//    return true;
+    if (textField == self.cityTextField) {
+        if (self.cities == nil || self.cities.count == 2) {
+            [self getCitiesAndPresentListPicker];
+        } else {
+            [self showListPickerWithList:self.cities andTitle:@"Select a City" textField:textField];
+        }
+        return false;
+    } else if (textField == self.dobTextField) {
+        [self selectADateofBirth:textField];
+        return false;
+    }
+    return true;
+    
+}
+- (void)getCountriesAndPresentListPicker {
+    [self showActivity];
+    [[WMWebservicesHelper sharedInstance] getCountries:@"Replace this code with ur implementation for get countries" completionBlock:^(BOOL result, id responseDict, NSError *error) {
+        NSLog(@"result:-> %@",result ? @"success" : @"Failed");
+        if (result) {
+            self.countries = responseDict;
+        } else {
+            NSDictionary *resDict = responseDict;
+            if ([resDict[@"code"] integerValue] == 409) {
+                NSLog(@"Error responseDict:->  %@",resDict[@"message"]);
+                [self showErrorMessage:resDict[@"message"]];
+            } else {
+                NSLog(@"Error:->  %@",error.localizedDescription);
+            }
+        }
+        //add UI related code here like stopping activity indicator
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self hideActivity];
+            if (self.countries) {
+                [self showListPickerWithList:self.countries andTitle:@"Select a Country" textField:self.countryTextField];
+            } else {
+                [self showErrorMessage:@"Error fetching Countries"];
+            }
+        });
+    }];
 }
 
+- (void)getStatesAndPresentListPicker {
+    [self showActivity];
+    [[WMWebservicesHelper sharedInstance] getStates:@"Replace this code with ur implementation for get states" completionBlock:^(BOOL result, id responseDict, NSError *error) {
+        NSLog(@"result:-> %@",result ? @"success" : @"Failed");
+        if (result) {
+            self.states = responseDict;
+        } else {
+            NSDictionary *resDict = responseDict;
+            if ([resDict[@"code"] integerValue] == 409) {
+                NSLog(@"Error responseDict:->  %@",resDict[@"message"]);
+                [self showErrorMessage:resDict[@"message"]];
+            } else {
+                NSLog(@"Error:->  %@",error.localizedDescription);
+            }
+        }
+        //add UI related code here like stopping activity indicator
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self hideActivity];
+            if (self.states) {
+                [self showListPickerWithList:self.states andTitle:@"Select a State" textField:self.stateTextField];
+            } else {
+                [self showErrorMessage:@"Error fetching States"];
+            }
+        });
+    }];
+}
+- (void)getCitiesAndPresentListPicker {
+    [self showActivity];
+    [[WMWebservicesHelper sharedInstance] getCities:@"Replace this code with ur implementation for get cities" completionBlock:^(BOOL result, id responseDict, NSError *error) {
+        NSLog(@"result:-> %@",result ? @"success" : @"Failed");
+        if (result) {
+            self.cities = responseDict;
+        } else {
+            NSDictionary *resDict = responseDict;
+            if ([resDict[@"code"] integerValue] == 409) {
+                NSLog(@"Error responseDict:->  %@",resDict[@"message"]);
+                [self showErrorMessage:resDict[@"message"]];
+            } else {
+                NSLog(@"Error:->  %@",error.localizedDescription);
+            }
+        }
+        //add UI related code here like stopping activity indicator
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self hideActivity];
+            if (self.cities) {
+                [self showListPickerWithList:self.cities andTitle:@"Select a City" textField:self.cityTextField];
+            } else {
+                [self showErrorMessage:@"Error fetching Cities"];
+            }
+        });
+    }];
+
+    
+}
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
    
 }

@@ -95,4 +95,9 @@
 
 - (void)getAuditorProfileforauthKey:(NSString *)authKey completionBlock:(void (^)(BOOL, id, NSError *))completionBlock;
 
+- (void)getCountries:(NSString *)authKey completionBlock:(void (^) (BOOL,id,NSError *))completionBlock;
+
+- (void)getStates:(NSString *)authKey completionBlock:(void (^) (BOOL,id,NSError *))completionBlock;
+
+- (void)getCities:(NSString *)authKey completionBlock:(void (^) (BOOL,id,NSError *))completionBlock;
 @end
