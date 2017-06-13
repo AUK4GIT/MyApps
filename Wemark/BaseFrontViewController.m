@@ -19,10 +19,7 @@
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu_icon"] style:UIBarButtonItemStylePlain target:self action:@selector(toggleTapped:)];
     
-  
 }
-
-
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];

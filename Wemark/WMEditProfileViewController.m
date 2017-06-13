@@ -11,6 +11,8 @@
 #import "AFNetworking.h"
 #import "ACFloatingTextField.h"
 #import "ActionSheetPicker.h"
+#import "WMDataHelper.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface WMEditProfileViewController () <UIImagePickerControllerDelegate>
 @property (strong, nonatomic) IBOutlet ACFloatingTextField *fullNameTextField;
@@ -29,6 +31,13 @@
 @property (strong, nonatomic) NSArray *countries;
 @property (strong, nonatomic) NSArray *states;
 @property (strong, nonatomic) NSArray *cities;
+@property (strong, nonatomic) NSString *authKey;
+
+@property (strong, nonatomic) NSString *selectedCountryName;
+@property (strong, nonatomic) NSString *selectedStateName;
+@property (strong, nonatomic) NSString *selectedCityName;
+@property (strong, nonatomic) NSString *selectedDate;
+@property (strong, nonatomic) NSURL *profilePicURL;
 
 - (IBAction)editSaveBtnTapped:(id)sender;
 
@@ -44,6 +53,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.authKey = [[NSString alloc] initWithString:[[WMDataHelper sharedInstance] getAuthKey]];
+    
     self.profilePic.layer.cornerRadius = self.profilePic.bounds.size.width/2;
     self.profilePic.layer.borderWidth = 4.0f;
     self.profilePic.layer.masksToBounds = true;
@@ -53,7 +64,43 @@
     
     UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(profilePicTapped:)];
     [self.profilePic addGestureRecognizer:tapGes];
+    
+    [self presentUIFromData];
 }
+
+- (void)presentUIFromData {
+    
+    id userObj = [self.profileDict valueForKey:@"user"];
+    id userPersonalObj = [self.profileDict valueForKey:@"auditorPersonalDetails"];
+    
+    NSString *profilePicImgURL = [userObj valueForKey:@"profile_image"];
+    [self.profilePic sd_setImageWithURL:[NSURL URLWithString:profilePicImgURL]
+                       placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+    
+    self.fullNameTextField.text = [userObj valueForKey:@"auditor_fname"];
+    self.lastNameTextField.text = [userObj valueForKey:@"auditor_lname"];
+    self.emailIdTextField.text = [self convertToString:[userObj valueForKey:@"auditor_email"]];
+    self.mobileNoTextField.text = [self convertToString:[userObj valueForKey:@"auditor_ph_no"]];
+    self.cityTextField.text = [self convertToString:[userPersonalObj valueForKey:@"auditor_address_city"]];
+    self.selectedCityName = [self convertToString:[userPersonalObj valueForKey:@"auditor_address_city"]];
+    
+    self.countryTextField.text = [self convertToString:[userPersonalObj valueForKey:@"auditor_address_country"]];
+    self.selectedCountryName = [self convertToString:[userPersonalObj valueForKey:@"auditor_address_country"]];
+    
+    self.stateTextField.text = [self convertToString:[userPersonalObj valueForKey:@"auditor_address_state"]];
+    self.selectedStateName = [self convertToString:[userPersonalObj valueForKey:@"auditor_address_state"]];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    self.selectedDate = [self convertToString:[userPersonalObj valueForKey:@"auditor_dob"]];
+    NSDate *dob = [dateFormatter dateFromString:self.selectedDate];
+    [dateFormatter setDateFormat:@"dd MMM yyyy"];
+    self.dobTextField.text = [dateFormatter stringFromDate:dob];
+    
+    self.pincodeTextField.text = [self convertToString:[userPersonalObj valueForKey:@"auditor_permanent_address_pincode"]];
+    
+}
+
 - (void)profilePicTapped:(id)gesture {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Wemark" message:@"Please select a photo source" preferredStyle:UIAlertControllerStyleActionSheet];
     
@@ -61,18 +108,23 @@
     picker.delegate = self;
     picker.allowsEditing = YES;
     
-    UIAlertAction *saveAction = [UIAlertAction actionWithTitle:@"Album" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *albumAction = [UIAlertAction actionWithTitle:@"Album" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         [self presentViewController:picker animated:YES completion:NULL];
         
     }];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Camera" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *cameraAction = [UIAlertAction actionWithTitle:@"Camera" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         picker.sourceType = UIImagePickerControllerSourceTypeCamera;
         [self presentViewController:picker animated:YES completion:NULL];
     }];
     
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    
+    [alertController addAction:albumAction];
+    [alertController addAction:cameraAction];
     [alertController addAction:cancelAction];
-    [alertController addAction:saveAction];
+
     
     [self presentViewController:alertController animated:true completion:^{
         
@@ -109,11 +161,15 @@
     [minimumDateComponents setYear:1900];
     NSDate *minDate = [calendar dateFromComponents:minimumDateComponents];
     NSDate *maxDate = [NSDate date];
+    NSDate *curentDate = maxDate;
+    if (self.selectedDate) {
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+        curentDate = [dateFormatter dateFromString:self.selectedDate];
+    }
     
-    
-    self.actionSheetPicker = [[ActionSheetDatePicker alloc] initWithTitle:@"" datePickerMode:UIDatePickerModeDate selectedDate:maxDate
-                                                               target:self action:@selector(dateWasSelected:element:) origin:sender];
-    
+    self.actionSheetPicker = [[ActionSheetDatePicker alloc] initWithTitle:@"" datePickerMode:UIDatePickerModeDate selectedDate:curentDate
+        target:self action:@selector(dateWasSelected:element:) origin:sender];
     
     [(ActionSheetDatePicker *) self.actionSheetPicker setMinimumDate:minDate];
     [(ActionSheetDatePicker *) self.actionSheetPicker setMaximumDate:maxDate];
@@ -126,57 +182,29 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"dd MMM yyyy"];
         self.dobTextField.text = [dateFormatter stringFromDate:selectedTime];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    self.selectedDate = [dateFormatter stringFromDate:selectedTime];
 }
-
 
 
 - (void)showListPickerWithList:(NSArray *)listArray andTitle:(NSString *)title textField:(UITextField *)txtField{
     
-    [ActionSheetStringPicker showPickerWithTitle:title
-                                            rows:listArray
-                                initialSelection:0
-                                       doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
-                                           NSLog(@"Picker: %@, Index: %ld, value: %@",
-                                                 picker, (long)selectedIndex, selectedValue);
-                                           txtField.text = selectedValue;
-                                       }
-                                     cancelBlock:^(ActionSheetStringPicker *picker) {
-                                         NSLog(@"Block Picker Canceled");
-                                     }
-                                          origin:txtField];
+    [ActionSheetStringPicker showPickerWithTitle:title rows:listArray initialSelection:0 doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
+        NSLog(@"Picker: %@, Index: %ld, value: %@",picker, (long)selectedIndex, selectedValue);
+        txtField.text = selectedValue;
+        if (txtField == self.countryTextField) {
+        self.selectedCountryName = [self.countries[selectedIndex] valueForKey:@"country_name"];
+        } else if (txtField == self.stateTextField){
+        self.selectedStateName = [self.states[selectedIndex] valueForKey:@"state_name"];
+        }  else if (txtField == self.cityTextField){
+        self.selectedCityName = [self.cities[selectedIndex] valueForKey:@"city_name"];
+        }
+        }
+        cancelBlock:^(ActionSheetStringPicker *picker) {
+        NSLog(@"Block Picker Canceled");
+            }
+        origin:txtField];
 }
-
-
-/*
- NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:@"http:example.com/upload" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
- [formData appendPartWithFileURL:[NSURL fileURLWithPath:@"file:path/to/image.jpg"] name:@"file" fileName:@"filename.jpg" mimeType:@"image/jpeg" error:nil];
- } error:nil];
- 
- AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
- 
- NSURLSessionUploadTask *uploadTask;
- uploadTask = [manager
- uploadTaskWithStreamedRequest:request
- progress:^(NSProgress * _Nonnull uploadProgress) {
-  This is not called back on the main queue.
-  You are responsible for dispatching to the main queue for UI updates
- dispatch_async(dispatch_get_main_queue(), ^{
- Update the progress view
- [progressView setProgress:uploadProgress.fractionCompleted];
- });
- }
- completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
- if (error) {
- NSLog(@"Error: %@", error);
- } else {
- NSLog(@"%@ %@", response, responseObject);
- }
- }];
- 
- [uploadTask resume];
- 
- */
-
 
 - (IBAction)editSaveBtnTapped:(id)sender {
     if (![self isValidEmail:self.emailIdTextField.text]) {
@@ -187,8 +215,42 @@
     } else if (self.lastNameTextField.text.length == 0){
         [self.lastNameTextField showErrorWithText:@"Last name cannot be empty"];
     } else {
-        
+        [self updateProfile];
     }
+}
+
+- (void)updateProfile {
+    
+    NSDictionary *paramsDict = @{@"auditor_fname": self.fullNameTextField.text,
+                                 @"auditor_lname": self.lastNameTextField.text,
+                                 @"auditor_email": self.emailIdTextField.text,
+                                 @"auditor_phone_number_mobile": self.mobileNoTextField.text,
+                                 @"auditor_dob": self.selectedDate,
+                                 @"auditor_address_country": self.selectedCountryName,
+                                 @"auditor_address_state": self.selectedStateName,
+                                 @"auditor_address_city": self.selectedCityName,
+                                 @"auditor_postal_address_pincode": self.pincodeTextField.text,
+                                 @"id": [[WMDataHelper sharedInstance] getAuditorId]};
+
+    [self showActivity];
+    [[WMWebservicesHelper sharedInstance] editProfile:self.authKey paramsDict:paramsDict profilePicURL:self.profilePicURL userId:[[WMDataHelper sharedInstance] getAuditorId] completionBlock:^(BOOL result, id responseDict, NSError *error) {
+        NSLog(@"result:-> %@",result ? @"success" : @"Failed");
+        if (result) {
+//            self.profileDict = responseDict;
+        } else {
+            NSDictionary *resDict = responseDict;
+            if ([resDict[@"code"] integerValue] == 409) {
+                NSLog(@"Error responseDict:->  %@",resDict[@"message"]);
+                [self showErrorMessage:resDict[@"message"]];
+            } else {
+                NSLog(@"Error:->  %@",error.localizedDescription);
+            }
+        }
+        //add UI related code here like stopping activity indicator
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self hideActivity];
+        });
+    }];
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -214,7 +276,7 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
-    NSString *imgURL = info[UIImagePickerControllerReferenceURL];
+    self.profilePicURL = info[UIImagePickerControllerReferenceURL];
     self.profilePic.image = chosenImage;
     
     [picker dismissViewControllerAnimated:YES completion:^{
@@ -235,39 +297,27 @@
         if (self.countries == nil || self.countries.count == 0) {
             [self getCountriesAndPresentListPicker];
         } else {
-            [self showListPickerWithList:self.countries andTitle:@"Select a Country" textField:textField];
+            [self showListPickerWithList:[self.countries valueForKeyPath:@"country_name"] andTitle:@"Select a Country" textField:textField];
         }
         return false;
     } else if (textField == self.dobTextField) {
         [self selectADateofBirth:textField];
         return false;
-    }
-    return true;
-    
-     if (textField == self.stateTextField) {
+    } else if (textField == self.stateTextField) {
         if (self.states == nil || self.states.count == 1) {
             [self getStatesAndPresentListPicker];
         } else {
-            [self showListPickerWithList:self.states andTitle:@"Select a State" textField:textField];
+            [self showListPickerWithList:[self.states valueForKeyPath:@"state_name"] andTitle:@"Select a State" textField:textField];
         }
         return false;
     } else if (textField == self.dobTextField) {
         [self selectADateofBirth:textField];
         return false;
-    }
-    return true;
-//        [self showListPickerWithList:@[@"1",@"2",@"3"] andTitle:@"Select a Country" textField:textField];
-//        return false;
-//    } else if (textField == self.dobTextField) {
-//        [self selectADateofBirth:textField];
-//        return  false;
-//    }
-//    return true;
-    if (textField == self.cityTextField) {
+    } else if (textField == self.cityTextField) {
         if (self.cities == nil || self.cities.count == 2) {
             [self getCitiesAndPresentListPicker];
         } else {
-            [self showListPickerWithList:self.cities andTitle:@"Select a City" textField:textField];
+            [self showListPickerWithList:[self.cities valueForKeyPath:@"city_name"] andTitle:@"Select a City" textField:textField];
         }
         return false;
     } else if (textField == self.dobTextField) {
@@ -275,11 +325,12 @@
         return false;
     }
     return true;
-    
 }
+
 - (void)getCountriesAndPresentListPicker {
     [self showActivity];
-    [[WMWebservicesHelper sharedInstance] getCountries:@"Replace this code with ur implementation for get countries" completionBlock:^(BOOL result, id responseDict, NSError *error) {
+
+    [[WMWebservicesHelper sharedInstance] getCountries:self.authKey completionBlock:^(BOOL result, id responseDict, NSError *error) {
         NSLog(@"result:-> %@",result ? @"success" : @"Failed");
         if (result) {
             self.countries = responseDict;
@@ -296,7 +347,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self hideActivity];
             if (self.countries) {
-                [self showListPickerWithList:self.countries andTitle:@"Select a Country" textField:self.countryTextField];
+                [self showListPickerWithList:[self.countries valueForKeyPath:@"country_name"] andTitle:@"Select a Country" textField:self.countryTextField];
             } else {
                 [self showErrorMessage:@"Error fetching Countries"];
             }
@@ -305,8 +356,12 @@
 }
 
 - (void)getStatesAndPresentListPicker {
+    if (self.selectedCountryName == nil) {
+        [self showErrorMessage:@"Please select Country first"];
+    } else {
+        
     [self showActivity];
-    [[WMWebservicesHelper sharedInstance] getStates:@"Replace this code with ur implementation for get states" completionBlock:^(BOOL result, id responseDict, NSError *error) {
+    [[WMWebservicesHelper sharedInstance] getStates:self.authKey forCountry:self.selectedCountryName completionBlock:^(BOOL result, id responseDict, NSError *error) {
         NSLog(@"result:-> %@",result ? @"success" : @"Failed");
         if (result) {
             self.states = responseDict;
@@ -323,16 +378,22 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self hideActivity];
             if (self.states) {
-                [self showListPickerWithList:self.states andTitle:@"Select a State" textField:self.stateTextField];
+                [self showListPickerWithList:[self.states valueForKeyPath:@"state_name"] andTitle:@"Select a State" textField:self.stateTextField];
             } else {
                 [self showErrorMessage:@"Error fetching States"];
             }
         });
     }];
+    }
 }
 - (void)getCitiesAndPresentListPicker {
+    
+    if (self.selectedStateName == nil) {
+        [self showErrorMessage:@"Please select State first"];
+    } else {
+    
     [self showActivity];
-    [[WMWebservicesHelper sharedInstance] getCities:@"Replace this code with ur implementation for get cities" completionBlock:^(BOOL result, id responseDict, NSError *error) {
+    [[WMWebservicesHelper sharedInstance] getCities:self.authKey forState:self.selectedStateName completionBlock:^(BOOL result, id responseDict, NSError *error) {
         NSLog(@"result:-> %@",result ? @"success" : @"Failed");
         if (result) {
             self.cities = responseDict;
@@ -349,17 +410,13 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self hideActivity];
             if (self.cities) {
-                [self showListPickerWithList:self.cities andTitle:@"Select a City" textField:self.cityTextField];
+                [self showListPickerWithList:[self.cities valueForKeyPath:@"city_name"] andTitle:@"Select a City" textField:self.cityTextField];
             } else {
                 [self showErrorMessage:@"Error fetching Cities"];
             }
         });
     }];
-
-    
-}
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-   
+    }
 }
 
 @end

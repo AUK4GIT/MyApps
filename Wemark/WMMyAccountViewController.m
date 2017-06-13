@@ -9,6 +9,10 @@
 #import "WMMyAccountViewController.h"
 #import "HCSStarRatingView.h"
 #import "AppDelegate.h"
+#import "WMWebservicesHelper.h"
+#import "WMDataHelper.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import "WMEditProfileViewController.h"
 
 @interface WMMyAccountViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -34,6 +38,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *assignmentTwoCountLbl;
 @property (weak, nonatomic) IBOutlet UILabel *assignmentThreeCountLbl;
 
+@property (strong, nonatomic) id dataObject;
 
 @end
 
@@ -66,12 +71,71 @@
     self.assignmentsViewThree.layer.shadowColor = [UIColor grayColor].CGColor;
     self.assignmentsViewThree.layer.shadowOpacity = 1.0f;
     self.assignmentsViewThree.layer.shadowOffset = CGSizeMake(1, 1);
+    
+    self.profilePic.layer.cornerRadius = self.profilePic.bounds.size.width/2;
+    self.profilePic.layer.borderWidth = 4.0f;
+    self.profilePic.layer.masksToBounds = true;
+    self.profilePic.clipsToBounds = true;
+    self.profilePic.layer.borderColor = [UIColor whiteColor].CGColor;
+    
+    
+    NSString *authKey = [[WMDataHelper sharedInstance] getAuthKey];
+    //    NSString *auditorId = [[WMDataHelper sharedInstance] getAuditorId];
+    [self showActivity];
+    [[WMWebservicesHelper sharedInstance] getAuditorProfileforauthKey:authKey completionBlock:^(BOOL result, id responseDict, NSError *error) {
+        NSLog(@"result:-> %@",result ? @"success" : @"Failed");
+        if (result) {
+            self.dataObject = responseDict;
+        } else {
+            NSDictionary *resDict = responseDict;
+            if ([resDict[@"code"] integerValue] == 409) {
+                NSLog(@"Error responseDict:->  %@",resDict[@"message"]);
+                [self showErrorMessage:resDict[@"message"]];
+            } else {
+                NSLog(@"Error:->  %@",error.localizedDescription);
+            }
+        }
+        //add UI related code here like stopping activity indicator
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self hideActivity];
+            if (self.dataObject) {
+                [self presentDatainUI];
+            }
+            [self.tableView reloadData];
+        });
+    }];
+}
+
+- (void)presentDatainUI {
+    
+    id userObj = [self.dataObject valueForKey:@"user"];
+    id userPersonalObj = [self.dataObject valueForKey:@"auditorPersonalDetails"];
+    
+    
+    int progress = [[self.dataObject valueForKey:@"auditorProgressInPercentage"] intValue];
+    [self.completionProgress setProgress:progress/100.0 animated:true];
+    NSString *percentile = @"%";
+    self.profileCompletionLabel.text = [NSString stringWithFormat:@"Your profile is %d%@ complete",progress,percentile];
+    
+    NSString *profilePicImgURL = [userObj valueForKey:@"profile_image"];
+    [self.profilePic sd_setImageWithURL:[NSURL URLWithString:profilePicImgURL]
+                       placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+    
+    self.profileName.text = [NSString stringWithFormat:@"%@ %@",[userObj valueForKey:@"auditor_fname"],[userObj valueForKey:@"auditor_lname"]];
+    self.emailId.text = [self convertToString:[userObj valueForKey:@"auditor_email"]];
+    self.phoneNumber.text = [self convertToString:[userObj valueForKey:@"auditor_ph_no"]];
+    self.cityName.text = [self convertToString:[userPersonalObj valueForKey:@"auditor_address_city"]];
+    
+    self.assignmentOneCountLbl.text = [self convertToString:[self.dataObject valueForKey:@"appliedCount"]];
+    self.assignmentTwoCountLbl.text= [self convertToString:[self.dataObject valueForKey:@"acceptedCount"]];
+    self.assignmentThreeCountLbl.text = [self convertToString:[self.dataObject valueForKey:@"rejectedCount"]];
+    
 }
 
 - (void)editProfile:(id)sender {
     
     [self performSegueWithIdentifier:@"EditProfile" sender:nil];
-
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -79,15 +143,19 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+     if ([segue.identifier isEqualToString:@"EditProfile"]) {
+         WMEditProfileViewController  *vc = segue.destinationViewController;
+         vc.profileDict = self.dataObject;
+     }
+ }
+
 
 #pragma mark - UITableView Datasource
 
@@ -98,7 +166,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = nil;
     if (indexPath.row == 0) {
-         cell = [tableView dequeueReusableCellWithIdentifier:@"ChangePassword"];
+        cell = [tableView dequeueReusableCellWithIdentifier:@"ChangePassword"];
     } else if (indexPath.row == 1) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"TransactionHistory"];
     }else {
@@ -113,7 +181,7 @@
     if (indexPath.row == 0) {
     } else if (indexPath.row == 1) {
     }else {
-        AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         [appDelegate logout];
     }
 }

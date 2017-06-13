@@ -25,7 +25,7 @@
  @param body request body
  @param completionBlock callback
  */
-- (void)registerAuditorWithdata:(NSDictionary *)body completionBlock: (void (^) (BOOL, id, NSError*))completionBlock;
+- (void)registerAuditorWithdata:(NSDictionary *)body imageURL:(NSURL *)imgURL completionBlock: (void (^) (BOOL, id, NSError*))completionBlock;
 
 /**
  Gets all locations
@@ -92,12 +92,15 @@
  */
 - (void)getAllAssignmentsByClientId:(NSString *)clientId authKey:(NSString *)authKey completionBlock:(void (^)(BOOL, id, NSError *))completionBlock;
 
+- (void)editProfile:(NSString *)authKey paramsDict:(id )paramsDict profilePicURL:(NSURL *)profilePicURL userId:(NSString *)userId completionBlock:(void (^) (BOOL,id,NSError *))completionBlock;
 
 - (void)getAuditorProfileforauthKey:(NSString *)authKey completionBlock:(void (^)(BOOL, id, NSError *))completionBlock;
 
 - (void)getCountries:(NSString *)authKey completionBlock:(void (^) (BOOL,id,NSError *))completionBlock;
 
-- (void)getStates:(NSString *)authKey completionBlock:(void (^) (BOOL,id,NSError *))completionBlock;
+- (void)getStates:(NSString *)authKey forCountry:(NSString *)countryId completionBlock:(void (^) (BOOL,id,NSError *))completionBlock ;
 
-- (void)getCities:(NSString *)authKey completionBlock:(void (^) (BOOL,id,NSError *))completionBlock;
+- (void)getCities:(NSString *)authKey forState:(NSString *)stateId completionBlock:(void (^) (BOOL,id,NSError *))completionBlock;
+
+- (void)getTransactionHistory:(NSString *)authKey completionBlock:(void (^) (BOOL, id, NSError*))completionBlock;
 @end

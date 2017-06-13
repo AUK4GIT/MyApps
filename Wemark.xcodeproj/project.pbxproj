@@ -319,8 +319,8 @@
 		AEDF42AA1ED74289008A4596 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				AE91CCD41EDB138200BB9585 /* WMAssignment.m */,
 				AE91CCD31EDB137C00BB9585 /* WMAssignment.h */,
+				AE91CCD41EDB138200BB9585 /* WMAssignment.m */,
 				AEDF42AB1ED742AA008A4596 /* WMUser.h */,
 				AEDF42AC1ED742AA008A4596 /* WMUser.m */,
 				AEDF42AE1ED746B1008A4596 /* WMDataHelper.h */,

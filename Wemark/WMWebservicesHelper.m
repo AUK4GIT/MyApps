@@ -60,7 +60,7 @@
     [dataTask resume];
 }
 
-- (void)registerAuditorWithdata:(NSDictionary *)body completionBlock: (void (^) (BOOL, id, NSError*))completionBlock{
+- (void)registerAuditorWithdata:(NSDictionary *)body imageURL:(NSURL *)imgURL completionBlock: (void (^) (BOOL, id, NSError*))completionBlock{
     
     NSError *error;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:body options:0 error:&error];
@@ -69,10 +69,16 @@
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
     
-    NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"%@%@",baseURL,registerURL] parameters:nil error:nil];
+    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"%@%@",baseURL,registerURL] parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        NSString *fName = [NSString stringWithFormat:@"%@_%@",[body objectForKey:@"first_name"],[body objectForKey:@"last_name"]];
+        if (imgURL) {
+            [formData appendPartWithFileURL:imgURL name:fName fileName:[NSString stringWithFormat:@"%@.jpg",fName] mimeType:@"image/jpeg" error:nil];
+        }
+    } error:nil];
+
     [request addValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    NSString *msgLength = [NSString stringWithFormat:@"%d", [jsonString length]];
+    NSString *msgLength = [NSString stringWithFormat:@"%lu", (unsigned long)[jsonString length]];
     [request addValue: msgLength forHTTPHeaderField:@"Content-Length"];
     [request setHTTPBody:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
 
@@ -221,35 +227,6 @@
     [dataTask resume];
 }
 
-/*
- NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:@"http://example.com/upload" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
- [formData appendPartWithFileURL:[NSURL fileURLWithPath:@"file://path/to/image.jpg"] name:@"file" fileName:@"filename.jpg" mimeType:@"image/jpeg" error:nil];
- } error:nil];
- 
- AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
- 
- NSURLSessionUploadTask *uploadTask;
- uploadTask = [manager
- uploadTaskWithStreamedRequest:request
- progress:^(NSProgress * _Nonnull uploadProgress) {
- // This is not called back on the main queue.
- // You are responsible for dispatching to the main queue for UI updates
- dispatch_async(dispatch_get_main_queue(), ^{
- //Update the progress view
- [progressView setProgress:uploadProgress.fractionCompleted];
- });
- }
- completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
- if (error) {
- NSLog(@"Error: %@", error);
- } else {
- NSLog(@"%@ %@", response, responseObject);
- }
- }];
- 
- [uploadTask resume];
- 
- */
 
 - (void)getAuditorAssignments:(NSString *)authKey paramsDict:(id)paramsDict completionBlock:(void (^) (BOOL, id, NSError*))completionBlock {
     //    NSError *error;
@@ -348,14 +325,14 @@
     [dataTask resume];
 }
 
-- (void)getStates:(NSString *)authKey completionBlock:(void (^) (BOOL,id,NSError *))completionBlock {
+- (void)getStates:(NSString *)authKey forCountry:(NSString *)countryId completionBlock:(void (^) (BOOL,id,NSError *))completionBlock {
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc]
                                     initWithSessionConfiguration:configuration];
     
     NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer]
-                                    requestWithMethod:@"GET" URLString:[NSString stringWithFormat:@"%@%@",baseURL,getAllStatesByCountryNameURL] parameters:nil error:nil];
+                                    requestWithMethod:@"GET" URLString:[NSString stringWithFormat:@"%@%@",baseURL,getAllStatesByCountryNameURL] parameters:@{@"country_name":countryId} error:nil];
     [request addValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request addValue:authKey forHTTPHeaderField:@"Auth-key"];
@@ -374,14 +351,14 @@
     [dataTask resume];
 }
 
-- (void)getCities:(NSString *)authKey completionBlock:(void (^) (BOOL,id,NSError *))completionBlock {
+- (void)getCities:(NSString *)authKey forState:(NSString *)stateId completionBlock:(void (^) (BOOL,id,NSError *))completionBlock {
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc]
                                     initWithSessionConfiguration:configuration];
     
     NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer]
-                                    requestWithMethod:@"GET" URLString:[NSString stringWithFormat:@"%@%@",baseURL,getAllCitiesByStateNameURL] parameters:nil error:nil];
+                                    requestWithMethod:@"GET" URLString:[NSString stringWithFormat:@"%@%@",baseURL,getAllCitiesByStateNameURL] parameters:@{@"state_name":stateId} error:nil];
     [request addValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request addValue:authKey forHTTPHeaderField:@"Auth-key"];
@@ -399,5 +376,75 @@
     }];
     [dataTask resume];
 }
+
+- (void)editProfile:(NSString *)authKey paramsDict:(id )paramsDict profilePicURL:(NSURL *)profilePicURL userId:(NSString *)userId completionBlock:(void (^) (BOOL,id,NSError *))completionBlock {
+    
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:paramsDict options:0 error:&error];
+    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    
+    NSString *urlString = [NSString stringWithFormat:@"%@%@?id=%@",baseURL,editProfileURL,userId];
+    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:urlString parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        NSString *fName = [NSString stringWithFormat:@"%@_%@",[paramsDict objectForKey:@"auditor_fname"],[paramsDict objectForKey:@"auditor_lname"]];
+        if(profilePicURL) {
+            [formData appendPartWithFileURL:profilePicURL name:fName fileName:[NSString stringWithFormat:@"%@.jpg",fName] mimeType:@"image/jpeg" error:nil];
+        }
+    } error:nil];
+    [request addValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request addValue:authKey forHTTPHeaderField:@"Auth-key"];
+    NSString *msgLength = [NSString stringWithFormat:@"%lu", (unsigned long)[jsonString length]];
+    [request addValue: msgLength forHTTPHeaderField:@"Content-Length"];
+    [request setHTTPBody:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    
+    NSURLSessionUploadTask *uploadTask;
+    uploadTask = [manager
+                  uploadTaskWithStreamedRequest:request
+                  progress:^(NSProgress * _Nonnull uploadProgress) {
+                      // This is not called back on the main queue.
+                      // You are responsible for dispatching to the main queue for UI updates
+                      dispatch_async(dispatch_get_main_queue(), ^{
+                          //Update the progress view
+//                          [progressView setProgress:uploadProgress.fractionCompleted];
+                      });
+                  }
+                  completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+                      if (error) {
+                          NSLog(@"Error: %@", error);
+                      } else {
+                          NSLog(@"%@ %@", response, responseObject);
+                      }
+                  }];
+    
+    [uploadTask resume];
+    
+}
+
+- (void)getTransactionHistory:(NSString *)authKey completionBlock:(void (^)(BOOL, id, NSError *))completionBlock {
+    //    NSError *error;
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    //NSDictionary *paramsDict = @{@"auditor_id":audId};
+    NSString *urlString = [NSString stringWithFormat:@"%@%@",baseURL,getAuditorTransactionHistoryURL];
+    NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:urlString parameters:nil error:nil];
+    [request addValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request addValue:authKey forHTTPHeaderField:@"Auth-key"];
+    
+    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+        if (error) {
+            NSLog(@"Error: %@\nMessage: %@", error.localizedDescription, responseObject[@"meta"]);
+            NSDictionary *codeDict = responseObject[@"meta"];
+            completionBlock(false,codeDict,error);
+        } else {
+            NSLog(@"%@ ** %@", response, responseObject);
+            completionBlock(true,responseObject[@"data"],nil);
+        }
+    }];
+    [dataTask resume];
+}
+
 
 @end

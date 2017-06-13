@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "ACFloatingTextfield.h"
+#import "ACFloatingTextField.h"
 #import "WMWebservicesHelper.h"
 #import "WMDataHelper.h"
 #import "AppDelegate.h"
@@ -92,7 +92,7 @@
 
 - (IBAction)loginAction :(id)sender {
     
-    self.emailIdTextField.text = @"aa@a.com";
+    self.emailIdTextField.text = @"vikas1@gmail.com";
     self.passwordTextField.text = @"123456";
     
     if (![self isValidEmail:self.emailIdTextField.text]) {

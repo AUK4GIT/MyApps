@@ -9,7 +9,7 @@
 #import "WMSignupViewController.h"
 #import "WMWebservicesHelper.h"
 #import "WMDataHelper.h"
-#import "ACFloatingTextfield.h"
+#import "ACFloatingTextField.h"
 
 @interface WMSignupViewController () <UIImagePickerControllerDelegate>
 
@@ -18,6 +18,7 @@
 @property (strong, nonatomic) IBOutlet ACFloatingTextField *emailIdTextField;
 @property (strong, nonatomic) IBOutlet ACFloatingTextField *passwordTextField;
 @property (strong, nonatomic) IBOutlet UIImageView *profileImgView;
+@property (strong, nonatomic) NSURL *profilePicURL;
 - (IBAction)signUpBtnTapped:(id)sender;
 - (IBAction)signInBtnTapped:(id)sender;
 @end
@@ -71,12 +72,12 @@ userid password:(NSString *)password firstName:(NSString *)firstname lastName:(N
         [dataDict setValue:password forKey:@"password"];
               [dataDict setValue:firstname forKey:@"first_name"];
                [dataDict setValue:lastname forKey:@"last_name"];
-//                [dataDict setValue:<#(nullable id)#> forKey:@"profile_image"];
+//                [dataDict setValue:self.profilePicURL forKey:@"profile_image"];
                 [dataDict setValue:[[UIDevice currentDevice] model] forKey:@"device_type"];
                 [dataDict setValue:version forKey:@"app_version_ios"];
                 [dataDict setValue:deviceToken forKey:@"iphone_device_token"];
 //                [dataDict setValue:<#(nullable id)#> forKey:@"fb_id"];
-        [helper registerAuditorWithdata:dataDict completionBlock:^(BOOL result, id responseDict, NSError *error)
+        [helper registerAuditorWithdata:dataDict imageURL:self.profilePicURL completionBlock:^(BOOL result, id responseDict, NSError *error)
          {
              NSLog(@"result:-> %@",result ? @"success" : @"Failed");
              if (result) {
@@ -147,18 +148,22 @@ userid password:(NSString *)password firstName:(NSString *)firstname lastName:(N
         picker.delegate = self;
         picker.allowsEditing = YES;
         
-        UIAlertAction *saveAction = [UIAlertAction actionWithTitle:@"Album" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UIAlertAction *albumAction = [UIAlertAction actionWithTitle:@"Album" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
             [self presentViewController:picker animated:YES completion:NULL];
             
         }];
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Camera" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UIAlertAction *cameraAction = [UIAlertAction actionWithTitle:@"Camera" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             picker.sourceType = UIImagePickerControllerSourceTypeCamera;
             [self presentViewController:picker animated:YES completion:NULL];
         }];
         
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        }];
+        
+        [alertController addAction:albumAction];
+        [alertController addAction:cameraAction];
         [alertController addAction:cancelAction];
-        [alertController addAction:saveAction];
         
         [self presentViewController:alertController animated:true completion:^{
             
@@ -172,9 +177,9 @@ userid password:(NSString *)password firstName:(NSString *)firstname lastName:(N
     
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
     self.profileImgView.image = chosenImage;
-    
+    self.profilePicURL = info[UIImagePickerControllerReferenceURL];
+
     [picker dismissViewControllerAnimated:YES completion:^{
-        [self.profileImgView setValue:UIImagePNGRepresentation(chosenImage) forKey:@"dateOfBirth"];
     }];
     
 }

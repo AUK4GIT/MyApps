@@ -276,7 +276,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qwQ-WV-jQA">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="215"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera-edit-profile" translatesAutoresizingMaskIntoConstraints="NO" id="uXE-dP-ocn">
+                                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera-edit-profile" translatesAutoresizingMaskIntoConstraints="NO" id="uXE-dP-ocn">
                                                 <rect key="frame" x="132" y="32" width="150" height="150"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="150" id="m0d-DJ-Jja"/>
@@ -2017,29 +2017,111 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LEA-Q5-Sfu">
-                                <rect key="frame" x="16" y="96" width="288" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="textColor" red="0.86274509799999999" green="0.0" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Current Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BHn-Vk-Xdz" customClass="ACFloatingTextField">
+                                <rect key="frame" x="8" y="8" width="304" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="WGc-Ac-w8h"/>
+                                </constraints>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                        <color key="value" red="0.86274509799999999" green="0.0" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                        <color key="value" red="0.86274509799999999" green="0.0" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
+                                        <color key="value" red="0.86274509799999999" green="0.0" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedPlaceHolderColor">
+                                        <color key="value" red="0.86274509799999999" green="0.0" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="errorTextColor">
+                                        <color key="value" red="0.86274509799999999" green="0.0" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="errorLineColor">
+                                        <color key="value" red="0.86274509799999999" green="0.0" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="errorText" value="* Error"/>
+                                </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Current Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="geO-7b-w1V">
-                                <rect key="frame" x="16" y="28" width="288" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="textColor" red="0.86274509799999999" green="0.0" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AXS-s1-7sq" customClass="ACFloatingTextField">
+                                <rect key="frame" x="8" y="66" width="304" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="71I-cf-z43"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="eCB-Ic-iN8"/>
+                                </constraints>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                        <color key="value" red="0.86274509799999999" green="0.0" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                        <color key="value" red="0.86274509799999999" green="0.0" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
+                                        <color key="value" red="0.86274509799999999" green="0.0" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedPlaceHolderColor">
+                                        <color key="value" red="0.86274509799999999" green="0.0" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="errorTextColor">
+                                        <color key="value" red="0.86274509799999999" green="0.0" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="errorLineColor">
+                                        <color key="value" red="0.86274509799999999" green="0.0" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="errorText" value="* Error"/>
+                                </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GBx-8T-wdj">
-                                <rect key="frame" x="16" y="162" width="288" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="textColor" red="0.86274509799999999" green="0.0" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tmE-UU-Kl3" customClass="ACFloatingTextField">
+                                <rect key="frame" x="8" y="124" width="304" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="I0R-6p-tya"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="Wec-jR-hly"/>
+                                </constraints>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                        <color key="value" red="0.86274509799999999" green="0.0" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                        <color key="value" red="0.86274509799999999" green="0.0" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
+                                        <color key="value" red="0.86274509799999999" green="0.0" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedPlaceHolderColor">
+                                        <color key="value" red="0.86274509799999999" green="0.0" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="errorTextColor">
+                                        <color key="value" red="0.86274509799999999" green="0.0" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="errorLineColor">
+                                        <color key="value" red="0.86274509799999999" green="0.0" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="errorText" value="* Error"/>
+                                </userDefinedRuntimeAttributes>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="tmE-UU-Kl3" secondAttribute="trailing" constant="8" id="Aua-mO-q2l"/>
+                            <constraint firstItem="tmE-UU-Kl3" firstAttribute="top" secondItem="AXS-s1-7sq" secondAttribute="bottom" constant="8" id="CW1-if-BZt"/>
+                            <constraint firstItem="BHn-Vk-Xdz" firstAttribute="top" secondItem="ZZa-DY-ibu" secondAttribute="bottom" constant="8" id="E2o-so-50q"/>
+                            <constraint firstItem="BHn-Vk-Xdz" firstAttribute="leading" secondItem="2Q5-vC-adm" secondAttribute="leading" constant="8" id="TnT-O6-3gB"/>
+                            <constraint firstAttribute="trailing" secondItem="AXS-s1-7sq" secondAttribute="trailing" constant="8" id="YUY-lg-0pd"/>
+                            <constraint firstItem="AXS-s1-7sq" firstAttribute="leading" secondItem="2Q5-vC-adm" secondAttribute="leading" constant="8" id="djL-Ok-dFi"/>
+                            <constraint firstAttribute="trailing" secondItem="BHn-Vk-Xdz" secondAttribute="trailing" constant="8" id="exk-3o-Dg7"/>
+                            <constraint firstItem="tmE-UU-Kl3" firstAttribute="leading" secondItem="2Q5-vC-adm" secondAttribute="leading" constant="8" id="lX3-sq-VxB"/>
+                            <constraint firstItem="AXS-s1-7sq" firstAttribute="top" secondItem="BHn-Vk-Xdz" secondAttribute="bottom" constant="8" id="zPC-ln-cPd"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dPn-fq-DKd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2118,13 +2200,6 @@
                                 <rect key="frame" x="10" y="162" width="302" height="156"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="UBER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="78a-B7-1fw">
-                                        <rect key="frame" x="0.0" y="64" width="56.666666666666657" height="24"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You need to drive in UBER cab to check the drivers behaviour and customer calling service...." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JK8-3V-VHr">
                                         <rect key="frame" x="69" y="14" width="225" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2174,6 +2249,10 @@
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sidemenu-account" translatesAutoresizingMaskIntoConstraints="NO" id="7vo-UU-qGi">
+                                        <rect key="frame" x="0.0" y="17" width="65" height="123"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -2203,6 +2282,21 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="calDate" destination="oAe-DO-o3G" id="S7i-qO-whL"/>
+                        <outlet property="dateLbl" destination="Xzv-zO-lj5" id="OFU-WR-dAI"/>
+                        <outlet property="imgView" destination="7vo-UU-qGi" id="xuU-nb-afw"/>
+                        <outlet property="moneyLabel" destination="1rw-OQ-73z" id="nVl-Na-wxp"/>
+                        <outlet property="nextPaymentImgV" destination="uaI-da-bEO" id="xRF-PJ-tvt"/>
+                        <outlet property="nextPaymentLbl" destination="bQp-ZY-ogM" id="HtQ-aB-JVa"/>
+                        <outlet property="paidAmtImgV" destination="EgF-lV-IL7" id="kwD-LQ-XA7"/>
+                        <outlet property="paidAmtLbl" destination="JZJ-bj-KlT" id="iRf-ev-hBy"/>
+                        <outlet property="pendingAmtImgV" destination="WXi-wU-jeA" id="9S5-T8-9Zi"/>
+                        <outlet property="pendingAmtLbl" destination="hnD-uN-hXZ" id="W1V-50-kA5"/>
+                        <outlet property="tableView" destination="jeD-fL-6Xc" id="01l-i3-xiX"/>
+                        <outlet property="titleLabel" destination="JK8-3V-VHr" id="PI1-Rg-rC6"/>
+                        <outlet property="transactionIdLbl" destination="dZW-Sw-dgI" id="c80-0e-tAC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HxZ-3n-JVy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -3619,6 +3713,7 @@
         <image name="facebook_button_logo" width="42" height="42"/>
         <image name="iPhone6Plus" width="414" height="736"/>
         <image name="money-bag" width="50" height="50"/>
+        <image name="sidemenu-account" width="40" height="40"/>
         <image name="sidemenu-assignment" width="40" height="40"/>
         <image name="sidemenubg" width="426" height="640"/>
         <image name="survey-section-completed" width="37" height="37"/>

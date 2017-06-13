@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface WMEditProfileViewController : UIViewController
-
+@interface WMEditProfileViewController : BaseViewController
+@property (strong, nonatomic) id profileDict;
 @end
