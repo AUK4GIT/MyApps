@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BaseFrontViewController.h"
-@interface WMTransactionHistoryViewController : BaseFrontViewController
-
+#import "BaseViewController.h"
+@interface WMTransactionHistoryViewController : BaseViewController
 @end

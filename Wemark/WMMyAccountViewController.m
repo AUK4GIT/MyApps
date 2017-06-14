@@ -13,6 +13,7 @@
 #import "WMDataHelper.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "WMEditProfileViewController.h"
+#import "WMTransactionHistoryViewController.h"
 
 @interface WMMyAccountViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -80,7 +81,6 @@
     
     
     NSString *authKey = [[WMDataHelper sharedInstance] getAuthKey];
-    //    NSString *auditorId = [[WMDataHelper sharedInstance] getAuditorId];
     [self showActivity];
     [[WMWebservicesHelper sharedInstance] getAuditorProfileforauthKey:authKey completionBlock:^(BOOL result, id responseDict, NSError *error) {
         NSLog(@"result:-> %@",result ? @"success" : @"Failed");
@@ -153,6 +153,12 @@
      if ([segue.identifier isEqualToString:@"EditProfile"]) {
          WMEditProfileViewController  *vc = segue.destinationViewController;
          vc.profileDict = self.dataObject;
+     } else if ([segue.identifier isEqualToString:@"ChangePassword"]) {
+         
+     } else if ([segue.identifier isEqualToString:@"TransactionsHistory"]) {
+//         WMTransactionHistoryViewController  *vc = segue.destinationViewController;
+//         id userPersonalObj = [self.dataObject valueForKey:@"auditorPersonalDetails"];
+//         vc.auditorId = [[userPersonalObj valueForKey:@"auditor_id"] stringValue];
      }
  }
 
@@ -180,6 +186,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
     } else if (indexPath.row == 1) {
+        [self performSegueWithIdentifier:@"TransactionsHistory" sender:nil];
     }else {
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         [appDelegate logout];

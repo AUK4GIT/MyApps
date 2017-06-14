@@ -422,6 +422,27 @@
     
 }
 
+- (void)changeAuditorPassword:(NSString *)authKey completionBlock:(void (^) (BOOL, id, NSError*))completionBlock {
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@",baseURL,changeAuditorPasswordURL];
+    NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:urlString parameters:nil error:nil];
+    [request addValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request addValue:authKey forHTTPHeaderField:@"Auth-key"];
+    
+    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+        if (error) {
+            NSLog(@"Error: %@\nMessage: %@", error.localizedDescription, responseObject[@"meta"]);
+            NSDictionary *codeDict = responseObject[@"meta"];
+            completionBlock(false,codeDict,error);
+        } else {
+            NSLog(@"%@ ** %@", response, responseObject);
+            completionBlock(true,responseObject[@"data"],nil);
+        }
+    }];
+    [dataTask resume];
+}
 - (void)getTransactionHistory:(NSString *)authKey completionBlock:(void (^)(BOOL, id, NSError *))completionBlock {
     //    NSError *error;
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -446,5 +467,27 @@
     [dataTask resume];
 }
 
-
+- (void)getCampaignViewDetails:(NSString *)authKey completionBlock:(void (^) (BOOL, id, NSError*))completionBlock {
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    //NSDictionary *paramsDict = @{@"auditor_id":audId};
+    NSString *urlString = [NSString stringWithFormat:@"%@%@",baseURL,getAuditorCampaignViewDetails];
+    NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"GET" URLString:urlString parameters:nil error:nil];
+    [request addValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request addValue:authKey forHTTPHeaderField:@"Auth-key"];
+    
+    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+        if (error) {
+            NSLog(@"Error: %@\nMessage: %@", error.localizedDescription, responseObject[@"meta"]);
+            NSDictionary *codeDict = responseObject[@"meta"];
+            completionBlock(false,codeDict,error);
+        } else {
+            NSLog(@"%@ ** %@", response, responseObject);
+            completionBlock(true,responseObject[@"data"],nil);
+        }
+    }];
+    [dataTask resume];
+ 
+}
 @end

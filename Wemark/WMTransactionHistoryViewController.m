@@ -21,25 +21,29 @@
 @property (strong, nonatomic) IBOutlet UILabel *paidAmtLbl;
 @property (strong, nonatomic) IBOutlet UILabel *pendingAmtLbl;
 @property (strong, nonatomic) IBOutlet UILabel *nextPaymentLbl;
-@property (strong, nonatomic) IBOutlet UILabel *transactionIdLbl;
-@property (weak, nonatomic) IBOutlet UILabel *moneyLabel;
-@property (weak, nonatomic) IBOutlet UILabel *calDate;
-@property (weak, nonatomic) IBOutlet UIImageView *imgView;
-@property (strong, nonatomic) IBOutlet UILabel *dateLbl;
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) NSArray *transactionArray;
 
 @end
 
 @implementation WMTransactionHistoryViewController
-
+{
+    NSDateFormatter *dateFormatter;
+    NSDateFormatter *requiredDateFormatter;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"Transaction History";
+    self.tableView.rowHeight = 200;
+    dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-mm-dd"];
+    [dateFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US"]];
+    
+    requiredDateFormatter = [[NSDateFormatter alloc] init];
+    [requiredDateFormatter setDateFormat:@"dd MMM yyyy"];
+    [requiredDateFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US"]];
+    
     NSString *authKey = [[WMDataHelper sharedInstance] getAuthKey];
-    NSString *auditorId = [[WMDataHelper sharedInstance] getAuditorId];
-    [self presentUIFromData];
     [[WMWebservicesHelper sharedInstance] getTransactionHistory:authKey completionBlock:^(BOOL result, id responseDict, NSError *error) {
         NSLog(@"result:-> %@",result ? @"success" : @"Failed");
         if (result) {
@@ -60,25 +64,12 @@
         });
     }];
 }
-- (void)presentUIFromData {
-    
-//    "auditor_transaction_id": "5",
-//    "transaction_type": "credit",
-//    "debit_amount": null,
-//    "credit_amount": "266000",
-//    "campaign_title": "CampaignOne",
-//    "campaign_short_description": null,
-//    "start_date": "2017-03-16",
-//    "end_date": null,
-//    "fees": "8000.00",
-//    "client_logo": "5912eb047cee6-Philips-Shield.jpg"
-    
-}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+//TransactionsCell
 /*
 #pragma mark - Navigation
 
@@ -88,5 +79,56 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - UITbleView DataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.transactionArray.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TransactionsCell"];
+    cell.backgroundColor = [UIColor clearColor];
+    cell.contentView.backgroundColor = [UIColor clearColor];
+    
+    id locObj = self.transactionArray[indexPath.row];
+    UILabel *transactionIdLbl = [[cell.contentView viewWithTag:1] viewWithTag:2];
+    UILabel *descrLbl = [cell.contentView viewWithTag:3];
+    UILabel *priceLbl = [cell.contentView viewWithTag:4];
+    UILabel *dateRangeLbl = [cell.contentView viewWithTag:5];
+    UILabel *dateLbl = [cell.contentView viewWithTag:6];
+    UIImageView *imgView = [cell.contentView viewWithTag:7];
+    
+    descrLbl.text = [self convertToString:[locObj valueForKey:@"campaign_short_description"]];
+    transactionIdLbl.text = [NSString stringWithFormat:@"Transaction ID: %@",[self convertToString:[locObj valueForKey:@"auditor_transaction_id"]]];
+    priceLbl.text = [self convertToString:[locObj valueForKey:@"fees"]];
+
+    NSDate *startDate = [dateFormatter dateFromString:[self convertToString:[locObj valueForKey:@"start_date"]]];
+    NSDate *endDate = [dateFormatter dateFromString:[self convertToString:[locObj valueForKey:@"end_date"]]];
+    NSString *startDt = @"---";
+    NSString *endDt = @"---";
+    if (startDate) {
+        startDt = [requiredDateFormatter stringFromDate:startDate];
+    }
+    if (endDate) {
+        endDt = [requiredDateFormatter stringFromDate:endDate];
+    }
+    
+    dateRangeLbl.text = [NSString stringWithFormat:@"%@ - %@",startDt,endDt];
+    
+    dateLbl.text = endDt;
+    
+    [imgView sd_setImageWithURL:[NSURL URLWithString:[locObj valueForKey:@"client_logo"]]
+               placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+    
+   return cell;
+}
+
+#pragma mark - UITbleView Delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+}
+
 
 @end

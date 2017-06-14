@@ -102,5 +102,9 @@
 
 - (void)getCities:(NSString *)authKey forState:(NSString *)stateId completionBlock:(void (^) (BOOL,id,NSError *))completionBlock;
 
+- (void)changeAuditorPassword:(NSString *)authKey completionBlock:(void (^) (BOOL, id, NSError*))completionBlock;
+
 - (void)getTransactionHistory:(NSString *)authKey completionBlock:(void (^) (BOOL, id, NSError*))completionBlock;
+
+- (void)getCampaignViewDetails:(NSString *)authKey completionBlock:(void (^) (BOOL, id, NSError*))completionBlock;
 @end
