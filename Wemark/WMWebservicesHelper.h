@@ -102,7 +102,9 @@
 
 - (void)getCities:(NSString *)authKey forState:(NSString *)stateId completionBlock:(void (^) (BOOL,id,NSError *))completionBlock;
 
-- (void)changeAuditorPassword:(NSString *)authKey completionBlock:(void (^) (BOOL, id, NSError*))completionBlock;
+- (void)changeAuditorPassword:(NSString *)authKey oldPassword:(NSString *)oldPwd  newPassword:(NSString *)newPwd  completionBlock:(void (^) (BOOL, id, NSError*))completionBlock;
+
+- (void)forgotAuditorPassword:(NSString *)authKey emailId:(NSString *)emailid    completionBlock:(void (^) (BOOL, id, NSError*))completionBlock;
 
 - (void)getTransactionHistory:(NSString *)authKey completionBlock:(void (^) (BOOL, id, NSError*))completionBlock;
 

@@ -185,6 +185,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
+        [self performSegueWithIdentifier:@"ChangePassword" sender:nil];
     } else if (indexPath.row == 1) {
         [self performSegueWithIdentifier:@"TransactionsHistory" sender:nil];
     }else {

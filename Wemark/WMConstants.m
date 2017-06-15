@@ -27,4 +27,4 @@ NSString * const changeAuditorPasswordURL = @"auditor-api/auditor/change-auditor
 NSString * const editProfileURL = @"auditor-api/auditor/edit-profile";
 NSString * const getProfileURL = @"auditor-api/auditor/get-auditor-profile";
 NSString * const submitQuestionnaireAnswerURL = @"auditor-api/questionnaire/questions-answers";
-
+NSString * const forgotAuditorPasswordURL = @"auditor-api/auth/forgot-password";

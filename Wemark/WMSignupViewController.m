@@ -16,6 +16,7 @@
 @property (strong, nonatomic) IBOutlet ACFloatingTextField *firstNameTextField;
 @property (strong, nonatomic) IBOutlet ACFloatingTextField *lastNameTextField;
 @property (strong, nonatomic) IBOutlet ACFloatingTextField *emailIdTextField;
+@property (strong, nonatomic) IBOutlet ACFloatingTextField *verifyOTPTextField;
 @property (strong, nonatomic) IBOutlet ACFloatingTextField *passwordTextField;
 @property (strong, nonatomic) IBOutlet UIImageView *profileImgView;
 @property (strong, nonatomic) NSURL *profilePicURL;
@@ -71,7 +72,7 @@ userid password:(NSString *)password firstName:(NSString *)firstname lastName:(N
         [dataDict setValue:userid forKey:@"email_id"];
         [dataDict setValue:password forKey:@"password"];
               [dataDict setValue:firstname forKey:@"first_name"];
-               [dataDict setValue:lastname forKey:@"last_name"];
+              [dataDict setValue:lastname forKey:@"last_name"];
 //                [dataDict setValue:self.profilePicURL forKey:@"profile_image"];
                 [dataDict setValue:[[UIDevice currentDevice] model] forKey:@"device_type"];
                 [dataDict setValue:version forKey:@"app_version_ios"];

@@ -39,7 +39,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic_arrow_drop_down"] style:UIBarButtonItemStylePlain target:self action:@selector(assignmentsSearchTapped:)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic_action_search"] style:UIBarButtonItemStylePlain target:self action:@selector(assignmentsSearchTapped:)];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"WMAssignCell" bundle:nil] forCellReuseIdentifier:@"WMAssignCell"];
     self.tableView.rowHeight = 136;
@@ -100,7 +100,7 @@
 
 - (void)addTitleView:(NSString *)title {
     
-    UIImageView *caratImgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"location"]];
+    UIImageView *caratImgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ic_arrow_drop_down"]];
     caratImgView.backgroundColor = [UIColor clearColor];
     caratImgView.contentMode = UIViewContentModeScaleAspectFit;
     caratImgView.userInteractionEnabled = true;
@@ -110,16 +110,17 @@
     self.titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     self.titleLabel.text = title;
     self.titleLabel.backgroundColor = [UIColor clearColor];
+    self.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.titleLabel.textColor = [UIColor whiteColor];
-//    CGSize labelSize = [self.titleLabel sizeThatFits:CGSizeMake(self.view.bounds.size.width-150, 44)];
     self.titleLabel.frame = CGRectMake(0, 0, self.view.bounds.size.width-150, 44);
-    [caratImgView setFrame:CGRectMake(self.titleLabel.frame.size.width+8, 4, 35, 35)];
-
     UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width-100, 44)];
     titleView.backgroundColor = [UIColor clearColor];
     [titleView addSubview:self.titleLabel];
     [titleView addSubview:caratImgView];
-    
+    self.titleLabel.center = CGPointMake(titleView.bounds.size.width/2, titleView.bounds.size.height/2);
+//    CGSize labelSize = [self.titleLabel sizeThatFits:CGSizeMake(self.view.bounds.size.width-150, 44)];
+    [caratImgView setFrame:CGRectMake(self.titleLabel.frame.size.width+8, 4, 35, 35)];
+
     [self.navigationItem setTitleView:titleView];
     
     UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(locationSearchTapped:)];

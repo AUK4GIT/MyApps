@@ -35,17 +35,14 @@
     
     NSError *error;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:body options:0 error:&error];
-    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
     
     NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"%@%@",baseURL,loginURL] parameters:nil error:nil];
-    [request addValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    NSString *msgLength = [NSString stringWithFormat:@"%d", [jsonString length]];
-    [request addValue: msgLength forHTTPHeaderField:@"Content-Length"];
-    [request setHTTPBody:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setHTTPBody:jsonData];
     
     NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
         if (error) {
@@ -63,8 +60,7 @@
 - (void)registerAuditorWithdata:(NSDictionary *)body imageURL:(NSURL *)imgURL completionBlock: (void (^) (BOOL, id, NSError*))completionBlock{
     
     NSError *error;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:body options:0 error:&error];
-    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:body options:NSJSONWritingPrettyPrinted error:&error];
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
@@ -76,24 +72,46 @@
         }
     } error:nil];
 
-    [request addValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    NSString *msgLength = [NSString stringWithFormat:@"%lu", (unsigned long)[jsonString length]];
-    [request addValue: msgLength forHTTPHeaderField:@"Content-Length"];
-    [request setHTTPBody:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setHTTPBody:jsonData];
 
-    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
-        if (error) {
-            NSLog(@"Error: %@\nMessage: %@", error.localizedDescription, responseObject[@"meta"]);
-            NSDictionary *codeDict = responseObject[@"meta"];
-            completionBlock(false,codeDict,error);
-        } else {
-            NSLog(@"%@ ** %@", response, responseObject);
-            completionBlock(true,responseObject[@"data"],nil);
-        }
-
-    }];
-    [dataTask resume];
+    NSURLSessionUploadTask *uploadTask;
+    uploadTask = [manager
+                  uploadTaskWithStreamedRequest:request
+                  progress:^(NSProgress * _Nonnull uploadProgress) {
+                      // This is not called back on the main queue.
+                      // You are responsible for dispatching to the main queue for UI updates
+                      dispatch_async(dispatch_get_main_queue(), ^{
+                          //Update the progress view
+                          //                          [progressView setProgress:uploadProgress.fractionCompleted];
+                      });
+                  }
+                  completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+                      if (error) {
+                          NSLog(@"Error: %@\nMessage: %@", error.localizedDescription, responseObject[@"meta"]);
+                          NSDictionary *codeDict = responseObject[@"meta"];
+                          completionBlock(false,codeDict,error);
+                      } else {
+                          NSLog(@"%@ ** %@", response, responseObject);
+                          completionBlock(true,responseObject[@"data"],nil);
+                      }
+                  }];
+    
+    [uploadTask resume];
+    
+//    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+//        if (error) {
+//            NSLog(@"Error: %@\nMessage: %@", error.localizedDescription, responseObject[@"meta"]);
+//            NSDictionary *codeDict = responseObject[@"meta"];
+//            completionBlock(false,codeDict,error);
+//        } else {
+//            NSLog(@"%@ ** %@", response, responseObject);
+//            completionBlock(true,responseObject[@"data"],nil);
+//        }
+//
+//    }];
+//    [dataTask resume];
 }
 
 - (void)getAllLocations:(NSString *)authKey withPageNumber:(NSString *)pageNumber completionBlock:(void (^) (BOOL, id, NSError*))completionBlock {
@@ -106,9 +124,6 @@
     [request addValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request addValue:authKey forHTTPHeaderField:@"Auth-key"];
-//    NSString *msgLength = [NSString stringWithFormat:@"%d", [jsonString length]];
-//    [request addValue: msgLength forHTTPHeaderField:@"Content-Length"];
-//    [request setHTTPBody:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
     
     NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
         if (error) {
@@ -150,10 +165,6 @@
 
 - (void)getSearchCampaignAssignments:(NSDictionary *)dict forAuthKey:(NSString *)authKey completionBlock:(void (^) (BOOL, id, NSError*))completionBlock {
     
-//    NSError *error;
-//    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&error];
-//    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
     NSString *urlString = [NSString stringWithFormat:@"%@%@",baseURL,searchCampaignAssignmentsURL];
@@ -161,9 +172,6 @@
     [request addValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request addValue:authKey forHTTPHeaderField:@"Auth-key"];
-//    NSString *msgLength = [NSString stringWithFormat:@"%d", [jsonString length]];
-//    [request addValue: msgLength forHTTPHeaderField:@"Content-Length"];
-//    [request setHTTPBody:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
     
     NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
         if (error) {
@@ -380,8 +388,7 @@
 - (void)editProfile:(NSString *)authKey paramsDict:(id )paramsDict profilePicURL:(NSURL *)profilePicURL userId:(NSString *)userId completionBlock:(void (^) (BOOL,id,NSError *))completionBlock {
     
     NSError *error;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:paramsDict options:0 error:&error];
-    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:paramsDict options:NSJSONWritingPrettyPrinted error:&error];
     
     NSString *urlString = [NSString stringWithFormat:@"%@%@?id=%@",baseURL,editProfileURL,userId];
     NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:urlString parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
@@ -390,12 +397,10 @@
             [formData appendPartWithFileURL:profilePicURL name:fName fileName:[NSString stringWithFormat:@"%@.jpg",fName] mimeType:@"image/jpeg" error:nil];
         }
     } error:nil];
-    [request addValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request addValue:authKey forHTTPHeaderField:@"Auth-key"];
-    NSString *msgLength = [NSString stringWithFormat:@"%lu", (unsigned long)[jsonString length]];
-    [request addValue: msgLength forHTTPHeaderField:@"Content-Length"];
-    [request setHTTPBody:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setHTTPBody:jsonData];
     
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     
@@ -412,9 +417,12 @@
                   }
                   completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
                       if (error) {
-                          NSLog(@"Error: %@", error);
+                          NSLog(@"Error: %@\nMessage: %@", error.localizedDescription, responseObject[@"meta"]);
+                          NSDictionary *codeDict = responseObject[@"meta"];
+                          completionBlock(false,codeDict,error);
                       } else {
-                          NSLog(@"%@ %@", response, responseObject);
+                          NSLog(@"%@ ** %@", response, responseObject);
+                          completionBlock(true,responseObject[@"data"],nil);
                       }
                   }];
     
@@ -422,15 +430,20 @@
     
 }
 
-- (void)changeAuditorPassword:(NSString *)authKey completionBlock:(void (^) (BOOL, id, NSError*))completionBlock {
-    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+- (void)changeAuditorPassword:(NSString *)authKey oldPassword:(NSString *)oldPwd  newPassword:(NSString *)newPwd  completionBlock:(void (^) (BOOL, id, NSError*))completionBlock {
+    
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:@{@"old_password":oldPwd, @"new_password":newPwd} options:NSJSONWritingPrettyPrinted error:&error];
+
+        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
     NSString *urlString = [NSString stringWithFormat:@"%@%@",baseURL,changeAuditorPasswordURL];
     NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:urlString parameters:nil error:nil];
-    [request addValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request addValue:authKey forHTTPHeaderField:@"Auth-key"];
-    
+    [request setHTTPBody:jsonData];
+
     NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
         if (error) {
             NSLog(@"Error: %@\nMessage: %@", error.localizedDescription, responseObject[@"meta"]);
@@ -443,6 +456,34 @@
     }];
     [dataTask resume];
 }
+
+- (void)forgotAuditorPassword:(NSString *)authKey emailId:(NSString *)emailid    completionBlock:(void (^) (BOOL, id, NSError*))completionBlock {
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:@{@"email_id":emailid} options:NSJSONWritingPrettyPrinted error:&error];
+    
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@",baseURL,forgotAuditorPasswordURL];
+    NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:urlString parameters:nil error:nil];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request addValue:authKey forHTTPHeaderField:@"Auth-key"];
+    [request setHTTPBody:jsonData];
+    
+    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+        if (error) {
+            NSLog(@"Error: %@\nMessage: %@", error.localizedDescription, responseObject[@"meta"]);
+            NSDictionary *codeDict = responseObject[@"meta"];
+            completionBlock(false,codeDict,error);
+        } else {
+            NSLog(@"%@ ** %@", response, responseObject);
+            completionBlock(true,responseObject[@"data"],nil);
+        }
+    }];
+    [dataTask resume];
+
+}
+
 - (void)getTransactionHistory:(NSString *)authKey completionBlock:(void (^)(BOOL, id, NSError *))completionBlock {
     //    NSError *error;
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];

@@ -1,14 +1,14 @@
 //
-//  WMChangePasswordViewController.h
+//  WMForgotPasswordViewController.h
 //  Wemark
 //
-//  Created by Ashish on 09/06/17.
+//  Created by Ashish on 15/06/17.
 //  Copyright © 2017 Trion Technologies. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 
-@interface WMChangePasswordViewController : BaseViewController
+@interface WMForgotPasswordViewController : BaseViewController
 
 @end

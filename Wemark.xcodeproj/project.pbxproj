@@ -49,6 +49,10 @@
 		C509CB031EE814B6002D4F86 /* WMRejectedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C509CB021EE814B6002D4F86 /* WMRejectedCell.m */; };
 		C509CB061EE82F5D002D4F86 /* WMStartSurveyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C509CB051EE82F5D002D4F86 /* WMStartSurveyViewController.m */; };
 		C509CB091EE82F8F002D4F86 /* WMCorrectionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C509CB081EE82F8F002D4F86 /* WMCorrectionsViewController.m */; };
+		C53591C71EF25D6C0046EC7B /* WMForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C53591C61EF25D6C0046EC7B /* WMForgotPasswordViewController.m */; };
+		C53591CA1EF269BB0046EC7B /* WMCheckEmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C53591C91EF269BB0046EC7B /* WMCheckEmailViewController.m */; };
+		C53591CD1EF270270046EC7B /* WMResetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C53591CC1EF270270046EC7B /* WMResetPasswordViewController.m */; };
+		C53591D01EF298830046EC7B /* WMResendOTPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C53591CF1EF298830046EC7B /* WMResendOTPViewController.m */; };
 		C54CD0951EEAC38E0004AEE7 /* WMCountryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C54CD0941EEAC38E0004AEE7 /* WMCountryViewController.m */; };
 		C54CD0981EEAC3C30004AEE7 /* WMStateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C54CD0971EEAC3C30004AEE7 /* WMStateViewController.m */; };
 		C54CD09B1EEAC3E00004AEE7 /* WMCityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C54CD09A1EEAC3E00004AEE7 /* WMCityViewController.m */; };
@@ -135,6 +139,14 @@
 		C509CB051EE82F5D002D4F86 /* WMStartSurveyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMStartSurveyViewController.m; sourceTree = "<group>"; };
 		C509CB071EE82F8F002D4F86 /* WMCorrectionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMCorrectionsViewController.h; sourceTree = "<group>"; };
 		C509CB081EE82F8F002D4F86 /* WMCorrectionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMCorrectionsViewController.m; sourceTree = "<group>"; };
+		C53591C51EF25D6C0046EC7B /* WMForgotPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMForgotPasswordViewController.h; sourceTree = "<group>"; };
+		C53591C61EF25D6C0046EC7B /* WMForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMForgotPasswordViewController.m; sourceTree = "<group>"; };
+		C53591C81EF269BB0046EC7B /* WMCheckEmailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMCheckEmailViewController.h; sourceTree = "<group>"; };
+		C53591C91EF269BB0046EC7B /* WMCheckEmailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMCheckEmailViewController.m; sourceTree = "<group>"; };
+		C53591CB1EF270270046EC7B /* WMResetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMResetPasswordViewController.h; sourceTree = "<group>"; };
+		C53591CC1EF270270046EC7B /* WMResetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMResetPasswordViewController.m; sourceTree = "<group>"; };
+		C53591CE1EF298830046EC7B /* WMResendOTPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMResendOTPViewController.h; sourceTree = "<group>"; };
+		C53591CF1EF298830046EC7B /* WMResendOTPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMResendOTPViewController.m; sourceTree = "<group>"; };
 		C54CD0931EEAC38E0004AEE7 /* WMCountryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMCountryViewController.h; sourceTree = "<group>"; };
 		C54CD0941EEAC38E0004AEE7 /* WMCountryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMCountryViewController.m; sourceTree = "<group>"; };
 		C54CD0961EEAC3C30004AEE7 /* WMStateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMStateViewController.h; sourceTree = "<group>"; };
@@ -240,8 +252,16 @@
 				AE91CCC21ED9E44000BB9585 /* WMMenuViewController.m */,
 				AE91CCBC1ED9E42F00BB9585 /* BaseFrontViewController.h */,
 				AE91CCBD1ED9E42F00BB9585 /* BaseFrontViewController.m */,
+				C53591C51EF25D6C0046EC7B /* WMForgotPasswordViewController.h */,
+				C53591C61EF25D6C0046EC7B /* WMForgotPasswordViewController.m */,
+				C53591CB1EF270270046EC7B /* WMResetPasswordViewController.h */,
+				C53591CC1EF270270046EC7B /* WMResetPasswordViewController.m */,
+				C53591C81EF269BB0046EC7B /* WMCheckEmailViewController.h */,
+				C53591C91EF269BB0046EC7B /* WMCheckEmailViewController.m */,
 				AE820FF21ED4A3E100AE2BA2 /* WMSignupViewController.h */,
 				AE820FF31ED4A3E100AE2BA2 /* WMSignupViewController.m */,
+				C53591CE1EF298830046EC7B /* WMResendOTPViewController.h */,
+				C53591CF1EF298830046EC7B /* WMResendOTPViewController.m */,
 				AE91CCCD1EDABBDB00BB9585 /* WMLocationSearchViewController.h */,
 				AE91CCCE1EDABBDB00BB9585 /* WMLocationSearchViewController.m */,
 				AEFEBC311EE1950100EB0F31 /* WMSearchAssignmentViewController.h */,
@@ -464,6 +484,7 @@
 				AEFEBC391EE2914B00EB0F31 /* WMBrandSelectorViewController.m in Sources */,
 				C509CB001EE81498002D4F86 /* WMAcceptedCell.m in Sources */,
 				C509CB061EE82F5D002D4F86 /* WMStartSurveyViewController.m in Sources */,
+				C53591D01EF298830046EC7B /* WMResendOTPViewController.m in Sources */,
 				AEDD5D451EE3B58800AA8E44 /* WMNotificationsViewController.m in Sources */,
 				AEFEBC3C1EE2974A00EB0F31 /* WMSearchResultsViewController.m in Sources */,
 				AEC379EB1ED5F78C00A33A11 /* WMWebservicesHelper.m in Sources */,
@@ -472,12 +493,15 @@
 				C54CD09B1EEAC3E00004AEE7 /* WMCityViewController.m in Sources */,
 				AE820FDC1ED48DA900AE2BA2 /* ViewController.m in Sources */,
 				AE820FD91ED48DA900AE2BA2 /* AppDelegate.m in Sources */,
+				C53591C71EF25D6C0046EC7B /* WMForgotPasswordViewController.m in Sources */,
+				C53591CD1EF270270046EC7B /* WMResetPasswordViewController.m in Sources */,
 				C54CD0951EEAC38E0004AEE7 /* WMCountryViewController.m in Sources */,
 				AE91CCC31ED9E44000BB9585 /* WMHomeViewController.m in Sources */,
 				C509CAFA1EE81443002D4F86 /* WMAppliedCell.m in Sources */,
 				C55E46F81EE6E1F0002E2258 /* WMAllAssignmentsClientIdViewController.m in Sources */,
 				AE91CCCC1EDAAC7A00BB9585 /* WMAssignCell.m in Sources */,
 				AEDD5D511EE4389E00AA8E44 /* WMEditProfileViewController.m in Sources */,
+				C53591CA1EF269BB0046EC7B /* WMCheckEmailViewController.m in Sources */,
 				AE91CCC41ED9E44000BB9585 /* WMMenuViewController.m in Sources */,
 				AE91CCD51EDB138200BB9585 /* WMAssignment.m in Sources */,
 				AEFEBC331EE1950100EB0F31 /* WMSearchAssignmentViewController.m in Sources */,
