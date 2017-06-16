@@ -108,5 +108,12 @@
 
 - (void)getTransactionHistory:(NSString *)authKey completionBlock:(void (^) (BOOL, id, NSError*))completionBlock;
 
+- (void)verifyOTP:(NSDictionary *)body completionBlock: (void (^) (BOOL, id, NSError*))completionBlock;
+
+- (void)sendOTP:(NSString *)authKey toMobileNumber:(NSString *)mobilenumber completionBlock:(void (^) (BOOL, id, NSError*))completionBlock;
+
 - (void)getCampaignViewDetails:(NSString *)authKey completionBlock:(void (^) (BOOL, id, NSError*))completionBlock;
+
+- (void)facebookAuditorLogin:(NSString *)authKey completionBlock:(void (^) (BOOL, id, NSError*))completionBlock;
+
 @end

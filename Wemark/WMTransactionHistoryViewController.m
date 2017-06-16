@@ -21,6 +21,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *paidAmtLbl;
 @property (strong, nonatomic) IBOutlet UILabel *pendingAmtLbl;
 @property (strong, nonatomic) IBOutlet UILabel *nextPaymentLbl;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topViewHeightConstraint;
 @property (strong, nonatomic) NSArray *transactionArray;
 
 @end
@@ -42,6 +43,11 @@
     requiredDateFormatter = [[NSDateFormatter alloc] init];
     [requiredDateFormatter setDateFormat:@"dd MMM yyyy"];
     [requiredDateFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US"]];
+    
+    self.topViewHeightConstraint.constant = 16;
+    [UIView animateWithDuration:0.3 animations:^{
+        [self.view layoutIfNeeded];
+    }];
     
     NSString *authKey = [[WMDataHelper sharedInstance] getAuthKey];
     [[WMWebservicesHelper sharedInstance] getTransactionHistory:authKey completionBlock:^(BOOL result, id responseDict, NSError *error) {
@@ -127,7 +133,22 @@
 
 #pragma mark - UITbleView Delegate
 
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    self.topViewHeightConstraint.constant = 16;
+    [UIView animateWithDuration:0.3 animations:^{
+        [self.view layoutIfNeeded];
+    }];
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    id locObj = self.transactionArray[indexPath.row];
+//    self.paidAmtLbl.text = @"";
+//    self.pendingAmtLbl.text = @"";
+//    self.nextPaymentLbl.text = @"";
+    self.topViewHeightConstraint.constant = 128;
+    [UIView animateWithDuration:0.3 animations:^{
+        [self.view layoutIfNeeded];
+    }];
 }
 
 

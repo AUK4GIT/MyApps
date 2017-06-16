@@ -15,4 +15,6 @@ pod 'GooglePlaces'
 pod 'ActionSheetPicker-3.0', '~> 2.2.0'
 pod 'HMSegmentedControl'
 pod 'HCSStarRatingView', '~> 1.5'
+pod 'FBSDKCoreKit'
+pod 'FBSDKLoginKit'
 end

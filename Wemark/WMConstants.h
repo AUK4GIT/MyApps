@@ -28,3 +28,6 @@ extern NSString * const forgotAuditorPasswordURL;
 extern NSString * const editProfileURL;
 extern NSString * const getProfileURL;
 extern NSString * const submitQuestionnaireAnswerURL;
+extern NSString * const sendOTPURL;
+extern NSString * const verifyOTPURL;
+extern NSString * const facebookAuditorLoginURL;

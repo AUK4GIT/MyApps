@@ -28,3 +28,6 @@ NSString * const editProfileURL = @"auditor-api/auditor/edit-profile";
 NSString * const getProfileURL = @"auditor-api/auditor/get-auditor-profile";
 NSString * const submitQuestionnaireAnswerURL = @"auditor-api/questionnaire/questions-answers";
 NSString * const forgotAuditorPasswordURL = @"auditor-api/auth/forgot-password";
+NSString *const sendOTPURL = @"auditor-api/auth/resend-otp";
+NSString *const verifyOTPURL = @"auditor-api/auth/verify-otp";
+NSString *const facebookAuditorLoginURL = @"auditor-api/auth/facebook-login";

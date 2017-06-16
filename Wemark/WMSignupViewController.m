@@ -17,6 +17,7 @@
 @property (strong, nonatomic) IBOutlet ACFloatingTextField *lastNameTextField;
 @property (strong, nonatomic) IBOutlet ACFloatingTextField *emailIdTextField;
 @property (strong, nonatomic) IBOutlet ACFloatingTextField *verifyOTPTextField;
+@property (strong, nonatomic) IBOutlet ACFloatingTextField *mobileNumberTextField;
 @property (strong, nonatomic) IBOutlet ACFloatingTextField *passwordTextField;
 @property (strong, nonatomic) IBOutlet UIImageView *profileImgView;
 @property (strong, nonatomic) NSURL *profilePicURL;
@@ -54,6 +55,78 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)showVerifyOTPUI {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Wemark" message:@"Enter OTP" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *resendAction = [UIAlertAction actionWithTitle:@"Resend OTP" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self sendOTP];
+    }];
+    UIAlertAction *verifyAction = [UIAlertAction actionWithTitle:@"Verify OTP" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        UITextField *otp = alertController.textFields.firstObject;
+        if (otp.text.length > 0) {
+            [self verifyOTPEntered:otp.text];
+        }
+    }];
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField)
+     {
+         textField.placeholder = @"Enter OTP";
+     }];
+    [alertController addAction:resendAction];
+    [alertController addAction:verifyAction];
+    
+    [self presentViewController:alertController animated:true completion:^{
+    }];
+}
+
+- (void)verifyOTPEntered:(NSString *)otp {
+    [[WMWebservicesHelper sharedInstance] verifyOTP:@{@"code":otp,@"mobile":self.mobileNumberTextField.text} completionBlock:^(BOOL result, id responseDict, NSError *error) {
+        
+        NSLog(@"result:-> %@",result ? @"success" : @"Failed");
+        if (result) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self showVerifyOTPUI];
+            });
+        }else{
+            NSDictionary *resDict = responseDict;
+            if ([resDict[@"code"]
+                 integerValue] == 409) {
+                NSLog(@"Error responseDict:->%@",resDict[@"message"]);
+            }else{
+                NSLog(@"Error:->%@",error.localizedDescription);
+            }
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [activityView stopAnimating];
+        });
+        
+    }];
+}
+
+- (void)sendOTP {
+    [[WMWebservicesHelper sharedInstance] sendOTP:[[WMDataHelper sharedInstance]
+                                                   getAuthKey] toMobileNumber:self.mobileNumberTextField.text completionBlock:^(BOOL result, id responseDict, NSError *error) {
+        
+        NSLog(@"result:-> %@",result ? @"success" : @"Failed");
+        if (result) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+               [self showVerifyOTPUI];
+            });
+        }else{
+            NSDictionary *resDict = responseDict;
+            if ([resDict[@"code"]
+                 integerValue] == 409) {
+                NSLog(@"Error responseDict:->%@",resDict[@"message"]);
+            }else{
+                NSLog(@"Error:->%@",error.localizedDescription);
+            }
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [activityView stopAnimating];
+        });
+        
+    }];
+}
+
 -(void)proceedWithRegister:(NSString *)
 userid password:(NSString *)password firstName:(NSString *)firstname lastName:(NSString *)lastname
 {
@@ -84,6 +157,7 @@ userid password:(NSString *)password firstName:(NSString *)firstname lastName:(N
              if (result) {
                  [[WMDataHelper sharedInstance]
                   setAuditorProfileDetails:responseDict];
+                 [self sendOTP];
              }else{
                  NSDictionary *resDict = responseDict;
                  if ([resDict[@"code"]

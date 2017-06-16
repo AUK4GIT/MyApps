@@ -11,7 +11,7 @@
 #import "WMWebservicesHelper.h"
 #import "WMDataHelper.h"
 #import "AppDelegate.h"
-
+#import "WMCheckEmailViewController.h"
 @interface WMForgotPasswordViewController ()
 @property (strong, nonatomic) IBOutlet ACFloatingTextField *emailIdTextField;
 - (IBAction)resetBtnTapped:(id)sender;
@@ -38,10 +38,10 @@
     WMWebservicesHelper *helper = [WMWebservicesHelper sharedInstance];
     NSString *authKey = [[WMDataHelper sharedInstance] getAuthKey];
     
-    [helper forgotAuditorPassword:authKey emailId:self.emailIdTextField.text completionBlock:^(BOOL result, id responseDict, NSError *error) completionBlock {
+    [helper forgotAuditorPassword:authKey emailId:self.emailIdTextField.text completionBlock:^(BOOL result, id responseDict, NSError *error)  {
         NSLog(@"result:-> %@",result ? @"success" : @"Failed");
         if (result) {
-            
+            [self navigateToNextScreen];
         } else {
             NSDictionary *resDict = responseDict;
             if ([resDict[@"code"] integerValue] == 409) {
@@ -56,6 +56,19 @@
             [self hideActivity];
         });
     }];
+}
+
+- (void)navigateToNextScreen{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self performSegueWithIdentifier:@"ResendVerificationScreen" sender:nil];
+    });
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"ResendVerificationScreen"]) {
+        WMCheckEmailViewController *vc = [segue destinationViewController];
+        vc.emailId = self.emailIdTextField.text;
+    }
 }
 
 - (IBAction)resetBtnTapped:(id)sender {

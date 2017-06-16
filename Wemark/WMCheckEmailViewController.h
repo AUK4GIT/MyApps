@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface WMCheckEmailViewController : UIViewController
-
+#import "BaseViewController.h"
+@interface WMCheckEmailViewController : BaseViewController
+@property (nonatomic, strong)NSString *emailId;
 @end

@@ -6,87 +6,61 @@
 	<dict>
 		<key>ACFloatingTextfield-Objc.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>AFNetworking.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>3</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>ActionSheetPicker-3.0.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>2</integer>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Bolts.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>FBSDKCoreKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>FBSDKLoginKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>HCSStarRatingView.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>4</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>HMSegmentedControl.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>5</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>LGSideMenuController.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>6</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-Wemark.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>7</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>SDWebImage.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>8</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>0A667609BF9BD15CE73A76A27D5C8C4B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>0FD824B0E1252DD05B60E39E2AFD962F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>36760561B50F228453FFF7E2D4624DDB</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>45FF4A7AFE5D8E17D01023C53AED87FF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>7891E2B724C54EF58FB1692B34F1455C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>965699190112DDBD9B7864D091660DBC</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C338205427316180219BE02AD7F36420</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>CF671F7E57B92905F1CC91D036D6B4A7</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-	</dict>
+	<dict/>
 </dict>
 </plist>
