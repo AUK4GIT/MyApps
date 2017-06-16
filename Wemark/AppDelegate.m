@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "WMMenuViewController.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 @import GoogleMaps;
 @import GooglePlaces;
 //#import <GoogleMaps/GoogleMaps.h>
@@ -21,7 +22,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
+    [[FBSDKApplicationDelegate sharedInstance] application:application
+                             didFinishLaunchingWithOptions:launchOptions];
     [GMSServices provideAPIKey:@"AIzaSyDfbkwrGrRZ-cmqs7UChplJSRVn7zrovrc"];
     [GMSPlacesClient provideAPIKey:@"AIzaSyDfbkwrGrRZ-cmqs7UChplJSRVn7zrovrc"];
     
@@ -44,6 +46,17 @@
     
     return YES;
 }
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    
+    BOOL handled = [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                                  openURL:url
+                                                        sourceApplication:sourceApplication
+                                                               annotation:annotation
+                    ];
+    // Add any custom logic here.
+    return handled;
+} 
 
 - (void)initializeNotificationServices {
     UIUserNotificationSettings *userNotif = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge|UIUserNotificationTypeAlert|UIUserNotificationTypeAlert categories:nil];

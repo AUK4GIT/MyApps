@@ -11,6 +11,8 @@
 #import "WMWebservicesHelper.h"
 #import "WMDataHelper.h"
 #import "AppDelegate.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet ACFloatingTextField *emailIdTextField;
@@ -26,7 +28,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
+    FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
+    // Optional: Place the button in the center of your view.
+    loginButton.center = self.view.center;
+    [self.view addSubview:loginButton];
     activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     activityView.tintColor = [UIColor whiteColor];
     [activityView setHidesWhenStopped:true];

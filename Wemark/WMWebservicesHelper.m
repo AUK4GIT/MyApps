@@ -583,28 +583,28 @@
 }
 
 - (void)facebookAuditorLogin:(NSString *)authKey completionBlock:(void (^) (BOOL, id, NSError*))completionBlock {
-    NSError *error;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:body options:0 error:&error];
-    
-    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
-    
-    NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"%@%@",baseURL,facebookAuditorLoginURL] parameters:nil error:nil];
-    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    [request setHTTPBody:jsonData];
-    
-    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
-        if (error) {
-            NSLog(@"Error: %@\nMessage: %@", error.localizedDescription, responseObject[@"meta"]);
-            NSDictionary *codeDict = responseObject[@"meta"];
-            completionBlock(false,codeDict,error);
-        } else {
-            NSLog(@"%@ ** %@", response, responseObject);
-            completionBlock(true,responseObject[@"data"],nil);
-        }
-    }];
-    [dataTask resume];
+//    NSError *error;
+//    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:body options:0 error:&error];
+//    
+//    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+//    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+//    
+//    NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"%@%@",baseURL,facebookAuditorLoginURL] parameters:nil error:nil];
+//    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+//    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+//    [request setHTTPBody:jsonData];
+//    
+//    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+//        if (error) {
+//            NSLog(@"Error: %@\nMessage: %@", error.localizedDescription, responseObject[@"meta"]);
+//            NSDictionary *codeDict = responseObject[@"meta"];
+//            completionBlock(false,codeDict,error);
+//        } else {
+//            NSLog(@"%@ ** %@", response, responseObject);
+//            completionBlock(true,responseObject[@"data"],nil);
+//        }
+//    }];
+//    [dataTask resume];
 
 }
 @end

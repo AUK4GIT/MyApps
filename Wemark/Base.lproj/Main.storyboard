@@ -201,8 +201,8 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bZ4-UJ-VO4">
                                         <rect key="frame" x="0.0" y="215" width="414" height="501"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ASJ-oA-7T5" customClass="ACFloatingTextField">
-                                                <rect key="frame" x="167" y="129" width="79" height="40"/>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ASJ-oA-7T5" customClass="ACFloatingTextField">
+                                                <rect key="frame" x="8" y="129" width="398" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="tu9-IQ-785"/>
                                                 </constraints>
@@ -235,18 +235,18 @@
                                                 </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reset Your Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7RQ-Pg-agJ">
-                                                <rect key="frame" x="99" y="-8" width="217" height="41"/>
+                                                <rect key="frame" x="98.333333333333314" y="16" width="217.33333333333337" height="40"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="41" id="hyt-vN-IeB"/>
+                                                    <constraint firstAttribute="height" constant="40" id="hyt-vN-IeB"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="22"/>
                                                 <color key="textColor" red="0.99992364645004272" green="1" blue="0.99988287687301636" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What would you like your new password be ?" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KDo-xs-Qgv">
-                                                <rect key="frame" x="110" y="33" width="202" height="46"/>
+                                                <rect key="frame" x="110" y="56" width="262" height="58"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="202" id="DH5-UM-XHF"/>
+                                                    <constraint firstAttribute="width" constant="262" id="DH5-UM-XHF"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                 <color key="textColor" red="0.99992364645004272" green="1" blue="0.99988287687301636" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -273,10 +273,10 @@
                                             <constraint firstItem="yuc-Y4-RcJ" firstAttribute="top" secondItem="ASJ-oA-7T5" secondAttribute="bottom" constant="37" id="Nqn-7e-mkf"/>
                                             <constraint firstItem="KDo-xs-Qgv" firstAttribute="top" secondItem="7RQ-Pg-agJ" secondAttribute="bottom" id="YU9-DI-Cek"/>
                                             <constraint firstItem="yuc-Y4-RcJ" firstAttribute="centerX" secondItem="ASJ-oA-7T5" secondAttribute="centerX" id="bu0-f0-Wxr"/>
-                                            <constraint firstItem="ASJ-oA-7T5" firstAttribute="top" secondItem="KDo-xs-Qgv" secondAttribute="bottom" constant="50" id="fU4-os-Ztr"/>
+                                            <constraint firstItem="ASJ-oA-7T5" firstAttribute="top" secondItem="KDo-xs-Qgv" secondAttribute="bottom" constant="15" id="fU4-os-Ztr"/>
                                             <constraint firstItem="yuc-Y4-RcJ" firstAttribute="centerX" secondItem="bZ4-UJ-VO4" secondAttribute="centerX" id="htb-e1-Xl6"/>
                                             <constraint firstItem="yuc-Y4-RcJ" firstAttribute="centerX" secondItem="7RQ-Pg-agJ" secondAttribute="centerX" id="jzT-YW-D5W"/>
-                                            <constraint firstItem="7RQ-Pg-agJ" firstAttribute="top" secondItem="bZ4-UJ-VO4" secondAttribute="top" constant="-8" id="lT7-K0-gwQ"/>
+                                            <constraint firstItem="7RQ-Pg-agJ" firstAttribute="top" secondItem="bZ4-UJ-VO4" secondAttribute="top" constant="16" id="lT7-K0-gwQ"/>
                                             <constraint firstItem="KDo-xs-Qgv" firstAttribute="leading" secondItem="bZ4-UJ-VO4" secondAttribute="leading" constant="110" id="n2e-qe-3mE"/>
                                         </constraints>
                                     </view>
@@ -1112,7 +1112,7 @@
             <objects>
                 <navigationController storyboardIdentifier="LoginControler" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="OAH-XH-s4Z" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" backIndicatorImage="back-button-image" backIndicatorTransitionMaskImage="back-button-image" id="yhV-EL-ALH">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="back-button-image" backIndicatorTransitionMaskImage="back-button-image" id="yhV-EL-ALH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1893,7 +1893,7 @@
             <objects>
                 <navigationController storyboardIdentifier="SideMenuNavController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="g2i-yh-G7w" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" backIndicatorImage="back-button-image" backIndicatorTransitionMaskImage="back-button-image" id="0ad-8w-Cnn">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" backIndicatorImage="back-button-image" backIndicatorTransitionMaskImage="back-button-image" id="0ad-8w-Cnn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.86274509803921573" green="0.0" blue="0.23529411764705882" alpha="1" colorSpace="calibratedRGB"/>
@@ -2412,7 +2412,7 @@
             <objects>
                 <navigationController storyboardIdentifier="NotificationsNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="c9l-Ec-Gtp" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" backIndicatorImage="back-button-image" backIndicatorTransitionMaskImage="back-button-image" id="6F2-Fb-PaG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" backIndicatorImage="back-button-image" backIndicatorTransitionMaskImage="back-button-image" id="6F2-Fb-PaG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.86274509799999999" green="0.0" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -2452,7 +2452,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="108"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6uy-2a-Uca" id="3zZ-Tf-LM7">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="107.66666666666667"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BPY-bV-Ymw">
@@ -2542,7 +2542,7 @@
             <objects>
                 <navigationController storyboardIdentifier="MyAccountNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gKY-VP-T3T" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" backIndicatorImage="back-button-image" backIndicatorTransitionMaskImage="back-button-image" id="BH3-Tx-ZO8">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" backIndicatorImage="back-button-image" backIndicatorTransitionMaskImage="back-button-image" id="BH3-Tx-ZO8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.86274509799999999" green="0.0" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -3972,7 +3972,7 @@
             <objects>
                 <navigationController storyboardIdentifier="AssistanceNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="M4G-n4-q7O" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" backIndicatorImage="back-button-image" backIndicatorTransitionMaskImage="back-button-image" id="TlS-2x-WTo">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" backIndicatorImage="back-button-image" backIndicatorTransitionMaskImage="back-button-image" id="TlS-2x-WTo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.86274509799999999" green="0.0" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -4015,7 +4015,7 @@
             <objects>
                 <navigationController storyboardIdentifier="MyAssignmentsNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dv0-Mo-lBn" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" backIndicatorImage="back-button-image" backIndicatorTransitionMaskImage="back-button-image" id="ndp-wy-w8f">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" backIndicatorImage="back-button-image" backIndicatorTransitionMaskImage="back-button-image" id="ndp-wy-w8f">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.86274509799999999" green="0.0" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
