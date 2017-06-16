@@ -65,6 +65,7 @@
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
     
+    
     NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"%@%@",baseURL,registerURL] parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         NSString *fName = [NSString stringWithFormat:@"%@_%@",[body objectForKey:@"first_name"],[body objectForKey:@"last_name"]];
         if (imgURL) {
