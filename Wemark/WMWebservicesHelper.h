@@ -25,7 +25,7 @@
  @param body request body
  @param completionBlock callback
  */
-- (void)registerAuditorWithdata:(NSDictionary *)body imageURL:(NSURL *)imgURL completionBlock: (void (^) (BOOL, id, NSError*))completionBlock;
+- (void)registerAuditorWithdata:(NSDictionary *)body imageURL:(NSString *)imgURL completionBlock: (void (^) (BOOL, id, NSError*))completionBlock;
 
 /**
  Gets all locations
@@ -92,7 +92,7 @@
  */
 - (void)getAllAssignmentsByClientId:(NSString *)clientId authKey:(NSString *)authKey completionBlock:(void (^)(BOOL, id, NSError *))completionBlock;
 
-- (void)editProfile:(NSString *)authKey paramsDict:(id )paramsDict profilePicURL:(NSURL *)profilePicURL userId:(NSString *)userId completionBlock:(void (^) (BOOL,id,NSError *))completionBlock;
+- (void)editProfile:(NSString *)authKey paramsDict:(id )paramsDict profilePicURL:(NSString *)profilePicURL userId:(NSString *)userId completionBlock:(void (^) (BOOL,id,NSError *))completionBlock;
 
 - (void)getAuditorProfileforauthKey:(NSString *)authKey completionBlock:(void (^)(BOOL, id, NSError *))completionBlock;
 
@@ -114,6 +114,9 @@
 
 - (void)getCampaignViewDetails:(NSString *)authKey completionBlock:(void (^) (BOOL, id, NSError*))completionBlock;
 
-- (void)facebookAuditorLogin:(NSString *)authKey completionBlock:(void (^) (BOOL, id, NSError*))completionBlock;
+- (void)facebookAuditorLogin:(id)body completionBlock:(void (^) (BOOL, id, NSError*))completionBlock;
 
+- (void)startSurvey:(NSString *)authKey completionBlock:(void (^) (BOOL, id, NSError*))completionBlock;
+
+- (void)submitQuestionnaire:(NSString *)authKey completionBlock:(void (^) (BOOL, id, NSError*))completionBlock;
 @end

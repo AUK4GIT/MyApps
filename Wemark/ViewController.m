@@ -18,6 +18,8 @@
 @property (weak, nonatomic) IBOutlet ACFloatingTextField *emailIdTextField;
 @property (weak, nonatomic) IBOutlet ACFloatingTextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstraint;
+@property (strong, nonatomic) NSString *mobileNumber;
+@property (strong, nonatomic) IBOutlet UIView *fbLoginButton;
 @end
 
 @implementation ViewController
@@ -28,10 +30,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
+    self.fbLoginButton.backgroundColor = [UIColor clearColor];
+//    FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
     // Optional: Place the button in the center of your view.
-    loginButton.center = self.view.center;
-    [self.view addSubview:loginButton];
+//    loginButton.frame = self.fbLoginButton.bounds;
+//    [self.fbLoginButton addSubview:loginButton];
+//    loginButton.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    
+//    loginButton.readPermissions =
+//    @[@"public_profile", @"email"];
+//    [loginButton removeTarget:nil
+//                       action:NULL
+//             forControlEvents:UIControlEventAllEvents];
+//    [loginButton
+//     addTarget:self
+//     action:@selector(loginButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+    
     activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     activityView.tintColor = [UIColor whiteColor];
     [activityView setHidesWhenStopped:true];
@@ -43,6 +57,101 @@
     [self.navigationController setNavigationBarHidden:true animated:true];
 }
 
+- (void)loginUsingFacebook:(id)result {
+    [activityView startAnimating];
+    __block NSString *deviceToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"DeviceToken"];
+    
+    void (^loginBlock)(void) =  ^{
+        WMWebservicesHelper *helper = [WMWebservicesHelper sharedInstance];
+        
+        NSDictionary* infoDict = [[NSBundle mainBundle] infoDictionary];
+        NSString* version = [infoDict objectForKey:@"CFBundleVersion"];
+        
+        NSMutableDictionary *dataDict = [NSMutableDictionary dictionary];
+        [dataDict setValue:[result valueForKey:@"email"] forKey:@"email_id"];
+        [dataDict setValue:[[UIDevice currentDevice] model] forKey:@"device_type"];
+        [dataDict setValue:[result valueForKey:@"id"] forKey:@"fb_id"];
+        [dataDict setValue:version forKey:@"app_version_ios"];
+        [dataDict setValue:deviceToken forKey:@"iphone_device_token"];
+        [helper facebookAuditorLogin:dataDict completionBlock:^(BOOL result, id responseDict, NSError *error) {
+            NSLog(@"result:-> %@",result ? @"success" : @"Failed");
+            if (result) {
+                [[WMDataHelper sharedInstance] setAuditorProfileDetails:responseDict];
+                AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                [appDelegate loadhomeScreenWithSidemenu];
+            } else {
+                NSDictionary *resDict = responseDict;
+                if ([resDict[@"code"] integerValue] == 409) {
+                    NSLog(@"Error responseDict:->  %@",resDict[@"message"]);
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                       [self showErrorMessage:resDict[@"message"]];
+                    });
+                }  else
+                    NSLog(@"Error:->  %@",error.localizedDescription);
+                }
+            //add UI related code here like stopping activity indicator
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [activityView stopAnimating];
+            });
+        }];
+    };
+    
+    if (deviceToken) {
+        loginBlock();
+    } else {
+        deviceToken = @"740f4707bebcf74f 9b7c25d4 8e3358945f6aa01d a5ddb387462c7eaf61bb78ad";
+        loginBlock();
+    }
+}
+
+// Once the button is clicked, show the login dialog
+-(IBAction)loginButtonClicked:(id)sender
+{
+    if ([FBSDKAccessToken currentAccessToken]) {
+        // User is logged in, do work such as go to next view controller.
+        
+            if ([FBSDKAccessToken currentAccessToken]) {
+                [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{@"fields": @"id,name,email,first_name,last_name,birthday"}]
+                 startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+                     if (!error) {
+                         NSLog(@"fetched user:%@", result);
+                         [self loginUsingFacebook:result];
+                     } else {
+                         
+                     }
+                 }];
+            }
+        
+    }else {
+    FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
+    login.loginBehavior = FBSDKLoginBehaviorSystemAccount;
+    [login
+     logInWithReadPermissions: @[@"public_profile"]
+     fromViewController:self
+     handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+         if (error) {
+             NSLog(@"Process error");
+         } else if (result.isCancelled) {
+             NSLog(@"Cancelled");
+         } else {
+             NSLog(@"Logged in");
+             if ([result.grantedPermissions containsObject:@"email"]) {
+                 if ([FBSDKAccessToken currentAccessToken]) {
+                     [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{@"fields": @"id,name,email,first_name,last_name,birthday"}]
+                      startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+                          if (!error) {
+                              NSLog(@"fetched user:%@", result);
+                               [self loginUsingFacebook:result];
+                          } else {
+                          
+                          }
+                      }];
+                 }
+             }
+         }
+     }];
+    }
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -75,6 +184,12 @@
                 NSDictionary *resDict = responseDict;
                 if ([resDict[@"code"] integerValue] == 409) {
                     NSLog(@"Error responseDict:->  %@",resDict[@"message"]);
+                }  else if ([resDict[@"code"] integerValue] == 401) {
+                    NSLog(@"Error responseDict:->  %@",resDict[@"message"]);
+                    [self showEnterPhoneNumberUI:resDict[@"message"]];
+                }  else if ([resDict[@"code"] integerValue] == 402) {
+                    NSLog(@"Error responseDict:->  %@",resDict[@"message"]);
+                    [self showErrorMessage:resDict[@"message"]];
                 } else {
                     NSLog(@"Error:->  %@",error.localizedDescription);
                 }
@@ -92,13 +207,103 @@
         deviceToken = @"740f4707bebcf74f 9b7c25d4 8e3358945f6aa01d a5ddb387462c7eaf61bb78ad";
         loginBlock();
     }
+}
 
+- (void)showVerifyOTPUI {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Wemark" message:@"Enter OTP" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *resendAction = [UIAlertAction actionWithTitle:@"Resend OTP" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self sendOTP];
+    }];
+    UIAlertAction *verifyAction = [UIAlertAction actionWithTitle:@"Verify OTP" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        UITextField *otp = alertController.textFields.firstObject;
+        if (otp.text.length > 0) {
+            [self verifyOTPEntered:otp.text];
+        }
+    }];
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField)
+     {
+         textField.placeholder = @"Enter OTP";
+     }];
+    [alertController addAction:resendAction];
+    [alertController addAction:verifyAction];
+    
+    [self presentViewController:alertController animated:true completion:^{
+    }];
+}
+
+- (void)showEnterPhoneNumberUI:(NSString *)message {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Wemark" message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *resendAction = [UIAlertAction actionWithTitle:@"Send OTP" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UITextField *otp = alertController.textFields.firstObject;
+        if (otp.text.length > 0) {
+            self.mobileNumber = otp.text;
+             [self sendOTP];
+        }
+    }];
+
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField)
+     {
+         textField.placeholder = @"Enter phone number";
+     }];
+    [alertController addAction:resendAction];
+    
+    [self presentViewController:alertController animated:true completion:^{
+    }];
+}
+
+- (void)verifyOTPEntered:(NSString *)otp {
+    [[WMWebservicesHelper sharedInstance] verifyOTP:@{@"code":otp,@"mobile":self.mobileNumber} completionBlock:^(BOOL result, id responseDict, NSError *error) {
+        
+        NSLog(@"result:-> %@",result ? @"success" : @"Failed");
+        if (result) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self proceedWithLogin:self.emailIdTextField.text password:self.passwordTextField.text];
+            });
+        }else{
+            NSDictionary *resDict = responseDict;
+            if ([resDict[@"code"]
+                 integerValue] == 409) {
+                NSLog(@"Error responseDict:->%@",resDict[@"message"]);
+            }else{
+                NSLog(@"Error:->%@",error.localizedDescription);
+            }
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [activityView stopAnimating];
+        });
+        
+    }];
+}
+
+- (void)sendOTP {
+    [[WMWebservicesHelper sharedInstance] sendOTP:[[WMDataHelper sharedInstance]
+     getAuthKey] toMobileNumber:self.mobileNumber completionBlock:^(BOOL result, id responseDict, NSError *error) {
+        
+        NSLog(@"result:-> %@",result ? @"success" : @"Failed");
+        if (result) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self showVerifyOTPUI];
+            });
+        }else{
+            NSDictionary *resDict = responseDict;
+            if ([resDict[@"code"]
+                 integerValue] == 409) {
+                NSLog(@"Error responseDict:->%@",resDict[@"message"]);
+            }else{
+                NSLog(@"Error:->%@",error.localizedDescription);
+            }
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [activityView stopAnimating];
+        });
+    }];
 }
 
 - (IBAction)loginAction :(id)sender {
     
-    self.emailIdTextField.text = @"vikas1@gmail.com";
-    self.passwordTextField.text = @"123456";
+//    self.emailIdTextField.text = @"vikas1@gmail.com";
+//    self.passwordTextField.text = @"123456";
     
     if (![self isValidEmail:self.emailIdTextField.text]) {
         NSLog(@"Invalid Email Address");
@@ -149,6 +354,16 @@
     NSString *emailRegex = stricterFilter ? stricterFilterString : laxString;
     NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
     return [emailTest evaluateWithObject:checkString];
+}
+
+- (void)showErrorMessage:(NSString *)msg {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Wemark" message:msg preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    [alertController addAction:cancelAction];
+    //    [alertController addAction:saveAction];
+    [self presentViewController:alertController animated:true completion:^{
+    }];
 }
 
 

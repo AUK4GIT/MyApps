@@ -56,6 +56,15 @@
     }];
 }
 
+- (void)showSuccessMessage:(NSString *)msg {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Wemark" message:msg preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    [alertController addAction:cancelAction];
+    //    [alertController addAction:saveAction];
+    [self presentViewController:alertController animated:true completion:^{
+    }];
+}
 /*
 #pragma mark - Navigation
 

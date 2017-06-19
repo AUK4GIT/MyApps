@@ -13,5 +13,5 @@
 - (void)showActivity;
 - (void)hideActivity;
 - (NSString *)convertToString:(id)value;
-
+- (void)showSuccessMessage:(NSString *)msg;
 @end

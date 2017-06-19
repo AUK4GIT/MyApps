@@ -59,6 +59,11 @@
 		C54CD09E1EEAC81C0004AEE7 /* WMChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C54CD09D1EEAC81C0004AEE7 /* WMChangePasswordViewController.m */; };
 		C54CD0A11EEAC8490004AEE7 /* WMTransactionHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C54CD0A01EEAC8490004AEE7 /* WMTransactionHistoryViewController.m */; };
 		C55E46F81EE6E1F0002E2258 /* WMAllAssignmentsClientIdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C55E46F71EE6E1F0002E2258 /* WMAllAssignmentsClientIdViewController.m */; };
+		C566B6E01EF7BB890089962D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C566B6DF1EF7BB890089962D /* GoogleService-Info.plist */; };
+		C566B6E21EF7F0920089962D /* WMAssignedStartSurveyCell1.xib in Resources */ = {isa = PBXBuildFile; fileRef = C566B6E11EF7F0920089962D /* WMAssignedStartSurveyCell1.xib */; };
+		C566B6E41EF7F4B20089962D /* WMAssignedStartSurveyCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = C566B6E31EF7F4B20089962D /* WMAssignedStartSurveyCell2.xib */; };
+		C566B6E61EF7F9160089962D /* WMAssignedStartSurveyCell3.xib in Resources */ = {isa = PBXBuildFile; fileRef = C566B6E51EF7F9160089962D /* WMAssignedStartSurveyCell3.xib */; };
+		C566B6E81EF7FAB30089962D /* WMAssignedStartSurveyCell4.xib in Resources */ = {isa = PBXBuildFile; fileRef = C566B6E71EF7FAB30089962D /* WMAssignedStartSurveyCell4.xib */; };
 		C56A605F1EEBDD0500F7F163 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C56A605E1EEBDD0500F7F163 /* BaseViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -159,6 +164,11 @@
 		C54CD0A01EEAC8490004AEE7 /* WMTransactionHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMTransactionHistoryViewController.m; sourceTree = "<group>"; };
 		C55E46F61EE6E1F0002E2258 /* WMAllAssignmentsClientIdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMAllAssignmentsClientIdViewController.h; sourceTree = "<group>"; };
 		C55E46F71EE6E1F0002E2258 /* WMAllAssignmentsClientIdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMAllAssignmentsClientIdViewController.m; sourceTree = "<group>"; };
+		C566B6DF1EF7BB890089962D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C566B6E11EF7F0920089962D /* WMAssignedStartSurveyCell1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WMAssignedStartSurveyCell1.xib; sourceTree = "<group>"; };
+		C566B6E31EF7F4B20089962D /* WMAssignedStartSurveyCell2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WMAssignedStartSurveyCell2.xib; sourceTree = "<group>"; };
+		C566B6E51EF7F9160089962D /* WMAssignedStartSurveyCell3.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WMAssignedStartSurveyCell3.xib; sourceTree = "<group>"; };
+		C566B6E71EF7FAB30089962D /* WMAssignedStartSurveyCell4.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WMAssignedStartSurveyCell4.xib; sourceTree = "<group>"; };
 		C56A605D1EEBDD0500F7F163 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		C56A605E1EEBDD0500F7F163 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -225,6 +235,7 @@
 				AE820FE31ED48DA900AE2BA2 /* Assets.xcassets */,
 				AE820FE51ED48DA900AE2BA2 /* LaunchScreen.storyboard */,
 				AE820FE81ED48DA900AE2BA2 /* Info.plist */,
+				C566B6DF1EF7BB890089962D /* GoogleService-Info.plist */,
 				AE820FE01ED48DA900AE2BA2 /* Wemark.xcdatamodeld */,
 				AE820FD41ED48DA900AE2BA2 /* Supporting Files */,
 			);
@@ -313,6 +324,10 @@
 				C509CAF01EE7BEAB002D4F86 /* WMAssignedCell.xib */,
 				C509CAF21EE7BED2002D4F86 /* WMAcceptedCell.xib */,
 				C509CAF41EE7BEFE002D4F86 /* WMRejectedCell.xib */,
+				C566B6E11EF7F0920089962D /* WMAssignedStartSurveyCell1.xib */,
+				C566B6E31EF7F4B20089962D /* WMAssignedStartSurveyCell2.xib */,
+				C566B6E51EF7F9160089962D /* WMAssignedStartSurveyCell3.xib */,
+				C566B6E71EF7FAB30089962D /* WMAssignedStartSurveyCell4.xib */,
 				AE91CCCA1EDAAC7A00BB9585 /* WMAssignCell.h */,
 				AE91CCCB1EDAAC7A00BB9585 /* WMAssignCell.m */,
 				C509CAF81EE81443002D4F86 /* WMAppliedCell.h */,
@@ -414,14 +429,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE91CCC71ED9F9F900BB9585 /* WMMenuCell.xib in Resources */,
+				C566B6E81EF7FAB30089962D /* WMAssignedStartSurveyCell4.xib in Resources */,
 				C509CAF11EE7BEAB002D4F86 /* WMAssignedCell.xib in Resources */,
 				AE820FE71ED48DA900AE2BA2 /* LaunchScreen.storyboard in Resources */,
 				AE820FE41ED48DA900AE2BA2 /* Assets.xcassets in Resources */,
 				AE91CCC91EDA9E4A00BB9585 /* WMAssignCell.xib in Resources */,
 				C509CAF71EE802BF002D4F86 /* WMAppliedCell.xib in Resources */,
 				C509CAF51EE7BEFE002D4F86 /* WMRejectedCell.xib in Resources */,
+				C566B6E21EF7F0920089962D /* WMAssignedStartSurveyCell1.xib in Resources */,
+				C566B6E01EF7BB890089962D /* GoogleService-Info.plist in Resources */,
 				AE820FDF1ED48DA900AE2BA2 /* Main.storyboard in Resources */,
+				C566B6E61EF7F9160089962D /* WMAssignedStartSurveyCell3.xib in Resources */,
 				C509CAF31EE7BED2002D4F86 /* WMAcceptedCell.xib in Resources */,
+				C566B6E41EF7F4B20089962D /* WMAssignedStartSurveyCell2.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

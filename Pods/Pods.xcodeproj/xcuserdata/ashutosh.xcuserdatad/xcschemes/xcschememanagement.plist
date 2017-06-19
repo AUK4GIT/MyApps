@@ -34,6 +34,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>GoogleToolboxForMac.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>HCSStarRatingView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -54,6 +59,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Protobuf.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SDWebImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -63,6 +73,16 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>0A667609BF9BD15CE73A76A27D5C8C4B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>15488F9DE47C095A0839AA8DBD89AA14</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>286CF5A9AD16D55A62C7AB615658F2D5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -82,12 +102,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>965699190112DDBD9B7864D091660DBC</key>
+		<key>93F5AA5181285F01B1CCB88409949B21</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9981C3EB6EAF6AF42E6CD0870DA192C0</key>
+		<key>965699190112DDBD9B7864D091660DBC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -107,12 +127,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CF671F7E57B92905F1CC91D036D6B4A7</key>
+		<key>C5B80060FE8C664DF08841000F41D515</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D4D4D7406FE056046F7DABF9C6E6BA98</key>
+		<key>CF671F7E57B92905F1CC91D036D6B4A7</key>
 		<dict>
 			<key>primary</key>
 			<true/>

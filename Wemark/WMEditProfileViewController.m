@@ -37,7 +37,7 @@
 @property (strong, nonatomic) NSString *selectedStateName;
 @property (strong, nonatomic) NSString *selectedCityName;
 @property (strong, nonatomic) NSString *selectedDate;
-@property (strong, nonatomic) NSURL *profilePicURL;
+@property (strong, nonatomic) NSString *profilePicURL;
 
 - (IBAction)editSaveBtnTapped:(id)sender;
 
@@ -81,6 +81,7 @@
     self.lastNameTextField.text = [userObj valueForKey:@"auditor_lname"];
     self.emailIdTextField.text = [self convertToString:[userObj valueForKey:@"auditor_email"]];
     self.mobileNoTextField.text = [self convertToString:[userObj valueForKey:@"auditor_ph_no"]];
+    if (userPersonalObj != [NSNull null]) {
     self.cityTextField.text = [self convertToString:[userPersonalObj valueForKey:@"auditor_address_city"]];
     self.selectedCityName = [self convertToString:[userPersonalObj valueForKey:@"auditor_address_city"]];
     
@@ -89,16 +90,16 @@
     
     self.stateTextField.text = [self convertToString:[userPersonalObj valueForKey:@"auditor_address_state"]];
     self.selectedStateName = [self convertToString:[userPersonalObj valueForKey:@"auditor_address_state"]];
-    
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-    self.selectedDate = [self convertToString:[userPersonalObj valueForKey:@"auditor_dob"]];
-    NSDate *dob = [dateFormatter dateFromString:self.selectedDate];
-    [dateFormatter setDateFormat:@"dd MMM yyyy"];
-    self.dobTextField.text = [dateFormatter stringFromDate:dob];
-    
-    self.pincodeTextField.text = [self convertToString:[userPersonalObj valueForKey:@"auditor_permanent_address_pincode"]];
-    
+        if ([userPersonalObj valueForKey:@"auditor_dob"] != [NSNull null]) {
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+            self.selectedDate = [self convertToString:[userPersonalObj valueForKey:@"auditor_dob"]];
+            NSDate *dob = [dateFormatter dateFromString:self.selectedDate];
+            [dateFormatter setDateFormat:@"dd MMM yyyy"];
+            self.dobTextField.text = [dateFormatter stringFromDate:dob];
+            self.pincodeTextField.text = [self convertToString:[userPersonalObj valueForKey:@"auditor_permanent_address_pincode"]];
+        }
+    }
 }
 
 - (void)profilePicTapped:(id)gesture {
@@ -143,16 +144,6 @@
 
 - (void)hideActivity {
     [activityView stopAnimating];
-}
-
-- (void)showErrorMessage:(NSString *)msg {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Wemark" message:msg preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-    }];
-    [alertController addAction:cancelAction];
-    //    [alertController addAction:saveAction];
-    [self presentViewController:alertController animated:true completion:^{
-    }];
 }
 
 - (void)selectADateofBirth:(id)sender {
@@ -237,6 +228,7 @@
         NSLog(@"result:-> %@",result ? @"success" : @"Failed");
         if (result) {
 //            self.profileDict = responseDict;
+            [self showSuccessMessage:@"Profile updated successfully"];
         } else {
             NSDictionary *resDict = responseDict;
             if ([resDict[@"code"] integerValue] == 409) {
@@ -276,9 +268,18 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
-    self.profilePicURL = info[UIImagePickerControllerReferenceURL];
     self.profilePic.image = chosenImage;
     
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString *imgName = @"temp";
+    NSString *imgPath = [paths[0] stringByAppendingPathComponent:imgName];
+    
+    NSData *data = UIImageJPEGRepresentation(chosenImage, 0);
+    [data writeToFile:imgPath atomically:true];
+    
+    // Save it's path
+    self.profilePicURL = imgPath;
+
     [picker dismissViewControllerAnimated:YES completion:^{
     }];
     

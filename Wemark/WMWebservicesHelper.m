@@ -57,25 +57,24 @@
     [dataTask resume];
 }
 
-- (void)registerAuditorWithdata:(NSDictionary *)body imageURL:(NSURL *)imgURL completionBlock: (void (^) (BOOL, id, NSError*))completionBlock{
+- (void)registerAuditorWithdata:(NSDictionary *)body imageURL:(NSString *)imgURL completionBlock: (void (^) (BOOL, id, NSError*))completionBlock{
     
-    NSError *error;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:body options:NSJSONWritingPrettyPrinted error:&error];
+//    NSError *error;
+//    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:body options:NSJSONWritingPrettyPrinted error:&error];
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
     
-    
-    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"%@%@",baseURL,registerURL] parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"%@%@",baseURL,registerURL] parameters:body constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         NSString *fName = [NSString stringWithFormat:@"%@_%@",[body objectForKey:@"first_name"],[body objectForKey:@"last_name"]];
         if (imgURL) {
-            [formData appendPartWithFileURL:imgURL name:fName fileName:[NSString stringWithFormat:@"%@.jpg",fName] mimeType:@"image/jpeg" error:nil];
+            [formData appendPartWithFileURL:[NSURL fileURLWithPath:imgURL] name:fName fileName:[NSString stringWithFormat:@"%@.jpg",fName] mimeType:@"image/jpeg" error:nil];
         }
     } error:nil];
 
-    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    [request setHTTPBody:jsonData];
+//    [request addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+//    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+//    [request setHTTPBody:jsonData];
 
     NSURLSessionUploadTask *uploadTask;
     uploadTask = [manager
@@ -98,21 +97,7 @@
                           completionBlock(true,responseObject[@"data"],nil);
                       }
                   }];
-    
     [uploadTask resume];
-    
-    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
-        if (error) {
-            NSLog(@"Error: %@\nMessage: %@", error.localizedDescription, responseObject[@"meta"]);
-            NSDictionary *codeDict = responseObject[@"meta"];
-            completionBlock(false,codeDict,error);
-        } else {
-            NSLog(@"%@ ** %@", response, responseObject);
-            completionBlock(true,responseObject[@"data"],nil);
-        }
-
-    }];
-    [dataTask resume];
 }
 
 - (void)getAllLocations:(NSString *)authKey withPageNumber:(NSString *)pageNumber completionBlock:(void (^) (BOOL, id, NSError*))completionBlock {
@@ -386,22 +371,24 @@
     [dataTask resume];
 }
 
-- (void)editProfile:(NSString *)authKey paramsDict:(id )paramsDict profilePicURL:(NSURL *)profilePicURL userId:(NSString *)userId completionBlock:(void (^) (BOOL,id,NSError *))completionBlock {
+- (void)editProfile:(NSString *)authKey paramsDict:(id )paramsDict profilePicURL:(NSString *)profilePicURL userId:(NSString *)userId completionBlock:(void (^) (BOOL,id,NSError *))completionBlock {
     
-    NSError *error;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:paramsDict options:NSJSONWritingPrettyPrinted error:&error];
+//    NSError *error;
+//    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:paramsDict options:NSJSONWritingPrettyPrinted error:&error];
     
     NSString *urlString = [NSString stringWithFormat:@"%@%@?id=%@",baseURL,editProfileURL,userId];
-    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:urlString parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:urlString parameters:paramsDict constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         NSString *fName = [NSString stringWithFormat:@"%@_%@",[paramsDict objectForKey:@"auditor_fname"],[paramsDict objectForKey:@"auditor_lname"]];
         if(profilePicURL) {
-            [formData appendPartWithFileURL:profilePicURL name:fName fileName:[NSString stringWithFormat:@"%@.jpg",fName] mimeType:@"image/jpeg" error:nil];
+            NSError *error;
+            [formData appendPartWithFileURL:[NSURL fileURLWithPath:profilePicURL] name:fName fileName:[NSString stringWithFormat:@"%@.jpg",fName] mimeType:@"image/jpeg" error:&error];
+            NSLog(@"error: %@",error);
         }
     } error:nil];
     [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request addValue:authKey forHTTPHeaderField:@"Auth-key"];
-    [request setHTTPBody:jsonData];
+//    [request setHTTPBody:jsonData];
     
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     
@@ -583,29 +570,75 @@
     [dataTask resume];
 }
 
-- (void)facebookAuditorLogin:(NSString *)authKey completionBlock:(void (^) (BOOL, id, NSError*))completionBlock {
-//    NSError *error;
-//    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:body options:0 error:&error];
-//    
-//    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-//    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
-//    
-//    NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"%@%@",baseURL,facebookAuditorLoginURL] parameters:nil error:nil];
-//    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-//    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
-//    [request setHTTPBody:jsonData];
-//    
-//    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
-//        if (error) {
-//            NSLog(@"Error: %@\nMessage: %@", error.localizedDescription, responseObject[@"meta"]);
-//            NSDictionary *codeDict = responseObject[@"meta"];
-//            completionBlock(false,codeDict,error);
-//        } else {
-//            NSLog(@"%@ ** %@", response, responseObject);
-//            completionBlock(true,responseObject[@"data"],nil);
-//        }
-//    }];
-//    [dataTask resume];
+- (void)facebookAuditorLogin:(id)body completionBlock:(void (^) (BOOL, id, NSError*))completionBlock {
 
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:body options:0 error:&error];
+    
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    
+    NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"%@%@",baseURL,facebookAuditorLoginURL] parameters:nil error:nil];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setHTTPBody:jsonData];
+    
+    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+        if (error) {
+            NSLog(@"Error: %@\nMessage: %@", error.localizedDescription, responseObject[@"meta"]);
+            NSDictionary *codeDict = responseObject[@"meta"];
+            completionBlock(false,codeDict,error);
+        } else {
+            NSLog(@"%@ ** %@", response, responseObject);
+            completionBlock(true,responseObject[@"data"],nil);
+        }
+    }];
+    [dataTask resume];
+}
+
+- (void)startSurvey:(NSString *)authKey completionBlock:(void (^) (BOOL, id, NSError*))completionBlock {
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    
+    NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"GET" URLString:[NSString stringWithFormat:@"%@%@",baseURL,startSurveyURL] parameters:nil error:nil];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request addValue:authKey forHTTPHeaderField:@"Auth-key"];
+    
+    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+        if (error) {
+            NSLog(@"Error: %@\nMessage: %@", error.localizedDescription, responseObject[@"meta"]);
+            NSDictionary *codeDict = responseObject[@"meta"];
+            completionBlock(false,codeDict,error);
+        } else {
+            NSLog(@"%@ ** %@", response, responseObject);
+            completionBlock(true,responseObject[@"data"],nil);
+        }
+    }];
+    [dataTask resume];
+    
+}
+- (void)submitQuestionnaire:(NSString *)authKey completionBlock:(void (^) (BOOL, id, NSError*))completionBlock {
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    
+    NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"%@%@",baseURL,submitQuestionnaireAnswerURL] parameters:nil error:nil];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request addValue:authKey forHTTPHeaderField:@"Auth-key"];
+    
+    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+        if (error) {
+            NSLog(@"Error: %@\nMessage: %@", error.localizedDescription, responseObject[@"meta"]);
+            NSDictionary *codeDict = responseObject[@"meta"];
+            completionBlock(false,codeDict,error);
+        } else {
+            NSLog(@"%@ ** %@", response, responseObject);
+            completionBlock(true,responseObject[@"data"],nil);
+        }
+    }];
+    [dataTask resume];
+    
+    
 }
 @end

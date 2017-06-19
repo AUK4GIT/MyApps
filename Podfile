@@ -17,4 +17,6 @@ pod 'HMSegmentedControl'
 pod 'HCSStarRatingView', '~> 1.5'
 pod 'FBSDKCoreKit'
 pod 'FBSDKLoginKit'
+pod 'Firebase/Core'
+pod 'Firebase/Messaging'
 end

@@ -20,7 +20,7 @@
 @property (strong, nonatomic) IBOutlet ACFloatingTextField *mobileNumberTextField;
 @property (strong, nonatomic) IBOutlet ACFloatingTextField *passwordTextField;
 @property (strong, nonatomic) IBOutlet UIImageView *profileImgView;
-@property (strong, nonatomic) NSURL *profilePicURL;
+@property (strong, nonatomic) NSString *profilePicURL;
 - (IBAction)signUpBtnTapped:(id)sender;
 - (IBAction)signInBtnTapped:(id)sender;
 @end
@@ -84,7 +84,7 @@
         NSLog(@"result:-> %@",result ? @"success" : @"Failed");
         if (result) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self showVerifyOTPUI];
+                [self.navigationController popToRootViewControllerAnimated:true];
             });
         }else{
             NSDictionary *resDict = responseDict;
@@ -150,6 +150,7 @@ userid password:(NSString *)password firstName:(NSString *)firstname lastName:(N
                 [dataDict setValue:[[UIDevice currentDevice] model] forKey:@"device_type"];
                 [dataDict setValue:version forKey:@"app_version_ios"];
                 [dataDict setValue:deviceToken forKey:@"iphone_device_token"];
+                [dataDict setValue:self.mobileNumberTextField.text forKey:@"auditor_ph_no"];
 //                [dataDict setValue:<#(nullable id)#> forKey:@"fb_id"];
         [helper registerAuditorWithdata:dataDict imageURL:self.profilePicURL completionBlock:^(BOOL result, id responseDict, NSError *error)
          {
@@ -181,6 +182,7 @@ userid password:(NSString *)password firstName:(NSString *)firstname lastName:(N
 }
 
 - (IBAction)signUpBtnTapped:(id)sender {
+    
     if (![self isValidEmail:self.emailIdTextField.text]) {
         NSLog(@"Invalid Email Address");
         [self.emailIdTextField showErrorWithText:@"Please type a valid email id"];
@@ -252,11 +254,19 @@ userid password:(NSString *)password firstName:(NSString *)firstname lastName:(N
     
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
     self.profileImgView.image = chosenImage;
-    self.profilePicURL = info[UIImagePickerControllerReferenceURL];
-
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString *imgName = @"temp";
+    NSString *imgPath = [paths[0] stringByAppendingPathComponent:imgName];
+    
+    NSData *data = UIImageJPEGRepresentation(chosenImage, 0.3);
+    [data writeToFile:imgPath atomically:true];
+    
+    // Save it's path
+    self.profilePicURL = imgPath;
+    
     [picker dismissViewControllerAnimated:YES completion:^{
     }];
-    
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {

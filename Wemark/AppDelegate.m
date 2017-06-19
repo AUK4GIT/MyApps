@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "WMMenuViewController.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+@import UIKit;
+@import Firebase;
 @import GoogleMaps;
 @import GooglePlaces;
 //#import <GoogleMaps/GoogleMaps.h>
@@ -20,7 +22,16 @@
 @implementation AppDelegate
 
 
+//@implementation AppDelegate
+//
+//- (BOOL)application:(UIApplication *)application
+//didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+//    
+//    return YES;
+//}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [FIRApp configure];
     // Override point for customization after application launch.
     [[FBSDKApplicationDelegate sharedInstance] application:application
                              didFinishLaunchingWithOptions:launchOptions];
@@ -56,7 +67,14 @@
                     ];
     // Add any custom logic here.
     return handled;
-} 
+}
+
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString*, id> *)options {
+    return [[FBSDKApplicationDelegate sharedInstance] application:app
+                                                          openURL:url
+                                                sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
+                                                       annotation:options[UIApplicationOpenURLOptionsAnnotationKey]];
+}
 
 - (void)initializeNotificationServices {
     UIUserNotificationSettings *userNotif = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge|UIUserNotificationTypeAlert|UIUserNotificationTypeAlert categories:nil];
