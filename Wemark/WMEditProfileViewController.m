@@ -14,7 +14,7 @@
 #import "WMDataHelper.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
-@interface WMEditProfileViewController () <UIImagePickerControllerDelegate>
+@interface WMEditProfileViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (strong, nonatomic) IBOutlet ACFloatingTextField *fullNameTextField;
 @property (strong, nonatomic) IBOutlet ACFloatingTextField *lastNameTextField;
 @property (strong, nonatomic) IBOutlet ACFloatingTextField *emailIdTextField;
@@ -97,7 +97,7 @@
             NSDate *dob = [dateFormatter dateFromString:self.selectedDate];
             [dateFormatter setDateFormat:@"dd MMM yyyy"];
             self.dobTextField.text = [dateFormatter stringFromDate:dob];
-            self.pincodeTextField.text = [self convertToString:[userPersonalObj valueForKey:@"auditor_permanent_address_pincode"]];
+            self.pincodeTextField.text = [self convertToString:[userPersonalObj valueForKey:@"auditor_postal_address_pincode"]];
         }
     }
 }

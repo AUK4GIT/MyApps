@@ -500,10 +500,10 @@
                                             </attributedString>
                                         </state>
                                         <connections>
-                                            <segue destination="3R1-aa-5jF" kind="show" id="ZLk-O4-v9N"/>
+                                            <segue destination="3R1-aa-5jF" kind="show" identifier="ShowSignup" id="ZLk-O4-v9N"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xAz-sn-HFO">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xAz-sn-HFO" customClass="FBSDKLoginButton">
                                         <rect key="frame" x="99" y="612" width="216" height="40"/>
                                         <color key="backgroundColor" red="0.1764705882352941" green="0.26666666666666666" blue="0.52156862745098043" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Don't have an account yet ? SIGN UP" image="facebook_button_logo">
@@ -698,6 +698,7 @@
                     <navigationItem key="navigationItem" id="7tc-Vx-obd"/>
                     <connections>
                         <outlet property="emailIdTextField" destination="89t-0T-XpG" id="lfJ-RL-I6W"/>
+                        <outlet property="fbLoginButton" destination="xAz-sn-HFO" id="pAt-6v-qk1"/>
                         <outlet property="passwordTextField" destination="twF-ag-CgL" id="EwB-YF-nf1"/>
                         <outlet property="topConstraint" destination="5Cr-hv-fX8" id="Xg8-OU-ufn"/>
                     </connections>
@@ -1115,7 +1116,7 @@
             <objects>
                 <navigationController storyboardIdentifier="LoginControler" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="OAH-XH-s4Z" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" backIndicatorImage="back-button-image" backIndicatorTransitionMaskImage="back-button-image" id="yhV-EL-ALH">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="back-button-image" backIndicatorTransitionMaskImage="back-button-image" id="yhV-EL-ALH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1896,7 +1897,7 @@
             <objects>
                 <navigationController storyboardIdentifier="SideMenuNavController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="g2i-yh-G7w" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" backIndicatorImage="back-button-image" backIndicatorTransitionMaskImage="back-button-image" id="0ad-8w-Cnn">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" backIndicatorImage="back-button-image" backIndicatorTransitionMaskImage="back-button-image" id="0ad-8w-Cnn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.86274509803921573" green="0.0" blue="0.23529411764705882" alpha="1" colorSpace="calibratedRGB"/>
@@ -2415,7 +2416,7 @@
             <objects>
                 <navigationController storyboardIdentifier="NotificationsNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="c9l-Ec-Gtp" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" backIndicatorImage="back-button-image" backIndicatorTransitionMaskImage="back-button-image" id="6F2-Fb-PaG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" backIndicatorImage="back-button-image" backIndicatorTransitionMaskImage="back-button-image" id="6F2-Fb-PaG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.86274509799999999" green="0.0" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -2545,7 +2546,7 @@
             <objects>
                 <navigationController storyboardIdentifier="MyAccountNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gKY-VP-T3T" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" backIndicatorImage="back-button-image" backIndicatorTransitionMaskImage="back-button-image" id="BH3-Tx-ZO8">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" backIndicatorImage="back-button-image" backIndicatorTransitionMaskImage="back-button-image" id="BH3-Tx-ZO8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.86274509799999999" green="0.0" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -3975,7 +3976,7 @@
             <objects>
                 <navigationController storyboardIdentifier="AssistanceNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="M4G-n4-q7O" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" backIndicatorImage="back-button-image" backIndicatorTransitionMaskImage="back-button-image" id="TlS-2x-WTo">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" backIndicatorImage="back-button-image" backIndicatorTransitionMaskImage="back-button-image" id="TlS-2x-WTo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.86274509799999999" green="0.0" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -4018,7 +4019,7 @@
             <objects>
                 <navigationController storyboardIdentifier="MyAssignmentsNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dv0-Mo-lBn" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" backIndicatorImage="back-button-image" backIndicatorTransitionMaskImage="back-button-image" id="ndp-wy-w8f">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" backIndicatorImage="back-button-image" backIndicatorTransitionMaskImage="back-button-image" id="ndp-wy-w8f">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.86274509799999999" green="0.0" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -4134,7 +4135,7 @@
                     <connections>
                         <outlet property="noAssignmentsView" destination="fME-w0-fBq" id="mTh-WV-WDq"/>
                         <outlet property="tableView" destination="zoA-kH-vmj" id="G5f-Pe-6LE"/>
-                        <segue destination="ae5-hz-d0X" kind="show" id="xzA-si-7bM"/>
+                        <segue destination="ae5-hz-d0X" kind="show" identifier="Start Survey" id="xzA-si-7bM"/>
                         <segue destination="uBn-Yo-pS2" kind="show" id="hsB-tL-gUQ"/>
                     </connections>
                 </viewController>
@@ -4245,6 +4246,10 @@
                                         <size key="customSize" width="200" height="150"/>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="ae5-hz-d0X" id="q4D-eq-dft"/>
+                                    <outlet property="delegate" destination="ae5-hz-d0X" id="HCh-v3-kyv"/>
+                                </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fwb-PZ-duK">
                                 <rect key="frame" x="131" y="547" width="57" height="31"/>
@@ -4256,6 +4261,9 @@
                                 <state key="normal" title="Start">
                                     <color key="titleColor" red="0.86274509799999999" green="0.0" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="startBtnTapped:" destination="ae5-hz-d0X" eventType="touchUpInside" id="BpN-tm-JbU"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l6o-9t-Pyo">
                                 <rect key="frame" x="20" y="593" width="374" height="30"/>

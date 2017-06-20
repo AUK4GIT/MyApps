@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface WMSignupViewController : UIViewController
-
+@property (strong, nonatomic) NSString * facebookid;
+@property (strong, nonatomic) id facebookprofile;
 @end

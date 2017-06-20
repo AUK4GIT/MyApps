@@ -10,8 +10,9 @@
 #import "WMWebservicesHelper.h"
 #import "WMDataHelper.h"
 #import "ACFloatingTextField.h"
+#import <FirebaseMessaging/FirebaseMessaging.h>
 
-@interface WMSignupViewController () <UIImagePickerControllerDelegate>
+@interface WMSignupViewController () <UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet ACFloatingTextField *firstNameTextField;
 @property (strong, nonatomic) IBOutlet ACFloatingTextField *lastNameTextField;
@@ -39,6 +40,12 @@
     [self.view addSubview:activityView];
     
     self.title = @"Sign up";
+    
+    if (self.facebookprofile) {
+        self.firstNameTextField.text = [self.facebookprofile valueForKey:@"first_name"];
+        self.lastNameTextField.text = [self.facebookprofile valueForKey:@"last_name"];
+        self.emailIdTextField.text = [self.facebookprofile valueForKey:@"email"];
+    }
 }
 - (void)viewWillLayoutSubviews {
     activityView.center = self.view.center;
@@ -151,7 +158,14 @@ userid password:(NSString *)password firstName:(NSString *)firstname lastName:(N
                 [dataDict setValue:version forKey:@"app_version_ios"];
                 [dataDict setValue:deviceToken forKey:@"iphone_device_token"];
                 [dataDict setValue:self.mobileNumberTextField.text forKey:@"auditor_ph_no"];
-//                [dataDict setValue:<#(nullable id)#> forKey:@"fb_id"];
+        if (self.facebookid) {
+            [dataDict setValue:self.facebookid forKey:@"fb_id"];
+        }
+        NSString *fcmToken = [FIRMessaging messaging].FCMToken;
+        NSLog(@"FCM registration token: %@", fcmToken);
+        if (fcmToken) {
+            [dataDict setValue:fcmToken forKey:@"gcm_id"];
+        }
         [helper registerAuditorWithdata:dataDict imageURL:self.profilePicURL completionBlock:^(BOOL result, id responseDict, NSError *error)
          {
              NSLog(@"result:-> %@",result ? @"success" : @"Failed");

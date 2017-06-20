@@ -192,18 +192,23 @@
     }
     cell.backgroundColor = [UIColor clearColor];
     cell.contentView.backgroundColor = [UIColor clearColor];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
 #pragma mark - UITbleView Delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    id assignObj = self.assignmentsArray[indexPath.row];
-    WMCampaignDetailsViewController *cVC = [self.storyboard instantiateViewControllerWithIdentifier:@"WMCampaignDetailsViewController"];
-    cVC.campaignid = [assignObj valueForKey:@"campaignid"];
-    cVC.clientid = [assignObj valueForKey:@"clientid"];
-    
-    [self.navigationController pushViewController:cVC animated:true];
+    if (self.segmentedControl.selectedSegmentIndex == 1) {
+        
+    } else {
+        id assignObj = self.assignmentsArray[indexPath.row];
+        WMCampaignDetailsViewController *cVC = [self.storyboard instantiateViewControllerWithIdentifier:@"WMCampaignDetailsViewController"];
+        cVC.campaignid = [assignObj valueForKey:@"campaignid"];
+        cVC.clientid = [assignObj valueForKey:@"clientid"];
+        
+        [self.navigationController pushViewController:cVC animated:true];
+    }
 }
 
 

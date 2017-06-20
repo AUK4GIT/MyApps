@@ -9,28 +9,23 @@
 #import "AppDelegate.h"
 #import "WMMenuViewController.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <UserNotifications/UserNotifications.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
 @import UIKit;
 @import Firebase;
 @import GoogleMaps;
 @import GooglePlaces;
-//#import <GoogleMaps/GoogleMaps.h>
 
 @interface AppDelegate ()
 
 @end
+NSString *const kGCMMessageIDKey = @"gcm.message_id";
 
 @implementation AppDelegate
 
-
-//@implementation AppDelegate
-//
-//- (BOOL)application:(UIApplication *)application
-//didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-//    
-//    return YES;
-//}
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+   
     [FIRApp configure];
     // Override point for customization after application launch.
     [[FBSDKApplicationDelegate sharedInstance] application:application
@@ -54,7 +49,7 @@
     [[UINavigationBar appearance] setTitleTextAttributes:resultingAttrs];
     [[UINavigationBar appearance] setShadowImage:[self imageFromColor:[UIColor colorWithRed:220/255.0 green:0.0 blue:60/255.0 alpha:1.0]]];
     [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:220/255.0 green:0.0 blue:60/255.0 alpha:1.0]];
-    
+    [self initializeNotificationServices];
     return YES;
 }
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
@@ -77,8 +72,31 @@
 }
 
 - (void)initializeNotificationServices {
-    UIUserNotificationSettings *userNotif = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge|UIUserNotificationTypeAlert|UIUserNotificationTypeAlert categories:nil];
-    [[UIApplication sharedApplication] registerUserNotificationSettings:userNotif];
+//    UIUserNotificationSettings *userNotif = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge|UIUserNotificationTypeAlert|UIUserNotificationTypeAlert categories:nil];
+//    [[UIApplication sharedApplication] registerUserNotificationSettings:userNotif];
+//    [[UIApplication sharedApplication] registerForRemoteNotifications];
+    
+    if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_9_x_Max) {
+        UIUserNotificationType allNotificationTypes =
+        (UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge);
+        UIUserNotificationSettings *settings =
+        [UIUserNotificationSettings settingsForTypes:allNotificationTypes categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+    } else {
+        // iOS 10 or later
+#if defined(__IPHONE_10_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
+        // For iOS 10 display notification (sent via APNS)
+        UNUserNotificationCenter* center = [UNUserNotificationCenter currentNotificationCenter];
+        center.delegate = self;
+        UNAuthorizationOptions authOptions =
+        UNAuthorizationOptionAlert
+        | UNAuthorizationOptionSound
+        | UNAuthorizationOptionBadge;
+        [center requestAuthorizationWithOptions:authOptions completionHandler:^(BOOL granted, NSError * _Nullable error) {
+        }];
+#endif
+    }
+    
     [[UIApplication sharedApplication] registerForRemoteNotifications];
 }
 
@@ -102,6 +120,10 @@
 }
 
 - (void)logout {
+    
+    FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
+    [loginManager logOut];
+    
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main"
                                                              bundle: nil];
     UINavigationController *fvc = [mainStoryboard instantiateViewControllerWithIdentifier:@"LoginControler"];
@@ -113,15 +135,6 @@
 }
 
 - (UIImage *)imageFromColor:(UIColor *)color {
-//    CGRect rect = CGRectMake(0, 0, 1, 1);
-//    UIGraphicsBeginImageContext(rect.size);
-//    CGContextRef context = UIGraphicsGetCurrentContext();
-//    CGContextSetFillColorWithColor(context, [color CGColor]);
-//    CGContextFillRect(context, rect);
-//    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-//    UIGraphicsEndImageContext();
-//    return image;
-    
     CGRect rect = CGRectMake(0.0f, 0.0f, 3.0f, 3.0f);
     UIGraphicsBeginImageContext(rect.size);
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -135,6 +148,15 @@
     image = [image resizableImageWithCapInsets:UIEdgeInsetsMake(1, 1, 1, 1)];
     
     return image;
+}
+
+- (void)messaging:(nonnull FIRMessaging *)messaging didRefreshRegistrationToken:(nonnull NSString *)fcmToken {
+    // Note that this callback will be fired everytime a new token is generated, including the first
+    // time. So if you need to retrieve the token as soon as it is available this is where that
+    // should be done.
+    NSLog(@"FCM registration token: %@", fcmToken);
+    
+    // TODO: If necessary send token to application server.
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -182,6 +204,42 @@
     
 }
 
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    // If you are receiving a notification message while your app is in the background,
+    // this callback will not be fired till the user taps on the notification launching the application.
+    // TODO: Handle data of notification
+    
+    // With swizzling disabled you must let Messaging know about the message, for Analytics
+    // [[Messaging messaging] appDidReceiveMessage:userInfo];
+    
+    // Print message ID.
+    if (userInfo[kGCMMessageIDKey]) {
+        NSLog(@"Message ID: %@", userInfo[kGCMMessageIDKey]);
+    }
+    
+    // Print full message.
+    NSLog(@"%@", userInfo);
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    // If you are receiving a notification message while your app is in the background,
+    // this callback will not be fired till the user taps on the notification launching the application.
+    // TODO: Handle data of notification
+    
+    // With swizzling disabled you must let Messaging know about the message, for Analytics
+    // [[Messaging messaging] appDidReceiveMessage:userInfo];
+    
+    // Print message ID.
+    if (userInfo[kGCMMessageIDKey]) {
+        NSLog(@"Message ID: %@", userInfo[kGCMMessageIDKey]);
+    }
+    
+    // Print full message.
+    NSLog(@"%@", userInfo);
+    
+    completionHandler(UIBackgroundFetchResultNewData);
+}
 
 #pragma mark - Core Data stack
 

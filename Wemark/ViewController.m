@@ -13,13 +13,17 @@
 #import "AppDelegate.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <FirebaseMessaging/FirebaseMessaging.h>
+#import "WMSignupViewController.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet ACFloatingTextField *emailIdTextField;
 @property (weak, nonatomic) IBOutlet ACFloatingTextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstraint;
 @property (strong, nonatomic) NSString *mobileNumber;
-@property (strong, nonatomic) IBOutlet UIView *fbLoginButton;
+@property (strong, nonatomic) IBOutlet FBSDKLoginButton *fbLoginButton;
+@property (strong, nonatomic) NSString * facebookid;
+@property (strong, nonatomic) id facebookprofile;
 @end
 
 @implementation ViewController
@@ -30,31 +34,49 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    self.fbLoginButton.backgroundColor = [UIColor clearColor];
+//    self.fbLoginButton.backgroundColor = [UIColor clearColor];
 //    FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
-    // Optional: Place the button in the center of your view.
 //    loginButton.frame = self.fbLoginButton.bounds;
 //    [self.fbLoginButton addSubview:loginButton];
 //    loginButton.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     
 //    loginButton.readPermissions =
 //    @[@"public_profile", @"email"];
-//    [loginButton removeTarget:nil
-//                       action:NULL
-//             forControlEvents:UIControlEventAllEvents];
-//    [loginButton
-//     addTarget:self
-//     action:@selector(loginButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+    [self.fbLoginButton removeTarget:nil
+                       action:NULL
+             forControlEvents:UIControlEventAllEvents];
+    [self.fbLoginButton
+     addTarget:self
+     action:@selector(loginButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     
     activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     activityView.tintColor = [UIColor whiteColor];
     [activityView setHidesWhenStopped:true];
     [self.view addSubview:activityView];
+    
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+    [self chekifuseralreadyloggedinfromfacebook];
     [self.navigationController setNavigationBarHidden:true animated:true];
+}
+
+- (void)chekifuseralreadyloggedinfromfacebook{
+    if ([FBSDKAccessToken currentAccessToken]) {
+        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{@"fields": @"id,name,email,first_name,last_name,birthday"}]
+         startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+             if (!error) {
+                 NSLog(@"fetched user:%@", result);
+                 self.facebookid = [result valueForKey:@"id"];
+                 self.facebookprofile = result;
+                 [self loginUsingFacebook:result];
+             } else {
+                 
+             }
+         }];
+    } else {
+        NSLog(@"User not logged in from FB");
+    }
 }
 
 - (void)loginUsingFacebook:(id)result {
@@ -73,6 +95,11 @@
         [dataDict setValue:[result valueForKey:@"id"] forKey:@"fb_id"];
         [dataDict setValue:version forKey:@"app_version_ios"];
         [dataDict setValue:deviceToken forKey:@"iphone_device_token"];
+        NSString *fcmToken = [FIRMessaging messaging].FCMToken;
+        NSLog(@"FCM registration token: %@", fcmToken);
+        if (fcmToken) {
+            [dataDict setValue:fcmToken forKey:@"gcm_id"];
+        }
         [helper facebookAuditorLogin:dataDict completionBlock:^(BOOL result, id responseDict, NSError *error) {
             NSLog(@"result:-> %@",result ? @"success" : @"Failed");
             if (result) {
@@ -84,7 +111,8 @@
                 if ([resDict[@"code"] integerValue] == 409) {
                     NSLog(@"Error responseDict:->  %@",resDict[@"message"]);
                     dispatch_async(dispatch_get_main_queue(), ^{
-                       [self showErrorMessage:resDict[@"message"]];
+//                       [self showErrorMessage:resDict[@"message"]];
+                        [self performSegueWithIdentifier:@"ShowSignup" sender:nil];
                     });
                 }  else
                     NSLog(@"Error:->  %@",error.localizedDescription);
@@ -108,21 +136,18 @@
 -(IBAction)loginButtonClicked:(id)sender
 {
     if ([FBSDKAccessToken currentAccessToken]) {
-        // User is logged in, do work such as go to next view controller.
-        
-            if ([FBSDKAccessToken currentAccessToken]) {
-                [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{@"fields": @"id,name,email,first_name,last_name,birthday"}]
+        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{@"fields": @"id,name,email,first_name,last_name,birthday"}]
                  startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
                      if (!error) {
                          NSLog(@"fetched user:%@", result);
+                         self.facebookid = [result valueForKey:@"id"];
+                         self.facebookprofile = result;
                          [self loginUsingFacebook:result];
                      } else {
                          
                      }
                  }];
-            }
-        
-    }else {
+            } else {
     FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
     login.loginBehavior = FBSDKLoginBehaviorSystemAccount;
     [login
@@ -174,6 +199,12 @@
         [dataDict setValue:[[UIDevice currentDevice] model] forKey:@"device_type"];
         [dataDict setValue:version forKey:@"app_version_ios"];
         [dataDict setValue:deviceToken forKey:@"iphone_device_token"];
+        NSString *fcmToken = [FIRMessaging messaging].FCMToken;
+        NSLog(@"FCM registration token: %@", fcmToken);
+        if (fcmToken) {
+            [dataDict setValue:fcmToken forKey:@"gcm_id"];
+        }
+
         [helper loginAuditorWithdata:dataDict completionBlock:^(BOOL result, id responseDict, NSError *error) {
             NSLog(@"result:-> %@",result ? @"success" : @"Failed");
             if (result) {
@@ -364,6 +395,18 @@
     //    [alertController addAction:saveAction];
     [self presentViewController:alertController animated:true completion:^{
     }];
+}
+
+
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"ShowSignup"]) {
+        WMSignupViewController *lsVC = [segue destinationViewController];
+        lsVC.facebookid = self.facebookid;
+        lsVC.facebookprofile =  self.facebookprofile;
+    }
 }
 
 

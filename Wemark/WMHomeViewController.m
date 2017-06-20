@@ -97,7 +97,6 @@
 }
 
 
-
 - (void)addTitleView:(NSString *)title {
     
     UIImageView *caratImgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ic_arrow_drop_down"]];
