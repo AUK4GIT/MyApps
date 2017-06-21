@@ -15,6 +15,7 @@
 #import "WMAcceptedCell.h"
 #import "WMRejectedCell.h"
 #import "WMCampaignDetailsViewController.h"
+#import "WMStartSurveyViewController.h"
 
 @interface WMMyAssignmentsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -27,6 +28,8 @@
 @property (strong, nonatomic) NSString *auditorId;
 @property (strong, nonatomic) NSMutableArray *assignmentsArray;
 @property (nonatomic, strong) HMSegmentedControl *segmentedControl;
+
+@property (nonatomic, assign)NSInteger selectedIndex;
 @end
 
 @implementation WMMyAssignmentsViewController
@@ -122,15 +125,22 @@
     [self.view bringSubviewToFront:self.tableView];
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"StartSurvey"]) {
+        if (self.selectedIndex) {
+            id dict = self.assignmentsArray[self.selectedIndex];
+            WMStartSurveyViewController *vc = segue.destinationViewController;
+            vc.questionnaireId = [self convertToString:[dict valueForKey:@"questionnaire"]];
+            vc.assignmentId = [self convertToString:[dict valueForKey:@"assignmentid"]];
+        }
+    }
 }
-*/
 
 #pragma mark - UITbleView DataSource
 
@@ -200,7 +210,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.segmentedControl.selectedSegmentIndex == 1) {
-        
+        self.selectedIndex = indexPath.row;
+        [self performSegueWithIdentifier:@"StartSurvey" sender:nil];
     } else {
         id assignObj = self.assignmentsArray[indexPath.row];
         WMCampaignDetailsViewController *cVC = [self.storyboard instantiateViewControllerWithIdentifier:@"WMCampaignDetailsViewController"];

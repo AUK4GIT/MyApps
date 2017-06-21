@@ -10,32 +10,22 @@
 #import "WMMyAssignmentsViewController.h"
 #import "WMWebservicesHelper.h"
 #import "WMDataHelper.h"
+#import "WMCorrectionsViewController.h"
+#import "HMSegmentedControl.h"
+
 
 @interface WMStartSurveyViewController ()
-@property(nonatomic, strong) NSArray *start;
-@property(nonatomic, strong) NSArray *pending;
-@property(nonatomic, strong) NSArray *completed;
-@property (nonatomic, strong) NSString *selectedStart;
-@property (nonatomic, strong) NSString *selectedPending;
-@property (nonatomic, strong) NSString *selectedCompleted;
-@property (weak, nonatomic) IBOutlet UICollectionView *startCollectionView;
-@property (weak, nonatomic) IBOutlet UICollectionView *pendingCollectionView;
-@property (weak, nonatomic) IBOutlet UICollectionView *completedCollectionView;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (strong, nonatomic) NSMutableArray *surveyArray;
+@property (nonatomic, strong) HMSegmentedControl *segmentedControl;
 
+@property (nonatomic, assign)NSInteger selectedIndex;
 @end
 
 @implementation WMStartSurveyViewController
-{
-    UIActivityIndicatorView * activityView;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    activityView = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    activityView.tintColor = [UIColor whiteColor];
-    [activityView setHidesWhenStopped:true];
-    [self.view addSubview:activityView];
     
     self.title = @"Start Survey";
     
@@ -43,12 +33,10 @@
     if (authKey.length == 0) {
         return;
     }
-    [[WMWebservicesHelper sharedInstance] getAllSearchParametersWithCompletionBlock:^(BOOL result, id responseDict, NSError *error) {
+    [self showActivity];
+    [[WMWebservicesHelper sharedInstance] startSurvey:authKey forQuestionnairId:self.questionnaireId forAssignmentId:self.assignmentId completionBlock:^(BOOL result, id responseDict, NSError *error) {
         if (result) {
-            self.start = responseDict[@"start"];
-            self.pending = responseDict[@"pending"];
-            self.completed = responseDict[@"completed"];
-            //[self updateUIContent];
+            
         }else{
             NSDictionary *resDict = responseDict;
             if ([resDict[@"code"]
@@ -59,14 +47,10 @@
             }
         }
         dispatch_async(dispatch_get_main_queue(), ^{
-            [activityView stopAnimating];
-            [self.startCollectionView reloadData];
-            [self.pendingCollectionView reloadData];
-            [self.completedCollectionView reloadData];
+            [self hideActivity];
+            [self.collectionView reloadData];
         });
-    } authkey:authKey];
-
-    
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -75,17 +59,23 @@
 }
 
 
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
-    if ([segue.identifier isEqualToString:@"Start Survey"]) {
-        WMStartSurveyViewController  *vc = segue.destinationViewController;
-        //vc.profileDict = self.dataObject;
-    }
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.surveyArray.count;
 }
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UITableViewCell *cell = nil;
+    id surveyObj = self.surveyArray[indexPath.row];
+    
+    if (self.segmentedControl.selectedSegmentIndex == 1) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"SurveyCells"];
+        WMStartSurveyViewController *startSurvey = (WMStartSurveyViewController *)cell;
+        startSurvey.assignmentId = [surveyObj valueForKey:@"assignment_id"];
+        startSurvey.questionnaireId = [surveyObj valueForKey:@"questionnaire_id"];
+    }
+    return cell;
+}
 
 #pragma mark - UICollectionViewDelegate
 
@@ -93,66 +83,41 @@
                   layout:(UICollectionViewLayout *)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake(self.view.bounds.size.width/4 - 20, 50);
+    return CGSizeMake(collectionView.bounds.size.width/3 - 32, 150);
 }
 
 
 - (void)collectionView:(UICollectionView *)collectionView
 didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [self performSegueWithIdentifier:@"Start Survey" sender:self];
-    if (collectionView.tag == 1) {
-        self.selectedStart = [self.start[indexPath.row] objectForKey:@"start"];
-    } else if (collectionView.tag == 2) {
-        self.selectedPending = [self.pending[indexPath.row] objectForKey:@"pending"];
-    } else if (collectionView.tag == 3) {
-        self.selectedCompleted = [self.completed[indexPath.row] objectForKey:@"completed"];
-    }
     
-    }
+}
 
 #pragma mark - UICollectionViewDatasource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section {
-    if (collectionView.tag == 1) {
-        return self.start.count;
-    } else if (collectionView.tag == 2) {
-        return self.pending.count;
-    } else if (collectionView.tag == 3) {
-        return self.completed.count;
-    }
-    return 0;
+    
+    return 10;
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
     cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = nil;
-    if (collectionView.tag == 1) {
-        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Start Survey" forIndexPath:indexPath];
-        UILabel *lbl = [cell viewWithTag:1];
-        lbl.text = [self.start[indexPath.row] objectForKey:@"start"];
-        
-    } else if (collectionView.tag == 2) {
-        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Start Survey" forIndexPath:indexPath];
-        UILabel *lbl = [cell viewWithTag:1];
-        lbl.text = [self.pending[indexPath.row] objectForKey:@"pending"];
-        
-    } else if (collectionView.tag == 3) {
-        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Start Survey" forIndexPath:indexPath];
-        UILabel *lbl = [cell viewWithTag:1];
-        lbl.text = [self.completed[indexPath.row] objectForKey:@"completed"];
-    }
-    UIView *bgView = [[UIView alloc] init];
-    bgView.backgroundColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];
-    cell.selectedBackgroundView = bgView;
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SurveyCells" forIndexPath:indexPath];
+    
+    UIImageView *imgView = [cell viewWithTag:11];
+    UILabel *sectionName = [cell viewWithTag:12];
+    UILabel *questionLabel = [cell viewWithTag:13];
+    UILabel *questionNumberLabel = [cell viewWithTag:14];
+    UIButton *statusLabel = [[cell viewWithTag:15] viewWithTag:16];
+    
+    imgView.image = [UIImage imageNamed:@"survey-section-pending"];
+    sectionName.text = @"Section Name";
+    questionLabel.text = @"Questions";
+    questionNumberLabel.text = @"1/10";
+    
+    [statusLabel setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
     return cell;
 }
-
-
-- (IBAction)startBtnTapped:(id)sender {
-   [self performSegueWithIdentifier:@"Start Survey" sender:nil];
-}
-
 
 - (IBAction)startSurveySubmitBtn:(id)sender {
     
@@ -161,13 +126,13 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     }];
     UIAlertAction *submitAction = [UIAlertAction actionWithTitle:@"Submit" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
-          }];
-       [alertController addAction:cancelAction];
-       [alertController addAction:submitAction];
+    }];
+    [alertController addAction:cancelAction];
+    [alertController addAction:submitAction];
     
     [self presentViewController:alertController animated:true completion:^{
     }];
-
+    
 }
 
 @end

@@ -596,10 +596,10 @@
     [dataTask resume];
 }
 
-- (void)startSurvey:(NSString *)authKey completionBlock:(void (^) (BOOL, id, NSError*))completionBlock {
+- (void)startSurvey:(NSString *)authKey forQuestionnairId:(NSString *)questionnaireId forAssignmentId:(NSString *)assignmentId completionBlock:(void (^) (BOOL, id, NSError*))completionBlock {
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
-    NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"GET" URLString:[NSString stringWithFormat:@"%@%@",baseURL,startSurveyURL] parameters:nil error:nil];
+    NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"GET" URLString:[NSString stringWithFormat:@"%@%@?assignment_id=%@&questionnaire_id=%@",baseURL,startSurveyURL,assignmentId,questionnaireId] parameters:nil error:nil];
     [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request addValue:authKey forHTTPHeaderField:@"Auth-key"];

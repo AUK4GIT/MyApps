@@ -116,7 +116,7 @@
 
 - (void)facebookAuditorLogin:(id)body completionBlock:(void (^) (BOOL, id, NSError*))completionBlock;
 
-- (void)startSurvey:(NSString *)authKey completionBlock:(void (^) (BOOL, id, NSError*))completionBlock;
+- (void)startSurvey:(NSString *)authKey forQuestionnairId:(NSString *)questionnaireId forAssignmentId:(NSString *)assignmentId completionBlock:(void (^) (BOOL, id, NSError*))completionBlock;
 
 - (void)submitQuestionnaire:(NSString *)authKey completionBlock:(void (^) (BOOL, id, NSError*))completionBlock;
 @end

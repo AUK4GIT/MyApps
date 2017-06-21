@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface WMStartSurveyViewController : UIViewController
-
+@interface WMStartSurveyViewController : BaseViewController
+@property(nonatomic, strong)NSString *questionnaireId;
+@property(nonatomic, strong)NSString *assignmentId;
 @end
