@@ -6,12 +6,11 @@
     },
     {
       "idiom" : "universal",
-      "filename" : "checkmail@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "checkmail@3x.png",
+      "filename" : "checkmail.png",
       "scale" : "3x"
     }
   ],

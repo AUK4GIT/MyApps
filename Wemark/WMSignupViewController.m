@@ -11,6 +11,7 @@
 #import "WMDataHelper.h"
 #import "ACFloatingTextField.h"
 #import <FirebaseMessaging/FirebaseMessaging.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface WMSignupViewController () <UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
@@ -21,6 +22,7 @@
 @property (strong, nonatomic) IBOutlet ACFloatingTextField *mobileNumberTextField;
 @property (strong, nonatomic) IBOutlet ACFloatingTextField *passwordTextField;
 @property (strong, nonatomic) IBOutlet UIImageView *profileImgView;
+//@property (strong, nonatomic) IBOutlet NSString;
 @property (strong, nonatomic) NSString *profilePicURL;
 - (IBAction)signUpBtnTapped:(id)sender;
 - (IBAction)signInBtnTapped:(id)sender;
@@ -277,7 +279,13 @@ userid password:(NSString *)password firstName:(NSString *)firstname lastName:(N
     [data writeToFile:imgPath atomically:true];
     
     // Save it's path
-    self.profilePicURL = imgPath;
+//    self.profilePicURL = imgPath;
+//    [self.layer setCornerRadius:30.0f];
+//    [self.layer setShadowColor:[UIColor blackColor].CGColor];
+//    [self.layer setShadowOpacity:0.8];
+//    [self.layer setShadowRadius:3.0];
+//    [self.layer setShadowOffset:CGSizeMake(2.0, 2.0)];
+    
     
     [picker dismissViewControllerAnimated:YES completion:^{
     }];

@@ -258,7 +258,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 - (void)collectionView:(UICollectionView *)collectionView
 didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (collectionView.tag == 1) {
-        self.selectedFees = [self.fees[indexPath.row] objectForKey:@"fees"];
+//        self.selectedFees = [self.fees[indexPath.row] objectForKey:@"fees"];
+        self.selectedFees = self.fees[indexPath.row];
+
     } else if (collectionView.tag == 2) {
         self.selectedReimbursement = [self.reimbursements[indexPath.row] objectForKey:@"reimbursement_amount"];
     }
@@ -283,8 +285,9 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (collectionView.tag == 1) {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PriceCell" forIndexPath:indexPath];
         UILabel *lbl = [cell viewWithTag:1];
-        lbl.text = [self.fees[indexPath.row] objectForKey:@"fees"];
-        
+//        lbl.text = [self.fees[indexPath.row] objectForKey:@"fees"];
+        lbl.text = self.fees[indexPath.row];
+
 //        NSMutableString *rupee = [NSMutableString stringWithString:@"₹"];
 //        for (int i = 0; i<indexPath.row; i++) {
 //            [rupee appendString:@"₹"];

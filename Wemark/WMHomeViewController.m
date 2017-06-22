@@ -41,10 +41,12 @@
     // Do any additional setup after loading the view.
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic_action_search"] style:UIBarButtonItemStylePlain target:self action:@selector(assignmentsSearchTapped:)];
     
+    self.assignmentsLabel.text = @"";
+    
     [self.tableView registerNib:[UINib nibWithNibName:@"WMAssignCell" bundle:nil] forCellReuseIdentifier:@"WMAssignCell"];
     self.tableView.rowHeight = 136;
     
-    [self addTitleView:@"Gurgoan"];
+    [self addTitleView:@"Please tap here to select a location"];
     
     self.selfAssign = false;
     self.apply = false;
@@ -99,7 +101,7 @@
 
 - (void)addTitleView:(NSString *)title {
     
-    UIImageView *caratImgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ic_arrow_drop_down"]];
+    UIImageView *caratImgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ic_arrow_drop_down_white"]];
     caratImgView.backgroundColor = [UIColor clearColor];
     caratImgView.contentMode = UIViewContentModeScaleAspectFit;
     caratImgView.userInteractionEnabled = true;
