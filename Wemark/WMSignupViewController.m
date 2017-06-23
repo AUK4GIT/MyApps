@@ -11,7 +11,7 @@
 #import "WMDataHelper.h"
 #import "ACFloatingTextField.h"
 #import <FirebaseMessaging/FirebaseMessaging.h>
-#import <QuartzCore/QuartzCore.h>
+
 
 @interface WMSignupViewController () <UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
@@ -21,6 +21,7 @@
 @property (strong, nonatomic) IBOutlet ACFloatingTextField *verifyOTPTextField;
 @property (strong, nonatomic) IBOutlet ACFloatingTextField *mobileNumberTextField;
 @property (strong, nonatomic) IBOutlet ACFloatingTextField *passwordTextField;
+@property (strong, nonatomic) IBOutlet ACFloatingTextField *confirmPasswordTextField;
 @property (strong, nonatomic) IBOutlet UIImageView *profileImgView;
 //@property (strong, nonatomic) IBOutlet NSString;
 @property (strong, nonatomic) NSString *profilePicURL;
@@ -35,6 +36,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    //[self.navigationItem setHidesBackButton:YES];
     
     activityView = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     activityView.tintColor = [UIColor whiteColor];
@@ -204,7 +207,10 @@ userid password:(NSString *)password firstName:(NSString *)firstname lastName:(N
         [self.emailIdTextField showErrorWithText:@"Please type a valid email id"];
     } else if (self.passwordTextField.text.length < 6){
         [self.passwordTextField showErrorWithText:@"Password should be atleast 6 characters long"];
-    } else if (self.firstNameTextField.text.length == 0){
+    } else if (self.confirmPasswordTextField.text.length < 6){
+        [self.confirmPasswordTextField showErrorWithText:@"Confirm Password should be atleast 6 characters long"];
+    }
+    else if (self.firstNameTextField.text.length == 0){
         [self.passwordTextField showErrorWithText:@"First name cannot be empty"];
     } else if (self.lastNameTextField.text.length == 0){
         [self.passwordTextField showErrorWithText:@"Last name cannot be empty"];
