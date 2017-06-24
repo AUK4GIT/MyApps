@@ -32,7 +32,7 @@ NSString *const sendOTPURL = @"auditor-api/auth/resend-otp";
 NSString *const verifyOTPURL = @"auditor-api/auth/verify-otp";
 NSString *const facebookAuditorLoginURL = @"auditor-api/auth/facebook-login";
 NSString *const startSurveyURL = @"auditor-api/questionnaire/get-all-sections-by-questionnaire-id";
-
+NSString *const questionaireURL = @"auditor-api/questionnaire/get-questions-by-assignment-id-and-section-id";
 
 
 

@@ -122,7 +122,7 @@
 }
 
     [imgView sd_setImageWithURL:[NSURL URLWithString:[locObj valueForKey:@"notification_image"]]
-                    placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+                    placeholderImage:[UIImage imageNamed:@"notification"]];
 
     return cell;
 }

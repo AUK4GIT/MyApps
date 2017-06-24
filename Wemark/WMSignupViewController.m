@@ -284,15 +284,7 @@ userid password:(NSString *)password firstName:(NSString *)firstname lastName:(N
     NSData *data = UIImageJPEGRepresentation(chosenImage, 0.3);
     [data writeToFile:imgPath atomically:true];
     
-    // Save it's path
-//    self.profilePicURL = imgPath;
-//    [self.layer setCornerRadius:30.0f];
-//    [self.layer setShadowColor:[UIColor blackColor].CGColor];
-//    [self.layer setShadowOpacity:0.8];
-//    [self.layer setShadowRadius:3.0];
-//    [self.layer setShadowOffset:CGSizeMake(2.0, 2.0)];
-    
-    
+
     [picker dismissViewControllerAnimated:YES completion:^{
     }];
 }

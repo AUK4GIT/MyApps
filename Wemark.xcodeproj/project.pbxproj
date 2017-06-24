@@ -58,12 +58,20 @@
 		C54CD09B1EEAC3E00004AEE7 /* WMCityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C54CD09A1EEAC3E00004AEE7 /* WMCityViewController.m */; };
 		C54CD09E1EEAC81C0004AEE7 /* WMChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C54CD09D1EEAC81C0004AEE7 /* WMChangePasswordViewController.m */; };
 		C54CD0A11EEAC8490004AEE7 /* WMTransactionHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C54CD0A01EEAC8490004AEE7 /* WMTransactionHistoryViewController.m */; };
+		C54D9C481EFE8C8300C9CFE0 /* WMQuestionaire5.xib in Resources */ = {isa = PBXBuildFile; fileRef = C54D9C471EFE8C8300C9CFE0 /* WMQuestionaire5.xib */; };
+		C54D9C4A1EFE952300C9CFE0 /* WMQuestionaire6.xib in Resources */ = {isa = PBXBuildFile; fileRef = C54D9C491EFE952300C9CFE0 /* WMQuestionaire6.xib */; };
+		C54D9C5F1EFE9FB000C9CFE0 /* WMQuestionaire1.m in Sources */ = {isa = PBXBuildFile; fileRef = C54D9C5E1EFE9FB000C9CFE0 /* WMQuestionaire1.m */; };
+		C54D9C621EFE9FC300C9CFE0 /* WMQuestionaire2.m in Sources */ = {isa = PBXBuildFile; fileRef = C54D9C611EFE9FC300C9CFE0 /* WMQuestionaire2.m */; };
+		C54D9C651EFE9FDB00C9CFE0 /* WMQuestionaire3.m in Sources */ = {isa = PBXBuildFile; fileRef = C54D9C641EFE9FDB00C9CFE0 /* WMQuestionaire3.m */; };
+		C54D9C681EFE9FF000C9CFE0 /* WMQuestionaire4.m in Sources */ = {isa = PBXBuildFile; fileRef = C54D9C671EFE9FF000C9CFE0 /* WMQuestionaire4.m */; };
+		C54D9C6B1EFEA00300C9CFE0 /* WMQuestionaire5.m in Sources */ = {isa = PBXBuildFile; fileRef = C54D9C6A1EFEA00300C9CFE0 /* WMQuestionaire5.m */; };
+		C54D9C6E1EFEA01400C9CFE0 /* WMQuestionaire6.m in Sources */ = {isa = PBXBuildFile; fileRef = C54D9C6D1EFEA01400C9CFE0 /* WMQuestionaire6.m */; };
 		C55E46F81EE6E1F0002E2258 /* WMAllAssignmentsClientIdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C55E46F71EE6E1F0002E2258 /* WMAllAssignmentsClientIdViewController.m */; };
 		C566B6E01EF7BB890089962D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C566B6DF1EF7BB890089962D /* GoogleService-Info.plist */; };
-		C566B6E21EF7F0920089962D /* WMAssignedStartSurveyCell1.xib in Resources */ = {isa = PBXBuildFile; fileRef = C566B6E11EF7F0920089962D /* WMAssignedStartSurveyCell1.xib */; };
-		C566B6E41EF7F4B20089962D /* WMAssignedStartSurveyCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = C566B6E31EF7F4B20089962D /* WMAssignedStartSurveyCell2.xib */; };
-		C566B6E61EF7F9160089962D /* WMAssignedStartSurveyCell3.xib in Resources */ = {isa = PBXBuildFile; fileRef = C566B6E51EF7F9160089962D /* WMAssignedStartSurveyCell3.xib */; };
-		C566B6E81EF7FAB30089962D /* WMAssignedStartSurveyCell4.xib in Resources */ = {isa = PBXBuildFile; fileRef = C566B6E71EF7FAB30089962D /* WMAssignedStartSurveyCell4.xib */; };
+		C566B6E21EF7F0920089962D /* WMQuestionaire1.xib in Resources */ = {isa = PBXBuildFile; fileRef = C566B6E11EF7F0920089962D /* WMQuestionaire1.xib */; };
+		C566B6E41EF7F4B20089962D /* WMQuestionaire2.xib in Resources */ = {isa = PBXBuildFile; fileRef = C566B6E31EF7F4B20089962D /* WMQuestionaire2.xib */; };
+		C566B6E61EF7F9160089962D /* WMQuestionaire3.xib in Resources */ = {isa = PBXBuildFile; fileRef = C566B6E51EF7F9160089962D /* WMQuestionaire3.xib */; };
+		C566B6E81EF7FAB30089962D /* WMQuestionaire4.xib in Resources */ = {isa = PBXBuildFile; fileRef = C566B6E71EF7FAB30089962D /* WMQuestionaire4.xib */; };
 		C56A605F1EEBDD0500F7F163 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C56A605E1EEBDD0500F7F163 /* BaseViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -162,13 +170,27 @@
 		C54CD09D1EEAC81C0004AEE7 /* WMChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMChangePasswordViewController.m; sourceTree = "<group>"; };
 		C54CD09F1EEAC8490004AEE7 /* WMTransactionHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMTransactionHistoryViewController.h; sourceTree = "<group>"; };
 		C54CD0A01EEAC8490004AEE7 /* WMTransactionHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMTransactionHistoryViewController.m; sourceTree = "<group>"; };
+		C54D9C471EFE8C8300C9CFE0 /* WMQuestionaire5.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WMQuestionaire5.xib; sourceTree = "<group>"; };
+		C54D9C491EFE952300C9CFE0 /* WMQuestionaire6.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WMQuestionaire6.xib; sourceTree = "<group>"; };
+		C54D9C5D1EFE9FB000C9CFE0 /* WMQuestionaire1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMQuestionaire1.h; sourceTree = "<group>"; };
+		C54D9C5E1EFE9FB000C9CFE0 /* WMQuestionaire1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMQuestionaire1.m; sourceTree = "<group>"; };
+		C54D9C601EFE9FC300C9CFE0 /* WMQuestionaire2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMQuestionaire2.h; sourceTree = "<group>"; };
+		C54D9C611EFE9FC300C9CFE0 /* WMQuestionaire2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMQuestionaire2.m; sourceTree = "<group>"; };
+		C54D9C631EFE9FDB00C9CFE0 /* WMQuestionaire3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMQuestionaire3.h; sourceTree = "<group>"; };
+		C54D9C641EFE9FDB00C9CFE0 /* WMQuestionaire3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMQuestionaire3.m; sourceTree = "<group>"; };
+		C54D9C661EFE9FF000C9CFE0 /* WMQuestionaire4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMQuestionaire4.h; sourceTree = "<group>"; };
+		C54D9C671EFE9FF000C9CFE0 /* WMQuestionaire4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMQuestionaire4.m; sourceTree = "<group>"; };
+		C54D9C691EFEA00300C9CFE0 /* WMQuestionaire5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMQuestionaire5.h; sourceTree = "<group>"; };
+		C54D9C6A1EFEA00300C9CFE0 /* WMQuestionaire5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMQuestionaire5.m; sourceTree = "<group>"; };
+		C54D9C6C1EFEA01400C9CFE0 /* WMQuestionaire6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMQuestionaire6.h; sourceTree = "<group>"; };
+		C54D9C6D1EFEA01400C9CFE0 /* WMQuestionaire6.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMQuestionaire6.m; sourceTree = "<group>"; };
 		C55E46F61EE6E1F0002E2258 /* WMAllAssignmentsClientIdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMAllAssignmentsClientIdViewController.h; sourceTree = "<group>"; };
 		C55E46F71EE6E1F0002E2258 /* WMAllAssignmentsClientIdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMAllAssignmentsClientIdViewController.m; sourceTree = "<group>"; };
 		C566B6DF1EF7BB890089962D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		C566B6E11EF7F0920089962D /* WMAssignedStartSurveyCell1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WMAssignedStartSurveyCell1.xib; sourceTree = "<group>"; };
-		C566B6E31EF7F4B20089962D /* WMAssignedStartSurveyCell2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WMAssignedStartSurveyCell2.xib; sourceTree = "<group>"; };
-		C566B6E51EF7F9160089962D /* WMAssignedStartSurveyCell3.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WMAssignedStartSurveyCell3.xib; sourceTree = "<group>"; };
-		C566B6E71EF7FAB30089962D /* WMAssignedStartSurveyCell4.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WMAssignedStartSurveyCell4.xib; sourceTree = "<group>"; };
+		C566B6E11EF7F0920089962D /* WMQuestionaire1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WMQuestionaire1.xib; sourceTree = "<group>"; };
+		C566B6E31EF7F4B20089962D /* WMQuestionaire2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WMQuestionaire2.xib; sourceTree = "<group>"; };
+		C566B6E51EF7F9160089962D /* WMQuestionaire3.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WMQuestionaire3.xib; sourceTree = "<group>"; };
+		C566B6E71EF7FAB30089962D /* WMQuestionaire4.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WMQuestionaire4.xib; sourceTree = "<group>"; };
 		C56A605D1EEBDD0500F7F163 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		C56A605E1EEBDD0500F7F163 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -324,10 +346,12 @@
 				C509CAF01EE7BEAB002D4F86 /* WMAssignedCell.xib */,
 				C509CAF21EE7BED2002D4F86 /* WMAcceptedCell.xib */,
 				C509CAF41EE7BEFE002D4F86 /* WMRejectedCell.xib */,
-				C566B6E11EF7F0920089962D /* WMAssignedStartSurveyCell1.xib */,
-				C566B6E31EF7F4B20089962D /* WMAssignedStartSurveyCell2.xib */,
-				C566B6E51EF7F9160089962D /* WMAssignedStartSurveyCell3.xib */,
-				C566B6E71EF7FAB30089962D /* WMAssignedStartSurveyCell4.xib */,
+				C566B6E11EF7F0920089962D /* WMQuestionaire1.xib */,
+				C566B6E31EF7F4B20089962D /* WMQuestionaire2.xib */,
+				C566B6E51EF7F9160089962D /* WMQuestionaire3.xib */,
+				C566B6E71EF7FAB30089962D /* WMQuestionaire4.xib */,
+				C54D9C471EFE8C8300C9CFE0 /* WMQuestionaire5.xib */,
+				C54D9C491EFE952300C9CFE0 /* WMQuestionaire6.xib */,
 				AE91CCCA1EDAAC7A00BB9585 /* WMAssignCell.h */,
 				AE91CCCB1EDAAC7A00BB9585 /* WMAssignCell.m */,
 				C509CAF81EE81443002D4F86 /* WMAppliedCell.h */,
@@ -338,6 +362,18 @@
 				C509CAFF1EE81498002D4F86 /* WMAcceptedCell.m */,
 				C509CB011EE814B6002D4F86 /* WMRejectedCell.h */,
 				C509CB021EE814B6002D4F86 /* WMRejectedCell.m */,
+				C54D9C5D1EFE9FB000C9CFE0 /* WMQuestionaire1.h */,
+				C54D9C5E1EFE9FB000C9CFE0 /* WMQuestionaire1.m */,
+				C54D9C601EFE9FC300C9CFE0 /* WMQuestionaire2.h */,
+				C54D9C611EFE9FC300C9CFE0 /* WMQuestionaire2.m */,
+				C54D9C631EFE9FDB00C9CFE0 /* WMQuestionaire3.h */,
+				C54D9C641EFE9FDB00C9CFE0 /* WMQuestionaire3.m */,
+				C54D9C661EFE9FF000C9CFE0 /* WMQuestionaire4.h */,
+				C54D9C671EFE9FF000C9CFE0 /* WMQuestionaire4.m */,
+				C54D9C691EFEA00300C9CFE0 /* WMQuestionaire5.h */,
+				C54D9C6A1EFEA00300C9CFE0 /* WMQuestionaire5.m */,
+				C54D9C6C1EFEA01400C9CFE0 /* WMQuestionaire6.h */,
+				C54D9C6D1EFEA01400C9CFE0 /* WMQuestionaire6.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -429,19 +465,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE91CCC71ED9F9F900BB9585 /* WMMenuCell.xib in Resources */,
-				C566B6E81EF7FAB30089962D /* WMAssignedStartSurveyCell4.xib in Resources */,
+				C566B6E81EF7FAB30089962D /* WMQuestionaire4.xib in Resources */,
 				C509CAF11EE7BEAB002D4F86 /* WMAssignedCell.xib in Resources */,
 				AE820FE71ED48DA900AE2BA2 /* LaunchScreen.storyboard in Resources */,
+				C54D9C481EFE8C8300C9CFE0 /* WMQuestionaire5.xib in Resources */,
 				AE820FE41ED48DA900AE2BA2 /* Assets.xcassets in Resources */,
 				AE91CCC91EDA9E4A00BB9585 /* WMAssignCell.xib in Resources */,
+				C54D9C4A1EFE952300C9CFE0 /* WMQuestionaire6.xib in Resources */,
 				C509CAF71EE802BF002D4F86 /* WMAppliedCell.xib in Resources */,
 				C509CAF51EE7BEFE002D4F86 /* WMRejectedCell.xib in Resources */,
-				C566B6E21EF7F0920089962D /* WMAssignedStartSurveyCell1.xib in Resources */,
+				C566B6E21EF7F0920089962D /* WMQuestionaire1.xib in Resources */,
 				C566B6E01EF7BB890089962D /* GoogleService-Info.plist in Resources */,
 				AE820FDF1ED48DA900AE2BA2 /* Main.storyboard in Resources */,
-				C566B6E61EF7F9160089962D /* WMAssignedStartSurveyCell3.xib in Resources */,
+				C566B6E61EF7F9160089962D /* WMQuestionaire3.xib in Resources */,
 				C509CAF31EE7BED2002D4F86 /* WMAcceptedCell.xib in Resources */,
-				C566B6E41EF7F4B20089962D /* WMAssignedStartSurveyCell2.xib in Resources */,
+				C566B6E41EF7F4B20089962D /* WMQuestionaire2.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,6 +552,7 @@
 				AE820FDC1ED48DA900AE2BA2 /* ViewController.m in Sources */,
 				AE820FD91ED48DA900AE2BA2 /* AppDelegate.m in Sources */,
 				C53591C71EF25D6C0046EC7B /* WMForgotPasswordViewController.m in Sources */,
+				C54D9C5F1EFE9FB000C9CFE0 /* WMQuestionaire1.m in Sources */,
 				C53591CD1EF270270046EC7B /* WMResetPasswordViewController.m in Sources */,
 				C54CD0951EEAC38E0004AEE7 /* WMCountryViewController.m in Sources */,
 				AE91CCC31ED9E44000BB9585 /* WMHomeViewController.m in Sources */,
@@ -521,11 +560,15 @@
 				C55E46F81EE6E1F0002E2258 /* WMAllAssignmentsClientIdViewController.m in Sources */,
 				AE91CCCC1EDAAC7A00BB9585 /* WMAssignCell.m in Sources */,
 				AEDD5D511EE4389E00AA8E44 /* WMEditProfileViewController.m in Sources */,
+				C54D9C681EFE9FF000C9CFE0 /* WMQuestionaire4.m in Sources */,
 				C53591CA1EF269BB0046EC7B /* WMCheckEmailViewController.m in Sources */,
 				AE91CCC41ED9E44000BB9585 /* WMMenuViewController.m in Sources */,
+				C54D9C651EFE9FDB00C9CFE0 /* WMQuestionaire3.m in Sources */,
 				AE91CCD51EDB138200BB9585 /* WMAssignment.m in Sources */,
 				AEFEBC331EE1950100EB0F31 /* WMSearchAssignmentViewController.m in Sources */,
 				AE820FE21ED48DA900AE2BA2 /* Wemark.xcdatamodeld in Sources */,
+				C54D9C621EFE9FC300C9CFE0 /* WMQuestionaire2.m in Sources */,
+				C54D9C6B1EFEA00300C9CFE0 /* WMQuestionaire5.m in Sources */,
 				C56A605F1EEBDD0500F7F163 /* BaseViewController.m in Sources */,
 				C54CD0981EEAC3C30004AEE7 /* WMStateViewController.m in Sources */,
 				AE820FF41ED4A3E100AE2BA2 /* WMSignupViewController.m in Sources */,
@@ -540,6 +583,7 @@
 				C54CD0A11EEAC8490004AEE7 /* WMTransactionHistoryViewController.m in Sources */,
 				AE91CCD21EDAE1EF00BB9585 /* WMLocation.m in Sources */,
 				C54CD09E1EEAC81C0004AEE7 /* WMChangePasswordViewController.m in Sources */,
+				C54D9C6E1EFEA01400C9CFE0 /* WMQuestionaire6.m in Sources */,
 				AEDF42AD1ED742AA008A4596 /* WMUser.m in Sources */,
 				AE820FD61ED48DA900AE2BA2 /* main.m in Sources */,
 				C509CB091EE82F8F002D4F86 /* WMCorrectionsViewController.m in Sources */,

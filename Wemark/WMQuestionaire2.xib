@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="VtS-dL-cDk">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="VtS-dL-cDk" customClass="WMQuestionaire2">
             <rect key="frame" x="0.0" y="0.0" width="375" height="117"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VtS-dL-cDk" id="NfJ-Hl-Zea">
@@ -37,16 +37,47 @@
                         <color key="textColor" red="0.81960784310000001" green="0.1843137255" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_arrow_drop_down" translatesAutoresizingMaskIntoConstraints="NO" id="Ig8-Sa-1vc">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_arrow_drop_down_white" translatesAutoresizingMaskIntoConstraints="NO" id="Ig8-Sa-1vc">
                         <rect key="frame" x="316" y="48" width="21" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="0.99992364645004272" green="1" blue="0.99988287687301636" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Km-rO-2Xs">
+                        <rect key="frame" x="8" y="78" width="121" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                        <state key="normal" title="BACK">
+                            <color key="titleColor" red="0.99992364645004272" green="1" blue="0.99988287687301636" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="backBtnActn:" destination="VtS-dL-cDk" eventType="touchUpInside" id="kv7-4G-Srm"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JD9-Kh-bYa">
+                        <rect key="frame" x="137" y="78" width="121" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="0.8980392157" green="0.1019607843" blue="0.29411764709999999" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                        <state key="normal" title="NEXT">
+                            <color key="titleColor" red="0.99992364645004272" green="1" blue="0.99988287687301636" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="nextBtnActn:" destination="VtS-dL-cDk" eventType="touchUpInside" id="vpD-iw-mb7"/>
+                        </connections>
+                    </button>
                 </subviews>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="backBtn" destination="7Km-rO-2Xs" id="aWb-ma-2U5"/>
+                <outlet property="chooseOptionLbl" destination="ZxX-M6-rvS" id="4I7-Rk-g5O"/>
+                <outlet property="expiryDateLbl" destination="dgU-L1-vNg" id="gpg-K3-1FI"/>
+                <outlet property="nextBtn" destination="JD9-Kh-bYa" id="xDI-wX-Box"/>
+            </connections>
             <point key="canvasLocation" x="20.5" y="-286.5"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="ic_arrow_drop_down" width="24" height="24"/>
+        <image name="ic_arrow_drop_down_white" width="24" height="24"/>
     </resources>
 </document>

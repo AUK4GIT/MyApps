@@ -10,11 +10,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="EEr-rE-lbg">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="117"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="161" id="EEr-rE-lbg" customClass="WMQuestionaire3">
+            <rect key="frame" x="0.0" y="0.0" width="384" height="161"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EEr-rE-lbg" id="0MK-hO-DoU">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="116.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="384" height="160.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="What type of credit cards do you have ?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QXw-9c-UnN">
@@ -57,9 +57,40 @@
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qfa-cq-uh3">
+                        <rect key="frame" x="8" y="116" width="121" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                        <state key="normal" title="BACK">
+                            <color key="titleColor" red="0.99992364645004272" green="1" blue="0.99988287687301636" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="backBtnActn:" destination="EEr-rE-lbg" eventType="touchUpInside" id="lTJ-oI-3OI"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zRt-CR-u4O">
+                        <rect key="frame" x="137" y="116" width="121" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="0.8980392157" green="0.1019607843" blue="0.29411764709999999" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                        <state key="normal" title="NEXT">
+                            <color key="titleColor" red="0.99992364645004272" green="1" blue="0.99988287687301636" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="nextBtnActn:" destination="EEr-rE-lbg" eventType="touchUpInside" id="dur-Fp-rDG"/>
+                        </connections>
+                    </button>
                 </subviews>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="20.5" y="-286.5"/>
+            <connections>
+                <outlet property="backBtn" destination="qfa-cq-uh3" id="iXP-f5-zKM"/>
+                <outlet property="checkBoxImgV" destination="cYy-Mo-cPw" id="Aph-hu-aTR"/>
+                <outlet property="creditCardLbl" destination="QXw-9c-UnN" id="ii8-T3-y6e"/>
+                <outlet property="nextBtn" destination="zRt-CR-u4O" id="5Sb-ev-lFn"/>
+                <outlet property="unCheckBoxImgV" destination="ZVU-fH-NG5" id="HFE-ff-Suf"/>
+            </connections>
+            <point key="canvasLocation" x="25" y="-264.5"/>
         </tableViewCell>
     </objects>
     <resources>
