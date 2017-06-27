@@ -153,11 +153,7 @@
 
     appDelegate.swController.rootViewController = nVC;
     [appDelegate.swController toggleLeftViewAnimated];
-    
-    nVC.navigationBar.backIndicatorImage = [UIImage imageNamed:@"back-button-image"];
-    nVC.navigationBar.backIndicatorTransitionMaskImage = [UIImage imageNamed:@"back-button-image"];
-    nVC.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-    
+        
 }
 
 @end

@@ -26,6 +26,13 @@
     activityView.color = [UIColor colorWithRed:220/255.0 green:0.0 blue:60/255.0 alpha:1.0];
     [activityView setHidesWhenStopped:true];
     [self.view addSubview:activityView];
+    
+    self.navigationItem.leftBarButtonItem = self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back-button-image"] style:UIBarButtonItemStylePlain target:self action:@selector(popViewController)];
+
+}
+- (void)popViewController {
+    
+    [self.navigationController popViewControllerAnimated:true];
 }
 
 - (void)viewWillLayoutSubviews {

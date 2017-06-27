@@ -29,6 +29,7 @@
     self.title = @"Current Location";
     //self.navigationController.navigationBar.backItem.title = @"";
 
+
     NSAttributedString *str = [[NSAttributedString alloc] initWithString:@"Search Location" attributes:@{ NSForegroundColorAttributeName : [UIColor colorWithRed:220/255.0 green:0.0 blue:60/255.0 alpha:1.0] }];
     self.searchTextField.attributedPlaceholder = str;
 

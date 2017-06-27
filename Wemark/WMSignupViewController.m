@@ -58,8 +58,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [self.navigationController setNavigationBarHidden:false animated:true];
-    //self.navigationController.navigationBar.backItem.title = @"";
+//    [self.navigationController setNavigationBarHidden:false animated:true];
+    self.navigationController.navigationBar.backItem.title = @"";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -183,6 +183,9 @@ userid password:(NSString *)password firstName:(NSString *)firstname lastName:(N
                  if ([resDict[@"code"]
                       integerValue] == 409) {
                      NSLog(@"Error responseDict:->%@",resDict[@"message"]);
+                     dispatch_async(dispatch_get_main_queue(), ^{
+                         [self showErrorMessage:resDict[@"message"]];
+                     });
                  }else{
                      NSLog(@"Error:->%@",error.localizedDescription);
                  }
@@ -202,6 +205,31 @@ userid password:(NSString *)password firstName:(NSString *)firstname lastName:(N
 
 - (IBAction)signUpBtnTapped:(id)sender {
     
+    /*Button shadows*/
+//    _btnRegister.layer.cornerRadius = 4.0;
+//    _btnRegister.layer.borderColor =[[UIColor lightGrayColor] CGColor];
+//    _btnRegister.layer.borderWidth = 0.3;
+//    _btnRegister.layer.shadowColor = [UIColor grayColor].CGColor;
+//    _btnRegister.layer.shadowOffset = CGSizeMake(0, 0);
+//    _btnRegister.layer.shadowRadius = 3.0;
+//    _btnRegister.layer.shadowOpacity = 0.5;
+//    _btnRegister.layer.masksToBounds = NO;
+    
+    /*Button shadows*/
+//    _btnSkip.layer.cornerRadius = 4.0;
+//    _btnSkip.layer.borderColor =[[UIColor lightGrayColor] CGColor];
+//    _btnSkip.layer.borderWidth = 0.3;
+//    _btnSkip.layer.shadowColor = [UIColor grayColor].CGColor;
+//    _btnSkip.layer.shadowOffset = CGSizeMake(0, 0);
+//    _btnSkip.layer.shadowRadius = 3.0;
+//    _btnSkip.layer.shadowOpacity = 0.5;
+//    _btnSkip.layer.masksToBounds = NO;
+//    
+    
+    /*circle the main image and view*/
+//    _viewBackImage.layer.cornerRadius=_viewBackImage.frame.size.height/2;
+//    _mainImageView.layer.cornerRadius=_mainImageView.frame.size.height/2;
+
     if (![self isValidEmail:self.emailIdTextField.text]) {
         NSLog(@"Invalid Email Address");
         [self.emailIdTextField showErrorWithText:@"Please type a valid email id"];

@@ -25,6 +25,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"Notifications";
+
     self.tableView.estimatedRowHeight = 108;
     NSString *authKey = [[WMDataHelper sharedInstance] getAuthKey];
     NSString *auditorId = [[WMDataHelper sharedInstance] getAuditorId];

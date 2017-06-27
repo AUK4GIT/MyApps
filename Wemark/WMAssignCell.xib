@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="136"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kpe-29-1LP" id="yhm-J6-xqx">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="136"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="135.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WFe-yO-OJR">
@@ -30,7 +30,7 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="money-bag" translatesAutoresizingMaskIntoConstraints="NO" id="7V8-JY-5bk">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="money_bag" translatesAutoresizingMaskIntoConstraints="NO" id="7V8-JY-5bk">
                                 <rect key="frame" x="96" y="43" width="18" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="qMz-UT-78k"/>
@@ -135,7 +135,7 @@
         <image name="assignment-type" width="18" height="18"/>
         <image name="date" width="18" height="18"/>
         <image name="distance" width="18" height="18"/>
-        <image name="money-bag" width="50" height="50"/>
+        <image name="money_bag" width="40" height="40"/>
         <image name="sidemenu-account" width="40" height="40"/>
     </resources>
 </document>

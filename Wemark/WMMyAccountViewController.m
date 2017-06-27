@@ -49,6 +49,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"Account";
+
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"editprofile"] style:UIBarButtonItemStylePlain target:self action:@selector(editProfile:)];
     self.assignmentsBGView.layer.cornerRadius = 5.0;
     self.amountBGView.layer.masksToBounds = false;

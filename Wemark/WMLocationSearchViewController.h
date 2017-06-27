@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
 @protocol WMLocationSearchSelectionProtocol <NSObject>
 - (void)didSelectLocation:(id)locationobj;
 @end
 
-@interface WMLocationSearchViewController : UIViewController
+@interface WMLocationSearchViewController : BaseViewController
 @property (nonatomic, weak) id<WMLocationSearchSelectionProtocol> delegate;
 @end

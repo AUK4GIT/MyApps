@@ -38,7 +38,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"My Assignments";
-    
+
     [self.tableView registerNib:[UINib nibWithNibName:@"WMAppliedCell" bundle:nil] forCellReuseIdentifier:@"WMAppliedCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"WMAssignedCell" bundle:nil] forCellReuseIdentifier:@"WMAssignedCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"WMAcceptedCell" bundle:nil] forCellReuseIdentifier:@"WMAcceptedCell"];

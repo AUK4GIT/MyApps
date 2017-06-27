@@ -73,6 +73,8 @@
 		C566B6E61EF7F9160089962D /* WMQuestionaire3.xib in Resources */ = {isa = PBXBuildFile; fileRef = C566B6E51EF7F9160089962D /* WMQuestionaire3.xib */; };
 		C566B6E81EF7FAB30089962D /* WMQuestionaire4.xib in Resources */ = {isa = PBXBuildFile; fileRef = C566B6E71EF7FAB30089962D /* WMQuestionaire4.xib */; };
 		C56A605F1EEBDD0500F7F163 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C56A605E1EEBDD0500F7F163 /* BaseViewController.m */; };
+		C5A1C0351F023612001149DC /* WMQuestionaire7.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5A1C0341F023612001149DC /* WMQuestionaire7.xib */; };
+		C5A1C0381F02458A001149DC /* WMQuestionaire7.m in Sources */ = {isa = PBXBuildFile; fileRef = C5A1C0371F02458A001149DC /* WMQuestionaire7.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -193,6 +195,9 @@
 		C566B6E71EF7FAB30089962D /* WMQuestionaire4.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WMQuestionaire4.xib; sourceTree = "<group>"; };
 		C56A605D1EEBDD0500F7F163 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		C56A605E1EEBDD0500F7F163 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		C5A1C0341F023612001149DC /* WMQuestionaire7.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WMQuestionaire7.xib; sourceTree = "<group>"; };
+		C5A1C0361F02458A001149DC /* WMQuestionaire7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMQuestionaire7.h; sourceTree = "<group>"; };
+		C5A1C0371F02458A001149DC /* WMQuestionaire7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMQuestionaire7.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -352,6 +357,7 @@
 				C566B6E71EF7FAB30089962D /* WMQuestionaire4.xib */,
 				C54D9C471EFE8C8300C9CFE0 /* WMQuestionaire5.xib */,
 				C54D9C491EFE952300C9CFE0 /* WMQuestionaire6.xib */,
+				C5A1C0341F023612001149DC /* WMQuestionaire7.xib */,
 				AE91CCCA1EDAAC7A00BB9585 /* WMAssignCell.h */,
 				AE91CCCB1EDAAC7A00BB9585 /* WMAssignCell.m */,
 				C509CAF81EE81443002D4F86 /* WMAppliedCell.h */,
@@ -374,6 +380,8 @@
 				C54D9C6A1EFEA00300C9CFE0 /* WMQuestionaire5.m */,
 				C54D9C6C1EFEA01400C9CFE0 /* WMQuestionaire6.h */,
 				C54D9C6D1EFEA01400C9CFE0 /* WMQuestionaire6.m */,
+				C5A1C0361F02458A001149DC /* WMQuestionaire7.h */,
+				C5A1C0371F02458A001149DC /* WMQuestionaire7.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -476,6 +484,7 @@
 				C509CAF51EE7BEFE002D4F86 /* WMRejectedCell.xib in Resources */,
 				C566B6E21EF7F0920089962D /* WMQuestionaire1.xib in Resources */,
 				C566B6E01EF7BB890089962D /* GoogleService-Info.plist in Resources */,
+				C5A1C0351F023612001149DC /* WMQuestionaire7.xib in Resources */,
 				AE820FDF1ED48DA900AE2BA2 /* Main.storyboard in Resources */,
 				C566B6E61EF7F9160089962D /* WMQuestionaire3.xib in Resources */,
 				C509CAF31EE7BED2002D4F86 /* WMAcceptedCell.xib in Resources */,
@@ -550,6 +559,7 @@
 				AEFEBC361EE2913500EB0F31 /* WMIndustrySelectorViewController.m in Sources */,
 				C54CD09B1EEAC3E00004AEE7 /* WMCityViewController.m in Sources */,
 				AE820FDC1ED48DA900AE2BA2 /* ViewController.m in Sources */,
+				C5A1C0381F02458A001149DC /* WMQuestionaire7.m in Sources */,
 				AE820FD91ED48DA900AE2BA2 /* AppDelegate.m in Sources */,
 				C53591C71EF25D6C0046EC7B /* WMForgotPasswordViewController.m in Sources */,
 				C54D9C5F1EFE9FB000C9CFE0 /* WMQuestionaire1.m in Sources */,

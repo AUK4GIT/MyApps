@@ -33,8 +33,6 @@ NSString *const kGCMMessageIDKey = @"gcm.message_id";
     [GMSServices provideAPIKey:@"AIzaSyDfbkwrGrRZ-cmqs7UChplJSRVn7zrovrc"];
     [GMSPlacesClient provideAPIKey:@"AIzaSyDfbkwrGrRZ-cmqs7UChplJSRVn7zrovrc"];
     
-//    [[UINavigationBar appearance] setBackIndicatorImage:[UIImage imageNamed:@"back-button-image"]];
-//    [[UINavigationBar appearance] setBackIndicatorTransitionMaskImage:[UIImage imageNamed:@"back-button-image"]];
     [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
     [[UINavigationBar appearance] setTranslucent:false];
     [[UINavigationBar appearance] setBackgroundImage:[self imageFromColor:[UIColor colorWithRed:220/255.0 green:0.0 blue:60/255.0 alpha:1.0]]
@@ -114,9 +112,6 @@ NSString *const kGCMMessageIDKey = @"gcm.message_id";
                     animations:^{ self.window.rootViewController = self.swController; }
                     completion:nil];
     
-    fvc.navigationBar.backIndicatorImage = [UIImage imageNamed:@"back-button-image"];
-    fvc.navigationBar.backIndicatorTransitionMaskImage = [UIImage imageNamed:@"back-button-image"];
-    fvc.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
 }
 
 - (void)logout {

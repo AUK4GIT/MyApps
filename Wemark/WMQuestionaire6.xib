@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="398" id="FPl-A6-rCK" customClass="WMQuestionaire6">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WMQuestionaire6" rowHeight="398" id="FPl-A6-rCK" customClass="WMQuestionaire6">
             <rect key="frame" x="0.0" y="0.0" width="408" height="398"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FPl-A6-rCK" id="TkN-VD-i5d">
@@ -73,15 +73,15 @@
                         <color key="textColor" red="1" green="0.20842824560000001" blue="0.083251772230000007" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_radio_button_checked" translatesAutoresizingMaskIntoConstraints="NO" id="Kce-ou-hsV">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="radio-on-button" translatesAutoresizingMaskIntoConstraints="NO" id="Kce-ou-hsV">
                         <rect key="frame" x="8" y="261" width="20" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_radio_button_unchecked" translatesAutoresizingMaskIntoConstraints="NO" id="5bo-1X-fGi">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="UnradioButton" translatesAutoresizingMaskIntoConstraints="NO" id="5bo-1X-fGi">
                         <rect key="frame" x="8" y="289" width="20" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_radio_button_unchecked" translatesAutoresizingMaskIntoConstraints="NO" id="AY0-wD-jBL">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="UnradioButton" translatesAutoresizingMaskIntoConstraints="NO" id="AY0-wD-jBL">
                         <rect key="frame" x="8" y="317" width="20" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
@@ -147,7 +147,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="ic_radio_button_checked" width="24" height="24"/>
-        <image name="ic_radio_button_unchecked" width="24" height="24"/>
+        <image name="UnradioButton" width="12" height="12"/>
+        <image name="radio-on-button" width="12" height="12"/>
     </resources>
 </document>

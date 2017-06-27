@@ -32,7 +32,7 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="money-bag" translatesAutoresizingMaskIntoConstraints="NO" id="ha7-oP-6Hy">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="money_bag" translatesAutoresizingMaskIntoConstraints="NO" id="ha7-oP-6Hy">
                                 <rect key="frame" x="78" y="43" width="18" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="18" id="OO9-uL-GUR"/>
@@ -109,7 +109,7 @@
     </objects>
     <resources>
         <image name="date" width="18" height="18"/>
-        <image name="money-bag" width="50" height="50"/>
+        <image name="money_bag" width="40" height="40"/>
         <image name="sidemenu-account" width="40" height="40"/>
     </resources>
 </document>

@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface WMCampaignDetailsViewController : UIViewController
+@interface WMCampaignDetailsViewController : BaseViewController
 @property(nonatomic, strong)NSString *campaignid;
 @property(nonatomic, strong)NSString *clientid;
 @end
