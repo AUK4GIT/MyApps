@@ -23,7 +23,7 @@
 @property (strong, nonatomic) IBOutlet ACFloatingTextField *passwordTextField;
 @property (strong, nonatomic) IBOutlet ACFloatingTextField *confirmPasswordTextField;
 @property (strong, nonatomic) IBOutlet UIImageView *profileImgView;
-//@property (strong, nonatomic) IBOutlet NSString;
+
 @property (strong, nonatomic) NSString *profilePicURL;
 - (IBAction)signUpBtnTapped:(id)sender;
 - (IBAction)signInBtnTapped:(id)sender;

@@ -149,9 +149,9 @@
         return 150;
     } else if (self.segmentedControl.selectedSegmentIndex == 1) {
         return 150;
-    }else if (self.segmentedControl.selectedSegmentIndex == 2) {
+    } else if (self.segmentedControl.selectedSegmentIndex == 2) {
         return 128;
-    }else if (self.segmentedControl.selectedSegmentIndex == 3) {
+    } else if (self.segmentedControl.selectedSegmentIndex == 3) {
         return 132;
     }
     return 210;

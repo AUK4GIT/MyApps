@@ -12,13 +12,7 @@
 #import "WMDataHelper.h"
 #import "WMCorrectionsViewController.h"
 #import "HMSegmentedControl.h"
-#import "WMQuestionaire1.h"
-#import "WMQuestionaire2.h"
-#import "WMQuestionaire3.h"
-#import "WMQuestionaire4.h"
-#import "WMQuestionaire5.h"
-#import "WMQuestionaire6.h"
-#import "WMQuestionaire7.h"
+#import "WMQuestionnairViewController.h"
 
 
 @interface WMStartSurveyViewController ()
@@ -26,7 +20,7 @@
 @property (strong, nonatomic) NSMutableArray *surveyArray;
 @property (weak, nonatomic) IBOutlet UIProgressView *progressView;
 @property (weak, nonatomic) IBOutlet UILabel *progressLbl;
-
+    @property (nonatomic, strong) NSString *selectedSectionId;
 @property (assign, nonatomic) BOOL questionaire1;
 @property (assign, nonatomic) BOOL questionaire2;
 @property (assign, nonatomic) BOOL questionaire3;
@@ -121,12 +115,12 @@
         self.questionaire7 = true;
     }
 
-    [self questionaire];
+//    [self questionaire];
 }
 
 - (void)questionaire{
     NSString *authKey = [[WMDataHelper sharedInstance] getAuthKey];
-    NSDictionary *paramsDict = @{@"questionaire1":[NSNumber numberWithBool:self.questionaire1],@"questionaire2":[NSNumber numberWithBool:self.questionaire2],@"questionaire3":[NSNumber numberWithBool:self.questionaire3],@"questionaire4":[NSNumber numberWithBool:self.questionaire4],@"questionaire5":[NSNumber numberWithBool:self.questionaire5],@"questionaire6":[NSNumber numberWithBool:self.questionaire6],@"questionaire7":[NSNumber numberWithBool:self.questionaire7]};
+//    NSDictionary *paramsDict = @{@"questionaire1":[NSNumber numberWithBool:self.questionaire1],@"questionaire2":[NSNumber numberWithBool:self.questionaire2],@"questionaire3":[NSNumber numberWithBool:self.questionaire3],@"questionaire4":[NSNumber numberWithBool:self.questionaire4],@"questionaire5":[NSNumber numberWithBool:self.questionaire5],@"questionaire6":[NSNumber numberWithBool:self.questionaire6],@"questionaire7":[NSNumber numberWithBool:self.questionaire7]};
     
 //    [[WMWebservicesHelper sharedInstance] questionaire:authKey paramsDict:paramsDict completionBlock:^(BOOL result, id responseDict, NSError *error) {
 //        
@@ -152,7 +146,16 @@
 //   //[self.collectionView reloadData];
 }
                        
-
+#pragma mark - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"loadQuestion"]) {
+        WMQuestionnairViewController *lsVC = [segue destinationViewController];
+        lsVC.assignmentId = self.assignmentId;
+        lsVC.sectionId = self.selectedSectionId;
+    }
+}
 
 #pragma mark - UICollectionViewDelegate
 
@@ -163,10 +166,11 @@
     return CGSizeMake(collectionView.bounds.size.width/3 - 16, 150);
 }
 
-
 - (void)collectionView:(UICollectionView *)collectionView
 didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+    id obj = self.surveyArray[indexPath.item];
+    self.selectedSectionId = [self convertToString:[obj valueForKey:@"question_section_id"]];
+    [self performSegueWithIdentifier:@"loadQuestion" sender:nil];
 }
 
 #pragma mark - UICollectionViewDatasource

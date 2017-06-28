@@ -31,12 +31,8 @@
                         <color key="textColor" red="0.87450980389999999" green="0.1333333333" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="drop-down-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="QIb-Zu-wgf">
-                        <rect key="frame" x="374" y="37" width="18" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SRC-Gh-wac">
-                        <rect key="frame" x="8" y="60" width="384" height="1"/>
+                        <rect key="frame" x="8" y="72" width="364" height="1"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.87450980389999999" green="0.1333333333" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -94,6 +90,10 @@
                             <action selector="nextBtnActn:" destination="kKV-RY-nXq" eventType="touchUpInside" id="OGR-ua-2fO"/>
                         </connections>
                     </button>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="drop-down-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="QIb-Zu-wgf">
+                        <rect key="frame" x="326" y="37" width="18" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
                 </subviews>
             </tableViewCellContentView>
             <connections>

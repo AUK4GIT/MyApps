@@ -130,6 +130,10 @@
                             <action selector="nextBtnActn:" destination="FPl-A6-rCK" eventType="touchUpInside" id="o5r-z4-7yG"/>
                         </connections>
                     </button>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="drop-down-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="geB-8D-Tae">
+                        <rect key="frame" x="353" y="171" width="22" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
                 </subviews>
             </tableViewCellContentView>
             <connections>
@@ -148,6 +152,7 @@
     </objects>
     <resources>
         <image name="UnradioButton" width="12" height="12"/>
+        <image name="drop-down-arrow" width="12" height="12"/>
         <image name="radio-on-button" width="12" height="12"/>
     </resources>
 </document>

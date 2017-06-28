@@ -20,6 +20,7 @@
 @interface AppDelegate ()
 
 @end
+
 NSString *const kGCMMessageIDKey = @"gcm.message_id";
 
 @implementation AppDelegate
