@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "WMDataHelper.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "WMMyAccountViewController.h"
 
 @interface WMMenuViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *profilePic;
@@ -30,12 +31,26 @@
     appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     self.profilePic.layer.cornerRadius = self.profilePic.bounds.size.width/2;
-    self.profilePic.layer.borderWidth = 4.0f;
+//    self.profilePic.layer.borderWidth = 1.0f;
     self.profilePic.layer.masksToBounds = true;
     self.profilePic.clipsToBounds = true;
-    self.profilePic.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.profilePic.userInteractionEnabled = true;
+
+//    self.profilePic.layer.borderColor = [UIColor whiteColor].CGColor;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+    
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+    
+    [self.profilePic addGestureRecognizer:singleTap];
 }
+    
+    - (void)handleSingleTap:(UIGestureRecognizer *)gestureRecognizer {
+    
+        [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:1]];
+        UINavigationController *nvc = (UINavigationController *)appDelegate.swController.rootViewController;
+        WMMyAccountViewController *mvc = (WMMyAccountViewController *)nvc.topViewController;
+        mvc.navigateToEditProfile = true;
+    }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];

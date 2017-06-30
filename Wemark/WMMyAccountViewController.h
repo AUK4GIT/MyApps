@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 #import "BaseFrontViewController.h"
 @interface WMMyAccountViewController : BaseFrontViewController
-
+    @property(nonatomic, assign)BOOL navigateToEditProfile;
 @end

@@ -131,6 +131,9 @@
     self.assignmentTwoCountLbl.text= [self convertToString:[self.dataObject valueForKey:@"acceptedCount"]];
     self.assignmentThreeCountLbl.text = [self convertToString:[self.dataObject valueForKey:@"rejectedCount"]];
     
+    if (self.navigateToEditProfile) {
+        [self editProfile:nil];
+    }
 }
 
 - (void)editProfile:(id)sender {

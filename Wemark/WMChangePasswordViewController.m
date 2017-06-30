@@ -74,8 +74,8 @@
     } else  if (self.confirmPasswordTextField.text.length == 0){
         [self.confirmPasswordTextField showErrorWithText:@"Please type  confirm password"];
     } else if (![self.confirmPasswordTextField.text isEqualToString:self.changePasswordTextField.text]) {
-        [self.confirmPasswordTextField showErrorWithText:@"New and Confirm passwords donot match"];
-        [self.changePasswordTextField showErrorWithText:@"New and Confirm passwords donot match"];
+        [self.confirmPasswordTextField showErrorWithText:@"passwords not matched"];
+        [self.changePasswordTextField showErrorWithText:@"passwords not matched"];
     } else {
         [self proceedWithChangePassword];
     }

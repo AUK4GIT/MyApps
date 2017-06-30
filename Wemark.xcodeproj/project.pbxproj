@@ -77,6 +77,16 @@
 		C5A1C0351F023612001149DC /* WMQuestionaire7.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5A1C0341F023612001149DC /* WMQuestionaire7.xib */; };
 		C5A1C0381F02458A001149DC /* WMQuestionaire7.m in Sources */ = {isa = PBXBuildFile; fileRef = C5A1C0371F02458A001149DC /* WMQuestionaire7.m */; };
 		C5FBE5D61F0603C600163396 /* WMBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5FBE5D51F0603C600163396 /* WMBaseTableViewController.m */; };
+		C5FBE5D81F06166800163396 /* WMQuestionaire8.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5FBE5D71F06166800163396 /* WMQuestionaire8.xib */; };
+		C5FBE5DA1F06168600163396 /* WMQuestionaire9.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5FBE5D91F06168600163396 /* WMQuestionaire9.xib */; };
+		C5FBE5DC1F0616A500163396 /* WMQuestionaire10.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5FBE5DB1F0616A500163396 /* WMQuestionaire10.xib */; };
+		C5FBE5DE1F0616C800163396 /* WMQuestionaire11.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5FBE5DD1F0616C800163396 /* WMQuestionaire11.xib */; };
+		C5FBE5E01F0616DF00163396 /* WMQuestionaire12.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5FBE5DF1F0616DF00163396 /* WMQuestionaire12.xib */; };
+		C5FBE5E31F0626CA00163396 /* WMQuestionaire8.m in Sources */ = {isa = PBXBuildFile; fileRef = C5FBE5E21F0626CA00163396 /* WMQuestionaire8.m */; };
+		C5FBE5E61F0626DF00163396 /* WMQuestionaire9.m in Sources */ = {isa = PBXBuildFile; fileRef = C5FBE5E51F0626DF00163396 /* WMQuestionaire9.m */; };
+		C5FBE5E91F0626F300163396 /* WMQuestionaire10.m in Sources */ = {isa = PBXBuildFile; fileRef = C5FBE5E81F0626F300163396 /* WMQuestionaire10.m */; };
+		C5FBE5EC1F06270700163396 /* WMQuestionaire11.m in Sources */ = {isa = PBXBuildFile; fileRef = C5FBE5EB1F06270700163396 /* WMQuestionaire11.m */; };
+		C5FBE5EF1F06271C00163396 /* WMQuestionaire12.m in Sources */ = {isa = PBXBuildFile; fileRef = C5FBE5EE1F06271C00163396 /* WMQuestionaire12.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -204,6 +214,21 @@
 		C5A1C0371F02458A001149DC /* WMQuestionaire7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMQuestionaire7.m; sourceTree = "<group>"; };
 		C5FBE5D41F0603C600163396 /* WMBaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMBaseTableViewController.h; sourceTree = "<group>"; };
 		C5FBE5D51F0603C600163396 /* WMBaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMBaseTableViewController.m; sourceTree = "<group>"; };
+		C5FBE5D71F06166800163396 /* WMQuestionaire8.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WMQuestionaire8.xib; sourceTree = "<group>"; };
+		C5FBE5D91F06168600163396 /* WMQuestionaire9.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WMQuestionaire9.xib; sourceTree = "<group>"; };
+		C5FBE5DB1F0616A500163396 /* WMQuestionaire10.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WMQuestionaire10.xib; sourceTree = "<group>"; };
+		C5FBE5DD1F0616C800163396 /* WMQuestionaire11.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WMQuestionaire11.xib; sourceTree = "<group>"; };
+		C5FBE5DF1F0616DF00163396 /* WMQuestionaire12.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WMQuestionaire12.xib; sourceTree = "<group>"; };
+		C5FBE5E11F0626CA00163396 /* WMQuestionaire8.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMQuestionaire8.h; sourceTree = "<group>"; };
+		C5FBE5E21F0626CA00163396 /* WMQuestionaire8.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMQuestionaire8.m; sourceTree = "<group>"; };
+		C5FBE5E41F0626DF00163396 /* WMQuestionaire9.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMQuestionaire9.h; sourceTree = "<group>"; };
+		C5FBE5E51F0626DF00163396 /* WMQuestionaire9.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMQuestionaire9.m; sourceTree = "<group>"; };
+		C5FBE5E71F0626F300163396 /* WMQuestionaire10.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMQuestionaire10.h; sourceTree = "<group>"; };
+		C5FBE5E81F0626F300163396 /* WMQuestionaire10.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMQuestionaire10.m; sourceTree = "<group>"; };
+		C5FBE5EA1F06270700163396 /* WMQuestionaire11.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMQuestionaire11.h; sourceTree = "<group>"; };
+		C5FBE5EB1F06270700163396 /* WMQuestionaire11.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMQuestionaire11.m; sourceTree = "<group>"; };
+		C5FBE5ED1F06271C00163396 /* WMQuestionaire12.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMQuestionaire12.h; sourceTree = "<group>"; };
+		C5FBE5EE1F06271C00163396 /* WMQuestionaire12.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMQuestionaire12.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -368,6 +393,11 @@
 				C54D9C471EFE8C8300C9CFE0 /* WMQuestionaire5.xib */,
 				C54D9C491EFE952300C9CFE0 /* WMQuestionaire6.xib */,
 				C5A1C0341F023612001149DC /* WMQuestionaire7.xib */,
+				C5FBE5D71F06166800163396 /* WMQuestionaire8.xib */,
+				C5FBE5D91F06168600163396 /* WMQuestionaire9.xib */,
+				C5FBE5DB1F0616A500163396 /* WMQuestionaire10.xib */,
+				C5FBE5DD1F0616C800163396 /* WMQuestionaire11.xib */,
+				C5FBE5DF1F0616DF00163396 /* WMQuestionaire12.xib */,
 				AE91CCCA1EDAAC7A00BB9585 /* WMAssignCell.h */,
 				AE91CCCB1EDAAC7A00BB9585 /* WMAssignCell.m */,
 				C509CAF81EE81443002D4F86 /* WMAppliedCell.h */,
@@ -392,6 +422,16 @@
 				C54D9C6D1EFEA01400C9CFE0 /* WMQuestionaire6.m */,
 				C5A1C0361F02458A001149DC /* WMQuestionaire7.h */,
 				C5A1C0371F02458A001149DC /* WMQuestionaire7.m */,
+				C5FBE5E11F0626CA00163396 /* WMQuestionaire8.h */,
+				C5FBE5E21F0626CA00163396 /* WMQuestionaire8.m */,
+				C5FBE5E41F0626DF00163396 /* WMQuestionaire9.h */,
+				C5FBE5E51F0626DF00163396 /* WMQuestionaire9.m */,
+				C5FBE5E71F0626F300163396 /* WMQuestionaire10.h */,
+				C5FBE5E81F0626F300163396 /* WMQuestionaire10.m */,
+				C5FBE5EA1F06270700163396 /* WMQuestionaire11.h */,
+				C5FBE5EB1F06270700163396 /* WMQuestionaire11.m */,
+				C5FBE5ED1F06271C00163396 /* WMQuestionaire12.h */,
+				C5FBE5EE1F06271C00163396 /* WMQuestionaire12.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -483,20 +523,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE91CCC71ED9F9F900BB9585 /* WMMenuCell.xib in Resources */,
+				C5FBE5E01F0616DF00163396 /* WMQuestionaire12.xib in Resources */,
+				C5FBE5DE1F0616C800163396 /* WMQuestionaire11.xib in Resources */,
 				C566B6E81EF7FAB30089962D /* WMQuestionaire4.xib in Resources */,
 				C509CAF11EE7BEAB002D4F86 /* WMAssignedCell.xib in Resources */,
 				AE820FE71ED48DA900AE2BA2 /* LaunchScreen.storyboard in Resources */,
 				C54D9C481EFE8C8300C9CFE0 /* WMQuestionaire5.xib in Resources */,
 				AE820FE41ED48DA900AE2BA2 /* Assets.xcassets in Resources */,
 				AE91CCC91EDA9E4A00BB9585 /* WMAssignCell.xib in Resources */,
+				C5FBE5DC1F0616A500163396 /* WMQuestionaire10.xib in Resources */,
 				C54D9C4A1EFE952300C9CFE0 /* WMQuestionaire6.xib in Resources */,
 				C509CAF71EE802BF002D4F86 /* WMAppliedCell.xib in Resources */,
 				C509CAF51EE7BEFE002D4F86 /* WMRejectedCell.xib in Resources */,
 				C566B6E21EF7F0920089962D /* WMQuestionaire1.xib in Resources */,
 				C566B6E01EF7BB890089962D /* GoogleService-Info.plist in Resources */,
 				C5A1C0351F023612001149DC /* WMQuestionaire7.xib in Resources */,
+				C5FBE5D81F06166800163396 /* WMQuestionaire8.xib in Resources */,
 				AE820FDF1ED48DA900AE2BA2 /* Main.storyboard in Resources */,
 				C566B6E61EF7F9160089962D /* WMQuestionaire3.xib in Resources */,
+				C5FBE5DA1F06168600163396 /* WMQuestionaire9.xib in Resources */,
 				C509CAF31EE7BED2002D4F86 /* WMAcceptedCell.xib in Resources */,
 				C566B6E41EF7F4B20089962D /* WMQuestionaire2.xib in Resources */,
 			);
@@ -563,6 +608,7 @@
 				C509CB061EE82F5D002D4F86 /* WMStartSurveyViewController.m in Sources */,
 				C53591D01EF298830046EC7B /* WMResendOTPViewController.m in Sources */,
 				AEDD5D451EE3B58800AA8E44 /* WMNotificationsViewController.m in Sources */,
+				C5FBE5E61F0626DF00163396 /* WMQuestionaire9.m in Sources */,
 				AEFEBC3C1EE2974A00EB0F31 /* WMSearchResultsViewController.m in Sources */,
 				AEC379EB1ED5F78C00A33A11 /* WMWebservicesHelper.m in Sources */,
 				AE3098C81EE5C63600BA8609 /* WMCampaignDetailsViewController.m in Sources */,
@@ -573,10 +619,12 @@
 				C5A1C0381F02458A001149DC /* WMQuestionaire7.m in Sources */,
 				AE820FD91ED48DA900AE2BA2 /* AppDelegate.m in Sources */,
 				C53591C71EF25D6C0046EC7B /* WMForgotPasswordViewController.m in Sources */,
+				C5FBE5E31F0626CA00163396 /* WMQuestionaire8.m in Sources */,
 				C54D9C5F1EFE9FB000C9CFE0 /* WMQuestionaire1.m in Sources */,
 				C53591CD1EF270270046EC7B /* WMResetPasswordViewController.m in Sources */,
 				C54CD0951EEAC38E0004AEE7 /* WMCountryViewController.m in Sources */,
 				AE91CCC31ED9E44000BB9585 /* WMHomeViewController.m in Sources */,
+				C5FBE5EF1F06271C00163396 /* WMQuestionaire12.m in Sources */,
 				C509CAFA1EE81443002D4F86 /* WMAppliedCell.m in Sources */,
 				C55E46F81EE6E1F0002E2258 /* WMAllAssignmentsClientIdViewController.m in Sources */,
 				AE91CCCC1EDAAC7A00BB9585 /* WMAssignCell.m in Sources */,
@@ -590,6 +638,8 @@
 				AEFEBC331EE1950100EB0F31 /* WMSearchAssignmentViewController.m in Sources */,
 				AE820FE21ED48DA900AE2BA2 /* Wemark.xcdatamodeld in Sources */,
 				C54D9C621EFE9FC300C9CFE0 /* WMQuestionaire2.m in Sources */,
+				C5FBE5E91F0626F300163396 /* WMQuestionaire10.m in Sources */,
+				C5FBE5EC1F06270700163396 /* WMQuestionaire11.m in Sources */,
 				C54D9C6B1EFEA00300C9CFE0 /* WMQuestionaire5.m in Sources */,
 				C56A605F1EEBDD0500F7F163 /* BaseViewController.m in Sources */,
 				C54CD0981EEAC3C30004AEE7 /* WMStateViewController.m in Sources */,

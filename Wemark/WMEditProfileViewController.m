@@ -26,6 +26,7 @@
 @property (strong, nonatomic) IBOutlet ACFloatingTextField *pincodeTextField;
 @property (strong, nonatomic) IBOutlet ACFloatingTextField *phoneCodeTextField;
 @property (weak, nonatomic) IBOutlet UIImageView *profilePic;
+    @property (weak, nonatomic) IBOutlet UIImageView *camPic;
 @property (strong, nonatomic) ActionSheetDatePicker *actionSheetPicker;
 @property (strong, nonatomic) NSArray *mobileCodes;
 @property (strong, nonatomic) NSArray *countries;
@@ -59,8 +60,15 @@
     self.profilePic.layer.borderWidth = 4.0f;
     self.profilePic.layer.masksToBounds = true;
     self.profilePic.clipsToBounds = true;
+    
+    self.camPic.layer.cornerRadius = self.camPic.bounds.size.width/2;
+    self.camPic.layer.borderWidth = 4.0f;
+    self.camPic.layer.masksToBounds = true;
+    self.camPic.clipsToBounds = true;
 
     self.profilePic.layer.borderColor = [UIColor colorWithRed:220/255.0 green:0.0 blue:60/255.0 alpha:1.0].CGColor;
+    self.camPic.layer.borderColor = [UIColor colorWithRed:220/255.0 green:0.0 blue:60/255.0 alpha:1.0].CGColor;
+
     
     UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(profilePicTapped:)];
     [self.profilePic addGestureRecognizer:tapGes];

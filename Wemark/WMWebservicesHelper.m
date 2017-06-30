@@ -124,17 +124,17 @@
     [dataTask resume];
 }
 
-- (void)getAssignments:(NSString *)authKey byLocationId:(NSString *)locId forSelfAssign:(NSString *)selfAssign forApply:(NSString *)apply completionBlock:(void (^) (BOOL, id, NSError*))completionBlock {
+- (void)getAssignments:(NSString *)authKey byLocationName:(NSString *)locName forSelfAssign:(NSString *)selfAssign forApply:(NSString *)apply completionBlock:(void (^) (BOOL, id, NSError*))completionBlock {
     //    NSError *error;
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
-    NSDictionary *paramsDict = @{@"self_assign":selfAssign,@"apply":apply,@"location_id":locId};
-    NSString *urlString = [NSString stringWithFormat:@"%@%@?location_id=%@&page=%@&pageSize=%@",baseURL,assignmentsByLocationURL,locId,@"0",@"10"];
+    NSDictionary *paramsDict = @{@"self_assign":selfAssign,@"apply":apply,@"location_name":locName};
+    NSString *urlString = [NSString stringWithFormat:@"%@%@?location_id=%@&page=%@&pageSize=%@",baseURL,assignmentsByLocationURL,locName,@"0",@"10"];
     NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:urlString parameters:paramsDict error:nil];
     [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request addValue:authKey forHTTPHeaderField:@"Auth-key"];
-//    [request addValue:locId forHTTPHeaderField:@"location_id"];
+//  [request addValue:locId forHTTPHeaderField:@"location_id"];
 
     NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
         if (error) {

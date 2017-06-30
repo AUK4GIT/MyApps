@@ -20,5 +20,13 @@
 
     // Configure the view for the selected state
 }
+- (IBAction)backBtnActn:(id)sender {
+    
+    
+}
 
+- (IBAction)nextBtnActn:(id)sender {
+    
+    
+}
 @end

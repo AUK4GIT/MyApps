@@ -39,12 +39,12 @@
  Get Assignments by LocationId selected
 
  @param authKey authKey
- @param locId location Id
+ @param locName location Name
  @param selfAssign true or false
  @param apply true or false
  @param completionBlock callback
  */
-- (void)getAssignments:(NSString *)authKey byLocationId:(NSString *)locId forSelfAssign:(NSString *)selfAssign forApply:(NSString *)apply completionBlock:(void (^) (BOOL, id, NSError*))completionBlock;
+- (void)getAssignments:(NSString *)authKey byLocationName:(NSString *)locName forSelfAssign:(NSString *)selfAssign forApply:(NSString *)apply completionBlock:(void (^) (BOOL, id, NSError*))completionBlock;
 
 
 /**

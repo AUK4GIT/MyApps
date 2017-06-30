@@ -16,6 +16,11 @@
 #import "WMQuestionaire5.h"
 #import "WMQuestionaire6.h"
 #import "WMQuestionaire7.h"
+#import "WMQuestionaire8.h"
+#import "WMQuestionaire9.h"
+#import "WMQuestionaire10.h"
+#import "WMQuestionaire11.h"
+#import "WMQuestionaire12.h"
 
 @interface WMQuestionnairViewController ()
     @property(nonatomic, strong) NSArray *questionnaireArray;
@@ -74,6 +79,7 @@
         //Layout for Stack View
 //        [stackView.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = true;
 //        [stackView.centerYAnchor constraintEqualToAnchor:self.view.centerYAnchor].active = true;
+
         for (id questionnaire in self.questionnaireArray) {
             if ([questionnaire[@"type"] isEqualToString:@"audio"]) {
                 UIView *qView = [[[NSBundle mainBundle] loadNibNamed:@"WMQuestionaire1" owner:self options:nil] objectAtIndex:0];
@@ -155,5 +161,6 @@
     // Pass the selected object to the new view controller.
 }
 */
+
 
 @end

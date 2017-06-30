@@ -23,6 +23,14 @@
 @property (strong, nonatomic) IBOutlet ACFloatingTextField *passwordTextField;
 @property (strong, nonatomic) IBOutlet ACFloatingTextField *confirmPasswordTextField;
 @property (strong, nonatomic) IBOutlet UIImageView *profileImgView;
+    
+    @property (weak, nonatomic) IBOutlet UIImageView *photocameraImg;
+    @property (weak, nonatomic) IBOutlet UILabel *addImgLabel;
+    
+    @property (weak, nonatomic) IBOutlet UIView *changeImgBGView;
+    @property (weak, nonatomic) IBOutlet UILabel *changeImgLbl;
+    @property (weak, nonatomic) IBOutlet UIImageView *changeImgCameraPic;
+    
 
 @property (strong, nonatomic) NSString *profilePicURL;
 - (IBAction)signUpBtnTapped:(id)sender;
@@ -38,6 +46,17 @@
     // Do any additional setup after loading the view.
     
     //[self.navigationItem setHidesBackButton:YES];
+    
+    self.photocameraImg.hidden = false;
+     self.addImgLabel.hidden = false;
+    
+    self.changeImgBGView.hidden = true;;
+    self.changeImgLbl.hidden = true;
+    self.changeImgCameraPic.hidden = true;;
+    
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+    
+    [self.profileImgView addGestureRecognizer:singleTap];
     
     activityView = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     activityView.tintColor = [UIColor whiteColor];
@@ -239,9 +258,9 @@ userid password:(NSString *)password firstName:(NSString *)firstname lastName:(N
         [self.confirmPasswordTextField showErrorWithText:@"Confirm Password should be atleast 6 characters long"];
     }
     else if (self.firstNameTextField.text.length == 0){
-        [self.passwordTextField showErrorWithText:@"First name cannot be empty"];
+        [self.firstNameTextField showErrorWithText:@"First name cannot be empty"];
     } else if (self.lastNameTextField.text.length == 0){
-        [self.passwordTextField showErrorWithText:@"Last name cannot be empty"];
+        [self.lastNameTextField showErrorWithText:@"Last name cannot be empty"];
     } else {
         [self proceedWithRegister:self.emailIdTextField.text password:self.passwordTextField.text firstName:self.firstNameTextField.text lastName:self.lastNameTextField.text];
     }
@@ -261,42 +280,58 @@ userid password:(NSString *)password firstName:(NSString *)firstname lastName:(N
     NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
     return [emailTest evaluateWithObject:checkString];
 }
-
--(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
-    [self.view endEditing:true];
     
-    UITouch *touch = [touches anyObject];
-    id touchView = touch.view;
-    if (touchView == self.profileImgView) {
+    - (void)handleSingleTap:(UIGestureRecognizer *)gestureRecognizer {
+        // single tap handling
+        NSLog(@"sinlgeTap called");
+        
+        [self.view endEditing:true];
+
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Wemark" message:@"Please select a photo source" preferredStyle:UIAlertControllerStyleActionSheet];
-        
-        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-        picker.delegate = self;
-        picker.allowsEditing = YES;
-        
-        UIAlertAction *albumAction = [UIAlertAction actionWithTitle:@"Album" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-            [self presentViewController:picker animated:YES completion:NULL];
             
-        }];
-        UIAlertAction *cameraAction = [UIAlertAction actionWithTitle:@"Camera" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-            [self presentViewController:picker animated:YES completion:NULL];
-        }];
-        
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        }];
-        
-        [alertController addAction:albumAction];
-        [alertController addAction:cameraAction];
-        [alertController addAction:cancelAction];
-        
-        [self presentViewController:alertController animated:true completion:^{
+            UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+            picker.delegate = self;
+            picker.allowsEditing = YES;
             
-        }];
+            UIAlertAction *albumAction = [UIAlertAction actionWithTitle:@"Album" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+                [self presentViewController:picker animated:YES completion:NULL];
+                
+            }];
+            UIAlertAction *cameraAction = [UIAlertAction actionWithTitle:@"Camera" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+                [self presentViewController:picker animated:YES completion:NULL];
+            }];
+            
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            }];
+            
+            UIAlertAction *removeAction = [UIAlertAction actionWithTitle:@"Remove Image" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self removeImage];
+            }];
+            
+            [alertController addAction:albumAction];
+            [alertController addAction:cameraAction];
+            [alertController addAction:removeAction];
+            [alertController addAction:cancelAction];
+
+            [self presentViewController:alertController animated:true completion:^{
+                
+            }];
     }
-}
+
+
+    
+    - (void)removeImage {
+        self.photocameraImg.hidden = false;
+        self.addImgLabel.hidden = false;
+        
+        self.changeImgBGView.hidden = true;;
+        self.changeImgLbl.hidden = true;
+        self.changeImgCameraPic.hidden = true;;
+
+        self.profileImgView.image = nil;
+    }
 
 #pragma mark - UIImagePickerDelegate
 
@@ -314,6 +349,12 @@ userid password:(NSString *)password firstName:(NSString *)firstname lastName:(N
     
 
     [picker dismissViewControllerAnimated:YES completion:^{
+        self.photocameraImg.hidden = true;
+        self.addImgLabel.hidden = true;
+        
+        self.changeImgBGView.hidden = false;;
+        self.changeImgLbl.hidden = false;
+        self.changeImgCameraPic.hidden = false;;
     }];
 }
 

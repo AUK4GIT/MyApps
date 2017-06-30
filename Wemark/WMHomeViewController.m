@@ -23,7 +23,7 @@
 @property (strong, nonatomic) NSMutableArray *assignmentsArray;
 @property (assign, nonatomic) BOOL selfAssign;
 @property (assign, nonatomic) BOOL apply;
-@property (strong, nonatomic) NSString *locationId;
+@property (strong, nonatomic) NSString *locationName;
 @property(nonatomic, strong) IBOutlet UIView *mapBGView;
 @property(nonatomic, strong) UILabel *titleLabel;
 @property(nonatomic, strong) CLLocationManager *locationManager;
@@ -154,17 +154,17 @@
         self.selfAssign = true;
         [self.applyFilterButton setBackgroundColor:[UIColor colorWithRed:27/255.0 green:122.0/255.0 blue:226/255.0 alpha:1.0]];
     }
-    if (self.locationId) {
-        [self getAssignmentsByLocationid:self.locationId forSelfAssign:[NSString stringWithFormat:@"%d",self.selfAssign] forApply:[NSString stringWithFormat:@"%d",self.apply]];
+    if (self.locationName) {
+        [self getAssignmentsByLocationName:self.locationName forSelfAssign:[NSString stringWithFormat:@"%d",self.selfAssign] forApply:[NSString stringWithFormat:@"%d",self.apply]];
     } else {
 //        [self getAssignmentsByLocationid:self.locationId forSelfAssign:[NSString stringWithFormat:@"%d",self.selfAssign] forApply:[NSString stringWithFormat:@"%d",self.apply]];
     }
 }
 
-- (void)getAssignmentsByLocationid:(NSString *)locationid forSelfAssign:(NSString *)selfAssign forApply:(NSString *)apply{
+- (void)getAssignmentsByLocationName:(NSString *)locationName forSelfAssign:(NSString *)selfAssign forApply:(NSString *)apply{
     
     NSString *authKey = [[WMDataHelper sharedInstance] getAuthKey];
-    [[WMWebservicesHelper sharedInstance] getAssignments:authKey byLocationId:locationid forSelfAssign:selfAssign forApply:apply completionBlock:^(BOOL result, id responseDict, NSError *error) {
+    [[WMWebservicesHelper sharedInstance] getAssignments:authKey byLocationName:locationName forSelfAssign:selfAssign forApply:apply completionBlock:^(BOOL result, id responseDict, NSError *error) {
         NSLog(@"result:-> %@",result ? @"success" : @"Failed");
         if (result) {
             self.assignmentsArray = [NSMutableArray arrayWithArray:[[WMDataHelper sharedInstance] saveAssignments:responseDict]];
@@ -236,9 +236,9 @@
 
 #pragma mark - Location Search Selection delegate
 - (void)didSelectLocation:(id)locationobj {
-    self.locationId = [locationobj valueForKey:@"clientlocationid"];
+    self.locationName = [locationobj valueForKey:@"clientlocationid"];
     self.titleLabel.text = [locationobj valueForKey:@"city"];
-    [self getAssignmentsByLocationid:[locationobj valueForKey:@"clientlocationid"] forSelfAssign:[NSString stringWithFormat:@"%d",self.selfAssign] forApply:[NSString stringWithFormat:@"%d",self.apply]];
+    [self getAssignmentsByLocationName:[locationobj valueForKey:@"clientlocationid"] forSelfAssign:[NSString stringWithFormat:@"%d",self.selfAssign] forApply:[NSString stringWithFormat:@"%d",self.apply]];
 }
 
 @end

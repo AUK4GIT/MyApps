@@ -1,14 +1,14 @@
 //
-//  WMQuestionaire5.m
+//  WMQuestionaire10.m
 //  Wemark
 //
-//  Created by Ashish on 24/06/17.
+//  Created by Ashish on 30/06/17.
 //  Copyright © 2017 Trion Technologies. All rights reserved.
 //
 
-#import "WMQuestionaire5.h"
+#import "WMQuestionaire10.h"
 
-@implementation WMQuestionaire5
+@implementation WMQuestionaire10
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -30,4 +30,5 @@
     
     
 }
+
 @end
