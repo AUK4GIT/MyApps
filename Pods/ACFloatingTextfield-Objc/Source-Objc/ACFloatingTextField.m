@@ -145,7 +145,7 @@
     [dropDownImgView removeFromSuperview];
     dropDownImgView = [[UIImageView alloc] initWithFrame:CGRectMake(self.frame.size.width-20, self.frame.size.height/2-5, 20, 20)];
 //    dropDownImgView.backgroundColor = [UIColor blackColor];
-    UIImage *img = [UIImage imageNamed:@"ic_arrow_drop_down.png"];
+    UIImage *img = [UIImage imageNamed:@"drop-down-arrow"];
     dropDownImgView.image = img;
     dropDownImgView.tintColor = [UIColor redColor];
     [self addSubview:dropDownImgView];

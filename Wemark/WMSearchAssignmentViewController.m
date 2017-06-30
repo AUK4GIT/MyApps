@@ -263,6 +263,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
     } else if (collectionView.tag == 2) {
         self.selectedReimbursement = [self.reimbursements[indexPath.row] objectForKey:@"reimbursement_amount"];
+        self.selectedReimbursement = self.reimbursements[indexPath.row];
     }
 //    [self.reimbursements[indexPath.row] objectForKey:@"reimbursement_amount"]
 //    [self.fees[indexPath.row] objectForKey:@"fees"]
@@ -299,7 +300,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     } else if (collectionView.tag == 2) {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ReimburseCell" forIndexPath:indexPath];
         UILabel *lbl = [cell viewWithTag:1];
-        lbl.text = [self.reimbursements[indexPath.row] objectForKey:@"reimbursement_amount"];
+        lbl.text = self.reimbursements[indexPath.row];
         
 //        NSMutableString *rupee = [NSMutableString stringWithString:@"₹"];
 //        for (int i = 0; i<indexPath.row; i++) {

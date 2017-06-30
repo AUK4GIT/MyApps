@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BaseViewController.h"
+#import "WMBaseTableViewController.h"
 
-@interface WMSearchAssignmentViewController : UITableViewController
+@interface WMSearchAssignmentViewController : WMBaseTableViewController
 
 @end

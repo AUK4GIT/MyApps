@@ -22,8 +22,12 @@
 }
 
 - (IBAction)backBtnActn:(id)sender {
+    
+    
 }
 
 - (IBAction)nextBtnActn:(id)sender {
+    
+    
 }
 @end

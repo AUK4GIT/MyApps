@@ -76,6 +76,7 @@
 		C56A605F1EEBDD0500F7F163 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C56A605E1EEBDD0500F7F163 /* BaseViewController.m */; };
 		C5A1C0351F023612001149DC /* WMQuestionaire7.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5A1C0341F023612001149DC /* WMQuestionaire7.xib */; };
 		C5A1C0381F02458A001149DC /* WMQuestionaire7.m in Sources */ = {isa = PBXBuildFile; fileRef = C5A1C0371F02458A001149DC /* WMQuestionaire7.m */; };
+		C5FBE5D61F0603C600163396 /* WMBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5FBE5D51F0603C600163396 /* WMBaseTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -201,6 +202,8 @@
 		C5A1C0341F023612001149DC /* WMQuestionaire7.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WMQuestionaire7.xib; sourceTree = "<group>"; };
 		C5A1C0361F02458A001149DC /* WMQuestionaire7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMQuestionaire7.h; sourceTree = "<group>"; };
 		C5A1C0371F02458A001149DC /* WMQuestionaire7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMQuestionaire7.m; sourceTree = "<group>"; };
+		C5FBE5D41F0603C600163396 /* WMBaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMBaseTableViewController.h; sourceTree = "<group>"; };
+		C5FBE5D51F0603C600163396 /* WMBaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMBaseTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -285,6 +288,8 @@
 		AE820FEE1ED4A3A200AE2BA2 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C5FBE5D41F0603C600163396 /* WMBaseTableViewController.h */,
+				C5FBE5D51F0603C600163396 /* WMBaseTableViewController.m */,
 				C5544E4D1F038100003AA4C5 /* WMQuestionnairViewController.h */,
 				C5544E4C1F038100003AA4C5 /* WMQuestionnairViewController.m */,
 				C56A605D1EEBDD0500F7F163 /* BaseViewController.h */,
@@ -564,6 +569,7 @@
 				AEFEBC361EE2913500EB0F31 /* WMIndustrySelectorViewController.m in Sources */,
 				C54CD09B1EEAC3E00004AEE7 /* WMCityViewController.m in Sources */,
 				AE820FDC1ED48DA900AE2BA2 /* ViewController.m in Sources */,
+				C5FBE5D61F0603C600163396 /* WMBaseTableViewController.m in Sources */,
 				C5A1C0381F02458A001149DC /* WMQuestionaire7.m in Sources */,
 				AE820FD91ED48DA900AE2BA2 /* AppDelegate.m in Sources */,
 				C53591C71EF25D6C0046EC7B /* WMForgotPasswordViewController.m in Sources */,

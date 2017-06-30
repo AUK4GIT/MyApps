@@ -44,7 +44,6 @@
     [self getQuestionnaire];
 }
 
-    
     - (void)getQuestionnaire{
         NSString *authKey = [[WMDataHelper sharedInstance] getAuthKey];
         [self showActivity];
