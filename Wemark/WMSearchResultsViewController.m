@@ -67,24 +67,16 @@
 }
 
 - (IBAction)assignmentFilterAction:(UIButton *)sender {
-    [self.assignFilterButton setSelected:false];
-    [self.applyFilterButton setSelected:false];
-    [self.assignFilterButton setBackgroundColor:[UIColor whiteColor]];
-    [self.applyFilterButton setBackgroundColor:[UIColor whiteColor]];
-    sender.selected = !sender.selected;
+   
+    [sender setSelected:!sender.isSelected];
     if (self.assignFilterButton == sender) {
-        self.selfAssign = true;
-        self.apply = false;
-        [self.assignFilterButton setBackgroundColor:[UIColor colorWithRed:52/255.0 green:0.0 blue:110/255.0 alpha:1.0]];
-        [self getAssignmentsforSelfAssign:@"1" forApply:@"0"];
-
+        self.selfAssign = !self.selfAssign;
     } else {
-        self.apply = true;
-        self.selfAssign = true;
-        [self.applyFilterButton setBackgroundColor:[UIColor colorWithRed:27/255.0 green:122.0/255.0 blue:226/255.0 alpha:1.0]];
-        [self getAssignmentsforSelfAssign:@"0" forApply:@"1"];
-
+        self.apply = !self.apply;
     }
+    
+    [self getAssignmentsforSelfAssign:[NSString stringWithFormat:@"%d",self.selfAssign] forApply:[NSString stringWithFormat:@"%d",self.apply]];
+    
 }
 
 /*

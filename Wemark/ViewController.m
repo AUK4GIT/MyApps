@@ -42,6 +42,12 @@
     
 //    loginButton.readPermissions =
 //    @[@"public_profile", @"email"];
+    
+    
+    self.emailIdTextField.text = @"vikas1@gmail.com";
+    self.passwordTextField.text = @"123456";
+
+    
     [self.fbLoginButton removeTarget:nil
                        action:NULL
              forControlEvents:UIControlEventAllEvents];

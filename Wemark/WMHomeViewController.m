@@ -27,7 +27,8 @@
 @property(nonatomic, strong) IBOutlet UIView *mapBGView;
 @property(nonatomic, strong) UILabel *titleLabel;
 @property(nonatomic, strong) CLLocationManager *locationManager;
-
+@property (weak, nonatomic) IBOutlet UIImageView *noImageView;
+@property (weak, nonatomic) IBOutlet UILabel *noImageLabel;
 @end
 
 @implementation WMHomeViewController
@@ -39,6 +40,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.noImageView.hidden = true;
+    self.noImageLabel.hidden = true;
     
     // Do any additional setup after loading the view.
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic_action_search"] style:UIBarButtonItemStylePlain target:self action:@selector(assignmentsSearchTapped:)];
@@ -140,19 +143,11 @@
 }
 
 - (IBAction)assignmentFilterAction:(UIButton *)sender {
-    [self.assignFilterButton setSelected:false];
-    [self.applyFilterButton setSelected:false];
-    [self.assignFilterButton setBackgroundColor:[UIColor whiteColor]];
-    [self.applyFilterButton setBackgroundColor:[UIColor whiteColor]];
-    sender.selected = !sender.selected;
+    [sender setSelected:!sender.isSelected];
     if (self.assignFilterButton == sender) {
-        self.selfAssign = true;
-        self.apply = false;
-        [self.assignFilterButton setBackgroundColor:[UIColor colorWithRed:52/255.0 green:0.0 blue:110/255.0 alpha:1.0]];
+        self.selfAssign = !self.selfAssign;
     } else {
-        self.apply = true;
-        self.selfAssign = true;
-        [self.applyFilterButton setBackgroundColor:[UIColor colorWithRed:27/255.0 green:122.0/255.0 blue:226/255.0 alpha:1.0]];
+        self.apply = !self.apply;
     }
     if (self.locationName) {
         [self getAssignmentsByLocationName:self.locationName forSelfAssign:[NSString stringWithFormat:@"%d",self.selfAssign] forApply:[NSString stringWithFormat:@"%d",self.apply]];
@@ -179,7 +174,14 @@
         //add UI related code here like stopping activity indicator
         dispatch_async(dispatch_get_main_queue(), ^{
             //            [activityView stopAnimating];
-            self.assignmentsLabel.text = [NSString stringWithFormat:@"%d Assignments found in your location ",self.assignmentsArray.count];
+            self.assignmentsLabel.text = [NSString stringWithFormat:@"%lu Assignments found in your location ",(unsigned long)self.assignmentsArray.count];
+            if (self.assignmentsArray.count == 0) {
+                self.noImageView.hidden = false;
+                self.noImageLabel.hidden = false;
+            } else {
+                self.noImageView.hidden = true;
+                self.noImageLabel.hidden = true;
+            }
             [self.tableView reloadData];
         });
     }];
@@ -238,7 +240,10 @@
 - (void)didSelectLocation:(id)locationobj {
     self.locationName = [locationobj valueForKey:@"clientlocationid"];
     self.titleLabel.text = [locationobj valueForKey:@"city"];
-    [self getAssignmentsByLocationName:[locationobj valueForKey:@"clientlocationid"] forSelfAssign:[NSString stringWithFormat:@"%d",self.selfAssign] forApply:[NSString stringWithFormat:@"%d",self.apply]];
+    [self getAssignmentsByLocationName:[locationobj valueForKey:@"clientlocationid"] forSelfAssign:@"1" forApply:@"1"];
+    
+    [self.assignFilterButton setSelected:true];
+    [self.applyFilterButton setSelected:true];
 }
 
 @end

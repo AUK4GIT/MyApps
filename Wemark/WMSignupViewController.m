@@ -293,12 +293,12 @@ userid password:(NSString *)password firstName:(NSString *)firstname lastName:(N
             picker.delegate = self;
             picker.allowsEditing = YES;
             
-            UIAlertAction *albumAction = [UIAlertAction actionWithTitle:@"Album" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            UIAlertAction *albumAction = [UIAlertAction actionWithTitle:@"Choose from Library" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
                 [self presentViewController:picker animated:YES completion:NULL];
                 
             }];
-            UIAlertAction *cameraAction = [UIAlertAction actionWithTitle:@"Camera" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            UIAlertAction *cameraAction = [UIAlertAction actionWithTitle:@"Take Photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 picker.sourceType = UIImagePickerControllerSourceTypeCamera;
                 [self presentViewController:picker animated:YES completion:NULL];
             }];
@@ -306,12 +306,11 @@ userid password:(NSString *)password firstName:(NSString *)firstname lastName:(N
             UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             }];
             
-            UIAlertAction *removeAction = [UIAlertAction actionWithTitle:@"Remove Image" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            UIAlertAction *removeAction = [UIAlertAction actionWithTitle:@"Remove Photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 [self removeImage];
             }];
-            
-            [alertController addAction:albumAction];
             [alertController addAction:cameraAction];
+            [alertController addAction:albumAction];
             [alertController addAction:removeAction];
             [alertController addAction:cancelAction];
 

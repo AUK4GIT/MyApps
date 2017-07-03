@@ -38,6 +38,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"My Assignments";
+    
+    [self.tableView setContentInset:UIEdgeInsetsMake(20, 0, 0, 0)];
 
     [self.tableView registerNib:[UINib nibWithNibName:@"WMAppliedCell" bundle:nil] forCellReuseIdentifier:@"WMAppliedCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"WMAssignedCell" bundle:nil] forCellReuseIdentifier:@"WMAssignedCell"];
@@ -133,12 +135,12 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     if ([segue.identifier isEqualToString:@"StartSurvey"]) {
-        if (self.selectedIndex) {
+//        if (self.selectedIndex) {
             id dict = self.assignmentsArray[self.selectedIndex];
             WMStartSurveyViewController *vc = segue.destinationViewController;
             vc.questionnaireId = [self convertToString:[dict valueForKey:@"questionnaire"]];
             vc.assignmentId = [self convertToString:[dict valueForKey:@"assignmentid"]];
-        }
+//        }
     }
 }
 
@@ -148,11 +150,11 @@
     if (self.segmentedControl.selectedSegmentIndex == 0) {
         return 150;
     } else if (self.segmentedControl.selectedSegmentIndex == 1) {
-        return 150;
+        return 170;
     } else if (self.segmentedControl.selectedSegmentIndex == 2) {
-        return 128;
+        return 165;
     } else if (self.segmentedControl.selectedSegmentIndex == 3) {
-        return 132;
+        return 145;
     }
     return 210;
 }
@@ -210,6 +212,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.segmentedControl.selectedSegmentIndex == 1) {
+        NSLog(@"%@ %d %d",indexPath,indexPath.row, indexPath.section);
         self.selectedIndex = indexPath.row;
         [self performSegueWithIdentifier:@"StartSurvey" sender:nil];
     } else {
