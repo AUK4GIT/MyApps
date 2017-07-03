@@ -82,7 +82,7 @@
 #pragma mark - UITbleView DataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return 6;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -117,6 +117,12 @@
             cell.imageView.image = [UIImage imageNamed:@"sidemenu-assignment"];
             
             break;
+        case 5:
+            cell.textLabel.text = @"LogOut";
+            cell.imageView.image = [UIImage imageNamed:@"logout"];
+            
+            break;
+
         default:
             break;
     }
@@ -154,6 +160,12 @@
             nVC = [self.storyboard instantiateViewControllerWithIdentifier:@"MyAssignmentsNavigationController"];
         }
             break;
+        case 5:
+        {
+            nVC = [self.storyboard instantiateViewControllerWithIdentifier:@"LogOutNavigationController"];
+        }
+            break;
+   
         default:
             break;
     }
