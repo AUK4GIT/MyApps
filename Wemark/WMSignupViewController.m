@@ -320,7 +320,6 @@ userid password:(NSString *)password firstName:(NSString *)firstname lastName:(N
     }
 
 
-    
     - (void)removeImage {
         self.photocameraImg.hidden = false;
         self.addImgLabel.hidden = false;

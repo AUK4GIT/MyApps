@@ -2042,7 +2042,7 @@
             <objects>
                 <navigationController storyboardIdentifier="SideMenuNavController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="g2i-yh-G7w" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="0ad-8w-Cnn">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="0ad-8w-Cnn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.86274509803921573" green="0.0" blue="0.23529411764705882" alpha="1" colorSpace="calibratedRGB"/>
@@ -2560,7 +2560,7 @@
             <objects>
                 <navigationController storyboardIdentifier="NotificationsNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="c9l-Ec-Gtp" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="6F2-Fb-PaG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="6F2-Fb-PaG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.86274509799999999" green="0.0" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -2755,7 +2755,7 @@
             <objects>
                 <navigationController storyboardIdentifier="MyAccountNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gKY-VP-T3T" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="BH3-Tx-ZO8">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="BH3-Tx-ZO8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.86274509799999999" green="0.0" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -3385,8 +3385,8 @@
                                                         <color key="textColor" red="0.86274509803921573" green="0.0" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Rs.20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XTq-sV-5tf">
-                                                        <rect key="frame" x="148" y="18" width="116" height="24"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XTq-sV-5tf">
+                                                        <rect key="frame" x="148" y="30" width="116" height="0.0"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                                         <color key="textColor" red="0.11372549019607843" green="0.50196078431372548" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -3653,7 +3653,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="287" height="44"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Transaction History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="b1J-D7-ldc">
+                                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Payment History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="b1J-D7-ldc">
                                                                     <rect key="frame" x="15" y="0.0" width="270" height="44"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -3863,7 +3863,6 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="3ZH-bG-NTm"/>
                                                         </constraints>
-                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                         <userDefinedRuntimeAttributes>
@@ -3893,7 +3892,6 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="IkK-lc-XNr"/>
                                                         </constraints>
-                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                         <userDefinedRuntimeAttributes>
@@ -3938,7 +3936,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="EIH-cn-ofi"/>
                                                         </constraints>
-                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                         <userDefinedRuntimeAttributes>
@@ -3980,7 +3978,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="VwA-6T-STr"/>
                                                         </constraints>
-                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                         <userDefinedRuntimeAttributes>
@@ -4010,7 +4008,6 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="pVp-dv-UmA"/>
                                                         </constraints>
-                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                         <userDefinedRuntimeAttributes>
@@ -4054,12 +4051,11 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iYD-TA-ken">
                                                 <rect key="frame" x="0.0" y="319" width="320" height="65"/>
                                                 <subviews>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="State" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3dX-vf-E6z" customClass="ACFloatingTextField">
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Country" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3dX-vf-E6z" customClass="ACFloatingTextField">
                                                         <rect key="frame" x="14" y="7.6666666666666856" width="142" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="9xj-fq-ka2"/>
                                                         </constraints>
-                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                         <userDefinedRuntimeAttributes>
@@ -4088,12 +4084,11 @@
                                                             <outlet property="delegate" destination="niU-qm-m6J" id="ud0-lz-O6P"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Country" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zmw-9y-H8j" customClass="ACFloatingTextField">
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="State" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zmw-9y-H8j" customClass="ACFloatingTextField">
                                                         <rect key="frame" x="164" y="7.6666666666666856" width="142" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="nxn-Nx-IJB"/>
                                                         </constraints>
-                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                         <userDefinedRuntimeAttributes>
@@ -4142,7 +4137,6 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="rmX-Nd-E1Y"/>
                                                         </constraints>
-                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                         <userDefinedRuntimeAttributes>
@@ -4171,12 +4165,11 @@
                                                             <outlet property="delegate" destination="niU-qm-m6J" id="ypO-XF-l81"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Pin code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IVm-da-Ylg" customClass="ACFloatingTextField">
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Pincode" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IVm-da-Ylg" customClass="ACFloatingTextField">
                                                         <rect key="frame" x="164" y="7.6666666666666856" width="142" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="qLV-ps-o8i"/>
                                                         </constraints>
-                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                         <userDefinedRuntimeAttributes>
@@ -4282,7 +4275,7 @@
                     <connections>
                         <outlet property="camPic" destination="Ldw-2P-0hw" id="6Wu-VA-DqM"/>
                         <outlet property="cityTextField" destination="gtu-zI-OsG" id="7zN-cm-bZF"/>
-                        <outlet property="countryTextField" destination="Zmw-9y-H8j" id="H25-e5-3Tq"/>
+                        <outlet property="countryTextField" destination="3dX-vf-E6z" id="5rt-y6-YH7"/>
                         <outlet property="dobTextField" destination="HY0-eV-OQT" id="Kfw-oJ-PEU"/>
                         <outlet property="emailIdTextField" destination="FMG-rl-Grd" id="waj-01-mYh"/>
                         <outlet property="fullNameTextField" destination="OKg-Gg-tVl" id="kaq-Jz-0hN"/>
@@ -4290,7 +4283,7 @@
                         <outlet property="mobileNoTextField" destination="pVF-OS-PCF" id="k6k-yy-D4u"/>
                         <outlet property="pincodeTextField" destination="IVm-da-Ylg" id="Nfp-AR-YFB"/>
                         <outlet property="profilePic" destination="oA0-Bc-27t" id="nuq-eO-cmo"/>
-                        <outlet property="stateTextField" destination="3dX-vf-E6z" id="ub8-Zf-Et5"/>
+                        <outlet property="stateTextField" destination="Zmw-9y-H8j" id="ixp-3L-10T"/>
                         <segue destination="rAz-S8-7KN" kind="show" id="jsb-6N-dKi"/>
                         <segue destination="soq-GI-ULT" kind="show" id="xLG-PY-ez2"/>
                         <segue destination="FjW-oE-Xed" kind="show" id="ju4-rT-NN6"/>
@@ -4380,7 +4373,7 @@
             <objects>
                 <navigationController storyboardIdentifier="AssistanceNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="M4G-n4-q7O" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="TlS-2x-WTo">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="TlS-2x-WTo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.86274509799999999" green="0.0" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -4397,7 +4390,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ooz-IS-oCi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1922" y="-3281"/>
+            <point key="canvasLocation" x="1938" y="-3291"/>
         </scene>
         <!--Assistance View Controller-->
         <scene sceneID="90c-Fq-mLy">
@@ -4416,14 +4409,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PVm-Xb-hGR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2588" y="-3280"/>
+            <point key="canvasLocation" x="2593" y="-3291"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lz8-xy-63W">
             <objects>
                 <navigationController storyboardIdentifier="MyAssignmentsNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dv0-Mo-lBn" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="ndp-wy-w8f">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="ndp-wy-w8f">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.86274509799999999" green="0.0" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -4440,7 +4433,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u2s-ld-bVA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3274" y="-3280"/>
+            <point key="canvasLocation" x="3261" y="-3291"/>
         </scene>
         <!--My Assignments View Controller-->
         <scene sceneID="q8H-iJ-G2m">
@@ -4544,7 +4537,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M35-bg-jin" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4037" y="-3280"/>
+            <point key="canvasLocation" x="3951" y="-3291"/>
         </scene>
         <!--Start Survey View Controller-->
         <scene sceneID="ZlZ-sU-AA6">

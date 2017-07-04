@@ -33,3 +33,4 @@ extern NSString * const verifyOTPURL;
 extern NSString * const facebookAuditorLoginURL;
 extern NSString * const startSurveyURL;
 extern NSString * const questionaireURL;
+extern NSString * const questionaireImageUploadURL;

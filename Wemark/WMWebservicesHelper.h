@@ -121,4 +121,6 @@
 - (void)submitQuestionnaire:(NSString *)authKey completionBlock:(void (^) (BOOL, id, NSError*))completionBlock;
 
 - (void)getQuestionaire:authKey forAssignmentId:assignmentId forSectionId:sectionId completionBlock:(void (^) (BOOL, id, NSError*))completionBlock;
+
+- (void)getQuestionaireImageUpload:authKey forAssignmentId:assignmentId forSectionId:sectionId completionBlock:(void (^) (BOOL, id, NSError*))completionBlock;
 @end

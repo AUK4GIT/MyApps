@@ -21,10 +21,15 @@
 #import "WMQuestionaire10.h"
 #import "WMQuestionaire11.h"
 #import "WMQuestionaire12.h"
+#import "ActionSheetPicker.h"
+#import "ACFloatingTextField.h"
 
-@interface WMQuestionnairViewController ()
+@interface WMQuestionnairViewController ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
     @property(nonatomic, strong) NSArray *questionnaireArray;
     @property(nonatomic, strong) IBOutlet UIScrollView *scrollView;
+    @property (strong, nonatomic) IBOutlet ACFloatingTextField *dobTextField;
+    @property (strong, nonatomic) ActionSheetDatePicker *actionSheetPicker;
+    @property (strong, nonatomic) NSString *selectedDate;
 @end
 
 @implementation WMQuestionnairViewController
@@ -104,7 +109,7 @@
                 
             } else  if ([questionnaire[@"type"] isEqualToString:@"audio"] || [questionnaire[@"type"] isEqualToString:@"video"] || [questionnaire[@"type"] isEqualToString:@"image"]) {
                 
-//                [self createTextViewWithData:questionnaire];
+               [self createImageUploadViewWithData:questionnaire];
                 
             }
 
@@ -510,7 +515,122 @@
     
 }
 
+- (void)createImageUploadViewWithData:(id)questionnaire{
+    UIStackView *verStackView = [self getStackView:stackView];
+    UIView *titleView = [self getStackSubView:verStackView];
+    
+    UILabel *titleLabel = [[UILabel alloc] init];
+    titleLabel.translatesAutoresizingMaskIntoConstraints = false;
+    [titleLabel setText:[self convertToString:questionnaire[@"title"]]];
+    [titleView addSubview:titleLabel];
+    titleLabel.font = [UIFont fontWithName:@"Helvetica" size:16.0];
+    titleLabel.textColor = [UIColor grayColor];
+    [titleView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-24-[titleLabel]-(24)-|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:NSDictionaryOfVariableBindings(titleLabel)]];
+    [titleView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(>=4)-[titleLabel]-(>=4)-|" options:NSLayoutFormatAlignAllCenterX metrics:nil views:NSDictionaryOfVariableBindings(titleLabel)]];
+    
+//    UIView *dropDownView = [self getStackSubView:verStackView];
+//    
+//    UIButton *dropDownButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    dropDownButton.translatesAutoresizingMaskIntoConstraints = false;
+//    NSString *buttonTitle = [self convertToString:questionnaire[@"model"]];
+//    [dropDownButton setTitle:buttonTitle forState:UIControlStateNormal];
+//    [dropDownView addSubview:dropDownButton];
+//    [dropDownButton setTitleColor:[UIColor colorWithRed:260/255.0 green:0.0 blue:60/255.0 alpha:1.0] forState:UIControlStateNormal];
+//    [dropDownButton addTarget:self action:@selector(dateDropDownSelected:) forControlEvents:UIControlEventTouchUpInside];
+//    
+//    UIImageView *dropDownImg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"drop-down-arrow"]];
+//    dropDownImg.translatesAutoresizingMaskIntoConstraints = false;
+//    [dropDownView addSubview:dropDownImg];
+//    
+//    [dropDownView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-24-[dropDownButton(>=100)]-8-[dropDownImg(==18)]" options:NSLayoutFormatAlignAllCenterY metrics:nil views:NSDictionaryOfVariableBindings(dropDownButton, dropDownImg)]];
+//    
+//    [dropDownView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[dropDownButton]-|" options:NSLayoutFormatAlignmentMask metrics:nil views:NSDictionaryOfVariableBindings(dropDownButton)]];
+    
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Wemark" message:@"Please select a photo source" preferredStyle:UIAlertControllerStyleActionSheet];
+        
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.delegate = self;
+        picker.allowsEditing = YES;
+        
+        UIAlertAction *albumAction = [UIAlertAction actionWithTitle:@"Choose from Library" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            [self presentViewController:picker animated:YES completion:NULL];
+        }];
+        UIAlertAction *cameraAction = [UIAlertAction actionWithTitle:@"Take Photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+            [self presentViewController:picker animated:YES completion:NULL];
+        }];
+        
+        UIAlertAction *removeAction = [UIAlertAction actionWithTitle:@"Remove Photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self removeImage];
+        }];
+        
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        }];
+        
+        [alertController addAction:cameraAction];
+        [alertController addAction:albumAction];
+        [alertController addAction:removeAction];
+        [alertController addAction:cancelAction];
+        
+        
+        [self presentViewController:alertController animated:true completion:^{
+            
+        }];
+    
+    UIView *nextPrevButtonView = [self getStackSubView:verStackView];
+    UIButton *prevButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    prevButton.translatesAutoresizingMaskIntoConstraints = false;
+    [prevButton setTitle:@"BACK" forState:UIControlStateNormal];
+    [prevButton setBackgroundColor:[UIColor grayColor]];
+    [nextPrevButtonView addSubview:prevButton];
+    [prevButton addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    nextButton.translatesAutoresizingMaskIntoConstraints = false;
+    [nextButton setTitle:@"NEXT" forState:UIControlStateNormal];
+    [nextButton setBackgroundColor:[UIColor colorWithRed:229/255.0 green:26/255.0 blue:75/255.0 alpha:1.0]];
+    [nextPrevButtonView addSubview:nextButton];
+    [nextButton addTarget:self action:@selector(nextAction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [nextPrevButtonView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-24-[prevButton(==120)]-16-[nextButton(120)]" options:NSLayoutFormatAlignAllCenterY metrics:nil views:NSDictionaryOfVariableBindings(prevButton, nextButton)]];
+    
+    [nextPrevButtonView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[prevButton]-|" options:NSLayoutFormatAlignmentMask metrics:nil views:NSDictionaryOfVariableBindings(prevButton)]];
+    
+
+}
+- (void)removeImage {
+    
+}
 - (void)dateDropDownSelected:(id)sender {
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *minimumDateComponents = [calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:[NSDate date]];
+    [minimumDateComponents setYear:1900];
+    NSDate *minDate = [calendar dateFromComponents:minimumDateComponents];
+    NSDate *maxDate = [NSDate date];
+    NSDate *curentDate = maxDate;
+    if (self.selectedDate) {
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+        curentDate = [dateFormatter dateFromString:self.selectedDate];
+    }
+    
+    self.actionSheetPicker = [[ActionSheetDatePicker alloc] initWithTitle:@"" datePickerMode:UIDatePickerModeDate selectedDate:curentDate
+        target:self action:@selector(dateWasSelected:element:) origin:sender];
+    
+    [(ActionSheetDatePicker *) self.actionSheetPicker setMinimumDate:minDate];
+    [(ActionSheetDatePicker *) self.actionSheetPicker setMaximumDate:maxDate];
+    
+    //    self.actionSheetPicker.hideCancel = YES;
+    [self.actionSheetPicker showActionSheetPicker];
+}
+
+-(void)dateWasSelected:(NSDate *)selectedTime element:(id)element {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd MMM yyyy"];
+    self.dobTextField.text = [dateFormatter stringFromDate:selectedTime];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    self.selectedDate = [dateFormatter stringFromDate:selectedTime];
 
 }
 
@@ -529,7 +649,6 @@
 }
 
 - (UIStackView *)getStackView:(UIStackView *)horStackView {
-    
     UIStackView *vertStackView = [[UIStackView alloc] init];
     [vertStackView.widthAnchor constraintEqualToConstant:self.view.bounds.size.width].active = true;
     vertStackView.axis = UILayoutConstraintAxisVertical;
@@ -550,6 +669,8 @@
     [vertStackView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[sview(50@300)]" options:NSLayoutFormatAlignAllTop metrics:nil views:NSDictionaryOfVariableBindings(sview)]];
     return sview;
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
