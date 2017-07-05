@@ -356,7 +356,6 @@
     
 }
 
-
 - (void)createTextFieldWithData:(id)questionnaire{
     UIStackView *verStackView = [self getStackView:stackView];
     UIView *titleView = [self getStackSubView:verStackView];
@@ -528,6 +527,7 @@
     [titleView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-24-[titleLabel]-(24)-|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:NSDictionaryOfVariableBindings(titleLabel)]];
     [titleView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(>=4)-[titleLabel]-(>=4)-|" options:NSLayoutFormatAlignAllCenterX metrics:nil views:NSDictionaryOfVariableBindings(titleLabel)]];
     
+   
 //    UIView *dropDownView = [self getStackSubView:verStackView];
 //    
 //    UIButton *dropDownButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -547,11 +547,12 @@
 //    [dropDownView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[dropDownButton]-|" options:NSLayoutFormatAlignmentMask metrics:nil views:NSDictionaryOfVariableBindings(dropDownButton)]];
     
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Wemark" message:@"Please select a photo source" preferredStyle:UIAlertControllerStyleActionSheet];
-        
+    
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
         picker.delegate = self;
         picker.allowsEditing = YES;
-        
+    
+    
         UIAlertAction *albumAction = [UIAlertAction actionWithTitle:@"Choose from Library" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
             [self presentViewController:picker animated:YES completion:NULL];
@@ -572,7 +573,6 @@
         [alertController addAction:albumAction];
         [alertController addAction:removeAction];
         [alertController addAction:cancelAction];
-        
         
         [self presentViewController:alertController animated:true completion:^{
             
@@ -596,7 +596,6 @@
     [nextPrevButtonView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-24-[prevButton(==120)]-16-[nextButton(120)]" options:NSLayoutFormatAlignAllCenterY metrics:nil views:NSDictionaryOfVariableBindings(prevButton, nextButton)]];
     
     [nextPrevButtonView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[prevButton]-|" options:NSLayoutFormatAlignmentMask metrics:nil views:NSDictionaryOfVariableBindings(prevButton)]];
-    
 
 }
 - (void)removeImage {
@@ -623,6 +622,7 @@
     
     //    self.actionSheetPicker.hideCancel = YES;
     [self.actionSheetPicker showActionSheetPicker];
+   
 }
 
 -(void)dateWasSelected:(NSDate *)selectedTime element:(id)element {
@@ -669,7 +669,6 @@
     [vertStackView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[sview(50@300)]" options:NSLayoutFormatAlignAllTop metrics:nil views:NSDictionaryOfVariableBindings(sview)]];
     return sview;
 }
-
 
 
 - (void)didReceiveMemoryWarning {

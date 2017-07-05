@@ -103,7 +103,7 @@
 
             break;
         case 2:
-            cell.textLabel.text = @"My Account";
+            cell.textLabel.text = @"My account";
             cell.imageView.image = [UIImage imageNamed:@"sidemenu-account"];
 
             break;
@@ -113,7 +113,7 @@
 
             break;
         case 4:
-            cell.textLabel.text = @"My Assignments";
+            cell.textLabel.text = @"My assignments";
             cell.imageView.image = [UIImage imageNamed:@"sidemenu-assignment"];
             
             break;

@@ -242,8 +242,8 @@
     self.titleLabel.text = [locationobj valueForKey:@"city"];
     [self getAssignmentsByLocationName:[locationobj valueForKey:@"clientlocationid"] forSelfAssign:@"1" forApply:@"1"];
     
-    [self.assignFilterButton setSelected:true];
-    [self.applyFilterButton setSelected:true];
+    [self.assignFilterButton setSelected:false];
+    [self.applyFilterButton setSelected:false];
 }
 
 @end

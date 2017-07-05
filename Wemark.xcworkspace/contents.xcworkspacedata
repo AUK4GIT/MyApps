@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:MyAddress.gpx">
-   </FileRef>
-   <FileRef
       location = "group:Wemark.xcodeproj">
    </FileRef>
    <FileRef
