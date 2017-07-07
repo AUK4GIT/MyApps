@@ -34,7 +34,10 @@
     dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     [dateFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US"]];
-                              
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back-button-image"] style:UIBarButtonItemStylePlain target:self action:@selector(toggleTapped:)];
+
+    
     [[WMWebservicesHelper sharedInstance] getNotifications:authKey byAuditorId:auditorId completionBlock:^(BOOL result, id responseDict, NSError *error) {
         NSLog(@"result:-> %@",result ? @"success" : @"Failed");
         if (result) {

@@ -9,20 +9,9 @@
 #import "WMQuestionnairViewController.h"
 #import "WMDataHelper.h"
 #import "WMWebservicesHelper.h"
-#import "WMQuestionaire1.h"
-#import "WMQuestionaire2.h"
-#import "WMQuestionaire3.h"
-#import "WMQuestionaire4.h"
-#import "WMQuestionaire5.h"
-#import "WMQuestionaire6.h"
-#import "WMQuestionaire7.h"
-#import "WMQuestionaire8.h"
-#import "WMQuestionaire9.h"
-#import "WMQuestionaire10.h"
-#import "WMQuestionaire11.h"
-#import "WMQuestionaire12.h"
 #import "ActionSheetPicker.h"
 #import "ACFloatingTextField.h"
+#import <ACFloatingTextfield_Objc/ACFloatingTextField.h>
 
 @interface WMQuestionnairViewController ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
     @property(nonatomic, strong) NSArray *questionnaireArray;
@@ -72,11 +61,7 @@
     }
 
     - (void)showUI {
-        //Layout for Stack View
-//        [stackView.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = true;
-//        [stackView.centerYAnchor constraintEqualToAnchor:self.view.centerYAnchor].active = true;
-
-        
+   
         for (id questionnaire in self.questionnaireArray) {
             
             if ([questionnaire[@"type"] isEqualToString:@"date"]) {
@@ -101,7 +86,7 @@
                 
             } else if ([questionnaire[@"type"] isEqualToString:@"dropdown"]) {
                 
-                [self createDropdownViewWithData:questionnaire];
+//                [self createDropdownViewWithData:questionnaire];
                 
             } else if ([questionnaire[@"type"] isEqualToString:@"matrix-table"]){
                 
@@ -112,65 +97,6 @@
                [self createImageUploadViewWithData:questionnaire];
                 
             }
-
-            
-//            if ([questionnaire[@"type"] isEqualToString:@"audio"]) {
-//                UIView *qView = [[[NSBundle mainBundle] loadNibNamed:@"WMQuestionaire1" owner:self options:nil] objectAtIndex:0];
-//                qView.translatesAutoresizingMaskIntoConstraints = false;
-//                [qView.heightAnchor constraintEqualToConstant:qView.bounds.size.height].active = true;
-//                [qView.widthAnchor constraintEqualToConstant:self.view.bounds.size.width].active = true;
-//                [verStackView addArrangedSubview:qView];
-//            } else  if ([questionnaire[@"type"] isEqualToString:@"video"]) {
-//                UIView *qView = [[[NSBundle mainBundle] loadNibNamed:@"WMQuestionaire2" owner:self options:nil] objectAtIndex:0];
-//                 qView.translatesAutoresizingMaskIntoConstraints = false;
-//                [qView.heightAnchor constraintEqualToConstant:qView.bounds.size.height].active = true;
-//                [qView.widthAnchor constraintEqualToConstant:self.view.bounds.size.width].active = true;
-//                [verStackView addArrangedSubview:qView];
-//            } else  if ([questionnaire[@"type"] isEqualToString:@"image"]) {
-//                UIView *qView = [[[NSBundle mainBundle] loadNibNamed:@"WMQuestionaire3" owner:self options:nil] objectAtIndex:0];
-//                 qView.translatesAutoresizingMaskIntoConstraints = false;
-//                [qView.heightAnchor constraintEqualToConstant:qView.bounds.size.height].active = true;
-//                [qView.widthAnchor constraintEqualToConstant:self.view.bounds.size.width].active = true;
-//                [verStackView addArrangedSubview:qView];
-//            } else  if ([questionnaire[@"type"] isEqualToString:@"text"]) {
-//                UIView *qView = [[[NSBundle mainBundle] loadNibNamed:@"WMQuestionaire4" owner:self options:nil] objectAtIndex:0];
-//                 qView.translatesAutoresizingMaskIntoConstraints = false;
-//                [qView.heightAnchor constraintEqualToConstant:qView.bounds.size.height].active = true;
-//                [qView.widthAnchor constraintEqualToConstant:self.view.bounds.size.width].active = true;
-////                qView.backgroundColor = [UIColor redColor];
-//                [verStackView addArrangedSubview:qView];
-//            } else  if ([questionnaire[@"type"] isEqualToString:@"radio-group"]) {
-//                UIView *qView = [[[NSBundle mainBundle] loadNibNamed:@"WMQuestionaire5" owner:self options:nil] objectAtIndex:0];
-//                 qView.translatesAutoresizingMaskIntoConstraints = false;
-//                [qView.heightAnchor constraintEqualToConstant:qView.bounds.size.height].active = true;
-//                [qView.widthAnchor constraintEqualToConstant:self.view.bounds.size.width].active = true;
-//                [verStackView addArrangedSubview:qView];
-//            } else  if ([questionnaire[@"type"] isEqualToString:@"dropdown"]) {
-//                UIView *qView = [[[NSBundle mainBundle] loadNibNamed:@"WMQuestionaire6" owner:self options:nil] objectAtIndex:0];
-//                 qView.translatesAutoresizingMaskIntoConstraints = false;
-//                [qView.heightAnchor constraintEqualToConstant:qView.bounds.size.height].active = true;
-//                [qView.widthAnchor constraintEqualToConstant:self.view.bounds.size.width].active = true;
-//                [verStackView addArrangedSubview:qView];
-//            } else  if ([questionnaire[@"type"] isEqualToString:@"matrix-table"]) {
-//                UIView *qView = [[[NSBundle mainBundle] loadNibNamed:@"WMQuestionaire7" owner:self options:nil] objectAtIndex:0];
-//                 qView.translatesAutoresizingMaskIntoConstraints = false;
-//                [qView.heightAnchor constraintEqualToConstant:qView.bounds.size.height].active = true;
-//                [qView.widthAnchor constraintEqualToConstant:self.view.bounds.size.width].active = true;
-//                [verStackView addArrangedSubview:qView];
-//            } else  if ([questionnaire[@"type"] isEqualToString:@"textarea"]) {
-//                UIView *qView = [[[NSBundle mainBundle] loadNibNamed:@"WMQuestionaire1" owner:self options:nil] objectAtIndex:0];
-//                 qView.translatesAutoresizingMaskIntoConstraints = false;
-//                [qView.heightAnchor constraintEqualToConstant:qView.bounds.size.height].active = true;
-//                [qView.widthAnchor constraintEqualToConstant:self.view.bounds.size.width].active = true;
-//                [verStackView addArrangedSubview:qView];
-//            } else  if ([questionnaire[@"type"] isEqualToString:@"checkbox-group"]) {
-//                UIView *qView = [[[NSBundle mainBundle] loadNibNamed:@"WMQuestionaire2" owner:self options:nil] objectAtIndex:0];
-//                 qView.translatesAutoresizingMaskIntoConstraints = false;
-//                [qView.heightAnchor constraintEqualToConstant:qView.bounds.size.height].active = true;
-//                [qView.widthAnchor constraintEqualToConstant:self.view.bounds.size.width].active = true;
-//                [verStackView addArrangedSubview:qView];
-//            } else
-            
         }
     }
 
@@ -184,7 +110,7 @@
     [titleView addSubview:titleLabel];
     titleLabel.font = [UIFont fontWithName:@"Helvetica" size:16.0];
     titleLabel.textColor = [UIColor grayColor];
-    [titleView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-24-[titleLabel]-(24)-|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:NSDictionaryOfVariableBindings(titleLabel)]];
+    [titleView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-24-[titleLabel]-24-|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:NSDictionaryOfVariableBindings(titleLabel)]];
     [titleView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(>=4)-[titleLabel]-(>=4)-|" options:NSLayoutFormatAlignAllCenterX metrics:nil views:NSDictionaryOfVariableBindings(titleLabel)]];
     
     for (id radioData in questionnaire[@"choices"]) {
@@ -249,7 +175,7 @@
     [titleView addSubview:titleLabel];
     titleLabel.font = [UIFont fontWithName:@"Helvetica" size:16.0];
     titleLabel.textColor = [UIColor grayColor];
-    [titleView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-24-[titleLabel]-(24)-|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:NSDictionaryOfVariableBindings(titleLabel)]];
+    [titleView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-24-[titleLabel]-24-|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:NSDictionaryOfVariableBindings(titleLabel)]];
     [titleView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(>=4)-[titleLabel]-(>=4)-|" options:NSLayoutFormatAlignAllCenterX metrics:nil views:NSDictionaryOfVariableBindings(titleLabel)]];
     
     for (id radioData in questionnaire[@"choices"]) {
@@ -318,20 +244,27 @@
     titleLabel.textColor = [UIColor grayColor];
     titleLabel.font = [UIFont fontWithName:@"Helvetica" size:16.0];
     
-    [titleView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-24-[titleLabel]-(24)-|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:NSDictionaryOfVariableBindings(titleLabel)]];
+    [titleView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-24-[titleLabel]-24-|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:NSDictionaryOfVariableBindings(titleLabel)]];
     [titleView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(>=4)-[titleLabel]-(>=4)-|" options:NSLayoutFormatAlignAllCenterX metrics:nil views:NSDictionaryOfVariableBindings(titleLabel)]];
     
     UIView *dropDownView = [self getStackSubView:verStackView];
     
     UITextView *textView = [[UITextView alloc] init];
+//    textView.layer.shadowOffset = CGSizeMake(1, 1);
+//    textView.layer.shadowColor = [UIColor darkGrayColor].CGColor;
+//    [textView.layer setShadowOpacity:1.0];
+//    [textView.layer setShadowRadius:0.3];
+//    textView.layer.masksToBounds = NO;
+    textView.layer.borderWidth = 1.0f;
+    textView.layer.borderColor = [UIColor grayColor].CGColor;
     textView.translatesAutoresizingMaskIntoConstraints = false;
     NSString *buttonTitle = [self convertToString:questionnaire[@"model"]];
-    [textView setText:buttonTitle];
+    [textView setText:buttonTitle.length ? buttonTitle : @"Comment"];
     [dropDownView addSubview:textView];
     [textView setTextColor:[UIColor colorWithRed:260/255.0 green:0.0 blue:60/255.0 alpha:1.0]];
     
     
-    [dropDownView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-24-[textView]-24-" options:NSLayoutFormatAlignAllCenterY metrics:nil views:NSDictionaryOfVariableBindings(textView)]];
+    [dropDownView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-24-[textView]-24-|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:NSDictionaryOfVariableBindings(textView)]];
     
     [dropDownView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[textView(100)]-|" options:NSLayoutFormatAlignmentMask metrics:nil views:NSDictionaryOfVariableBindings(textView)]];
     
@@ -369,12 +302,15 @@
     titleLabel.textColor = [UIColor grayColor];
     titleLabel.font = [UIFont fontWithName:@"Helvetica" size:16.0];
 
-    [titleView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-24-[titleLabel]-(24)-|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:NSDictionaryOfVariableBindings(titleLabel)]];
+    [titleView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-24-[titleLabel]-24-|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:NSDictionaryOfVariableBindings(titleLabel)]];
     [titleView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(>=4)-[titleLabel]-(>=4)-|" options:NSLayoutFormatAlignAllCenterX metrics:nil views:NSDictionaryOfVariableBindings(titleLabel)]];
     
     UIView *dropDownView = [self getStackSubView:verStackView];
     
-    UITextField *textField = [[UITextField alloc] init];
+    ACFloatingTextField *textField = [[ACFloatingTextField alloc] init];
+    textField.placeholder = @"Answer";
+    textField.placeHolderColor = [UIColor colorWithRed:260/255.0 green:0.0 blue:60/255.0 alpha:1.0];
+    textField.borderStyle = UITextBorderStyleBezel;
     textField.translatesAutoresizingMaskIntoConstraints = false;
     NSString *buttonTitle = [self convertToString:questionnaire[@"model"]];
     [textField setText:buttonTitle];
@@ -385,7 +321,7 @@
 //    dropDownImg.translatesAutoresizingMaskIntoConstraints = false;
 //    [dropDownView addSubview:dropDownImg];
     
-    [dropDownView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-24-[textField(>=100)]" options:NSLayoutFormatAlignAllCenterY metrics:nil views:NSDictionaryOfVariableBindings(textField)]];
+    [dropDownView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-24-[textField]-24-|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:NSDictionaryOfVariableBindings(textField)]];
     
     [dropDownView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[textField]-|" options:NSLayoutFormatAlignmentMask metrics:nil views:NSDictionaryOfVariableBindings(textField)]];
     
@@ -420,14 +356,19 @@
     [titleView addSubview:titleLabel];
     titleLabel.font = [UIFont fontWithName:@"Helvetica" size:16.0];
     titleLabel.textColor = [UIColor grayColor];
-    [titleView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-24-[titleLabel]-(24)-|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:NSDictionaryOfVariableBindings(titleLabel)]];
+    [titleView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-24-[titleLabel]-24-|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:NSDictionaryOfVariableBindings(titleLabel)]];
     [titleView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(>=4)-[titleLabel]-(>=4)-|" options:NSLayoutFormatAlignAllCenterX metrics:nil views:NSDictionaryOfVariableBindings(titleLabel)]];
     
     UIView *dropDownView = [self getStackSubView:verStackView];
     
-    UIButton *dropDownButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIButton *dropDownButton = [UIButton buttonWithType:UIButtonTypeSystem];
     dropDownButton.translatesAutoresizingMaskIntoConstraints = false;
+    dropDownButton.layer.borderColor = [UIColor darkGrayColor].CGColor;
+    dropDownButton.layer.borderWidth = 1.0f;
     NSString *buttonTitle = [self convertToString:questionnaire[@"model"]];
+    if (buttonTitle.length == 0) {
+        buttonTitle = @"Select a date";
+    }
     [dropDownButton setTitle:buttonTitle forState:UIControlStateNormal];
     [dropDownView addSubview:dropDownButton];
     [dropDownButton setTitleColor:[UIColor colorWithRed:260/255.0 green:0.0 blue:60/255.0 alpha:1.0] forState:UIControlStateNormal];
@@ -463,6 +404,7 @@
 }
 
 - (void)createDropdownViewWithData:(id)questionnaire{
+    NSLog(@"Crash: %@",questionnaire);
     UIStackView *verStackView = [self getStackView:stackView];
     UIView *titleView = [self getStackSubView:verStackView];
     
@@ -472,14 +414,14 @@
     [titleView addSubview:titleLabel];
     titleLabel.font = [UIFont fontWithName:@"Helvetica" size:16.0];
     titleLabel.textColor = [UIColor grayColor];
-    [titleView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-24-[titleLabel]-(24)-|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:NSDictionaryOfVariableBindings(titleLabel)]];
+    [titleView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-24-[titleLabel]-24-|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:NSDictionaryOfVariableBindings(titleLabel)]];
     [titleView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(>=4)-[titleLabel]-(>=4)-|" options:NSLayoutFormatAlignAllCenterX metrics:nil views:NSDictionaryOfVariableBindings(titleLabel)]];
     
     UIView *dropDownView = [self getStackSubView:verStackView];
     
-    UIButton *dropDownButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIButton *dropDownButton = [UIButton buttonWithType:UIButtonTypeSystem];
     dropDownButton.translatesAutoresizingMaskIntoConstraints = false;
-    NSString *buttonTitle = [self convertToString:questionnaire[@"model"]];
+    NSString *buttonTitle = questionnaire[@"model"] ? [self convertToString:questionnaire[@"model"]] : @"click to choose an option";
     [dropDownButton setTitle:buttonTitle forState:UIControlStateNormal];
     [dropDownView addSubview:dropDownButton];
     [dropDownButton setTitleColor:[UIColor colorWithRed:260/255.0 green:0.0 blue:60/255.0 alpha:1.0] forState:UIControlStateNormal];
@@ -524,59 +466,38 @@
     [titleView addSubview:titleLabel];
     titleLabel.font = [UIFont fontWithName:@"Helvetica" size:16.0];
     titleLabel.textColor = [UIColor grayColor];
-    [titleView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-24-[titleLabel]-(24)-|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:NSDictionaryOfVariableBindings(titleLabel)]];
+    [titleView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-24-[titleLabel]-24-|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:NSDictionaryOfVariableBindings(titleLabel)]];
     [titleView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(>=4)-[titleLabel]-(>=4)-|" options:NSLayoutFormatAlignAllCenterX metrics:nil views:NSDictionaryOfVariableBindings(titleLabel)]];
     
    
-//    UIView *dropDownView = [self getStackSubView:verStackView];
-//    
-//    UIButton *dropDownButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    dropDownButton.translatesAutoresizingMaskIntoConstraints = false;
-//    NSString *buttonTitle = [self convertToString:questionnaire[@"model"]];
-//    [dropDownButton setTitle:buttonTitle forState:UIControlStateNormal];
-//    [dropDownView addSubview:dropDownButton];
-//    [dropDownButton setTitleColor:[UIColor colorWithRed:260/255.0 green:0.0 blue:60/255.0 alpha:1.0] forState:UIControlStateNormal];
-//    [dropDownButton addTarget:self action:@selector(dateDropDownSelected:) forControlEvents:UIControlEventTouchUpInside];
-//    
-//    UIImageView *dropDownImg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"drop-down-arrow"]];
-//    dropDownImg.translatesAutoresizingMaskIntoConstraints = false;
-//    [dropDownView addSubview:dropDownImg];
-//    
-//    [dropDownView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-24-[dropDownButton(>=100)]-8-[dropDownImg(==18)]" options:NSLayoutFormatAlignAllCenterY metrics:nil views:NSDictionaryOfVariableBindings(dropDownButton, dropDownImg)]];
-//    
-//    [dropDownView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[dropDownButton]-|" options:NSLayoutFormatAlignmentMask metrics:nil views:NSDictionaryOfVariableBindings(dropDownButton)]];
+    UIView *dropDownView = [self getStackSubView:verStackView];
     
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Wemark" message:@"Please select a photo source" preferredStyle:UIAlertControllerStyleActionSheet];
+    UIButton *dropDownButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    dropDownButton.translatesAutoresizingMaskIntoConstraints = false;
+    NSString *buttonTitle = [self convertToString:questionnaire[@"title"]];
+    if (buttonTitle.length == 0) {
+        buttonTitle = @"Upload";
+    }
+    [dropDownButton setTitle:buttonTitle forState:UIControlStateNormal];
+    [dropDownView addSubview:dropDownButton];
+    [dropDownButton setTitleColor:[UIColor colorWithRed:260/255.0 green:0.0 blue:60/255.0 alpha:1.0] forState:UIControlStateNormal];
+    if ([questionnaire[@"type"] isEqualToString:@"image"]) {
+        [dropDownButton addTarget:self action:@selector(uploadImageClicked:) forControlEvents:UIControlEventTouchUpInside];
+    } else if ([questionnaire[@"type"] isEqualToString:@"audio"]) {
+        [dropDownButton addTarget:self action:@selector(uploadAudioClicked:) forControlEvents:UIControlEventTouchUpInside];
+    }  else if ([questionnaire[@"type"] isEqualToString:@"video"]) {
+        [dropDownButton addTarget:self action:@selector(uploadVideoClicked:) forControlEvents:UIControlEventTouchUpInside];
+    }
+
     
-        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-        picker.delegate = self;
-        picker.allowsEditing = YES;
+    UIImageView *dropDownImg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"drop-down-arrow"]];
+    dropDownImg.translatesAutoresizingMaskIntoConstraints = false;
+    [dropDownView addSubview:dropDownImg];
     
+    [dropDownView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-24-[dropDownButton(>=100)]-8-[dropDownImg(==18)]" options:NSLayoutFormatAlignAllCenterY metrics:nil views:NSDictionaryOfVariableBindings(dropDownButton, dropDownImg)]];
     
-        UIAlertAction *albumAction = [UIAlertAction actionWithTitle:@"Choose from Library" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-            [self presentViewController:picker animated:YES completion:NULL];
-        }];
-        UIAlertAction *cameraAction = [UIAlertAction actionWithTitle:@"Take Photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-            [self presentViewController:picker animated:YES completion:NULL];
-        }];
-        
-        UIAlertAction *removeAction = [UIAlertAction actionWithTitle:@"Remove Photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [self removeImage];
-        }];
-        
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        }];
-        
-        [alertController addAction:cameraAction];
-        [alertController addAction:albumAction];
-        [alertController addAction:removeAction];
-        [alertController addAction:cancelAction];
-        
-        [self presentViewController:alertController animated:true completion:^{
-            
-        }];
+    [dropDownView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[dropDownButton]-|" options:NSLayoutFormatAlignmentMask metrics:nil views:NSDictionaryOfVariableBindings(dropDownButton)]];
+    
     
     UIView *nextPrevButtonView = [self getStackSubView:verStackView];
     UIButton *prevButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -598,6 +519,117 @@
     [nextPrevButtonView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[prevButton]-|" options:NSLayoutFormatAlignmentMask metrics:nil views:NSDictionaryOfVariableBindings(prevButton)]];
 
 }
+
+
+
+- (void)uploadVideoClicked:(id)sender {
+    
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+//    picker.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:@[UIImagePickerControllerS]];
+
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Wemark" message:@"Please select a photo source" preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *albumAction = [UIAlertAction actionWithTitle:@"Choose from Library" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        [self presentViewController:picker animated:YES completion:NULL];
+    }];
+    UIAlertAction *cameraAction = [UIAlertAction actionWithTitle:@"Capture Video" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        [self presentViewController:picker animated:YES completion:NULL];
+    }];
+    
+    UIAlertAction *removeAction = [UIAlertAction actionWithTitle:@"Remove Photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self removeImage];
+    }];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    
+    [alertController addAction:cameraAction];
+    [alertController addAction:albumAction];
+    [alertController addAction:removeAction];
+    [alertController addAction:cancelAction];
+    
+    [self presentViewController:alertController animated:true completion:^{
+        
+    }];
+
+}
+
+- (void)uploadAudioClicked:(id)sender {
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    //    picker.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:@[UIImagePickerControllerS]];
+    
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Wemark" message:@"Please select a photo source" preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *albumAction = [UIAlertAction actionWithTitle:@"Choose from Library" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        [self presentViewController:picker animated:YES completion:NULL];
+    }];
+    UIAlertAction *cameraAction = [UIAlertAction actionWithTitle:@"Camera" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        [self presentViewController:picker animated:YES completion:NULL];
+    }];
+    
+    UIAlertAction *removeAction = [UIAlertAction actionWithTitle:@"Remove Photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self removeImage];
+    }];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    
+    [alertController addAction:cameraAction];
+    [alertController addAction:albumAction];
+    [alertController addAction:removeAction];
+    [alertController addAction:cancelAction];
+    
+    [self presentViewController:alertController animated:true completion:^{
+        
+    }];
+}
+
+- (void)uploadImageClicked:(id)sender {
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    //    picker.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:@[UIImagePickerControllerS]];
+    
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Wemark" message:@"Please select a photo source" preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *albumAction = [UIAlertAction actionWithTitle:@"Choose from Library" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        [self presentViewController:picker animated:YES completion:NULL];
+    }];
+    UIAlertAction *cameraAction = [UIAlertAction actionWithTitle:@"Take Photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        [self presentViewController:picker animated:YES completion:NULL];
+    }];
+    
+    UIAlertAction *removeAction = [UIAlertAction actionWithTitle:@"Remove Photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self removeImage];
+    }];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    
+    [alertController addAction:cameraAction];
+    [alertController addAction:albumAction];
+    [alertController addAction:removeAction];
+    [alertController addAction:cancelAction];
+    
+    [self presentViewController:alertController animated:true completion:^{
+        
+    }];
+}
+
+
 - (void)removeImage {
     
 }
@@ -675,6 +707,36 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+#pragma mark - UIImagePickerDelegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+//    self.profilePic.image = chosenImage;
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString *imgName = @"temp";
+    NSString *imgPath = [paths[0] stringByAppendingPathComponent:imgName];
+    
+    NSData *data = UIImageJPEGRepresentation(chosenImage, 0);
+    [data writeToFile:imgPath atomically:true];
+    
+    // Save it's path
+//    self.profilePicURL = imgPath;
+    
+    [picker dismissViewControllerAnimated:YES completion:^{
+    }];
+    
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
+}
+
 
 /*
 #pragma mark - Navigation

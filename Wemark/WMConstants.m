@@ -8,7 +8,7 @@
 
 #import "WMConstants.h"
 
-NSString *  const baseURL = @"http://wemark.trionhost.com/";
+NSString * const baseURL = @"http://wemark.trionhost.com/";
 NSString * const loginURL = @"auditor-api/auth/login";
 NSString * const registerURL = @"auditor-api/auth/register";
 NSString * const getAllLocationsURL = @"auditor-api/locations/get-all-locations";
@@ -34,5 +34,5 @@ NSString *const facebookAuditorLoginURL = @"auditor-api/auth/facebook-login";
 NSString *const startSurveyURL = @"auditor-api/questionnaire/get-all-sections-by-questionnaire-id";
 NSString *const questionaireURL = @"auditor-api/questionnaire/get-questions-by-assignment-id-and-section-id";
 NSString *const questionaireImageUploadURL = @"auditor-api/questionnaire/questionnaire-image-upload";
-
+NSString *const questionaireDeleteFileURL = @"questionnaire/delete-file";
 

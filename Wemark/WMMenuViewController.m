@@ -162,7 +162,10 @@
             break;
         case 5:
         {
-            nVC = [self.storyboard instantiateViewControllerWithIdentifier:@"LogOutNavigationController"];
+//            nVC = [self.storyboard instantiateViewControllerWithIdentifier:@"LogOutNavigationController"];
+//            AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            [appDelegate logout];
+            return;
         }
             break;
    

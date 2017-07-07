@@ -34,3 +34,4 @@ extern NSString * const facebookAuditorLoginURL;
 extern NSString * const startSurveyURL;
 extern NSString * const questionaireURL;
 extern NSString * const questionaireImageUploadURL;
+extern NSString * const questionaireDeleteFileURL;

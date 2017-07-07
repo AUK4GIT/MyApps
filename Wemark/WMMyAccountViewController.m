@@ -170,7 +170,7 @@
 #pragma mark - UITableView Datasource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -179,9 +179,9 @@
         cell = [tableView dequeueReusableCellWithIdentifier:@"ChangePassword"];
     } else if (indexPath.row == 1) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"TransactionHistory"];
-    }else {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"Logout"];
-    }
+    } //else {
+        //cell = [tableView dequeueReusableCellWithIdentifier:@"Logout"];
+   // }
     return cell;
 }
 
@@ -192,10 +192,10 @@
         [self performSegueWithIdentifier:@"ChangePassword" sender:nil];
     } else if (indexPath.row == 1) {
         [self performSegueWithIdentifier:@"TransactionsHistory" sender:nil];
-    }else {
-        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        [appDelegate logout];
-    }
+    }//else {
+      //  AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+      //  [appDelegate logout];
+   // }
 }
 
 @end
