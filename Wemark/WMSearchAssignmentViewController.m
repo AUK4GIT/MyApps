@@ -251,7 +251,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
                   layout:(UICollectionViewLayout *)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake(self.view.bounds.size.width/4 - 20, 50);
+    return CGSizeMake(self.view.bounds.size.width/4 - 20, 60);
 }
 
 
@@ -310,9 +310,16 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 //        UILabel *lbl2 = [cell viewWithTag:2];
 //        lbl2.text = rupee;
     }
-    UIView *bgView = [[UIView alloc] init];
-    bgView.backgroundColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];
-    cell.selectedBackgroundView = bgView;
+    UIView *selectedBgView = [[UIView alloc] init];
+    selectedBgView.backgroundColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];
+    cell.selectedBackgroundView = selectedBgView;
+
+    UIView *bgView = [cell viewWithTag:11];
+    bgView.layer.shadowColor = [UIColor lightGrayColor].CGColor;
+    bgView.layer.shadowOffset = CGSizeMake(0.5, 0.5);
+    bgView.layer.shadowOpacity = 0.6f;
+    bgView.layer.cornerRadius = 3.0f;
+    
     return cell;
 }
 

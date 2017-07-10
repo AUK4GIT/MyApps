@@ -88,7 +88,7 @@
     [self hideNoAssignmentsScreen];
     NSString *authKey = [[WMDataHelper sharedInstance] getAuthKey];
         NSDictionary *paramsDict = @{@"Applied":[NSNumber numberWithBool:self.Applied],@"Assigned":[NSNumber numberWithBool:self.Assigned],@"Accepted":[NSNumber numberWithBool:self.Accepted],@"Rejected":[NSNumber numberWithBool:self.Rejected]};
-
+    [self showActivity];
     [[WMWebservicesHelper sharedInstance] getAuditorAssignments:authKey paramsDict:paramsDict completionBlock:^(BOOL result, id responseDict, NSError *error) {
 
         NSLog(@"result:-> %@",result ? @"success" : @"Failed");
@@ -107,6 +107,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             //            [activityView stopAnimating];
 //            self.assignmentsLabel.text = [NSString stringWithFormat:@"%d Assignments found in your location ",self.assignmentsArray.count];
+            [self hideActivity];
             [self.tableView reloadData];
         });
     }];
@@ -148,13 +149,13 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (self.segmentedControl.selectedSegmentIndex == 0) {
-        return 150;
+        return 158;
     } else if (self.segmentedControl.selectedSegmentIndex == 1) {
-        return 170;
+        return 178;
     } else if (self.segmentedControl.selectedSegmentIndex == 2) {
-        return 165;
+        return 173;
     } else if (self.segmentedControl.selectedSegmentIndex == 3) {
-        return 145;
+        return 153;
     }
     return 210;
 }
@@ -177,30 +178,42 @@
         //    cell.distanceLabel.text = [assignObj valueForKey:@""];//todo
         [applCell setClientImageWithURL:[assignObj valueForKey:@"logoURL"]];
         applCell.titleLabel.text = [assignObj valueForKey:@"campaigntitle"];
+//        [applCell.bottomButton setTitle:[assignObj valueForKey:@"assignment_status"] forState:UIControlStateNormal];
+
     } else if (self.segmentedControl.selectedSegmentIndex == 1) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"WMAssignedCell"];
-//        cell.moneyLabel.text = [NSString stringWithFormat:@"₹ %@",[assignObj valueForKey:@"campaignbudget"]];
-//        cell.assignStatus.text = [assignObj valueForKey:@"assignmentstatus"];
-//        cell.calData.text = [NSString stringWithFormat:@"%@ - %@",[assignObj valueForKey:@"assignmentduedate"],[assignObj valueForKey:@"assignmentduedate"]];
-//        //    cell.distanceLabel.text = [assignObj valueForKey:@""];//todo
-//        [cell setClientImageWithURL:[assignObj valueForKey:@"logoURL"]];
-//        cell.titleLabel.text = [assignObj valueForKey:@"campaigntitle"];
+        WMAssignedCell *applCell = (WMAssignedCell *)cell;
+        applCell.moneyLabel.text = [NSString stringWithFormat:@"₹ %@",[assignObj valueForKey:@"campaignbudget"]];
+//        applCell.assignStatus.text = [assignObj valueForKey:@"assignmentstatus"];
+        applCell.calData.text = [NSString stringWithFormat:@"%@ - %@",[assignObj valueForKey:@"startdate"],[assignObj valueForKey:@"enddate"]];
+        //    cell.distanceLabel.text = [assignObj valueForKey:@""];//todo
+        [applCell setClientImageWithURL:[assignObj valueForKey:@"logoURL"]];
+        applCell.titleLabel.text = [assignObj valueForKey:@"campaigntitle"];
+        [applCell.bottomButton setTitle:[assignObj valueForKey:@"assignmentstatus"] forState:UIControlStateNormal];
+
     }else if (self.segmentedControl.selectedSegmentIndex == 2) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"WMAcceptedCell"];
-//        cell.moneyLabel.text = [NSString stringWithFormat:@"₹ %@",[assignObj valueForKey:@"campaignbudget"]];
-//        cell.assignStatus.text = [assignObj valueForKey:@"assignmentstatus"];
-//        cell.calData.text = [NSString stringWithFormat:@"%@ - %@",[assignObj valueForKey:@"assignmentduedate"],[assignObj valueForKey:@"assignmentduedate"]];
-//        //    cell.distanceLabel.text = [assignObj valueForKey:@""];//todo
-//        [cell setClientImageWithURL:[assignObj valueForKey:@"logoURL"]];
-//        cell.titleLabel.text = [assignObj valueForKey:@"campaigntitle"];
+        WMAcceptedCell *applCell = (WMAcceptedCell *)cell;
+
+        applCell.moneyLabel.text = [NSString stringWithFormat:@"₹ %@",[assignObj valueForKey:@"campaignbudget"]];
+//        applCell.assignStatus.text = [assignObj valueForKey:@"assignmentstatus"];
+        applCell.calData.text = [NSString stringWithFormat:@"%@ - %@",[assignObj valueForKey:@"startdate"],[assignObj valueForKey:@"enddate"]];
+        //    cell.distanceLabel.text = [assignObj valueForKey:@""];//todo
+        [applCell setClientImageWithURL:[assignObj valueForKey:@"logoURL"]];
+        applCell.titleLabel.text = [assignObj valueForKey:@"campaigntitle"];
+        [applCell.bottomButton setTitle:[assignObj valueForKey:@"assignmentstatus"] forState:UIControlStateNormal];
+
     }else if (self.segmentedControl.selectedSegmentIndex == 3) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"WMRejectedCell"];
-//        cell.moneyLabel.text = [NSString stringWithFormat:@"₹ %@",[assignObj valueForKey:@"campaignbudget"]];
-//        cell.assignStatus.text = [assignObj valueForKey:@"assignmentstatus"];
-//        cell.calData.text = [NSString stringWithFormat:@"%@ - %@",[assignObj valueForKey:@"assignmentduedate"],[assignObj valueForKey:@"assignmentduedate"]];
-//        //    cell.distanceLabel.text = [assignObj valueForKey:@""];//todo
-//        [cell setClientImageWithURL:[assignObj valueForKey:@"logoURL"]];
-//        cell.titleLabel.text = [assignObj valueForKey:@"campaigntitle"];
+        WMRejectedCell *applCell = (WMRejectedCell *)cell;
+
+        applCell.moneyLabel.text = [NSString stringWithFormat:@"₹ %@",[assignObj valueForKey:@"campaignbudget"]];
+//        applCell.assignStatus.text = [assignObj valueForKey:@"assignmentstatus"];
+        applCell.calData.text = [NSString stringWithFormat:@"%@ - %@",[assignObj valueForKey:@"startdate"],[assignObj valueForKey:@"enddate"]];
+        //    cell.distanceLabel.text = [assignObj valueForKey:@""];//todo
+        [applCell setClientImageWithURL:[assignObj valueForKey:@"logoURL"]];
+        applCell.titleLabel.text = [assignObj valueForKey:@"campaigntitle"];
+        [applCell.bottomButton setTitle:[assignObj valueForKey:@"assignmentstatus"] forState:UIControlStateNormal];
     }
     cell.backgroundColor = [UIColor clearColor];
     cell.contentView.backgroundColor = [UIColor clearColor];

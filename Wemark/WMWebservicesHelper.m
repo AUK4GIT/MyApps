@@ -124,12 +124,12 @@
     [dataTask resume];
 }
 
-- (void)getAssignments:(NSString *)authKey byLocationName:(NSString *)locName forSelfAssign:(NSString *)selfAssign forApply:(NSString *)apply completionBlock:(void (^) (BOOL, id, NSError*))completionBlock {
+- (void)getAssignments:(NSString *)authKey byLocationName:(NSString *)locName  locationId:(NSString *)locationId forSelfAssign:(NSString *)selfAssign forApply:(NSString *)apply completionBlock:(void (^) (BOOL, id, NSError*))completionBlock {
     //    NSError *error;
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
     NSDictionary *paramsDict = @{@"self_assign":selfAssign,@"apply":apply,@"location_name":locName};
-    NSString *urlString = [NSString stringWithFormat:@"%@%@?location_id=%@&page=%@&pageSize=%@",baseURL,assignmentsByLocationURL,locName,@"0",@"10"];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@?location_id=%@&page=%@&pageSize=%@",baseURL,assignmentsByLocationURL,locationId,@"0",@"10"];
     NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:urlString parameters:paramsDict error:nil];
     [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
@@ -496,12 +496,12 @@
     [dataTask resume];
 }
 
-- (void)getCampaignViewDetails:(NSString *)authKey completionBlock:(void (^) (BOOL, id, NSError*))completionBlock {
+- (void)getCampaignViewDetails:(NSString *)authKey withCampaignId:campaignId completionBlock:(void (^) (BOOL, id, NSError*))completionBlock {
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
-    //NSDictionary *paramsDict = @{@"auditor_id":audId};
+    NSDictionary *paramsDict = @{@"campaign_id":campaignId};
     NSString *urlString = [NSString stringWithFormat:@"%@%@",baseURL,getAuditorCampaignViewDetails];
-    NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"GET" URLString:urlString parameters:nil error:nil];
+    NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"GET" URLString:urlString parameters:paramsDict error:nil];
     [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request addValue:authKey forHTTPHeaderField:@"Auth-key"];

@@ -30,7 +30,7 @@
     
     self.title = @"Search result";
     [self.tableView registerNib:[UINib nibWithNibName:@"WMAssignCell" bundle:nil] forCellReuseIdentifier:@"WMAssignCell"];
-    self.tableView.rowHeight = 124;
+    self.tableView.rowHeight = 144;
     [self getAssignmentsforSelfAssign:@"0" forApply:@"0"];
 }
 

@@ -24,6 +24,7 @@
 @property (assign, nonatomic) BOOL selfAssign;
 @property (assign, nonatomic) BOOL apply;
 @property (strong, nonatomic) NSString *locationName;
+@property (strong, nonatomic) NSString *locationId;
 @property(nonatomic, strong) IBOutlet UIView *mapBGView;
 @property(nonatomic, strong) UILabel *titleLabel;
 @property(nonatomic, strong) CLLocationManager *locationManager;
@@ -49,12 +50,15 @@
     self.assignmentsLabel.text = @"";
     
     [self.tableView registerNib:[UINib nibWithNibName:@"WMAssignCell" bundle:nil] forCellReuseIdentifier:@"WMAssignCell"];
-    self.tableView.rowHeight = 136;
+    self.tableView.rowHeight = 140;
     
-    [self addTitleView:@"Please tap here to select a location"];
+    [self addTitleView:@"Select a location"];
     
     self.selfAssign = false;
     self.apply = false;
+    
+    self.assignFilterButton.layer.cornerRadius = 3.0f;
+    self.applyFilterButton.layer.cornerRadius = 3.0f;
     
 //    [self getCurrentPosition];
     CLLocation *location = [[CLLocation alloc] initWithLatitude:28.4595 longitude:77.0266];
@@ -159,7 +163,7 @@
 - (void)getAssignmentsByLocationName:(NSString *)locationName forSelfAssign:(NSString *)selfAssign forApply:(NSString *)apply{
     
     NSString *authKey = [[WMDataHelper sharedInstance] getAuthKey];
-    [[WMWebservicesHelper sharedInstance] getAssignments:authKey byLocationName:locationName forSelfAssign:selfAssign forApply:apply completionBlock:^(BOOL result, id responseDict, NSError *error) {
+    [[WMWebservicesHelper sharedInstance] getAssignments:authKey byLocationName:locationName locationId:self.locationId forSelfAssign:selfAssign forApply:apply completionBlock:^(BOOL result, id responseDict, NSError *error) {
         NSLog(@"result:-> %@",result ? @"success" : @"Failed");
         if (result) {
             self.assignmentsArray = [NSMutableArray arrayWithArray:[[WMDataHelper sharedInstance] saveAssignments:responseDict]];
@@ -222,6 +226,11 @@
 //    cell.distanceLabel.text = [assignObj valueForKey:@""];//todo
     [cell setClientImageWithURL:[assignObj valueForKey:@"logoURL"]];
     cell.titleLabel.text = [assignObj valueForKey:@"campaigntitle"];
+    
+    UIView *selectedBGView = [[UIView alloc] init];
+    selectedBGView.backgroundColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];
+    [cell setSelectedBackgroundView:selectedBGView];
+    
     return cell;
 }
 
@@ -234,13 +243,17 @@
     cVC.clientid = [assignObj valueForKey:@"clientid"];
 
     [self.navigationController pushViewController:cVC animated:true];
-    }
+    [tableView deselectRowAtIndexPath:indexPath animated:true];
+    
+}
 
 #pragma mark - Location Search Selection delegate
 - (void)didSelectLocation:(id)locationobj {
-    self.locationName = [locationobj valueForKey:@"clientlocationid"];
+    self.locationId = [locationobj valueForKey:@"clientlocationid"];
+    self.locationName = [locationobj valueForKey:@"city"];
+
     self.titleLabel.text = [locationobj valueForKey:@"city"];
-    [self getAssignmentsByLocationName:[locationobj valueForKey:@"clientlocationid"] forSelfAssign:@"1" forApply:@"1"];
+    [self getAssignmentsByLocationName:self.locationName forSelfAssign:@"1" forApply:@"1"];
     
     [self.assignFilterButton setSelected:false];
     [self.applyFilterButton setSelected:false];

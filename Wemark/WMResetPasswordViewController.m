@@ -18,6 +18,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.navigationItem.leftBarButtonItem = self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back-button-image"] style:UIBarButtonItemStylePlain target:self action:@selector(popViewController)];
+    
+}
+- (void)popViewController {
+    
+    [self.navigationController popViewControllerAnimated:true];
 }
 
 - (void)didReceiveMemoryWarning {

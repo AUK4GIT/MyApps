@@ -44,8 +44,7 @@
  @param apply true or false
  @param completionBlock callback
  */
-- (void)getAssignments:(NSString *)authKey byLocationName:(NSString *)locName forSelfAssign:(NSString *)selfAssign forApply:(NSString *)apply completionBlock:(void (^) (BOOL, id, NSError*))completionBlock;
-
+- (void)getAssignments:(NSString *)authKey byLocationName:(NSString *)locName  locationId:(NSString *)locationId forSelfAssign:(NSString *)selfAssign forApply:(NSString *)apply completionBlock:(void (^) (BOOL, id, NSError*))completionBlock;
 
 /**
  FEtches All Search Parameters
@@ -112,7 +111,7 @@
 
 - (void)sendOTP:(NSString *)authKey toMobileNumber:(NSString *)mobilenumber completionBlock:(void (^) (BOOL, id, NSError*))completionBlock;
 
-- (void)getCampaignViewDetails:(NSString *)authKey completionBlock:(void (^) (BOOL, id, NSError*))completionBlock;
+- (void)getCampaignViewDetails:(NSString *)authKey withCampaignId:campaignId completionBlock:(void (^) (BOOL, id, NSError*))completionBlock;
 
 - (void)facebookAuditorLogin:(id)body completionBlock:(void (^) (BOOL, id, NSError*))completionBlock;
 

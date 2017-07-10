@@ -48,7 +48,7 @@
     //[self.navigationItem setHidesBackButton:YES];
     
     self.photocameraImg.hidden = false;
-     self.addImgLabel.hidden = false;
+    self.addImgLabel.hidden = false;
     
     self.changeImgBGView.hidden = true;;
     self.changeImgLbl.hidden = true;

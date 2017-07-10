@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,10 +18,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view tag="11" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g4s-Xs-0L3">
-                        <rect key="frame" x="16" y="4" width="385" height="137.5"/>
+                        <rect key="frame" x="16" y="4" width="385" height="129.5"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sidemenu-account" translatesAutoresizingMaskIntoConstraints="NO" id="5CE-pf-TsB">
-                                <rect key="frame" x="8" y="8" width="86" height="87.5"/>
+                                <rect key="frame" x="8" y="8" width="86" height="79.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="86" id="CnI-Bt-fm3"/>
                                 </constraints>
@@ -72,7 +72,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ic3-CU-sJd">
-                                <rect key="frame" x="0.0" y="103.5" width="385" height="34"/>
+                                <rect key="frame" x="0.0" y="95.5" width="385" height="34"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="A38-KB-V9I"/>
@@ -110,7 +110,7 @@
                 <constraints>
                     <constraint firstItem="g4s-Xs-0L3" firstAttribute="leading" secondItem="Z4F-jP-3Nv" secondAttribute="leading" constant="16" id="0PD-kH-ZXT"/>
                     <constraint firstItem="g4s-Xs-0L3" firstAttribute="top" secondItem="Z4F-jP-3Nv" secondAttribute="top" constant="4" id="UrP-tD-nhR"/>
-                    <constraint firstAttribute="bottom" secondItem="g4s-Xs-0L3" secondAttribute="bottom" constant="4" id="hoM-7Y-fB8"/>
+                    <constraint firstAttribute="bottom" secondItem="g4s-Xs-0L3" secondAttribute="bottom" constant="12" id="hoM-7Y-fB8"/>
                     <constraint firstAttribute="trailing" secondItem="g4s-Xs-0L3" secondAttribute="trailing" constant="16" id="lNd-Rc-znG"/>
                 </constraints>
             </tableViewCellContentView>

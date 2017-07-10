@@ -53,6 +53,8 @@
 		C53591CA1EF269BB0046EC7B /* WMCheckEmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C53591C91EF269BB0046EC7B /* WMCheckEmailViewController.m */; };
 		C53591CD1EF270270046EC7B /* WMResetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C53591CC1EF270270046EC7B /* WMResetPasswordViewController.m */; };
 		C53591D01EF298830046EC7B /* WMResendOTPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C53591CF1EF298830046EC7B /* WMResendOTPViewController.m */; };
+		C5406B381F13363300794B38 /* WMQuestionaireTilesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5406B371F13363300794B38 /* WMQuestionaireTilesView.xib */; };
+		C5406B3B1F13366400794B38 /* WMQuestionnaireModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C5406B3A1F13366400794B38 /* WMQuestionnaireModel.m */; };
 		C54CD0951EEAC38E0004AEE7 /* WMCountryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C54CD0941EEAC38E0004AEE7 /* WMCountryViewController.m */; };
 		C54CD0981EEAC3C30004AEE7 /* WMStateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C54CD0971EEAC3C30004AEE7 /* WMStateViewController.m */; };
 		C54CD09B1EEAC3E00004AEE7 /* WMCityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C54CD09A1EEAC3E00004AEE7 /* WMCityViewController.m */; };
@@ -174,6 +176,9 @@
 		C53591CC1EF270270046EC7B /* WMResetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMResetPasswordViewController.m; sourceTree = "<group>"; };
 		C53591CE1EF298830046EC7B /* WMResendOTPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMResendOTPViewController.h; sourceTree = "<group>"; };
 		C53591CF1EF298830046EC7B /* WMResendOTPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMResendOTPViewController.m; sourceTree = "<group>"; };
+		C5406B371F13363300794B38 /* WMQuestionaireTilesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WMQuestionaireTilesView.xib; sourceTree = "<group>"; };
+		C5406B391F13366400794B38 /* WMQuestionnaireModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMQuestionnaireModel.h; sourceTree = "<group>"; };
+		C5406B3A1F13366400794B38 /* WMQuestionnaireModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMQuestionnaireModel.m; sourceTree = "<group>"; };
 		C54CD0931EEAC38E0004AEE7 /* WMCountryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMCountryViewController.h; sourceTree = "<group>"; };
 		C54CD0941EEAC38E0004AEE7 /* WMCountryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMCountryViewController.m; sourceTree = "<group>"; };
 		C54CD0961EEAC3C30004AEE7 /* WMStateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMStateViewController.h; sourceTree = "<group>"; };
@@ -380,6 +385,7 @@
 		AE91CCC51ED9F9D800BB9585 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C5406B371F13363300794B38 /* WMQuestionaireTilesView.xib */,
 				AE91CCC61ED9F9F900BB9585 /* WMMenuCell.xib */,
 				AE91CCC81EDA9E4A00BB9585 /* WMAssignCell.xib */,
 				C509CAF61EE802BF002D4F86 /* WMAppliedCell.xib */,
@@ -448,6 +454,8 @@
 		AEDF42AA1ED74289008A4596 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C5406B391F13366400794B38 /* WMQuestionnaireModel.h */,
+				C5406B3A1F13366400794B38 /* WMQuestionnaireModel.m */,
 				AE91CCD31EDB137C00BB9585 /* WMAssignment.h */,
 				AE91CCD41EDB138200BB9585 /* WMAssignment.m */,
 				AEDF42AB1ED742AA008A4596 /* WMUser.h */,
@@ -543,6 +551,7 @@
 				C566B6E61EF7F9160089962D /* WMQuestionaire3.xib in Resources */,
 				C5FBE5DA1F06168600163396 /* WMQuestionaire9.xib in Resources */,
 				C509CAF31EE7BED2002D4F86 /* WMAcceptedCell.xib in Resources */,
+				C5406B381F13363300794B38 /* WMQuestionaireTilesView.xib in Resources */,
 				C566B6E41EF7F4B20089962D /* WMQuestionaire2.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -637,6 +646,7 @@
 				AE91CCD51EDB138200BB9585 /* WMAssignment.m in Sources */,
 				AEFEBC331EE1950100EB0F31 /* WMSearchAssignmentViewController.m in Sources */,
 				AE820FE21ED48DA900AE2BA2 /* Wemark.xcdatamodeld in Sources */,
+				C5406B3B1F13366400794B38 /* WMQuestionnaireModel.m in Sources */,
 				C54D9C621EFE9FC300C9CFE0 /* WMQuestionaire2.m in Sources */,
 				C5FBE5E91F0626F300163396 /* WMQuestionaire10.m in Sources */,
 				C5FBE5EC1F06270700163396 /* WMQuestionaire11.m in Sources */,

@@ -15,10 +15,10 @@
     [super awakeFromNib];
     // Initialization code
     UIView *bgView  = [self.contentView viewWithTag:11];
-    bgView.layer.shadowColor = [UIColor grayColor].CGColor;
+    bgView.layer.shadowColor = [UIColor lightGrayColor].CGColor;
     bgView.layer.shadowOffset = CGSizeMake(1, 1);
     bgView.layer.shadowOpacity = 1.0f;
-
+    bgView.layer.cornerRadius = 3.0f;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

@@ -118,7 +118,7 @@
             
             break;
         case 5:
-            cell.textLabel.text = @"LogOut";
+            cell.textLabel.text = @"Logout";
             cell.imageView.image = [UIImage imageNamed:@"logout"];
             
             break;

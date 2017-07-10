@@ -26,7 +26,10 @@
     // Do any additional setup after loading the view.
     self.title = @"Notifications";
 
-    self.tableView.estimatedRowHeight = 108;
+    self.tableView.estimatedRowHeight = 116;
+    
+    [self.tableView setContentInset:UIEdgeInsetsMake(20, 0, 0, 0)];
+    
     NSString *authKey = [[WMDataHelper sharedInstance] getAuthKey];
     NSString *auditorId = [[WMDataHelper sharedInstance] getAuditorId];
 
@@ -87,7 +90,7 @@
     cell.contentView.backgroundColor = [UIColor clearColor];
     
     id locObj = self.notificationsArray[indexPath.row];
-    UIView *bgView = [cell.contentView viewWithTag:1];
+    UIView *bgView = [cell.contentView viewWithTag:11];
     UILabel *title = [bgView viewWithTag:2];
     UILabel *time = [bgView viewWithTag:3];
     UILabel *descr = [bgView viewWithTag:4];
@@ -127,6 +130,11 @@
 
     [imgView sd_setImageWithURL:[NSURL URLWithString:[locObj valueForKey:@"notification_image"]]
                     placeholderImage:[UIImage imageNamed:@"notification"]];
+    
+    bgView.layer.cornerRadius = 3.0f;
+    bgView.layer.shadowColor = [UIColor lightGrayColor].CGColor;
+    bgView.layer.shadowOffset = CGSizeMake(0.5, 0.5);
+    bgView.layer.shadowOpacity = 0.6f;
 
     return cell;
 }

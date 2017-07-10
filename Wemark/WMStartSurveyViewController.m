@@ -46,8 +46,10 @@
 //    [self.collectionView registerNib:[UINib nibWithNibName:@"WMQuestionaire6" bundle:nil] forCellReuseIdentifier:@"WMQuestionaire6"];
 //    [self.collectionView registerNib:[UINib nibWithNibName:@"WMQuestionaire7" bundle:nil] forCellReuseIdentifier:@"WMQuestionaire7"];
 
-    
-    self.view.backgroundColor = [UIColor colorWithRed:229/255.0 green:236/255.0 blue:243/255.0 alpha:1.0];
+    self.progressView.layer.borderColor = [UIColor colorWithRed:230/255.0 green:20/255.0 blue:75/255.0 alpha:0.3].CGColor;
+    self.progressView.layer.borderWidth = 1.0f;
+
+    self.view.backgroundColor = [UIColor colorWithRed:235/255.0 green:240/255.0 blue:245/255.0 alpha:1.0];
     self.collectionView.backgroundColor = [UIColor clearColor];
     [self.progressView setProgress:0.0 animated:true];
     [self.progressLbl setText:@"0% Complete"];
@@ -184,7 +186,14 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
     cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SurveyCells" forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor whiteColor];
+    cell.backgroundColor = [UIColor clearColor];
+
+    UIView *bgView  = [cell viewWithTag:10];
+    bgView.layer.shadowColor = [UIColor lightGrayColor].CGColor;
+    bgView.layer.shadowOffset = CGSizeMake(0.5, 0.5);
+    bgView.layer.shadowOpacity = 0.6f;
+    bgView.layer.cornerRadius = 3.0f;
+    
     UIImageView *imgView = [cell viewWithTag:11];
     UILabel *sectionName = [cell viewWithTag:12];
     UILabel *questionLabel = [cell viewWithTag:13];

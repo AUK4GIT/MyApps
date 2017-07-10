@@ -9,6 +9,8 @@
 #import "WMCampaignDetailsViewController.h"
 #import "HMSegmentedControl.h"
 #import "WMAllAssignmentsClientIdViewController.h"
+#import "WMWebservicesHelper.h"
+#import "WMDataHelper.h"
 
 @interface WMCampaignDetailsViewController ()
 @property (nonatomic, strong) IBOutlet UILabel *expLbl;
@@ -35,6 +37,27 @@
     segmentedControl.selectionStyle = HMSegmentedControlSelectionStyleBox;
     segmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown;
     segmentedControl.tag = 3;
+    
+    NSString *authKey = [[WMDataHelper sharedInstance] getAuthKey];
+    [self showActivity];
+    [[WMWebservicesHelper sharedInstance] getCampaignViewDetails:authKey withCampaignId:self.campaignid completionBlock:^(BOOL result, id responseDict, NSError *error) {
+        NSLog(@"result:-> %@",result ? @"success" : @"Failed");
+        if (result) {
+//            self.assignmentsArray = [NSMutableArray arrayWithArray:[[WMDataHelper sharedInstance] saveAssignments:responseDict]];
+        } else {
+            NSDictionary *resDict = responseDict;
+            if ([resDict[@"code"] integerValue] == 409) {
+                NSLog(@"Error responseDict:->  %@",resDict[@"message"]);
+            } else {
+                NSLog(@"Error:->  %@",error.localizedDescription);
+            }
+        }
+        //add UI related code here like stopping activity indicator
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self hideActivity];
+            
+        });
+    }];
 }
 - (void)segmentedControlChangedValue:(HMSegmentedControl *)segmentedControl {
     
