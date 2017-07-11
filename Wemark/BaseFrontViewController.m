@@ -2,7 +2,7 @@
 //  BaseFrontViewController.m
 //  MySideMenu
 //
-//  Created by Uday Kiran Ailapaka on 16/05/17.
+//  Created by Kiran Reddy on 16/05/17.
 //  Copyright © 2017 Kiran Reddy. All rights reserved.
 //
 

@@ -663,27 +663,58 @@
     [dataTask resume];
 }
 
-- (void)getQuestionaireImageUpload:authKey forAssignmentId:assignmentId forSectionId:sectionId completionBlock:(void (^) (BOOL, id, NSError*))completionBlock {
+- (void)getQuestionaireImageUpload:authKey forQuestionId:questionid withImageURL:imgURL completionBlock:(void (^) (BOOL, id, NSError*))completionBlock {
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
     
-    NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"%@%@",baseURL,questionaireImageUploadURL] parameters:@{@"assignment_id":assignmentId,@"section_id":sectionId} error:nil];
+//    NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"%@%@",baseURL,questionaireImageUploadURL] parameters:@{@"quesId":questionid} error:nil];
+    
+    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"%@%@",baseURL,questionaireImageUploadURL] parameters:@{@"quesId":questionid} constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        NSString *fName = @"testimage";
+        if (imgURL) {
+            [formData appendPartWithFileURL:[NSURL fileURLWithPath:imgURL] name:fName fileName:[NSString stringWithFormat:@"%@.jpg",fName] mimeType:@"image/jpeg" error:nil];
+        }
+    } error:nil];
+
     [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request addValue:authKey forHTTPHeaderField:@"Auth-key"];
     
-    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
-        if (error) {
-            NSLog(@"Error: %@\nMessage: %@", error.localizedDescription, responseObject[@"meta"]);
-            NSDictionary *codeDict = responseObject[@"meta"];
-            completionBlock(false,codeDict,error);
-        } else {
-            NSLog(@"%@ ** %@", response, responseObject);
-            completionBlock(true,responseObject[@"data"],nil);
-        }
-    }];
-    [dataTask resume];
+    NSURLSessionUploadTask *uploadTask;
+    uploadTask = [manager
+                  uploadTaskWithStreamedRequest:request
+                  progress:^(NSProgress * _Nonnull uploadProgress) {
+                      // This is not called back on the main queue.
+                      // You are responsible for dispatching to the main queue for UI updates
+                      dispatch_async(dispatch_get_main_queue(), ^{
+                          //Update the progress view
+                          //                          [progressView setProgress:uploadProgress.fractionCompleted];
+                      });
+                  }
+                  completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+                      if (error) {
+                          NSLog(@"Error: %@\nMessage: %@", error.localizedDescription, responseObject[@"meta"]);
+                          NSDictionary *codeDict = responseObject[@"meta"];
+                          completionBlock(false,codeDict,error);
+                      } else {
+                          NSLog(@"%@ ** %@", response, responseObject);
+                          completionBlock(true,responseObject[@"data"],nil);
+                      }
+                  }];
+    [uploadTask resume];
+    
+//    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+//        if (error) {
+//            NSLog(@"Error: %@\nMessage: %@", error.localizedDescription, responseObject[@"meta"]);
+//            NSDictionary *codeDict = responseObject[@"meta"];
+//            completionBlock(false,codeDict,error);
+//        } else {
+//            NSLog(@"%@ ** %@", response, responseObject);
+//            completionBlock(true,responseObject[@"data"],nil);
+//        }
+//    }];
+//    [dataTask resume];
 }
 
 - (void)getQuestionaireDeleteFile:authKey forAssignmentId:assignmentId forSectionId:sectionId completionBlock:(void (^) (BOOL, id, NSError*))completionBlock {

@@ -121,7 +121,7 @@
 
 - (void)getQuestionaire:authKey forAssignmentId:assignmentId forSectionId:sectionId completionBlock:(void (^) (BOOL, id, NSError*))completionBlock;
 
-- (void)getQuestionaireImageUpload:authKey forAssignmentId:assignmentId forSectionId:sectionId completionBlock:(void (^) (BOOL, id, NSError*))completionBlock;
+- (void)getQuestionaireImageUpload:authKey forQuestionId:(NSString *)questionid withImageURL:(NSString *)imgURL  completionBlock:(void (^) (BOOL, id, NSError*))completionBlock;
 
 - (void)getQuestionaireDeleteFile:authKey forAssignmentId:assignmentId forSectionId:sectionId completionBlock:(void (^) (BOOL, id, NSError*))completionBlock;
 @end

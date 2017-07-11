@@ -2,7 +2,7 @@
 //  WMQuestionnairViewController.h
 //  Wemark
 //
-//  Created by Uday Kiran Ailapaka on 27/06/17.
+//  Created by Kiran Reddy on 27/06/17.
 //  Copyright © 2017 Trion Technologies. All rights reserved.
 //
 

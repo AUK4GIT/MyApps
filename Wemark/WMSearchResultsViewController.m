@@ -2,7 +2,7 @@
 //  WMSearchResultsViewController.m
 //  Wemark
 //
-//  Created by Uday Kiran Ailapaka on 03/06/17.
+//  Created by Kiran Reddy on 03/06/17.
 //  Copyright © 2017 Trion Technologies. All rights reserved.
 //
 

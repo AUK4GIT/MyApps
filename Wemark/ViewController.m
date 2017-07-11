@@ -44,8 +44,8 @@
 //    @[@"public_profile", @"email"];
     
     
-    self.emailIdTextField.text = @"vikas1@gmail.com";
-    self.passwordTextField.text = @"123456";
+    self.emailIdTextField.text = @"sudiksha.gouri@triontechnologies.com";
+    self.passwordTextField.text = @"qwerty";
 
     
     [self.fbLoginButton removeTarget:nil

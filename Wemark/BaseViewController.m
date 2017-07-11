@@ -2,7 +2,7 @@
 //  BaseViewController.m
 //  Wemark
 //
-//  Created by Uday Kiran Ailapaka on 10/06/17.
+//  Created by Kiran Reddy on 10/06/17.
 //  Copyright © 2017 Trion Technologies. All rights reserved.
 //
 

@@ -2,7 +2,7 @@
 //  WMSignupViewController.m
 //  Wemark
 //
-//  Created by Uday Kiran Ailapaka on 23/05/17.
+//  Created by Kiran Reddy on 23/05/17.
 //  Copyright © 2017 Trion Technologies. All rights reserved.
 //
 
@@ -177,7 +177,7 @@ userid password:(NSString *)password firstName:(NSString *)firstname lastName:(N
         [dataDict setValue:password forKey:@"password"];
               [dataDict setValue:firstname forKey:@"first_name"];
               [dataDict setValue:lastname forKey:@"last_name"];
-//                [dataDict setValue:self.profilePicURL forKey:@"profile_image"];
+//              [dataDict setValue:self.profilePicURL forKey:@"profile_image"];
                 [dataDict setValue:[[UIDevice currentDevice] model] forKey:@"device_type"];
                 [dataDict setValue:version forKey:@"app_version_ios"];
                 [dataDict setValue:deviceToken forKey:@"iphone_device_token"];

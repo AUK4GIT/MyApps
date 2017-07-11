@@ -842,6 +842,33 @@
 //    self.profilePicURL = imgPath;
     
     [picker dismissViewControllerAnimated:YES completion:^{
+        
+        int index = self.scrollView.contentOffset.x/self.scrollView.bounds.size.width;
+        id questionnaire = self.questionnaireArray[index];
+        if ([questionnaire[@"type"] isEqualToString:@"audio"] || [questionnaire[@"type"] isEqualToString:@"video"] || [questionnaire[@"type"] isEqualToString:@"image"]) {
+            NSString *authKey = [[WMDataHelper sharedInstance] getAuthKey];
+
+            [[WMWebservicesHelper sharedInstance] getQuestionaireImageUpload:authKey forQuestionId:questionnaire[@"questionnaire_id"] withImageURL:imgPath completionBlock:^(BOOL result, id responseDict, NSError *error) {
+                
+                NSLog(@"result:-> %@",result ? @"success" : @"Failed");
+                if (result) {
+
+                } else {
+                    NSDictionary *resDict = responseDict;
+                    if ([resDict[@"code"] integerValue] == 409) {
+                        NSLog(@"Error responseDict:->  %@",resDict[@"message"]);
+                    } else {
+                        NSLog(@"Error:->  %@",error.localizedDescription);
+                    }
+                }
+                //add UI related code here like stopping activity indicator
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self hideActivity];
+                    [self showUI];
+                });
+                
+            }];
+        }
     }];
     
 }
