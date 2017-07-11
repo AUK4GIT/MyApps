@@ -268,9 +268,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="s7F-Kl-ezj" firstAttribute="top" secondItem="LBY-9i-6Bh" secondAttribute="bottom" id="720-rR-CRx"/>
                             <constraint firstAttribute="trailing" secondItem="HU0-Hx-FtC" secondAttribute="trailing" constant="24" id="EyH-d2-PT5"/>
                             <constraint firstItem="LBY-9i-6Bh" firstAttribute="leading" secondItem="1GS-mX-g2c" secondAttribute="leading" id="LHM-18-ht1"/>
-                            <constraint firstItem="s7F-Kl-ezj" firstAttribute="top" secondItem="LBY-9i-6Bh" secondAttribute="bottom" id="STm-cP-UJi"/>
                             <constraint firstItem="LBY-9i-6Bh" firstAttribute="top" secondItem="1GS-mX-g2c" secondAttribute="top" id="Tru-Ra-kM1"/>
                             <constraint firstItem="HU0-Hx-FtC" firstAttribute="leading" secondItem="1GS-mX-g2c" secondAttribute="leading" constant="24" id="VTq-dY-dF4"/>
                             <constraint firstItem="1Ys-Eu-YjG" firstAttribute="leading" secondItem="Gjj-XL-OZH" secondAttribute="trailing" constant="8" id="bWN-9Y-2bl"/>
@@ -1232,6 +1232,134 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g6J-uV-bxx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1299" y="790"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="IqN-HJ-B30">
+            <objects>
+                <viewController id="eur-HZ-jfZ" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XAb-1M-3D6"/>
+                        <viewControllerLayoutGuide type="bottom" id="9xf-L2-MI5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Hgh-7L-XPU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iPhone6Plus" translatesAutoresizingMaskIntoConstraints="NO" id="XL0-lS-LGy">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CxT-kG-owa">
+                                <rect key="frame" x="16" y="36" width="32" height="32"/>
+                                <state key="normal" image="back-button-image"/>
+                                <connections>
+                                    <action selector="signInBtnTapped:" destination="3R1-aa-5jF" eventType="touchUpInside" id="5xd-e7-xiR"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Verify OTP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cD4-u3-yKH">
+                                <rect key="frame" x="56" y="40" width="101" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ySP-vw-e4V">
+                                <rect key="frame" x="87" y="138" width="272" height="426"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Verify Account ?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cpl-6m-npM">
+                                        <rect key="frame" x="27" y="159" width="184" height="27"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="22"/>
+                                        <color key="textColor" red="0.99992364649999999" green="1" blue="0.99988287689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="We have sent you OTP to your registered mobile number." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k7q-FD-BA4">
+                                        <rect key="frame" x="0.0" y="194" width="272" height="39.666666666666686"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="textColor" red="0.99992364649999999" green="1" blue="0.99988287689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter OTP" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rIU-ZW-zLn" customClass="ACFloatingTextField">
+                                        <rect key="frame" x="0.0" y="237" width="272" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="selectedPlaceHolderColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="errorTextColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="errorLineColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="errorText" value="* Error"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nST-1g-wjA">
+                                        <rect key="frame" x="8" y="299" width="256" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.0" green="0.56862745100000001" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <state key="normal" title="VERIFY OTP"/>
+                                        <connections>
+                                            <action selector="changePassword" destination="znP-2O-JCv" eventType="touchUpInside" id="ODv-Ot-bHL"/>
+                                            <action selector="editSaveBtnTapped:" destination="niU-qm-m6J" eventType="touchUpInside" id="BZS-wb-EWC"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="OR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dhu-jQ-knE">
+                                        <rect key="frame" x="97" y="347" width="45" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ack-Co-vmS">
+                                        <rect key="frame" x="8" y="386" width="256" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.0" green="0.56862745100000001" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <state key="normal" title="RESEND OTP"/>
+                                        <connections>
+                                            <action selector="changePassword" destination="znP-2O-JCv" eventType="touchUpInside" id="Pv3-wU-F8d"/>
+                                            <action selector="editSaveBtnTapped:" destination="niU-qm-m6J" eventType="touchUpInside" id="4My-Ft-KHx"/>
+                                        </connections>
+                                    </button>
+                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="OTP_image" translatesAutoresizingMaskIntoConstraints="NO" id="GYs-k8-DqK">
+                                        <rect key="frame" x="61" y="1" width="150" height="150"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cD4-u3-yKH" firstAttribute="leading" secondItem="CxT-kG-owa" secondAttribute="trailing" constant="8" id="3kM-iw-0U1"/>
+                            <constraint firstItem="CxT-kG-owa" firstAttribute="leading" secondItem="Hgh-7L-XPU" secondAttribute="leading" constant="16" id="8ua-DE-LW7"/>
+                            <constraint firstItem="9xf-L2-MI5" firstAttribute="top" secondItem="XL0-lS-LGy" secondAttribute="bottom" id="UOr-fC-w2v"/>
+                            <constraint firstItem="CxT-kG-owa" firstAttribute="top" secondItem="Hgh-7L-XPU" secondAttribute="top" constant="36" id="Us9-j1-YSx"/>
+                            <constraint firstItem="cD4-u3-yKH" firstAttribute="centerY" secondItem="CxT-kG-owa" secondAttribute="centerY" id="aoA-nO-lqQ"/>
+                            <constraint firstAttribute="trailing" secondItem="XL0-lS-LGy" secondAttribute="trailing" id="c6t-Py-DVR"/>
+                            <constraint firstItem="XL0-lS-LGy" firstAttribute="top" secondItem="Hgh-7L-XPU" secondAttribute="top" id="kel-2f-yJV"/>
+                            <constraint firstItem="XL0-lS-LGy" firstAttribute="leading" secondItem="Hgh-7L-XPU" secondAttribute="leading" id="ppL-8V-tjC"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="phT-Wb-KTq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1891.304347826087" y="858.42391304347836"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XHR-TU-RGj">
@@ -4922,6 +5050,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="OTP_image" width="66" height="66"/>
         <image name="apply" width="120" height="34"/>
         <image name="applyassignment" width="60" height="60"/>
         <image name="assign" width="120" height="34"/>

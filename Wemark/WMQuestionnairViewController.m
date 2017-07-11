@@ -848,7 +848,7 @@
         if ([questionnaire[@"type"] isEqualToString:@"audio"] || [questionnaire[@"type"] isEqualToString:@"video"] || [questionnaire[@"type"] isEqualToString:@"image"]) {
             NSString *authKey = [[WMDataHelper sharedInstance] getAuthKey];
 
-            [[WMWebservicesHelper sharedInstance] getQuestionaireImageUpload:authKey forQuestionId:questionnaire[@"questionnaire_id"] withImageURL:imgPath completionBlock:^(BOOL result, id responseDict, NSError *error) {
+            [[WMWebservicesHelper sharedInstance] getQuestionaireImageUpload:authKey forQuestionId:questionnaire[@"code"] withImageURL:imgPath completionBlock:^(BOOL result, id responseDict, NSError *error) {
                 
                 NSLog(@"result:-> %@",result ? @"success" : @"Failed");
                 if (result) {
@@ -872,7 +872,7 @@
     }];
     
 }
-
+//questionnaire_id
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     
     [picker dismissViewControllerAnimated:YES completion:NULL];

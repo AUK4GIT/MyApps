@@ -98,12 +98,18 @@
             [self verifyOTPEntered:otp.text];
         }
     }];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    }];
+
     [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField)
      {
          textField.placeholder = @"Enter OTP";
      }];
     [alertController addAction:resendAction];
     [alertController addAction:verifyAction];
+    [alertController addAction:cancelAction];
+
     
     [self presentViewController:alertController animated:true completion:^{
     }];

@@ -43,10 +43,8 @@
 //    loginButton.readPermissions =
 //    @[@"public_profile", @"email"];
     
-    
     self.emailIdTextField.text = @"sudiksha.gouri@triontechnologies.com";
     self.passwordTextField.text = @"qwerty";
-
     
     [self.fbLoginButton removeTarget:nil
                        action:NULL
@@ -258,6 +256,8 @@
             [self verifyOTPEntered:otp.text];
         }
     }];
+    
+ 
     [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField)
      {
          textField.placeholder = @"Enter OTP";
@@ -265,10 +265,15 @@
     [alertController addAction:resendAction];
     [alertController addAction:verifyAction];
     
+    
     [self presentViewController:alertController animated:true completion:^{
     }];
 }
 
+
+//UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//}];
+//[alertController addAction:cancelAction];
 - (void)showEnterPhoneNumberUI:(NSString *)message {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Wemark" message:message preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *resendAction = [UIAlertAction actionWithTitle:@"Send OTP" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -339,8 +344,7 @@
 
 - (IBAction)loginAction :(id)sender {
     
-//    self.emailIdTextField.text = @"vikas1@gmail.com";
-//    self.passwordTextField.text = @"123456";
+   
     
     if (![self isValidEmail:self.emailIdTextField.text]) {
         NSLog(@"Invalid Email Address");
