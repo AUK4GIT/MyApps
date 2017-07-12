@@ -123,6 +123,7 @@
                        placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
     
     self.profileName.text = [NSString stringWithFormat:@"%@ %@",[userObj valueForKey:@"auditor_fname"],[userObj valueForKey:@"auditor_lname"]];
+    
     self.emailId.text = [self convertToString:[userObj valueForKey:@"auditor_email"]];
     self.phoneNumber.text = [self convertToString:[userObj valueForKey:@"auditor_ph_no"]];
     self.cityName.text = [self convertToString:[userPersonalObj valueForKey:@"auditor_address_city"]];

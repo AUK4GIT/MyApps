@@ -147,11 +147,22 @@
 }
 
 - (IBAction)assignmentFilterAction:(UIButton *)sender {
-    [sender setSelected:!sender.isSelected];
+    [self.assignFilterButton setSelected:false];
+    [self.applyFilterButton setSelected:false];
+
     if (self.assignFilterButton == sender) {
-        self.selfAssign = !self.selfAssign;
+        self.selfAssign = true;
+        self.apply = false;
+
+         [self.assignFilterButton setSelected:true];
+        [self.applyFilterButton setSelected:false];
+
     } else {
-        self.apply = !self.apply;
+        self.apply = true;
+        self.selfAssign =false;
+
+        [self.assignFilterButton setSelected:false];
+        [self.applyFilterButton setSelected:true];
     }
     if (self.locationName) {
         [self getAssignmentsByLocationName:self.locationName forSelfAssign:[NSString stringWithFormat:@"%d",self.selfAssign] forApply:[NSString stringWithFormat:@"%d",self.apply]];

@@ -165,9 +165,12 @@
 - (void)selectADateofBirth:(id)sender {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *minimumDateComponents = [calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:[NSDate date]];
-    [minimumDateComponents setYear:1999];
+    [minimumDateComponents setYear:[minimumDateComponents year]-18];
+    NSDate *maxDate = [calendar dateFromComponents:minimumDateComponents];
+    
+    [minimumDateComponents setYear:1900];
     NSDate *minDate = [calendar dateFromComponents:minimumDateComponents];
-    NSDate *maxDate = [NSDate date];
+    
     NSDate *curentDate = maxDate;
     if (self.selectedDate) {
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];

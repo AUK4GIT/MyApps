@@ -43,8 +43,8 @@
 //    loginButton.readPermissions =
 //    @[@"public_profile", @"email"];
     
-    self.emailIdTextField.text = @"sudiksha.gouri@triontechnologies.com";
-    self.passwordTextField.text = @"qwerty";
+//    self.emailIdTextField.text = @"sudiksha.gouri@triontechnologies.com";
+//    self.passwordTextField.text = @"qwerty";
     
     [self.fbLoginButton removeTarget:nil
                        action:NULL
@@ -344,8 +344,7 @@
 
 - (IBAction)loginAction :(id)sender {
     
-   
-    
+       
     if (![self isValidEmail:self.emailIdTextField.text]) {
         NSLog(@"Invalid Email Address");
         [self.emailIdTextField showErrorWithText:@"Please type a valid email id"];
@@ -354,8 +353,19 @@
     } else {
         [self proceedWithLogin:self.emailIdTextField.text password:self.passwordTextField.text];
     }
+    
+   
 }
 
+- (IBAction)showMessage:(NSString *)msg {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Wemark" message:msg preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *emailId = [UIAlertAction actionWithTitle:@"Enter valid email-Id" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    [alertController addAction:emailId];
+    //    [alertController addAction:saveAction];
+    [self presentViewController:alertController animated:true completion:^{
+    }];
+}
 - (void)viewWillLayoutSubviews {
     activityView.center = self.view.center;
 }

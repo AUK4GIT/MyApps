@@ -25,10 +25,10 @@
     // Do any additional setup after loading the view.
     self.title = @"Forgot Password";
     
-    self.navigationItem.leftBarButtonItem = self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back-button-image"] style:UIBarButtonItemStylePlain target:self action:@selector(popViewController)];
+//    self.navigationItem.leftBarButtonItem = self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back-button-image"] style:UIBarButtonItemStylePlain target:self action:@selector(popViewController)];
     
 }
-- (void)popViewController {
+- (IBAction)popViewController:(id)sender {
     
     [self.navigationController popViewControllerAnimated:true];
 }

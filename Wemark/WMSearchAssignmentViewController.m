@@ -123,7 +123,14 @@
 */
 
 - (IBAction)showDatePicker :(UIView *)sender {
-    ActionSheetDatePicker *datePicker = [[ActionSheetDatePicker alloc] initWithTitle:@"Select date" datePickerMode:UIDatePickerModeDate selectedDate:[NSDate date] minimumDate:nil maximumDate:nil target:self action:@selector(timeWasSelected:element:) origin:sender];
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *minimumDateComponents = [calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:[NSDate date]];
+    [minimumDateComponents setDay:[minimumDateComponents day]+60];
+    NSDate *maxDate = [calendar dateFromComponents:minimumDateComponents];
+
+    
+    ActionSheetDatePicker *datePicker = [[ActionSheetDatePicker alloc] initWithTitle:@"Select date" datePickerMode:UIDatePickerModeDate selectedDate:[NSDate date] minimumDate:[NSDate date] maximumDate:maxDate target:self action:@selector(timeWasSelected:element:) origin:sender];
 //    datePicker.minuteInterval = 5;
     datePicker.tag = sender.tag;
     [datePicker showActionSheetPicker];

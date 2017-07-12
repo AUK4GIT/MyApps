@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "BaseViewController.h"
 @protocol WMBrandSelectionProtocol <NSObject>
 - (void)didSelectBrand:(id)locationobj;
 @end
-@interface WMBrandSelectorViewController : UIViewController
+@interface WMBrandSelectorViewController : BaseViewController
 @property (nonatomic, weak) id<WMBrandSelectionProtocol> delegate;
 @property (nonatomic, strong) NSArray *brandsArray;
 @end

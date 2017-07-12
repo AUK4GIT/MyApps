@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
 @protocol WMIndustrySelectionProtocol <NSObject>
 - (void)didSelectIndustry:(id)locationobj;
 @end
-@interface WMIndustrySelectorViewController : UIViewController
+@interface WMIndustrySelectorViewController : BaseViewController
 @property (nonatomic, weak) id<WMIndustrySelectionProtocol> delegate;
 @property (nonatomic, strong) NSArray *industriesArray;
 @end

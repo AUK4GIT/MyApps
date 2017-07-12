@@ -16,7 +16,10 @@
 @property (weak, nonatomic) IBOutlet UIImageView *profilePic;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *username;
+@property (weak, nonatomic) IBOutlet UILabel *firstName;
+@property (weak, nonatomic) IBOutlet UILabel *lastName;
 @property (weak, nonatomic) IBOutlet UILabel *emailAddress;
+@property (strong, nonatomic) id dataObject;
 @end
 
 @implementation WMMenuViewController
@@ -56,13 +59,32 @@
     [super viewDidAppear:animated];
     
     id auditor = [[WMDataHelper sharedInstance] getAuditor];
+   // id userObj = [self.dataObject valueForKey:@"user"];
+
+    //self.username.text = [auditor valueForKey:@"username"];
     
-    self.username.text = [auditor valueForKey:@"username"];
+    self.username.text = [NSString stringWithFormat:@"%@ %@",[auditor valueForKey:@"auditor_fname"],[auditor valueForKey:@"auditor_lname"]];
+   
+//    self.firstName.text = [auditor valueForKey:@"auditor_fname" + ];
+//    self.lastName.text = [auditor valueForKey:@"auditor_lname"];
     self.emailAddress.text = [auditor valueForKey:@"usermailid"];
     NSString *profilePicImgURL = [auditor valueForKey:@"profileImageurlstring"];
     [self.profilePic sd_setImageWithURL:[NSURL URLWithString:profilePicImgURL]
                        placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
 }
+//auditor.userid = [self convertToString:dict[@"id"]];
+//auditor.usermailid = [self convertToString:dict[@"email"]];
+//auditor.username = [self convertToString:dict[@"username"]];
+//auditor.firstname = [self convertToString:dict[@"auditor_fname"]];
+//auditor.lastname = [self convertToString:dict[@"auditor_lname"]];
+//auditor.dob = [self convertToString:dict[@"auditor_dob"]];
+//auditor.authkey = [self convertToString:dict[@"auth_key"]];
+//auditor.phonenumber = [self convertToString:dict[@"auditor_phone_number_mobile"]];
+//auditor.country = [self convertToString:dict[@"auditor_address_country"]];
+//auditor.city = [self convertToString:dict[@"auditor_address_city"]];
+//auditor.permanentaddress = [self convertToString:dict[@"auditor_permanent_address"]];
+//auditor.permanentpincode = [self convertToString:dict[@"auditor_permanent_address_pincode"]];
+//auditor.profileImageurlstring = [self convertToString:dict[@"profile_image"]];
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

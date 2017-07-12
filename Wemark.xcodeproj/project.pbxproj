@@ -55,6 +55,7 @@
 		C53591D01EF298830046EC7B /* WMResendOTPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C53591CF1EF298830046EC7B /* WMResendOTPViewController.m */; };
 		C5406B381F13363300794B38 /* WMQuestionaireTilesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5406B371F13363300794B38 /* WMQuestionaireTilesView.xib */; };
 		C5406B3B1F13366400794B38 /* WMQuestionnaireModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C5406B3A1F13366400794B38 /* WMQuestionnaireModel.m */; };
+		C546CA471F15D9E200D89142 /* WMVerifyOTPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C546CA461F15D9E200D89142 /* WMVerifyOTPViewController.m */; };
 		C54CD0951EEAC38E0004AEE7 /* WMCountryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C54CD0941EEAC38E0004AEE7 /* WMCountryViewController.m */; };
 		C54CD0981EEAC3C30004AEE7 /* WMStateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C54CD0971EEAC3C30004AEE7 /* WMStateViewController.m */; };
 		C54CD09B1EEAC3E00004AEE7 /* WMCityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C54CD09A1EEAC3E00004AEE7 /* WMCityViewController.m */; };
@@ -179,6 +180,8 @@
 		C5406B371F13363300794B38 /* WMQuestionaireTilesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WMQuestionaireTilesView.xib; sourceTree = "<group>"; };
 		C5406B391F13366400794B38 /* WMQuestionnaireModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMQuestionnaireModel.h; sourceTree = "<group>"; };
 		C5406B3A1F13366400794B38 /* WMQuestionnaireModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMQuestionnaireModel.m; sourceTree = "<group>"; };
+		C546CA451F15D9E200D89142 /* WMVerifyOTPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMVerifyOTPViewController.h; sourceTree = "<group>"; };
+		C546CA461F15D9E200D89142 /* WMVerifyOTPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMVerifyOTPViewController.m; sourceTree = "<group>"; };
 		C54CD0931EEAC38E0004AEE7 /* WMCountryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMCountryViewController.h; sourceTree = "<group>"; };
 		C54CD0941EEAC38E0004AEE7 /* WMCountryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMCountryViewController.m; sourceTree = "<group>"; };
 		C54CD0961EEAC3C30004AEE7 /* WMStateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMStateViewController.h; sourceTree = "<group>"; };
@@ -318,6 +321,8 @@
 		AE820FEE1ED4A3A200AE2BA2 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C546CA451F15D9E200D89142 /* WMVerifyOTPViewController.h */,
+				C546CA461F15D9E200D89142 /* WMVerifyOTPViewController.m */,
 				C5FBE5D41F0603C600163396 /* WMBaseTableViewController.h */,
 				C5FBE5D51F0603C600163396 /* WMBaseTableViewController.m */,
 				C5544E4D1F038100003AA4C5 /* WMQuestionnairViewController.h */,
@@ -669,6 +674,7 @@
 				AEDF42AD1ED742AA008A4596 /* WMUser.m in Sources */,
 				AE820FD61ED48DA900AE2BA2 /* main.m in Sources */,
 				C509CB091EE82F8F002D4F86 /* WMCorrectionsViewController.m in Sources */,
+				C546CA471F15D9E200D89142 /* WMVerifyOTPViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,6 +11,7 @@
 #import "WMDataHelper.h"
 #import "ACFloatingTextField.h"
 #import <FirebaseMessaging/FirebaseMessaging.h>
+#import "WMVerifyOTPViewController.h"
 
 
 @interface WMSignupViewController () <UIImagePickerControllerDelegate,UINavigationControllerDelegate>
@@ -87,6 +88,11 @@
 }
 
 - (void)showVerifyOTPUI {
+    
+    [self performSegueWithIdentifier:@"VerifyOTP" sender:nil];
+    
+    return;
+    
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Wemark" message:@"Enter OTP" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *resendAction = [UIAlertAction actionWithTitle:@"Resend OTP" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self sendOTP];
@@ -114,6 +120,17 @@
     [self presentViewController:alertController animated:true completion:^{
     }];
 }
+
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"VerifyOTP"]) {
+        WMVerifyOTPViewController *lsVC = [segue destinationViewController];
+        lsVC.mobileNumber = self.mobileNumberTextField.text;
+    }
+}
+
 
 - (void)verifyOTPEntered:(NSString *)otp {
     [[WMWebservicesHelper sharedInstance] verifyOTP:@{@"code":otp,@"mobile":self.mobileNumberTextField.text} completionBlock:^(BOOL result, id responseDict, NSError *error) {
@@ -262,6 +279,12 @@ userid password:(NSString *)password firstName:(NSString *)firstname lastName:(N
         [self.passwordTextField showErrorWithText:@"Password should be atleast 6 characters long"];
     } else if (self.confirmPasswordTextField.text.length < 6){
         [self.confirmPasswordTextField showErrorWithText:@"Confirm Password should be atleast 6 characters long"];
+    }
+    else if (![self.confirmPasswordTextField.text isEqualToString:self.passwordTextField.text])
+    {
+        [self.confirmPasswordTextField showErrorWithText:@"Password not match"];
+        [self.passwordTextField showErrorWithText:@"Password not match"];
+        
     }
     else if (self.firstNameTextField.text.length == 0){
         [self.firstNameTextField showErrorWithText:@"First name cannot be empty"];
