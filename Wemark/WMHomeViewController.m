@@ -63,6 +63,22 @@
 //    [self getCurrentPosition];
     CLLocation *location = [[CLLocation alloc] initWithLatitude:28.4595 longitude:77.0266];
    [self showCurrentPositionOnMap:location];
+    
+    NSString *locationidSelected = [[NSUserDefaults standardUserDefaults] objectForKey:@"locationidselected"];
+    NSString *locationinameSelected = [[NSUserDefaults standardUserDefaults] objectForKey:@"locationnameselected"];
+
+    if(locationidSelected && locationinameSelected) {
+        self.locationId = locationidSelected;
+        self.locationName = locationinameSelected;
+        if (self.locationName.length == 0) {
+            self.titleLabel.text = @"All India";//self.locationName;
+        } else {
+            self.titleLabel.text = self.locationName;
+        }
+        [self getAssignmentsByLocationName:self.locationName forSelfAssign:@"0" forApply:@"0"];
+    } else {
+        [self performSegueWithIdentifier:@"locationsearch" sender:nil];
+    }
 }
 
 //- (void)getCurrentPosition {
@@ -262,12 +278,21 @@
 - (void)didSelectLocation:(id)locationobj {
     self.locationId = [locationobj valueForKey:@"clientlocationid"];
     self.locationName = [locationobj valueForKey:@"city"];
-
+    
+    if ([self.locationName isEqualToString:@"All India"]) {
+        self.locationName = @"";
+    }
+    
     self.titleLabel.text = [locationobj valueForKey:@"city"];
     [self getAssignmentsByLocationName:self.locationName forSelfAssign:@"1" forApply:@"1"];
     
     [self.assignFilterButton setSelected:false];
     [self.applyFilterButton setSelected:false];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:[locationobj valueForKey:@"clientlocationid"] forKey:@"locationidselected"];
+    [[NSUserDefaults standardUserDefaults] setObject:[locationobj valueForKey:@"city"] forKey:@"locationnameselected"];
+
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end

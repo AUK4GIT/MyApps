@@ -63,7 +63,7 @@
 
     //self.username.text = [auditor valueForKey:@"username"];
     
-    self.username.text = [NSString stringWithFormat:@"%@ %@",[auditor valueForKey:@"auditor_fname"],[auditor valueForKey:@"auditor_lname"]];
+    self.username.text = [NSString stringWithFormat:@"%@ %@",[auditor valueForKey:@"firstname"],[auditor valueForKey:@"lastname"]];
    
 //    self.firstName.text = [auditor valueForKey:@"auditor_fname" + ];
 //    self.lastName.text = [auditor valueForKey:@"auditor_lname"];
@@ -72,19 +72,7 @@
     [self.profilePic sd_setImageWithURL:[NSURL URLWithString:profilePicImgURL]
                        placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
 }
-//auditor.userid = [self convertToString:dict[@"id"]];
-//auditor.usermailid = [self convertToString:dict[@"email"]];
-//auditor.username = [self convertToString:dict[@"username"]];
-//auditor.firstname = [self convertToString:dict[@"auditor_fname"]];
-//auditor.lastname = [self convertToString:dict[@"auditor_lname"]];
-//auditor.dob = [self convertToString:dict[@"auditor_dob"]];
-//auditor.authkey = [self convertToString:dict[@"auth_key"]];
-//auditor.phonenumber = [self convertToString:dict[@"auditor_phone_number_mobile"]];
-//auditor.country = [self convertToString:dict[@"auditor_address_country"]];
-//auditor.city = [self convertToString:dict[@"auditor_address_city"]];
-//auditor.permanentaddress = [self convertToString:dict[@"auditor_permanent_address"]];
-//auditor.permanentpincode = [self convertToString:dict[@"auditor_permanent_address_pincode"]];
-//auditor.profileImageurlstring = [self convertToString:dict[@"profile_image"]];
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

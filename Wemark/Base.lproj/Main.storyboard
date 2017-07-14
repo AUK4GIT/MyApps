@@ -1716,7 +1716,7 @@
         <!--Location Search View Controller-->
         <scene sceneID="ltw-LS-BYS">
             <objects>
-                <viewController id="CXa-D5-wHA" customClass="WMLocationSearchViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WMLocationSearchViewController" id="CXa-D5-wHA" customClass="WMLocationSearchViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4ae-Ci-PPK"/>
                         <viewControllerLayoutGuide type="bottom" id="Mlq-OJ-xZp"/>
@@ -2259,7 +2259,7 @@
             <objects>
                 <navigationController storyboardIdentifier="SideMenuNavController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="g2i-yh-G7w" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="0ad-8w-Cnn">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="0ad-8w-Cnn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.86274509803921573" green="0.0" blue="0.23529411764705882" alpha="1" colorSpace="calibratedRGB"/>
@@ -2777,7 +2777,7 @@
             <objects>
                 <navigationController storyboardIdentifier="NotificationsNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="c9l-Ec-Gtp" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="6F2-Fb-PaG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="6F2-Fb-PaG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.86274509799999999" green="0.0" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -2809,28 +2809,36 @@
                         <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cGt-l8-TqI">
+                                <rect key="frame" x="0.33333333333334281" y="235.66666666666669" width="414" height="200.00000000000006"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notification" translatesAutoresizingMaskIntoConstraints="NO" id="QQW-ef-2ah">
+                                        <rect key="frame" x="122.66666666666669" y="15.333333333333343" width="170" height="170"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="170" id="3fU-59-PiN"/>
+                                            <constraint firstAttribute="height" constant="170" id="JvE-Ic-V8E"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No notifications found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5X3-Mt-mLv">
+                                        <rect key="frame" x="123.33333333333334" y="215.33333333333334" width="167.66666666666666" height="20"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="5X3-Mt-mLv" firstAttribute="top" secondItem="QQW-ef-2ah" secondAttribute="bottom" constant="30" id="NDV-ak-GRV"/>
+                                    <constraint firstItem="QQW-ef-2ah" firstAttribute="centerX" secondItem="cGt-l8-TqI" secondAttribute="centerX" id="S5R-oP-aZ8"/>
+                                    <constraint firstAttribute="height" constant="200" id="XkM-la-Hbm"/>
+                                    <constraint firstItem="QQW-ef-2ah" firstAttribute="centerY" secondItem="cGt-l8-TqI" secondAttribute="centerY" id="eJf-RP-plR"/>
+                                    <constraint firstItem="5X3-Mt-mLv" firstAttribute="centerX" secondItem="QQW-ef-2ah" secondAttribute="centerX" id="wKz-zO-JTy"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PcL-gu-RMI">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <view key="tableFooterView" contentMode="scaleToFill" id="cGt-l8-TqI">
-                                    <rect key="frame" x="0.0" y="136" width="414" height="535"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="notification" translatesAutoresizingMaskIntoConstraints="NO" id="QQW-ef-2ah">
-                                            <rect key="frame" x="147" y="194" width="120" height="120"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No notifications found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5X3-Mt-mLv">
-                                            <rect key="frame" x="8" y="336" width="398" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NotificationsCell" rowHeight="108" id="6uy-2a-Uca">
                                         <rect key="frame" x="0.0" y="28" width="414" height="108"/>
@@ -2908,8 +2916,11 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="PcL-gu-RMI" secondAttribute="trailing" id="7El-y6-Bsx"/>
                             <constraint firstItem="PcL-gu-RMI" firstAttribute="top" secondItem="k6C-gL-3g9" secondAttribute="bottom" id="88b-Kx-e6W"/>
+                            <constraint firstItem="cGt-l8-TqI" firstAttribute="centerY" secondItem="frg-PR-DxD" secondAttribute="centerY" id="Sbh-06-7LF"/>
                             <constraint firstItem="gCY-RJ-4fZ" firstAttribute="top" secondItem="PcL-gu-RMI" secondAttribute="bottom" id="YGO-UM-jeI"/>
+                            <constraint firstItem="cGt-l8-TqI" firstAttribute="width" secondItem="frg-PR-DxD" secondAttribute="width" id="h6c-5I-phz"/>
                             <constraint firstItem="PcL-gu-RMI" firstAttribute="leading" secondItem="frg-PR-DxD" secondAttribute="leading" id="imc-hA-hDy"/>
+                            <constraint firstItem="cGt-l8-TqI" firstAttribute="centerX" secondItem="frg-PR-DxD" secondAttribute="centerX" id="wuQ-jw-5Rs"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Xmf-NC-6pO"/>
@@ -2991,7 +3002,7 @@
             <objects>
                 <navigationController storyboardIdentifier="MyAccountNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gKY-VP-T3T" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="BH3-Tx-ZO8">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="BH3-Tx-ZO8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.86274509799999999" green="0.0" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -4599,7 +4610,7 @@
             <objects>
                 <navigationController storyboardIdentifier="AssistanceNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="M4G-n4-q7O" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="TlS-2x-WTo">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="TlS-2x-WTo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.86274509799999999" green="0.0" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -4642,7 +4653,7 @@
             <objects>
                 <navigationController storyboardIdentifier="MyAssignmentsNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dv0-Mo-lBn" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="ndp-wy-w8f">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="ndp-wy-w8f">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.86274509799999999" green="0.0" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -5147,7 +5158,7 @@
         <image name="wm_14_sidemenu_bck_top" width="320" height="180"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="CTD-4Z-kIo"/>
+        <segue reference="QwM-Wa-hYw"/>
         <segue reference="Xew-eq-uv8"/>
     </inferredMetricsTieBreakers>
 </document>

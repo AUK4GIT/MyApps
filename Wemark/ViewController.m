@@ -15,6 +15,7 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <FirebaseMessaging/FirebaseMessaging.h>
 #import "WMSignupViewController.h"
+#import "WMLocationSearchViewController.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet ACFloatingTextField *emailIdTextField;
@@ -108,8 +109,14 @@
             NSLog(@"result:-> %@",result ? @"success" : @"Failed");
             if (result) {
                 [[WMDataHelper sharedInstance] setAuditorProfileDetails:responseDict];
-                AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                [appDelegate loadhomeScreenWithSidemenu];
+//                AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//                [appDelegate loadhomeScreenWithSidemenu];
+                WMLocationSearchViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"WMLocationSearchViewController"];
+                vc.delegate = self;
+                [self presentViewController:vc animated:true completion:^{
+                    
+                }];
+                
             } else {
                 NSDictionary *resDict = responseDict;
                 if ([resDict[@"code"] integerValue] == 409) {
@@ -213,15 +220,24 @@
             NSLog(@"result:-> %@",result ? @"success" : @"Failed");
             if (result) {
                 [[WMDataHelper sharedInstance] setAuditorProfileDetails:responseDict];
-                AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                [appDelegate loadhomeScreenWithSidemenu];
-            } else {
+                //                AppDelegate appDelegate = (AppDelegate )[[UIApplication sharedApplication] delegate];
+                //                [appDelegate loadhomeScreenWithSidemenu];
+                WMLocationSearchViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"WMLocationSearchViewController"];
+                vc.delegate = self;
+                [self presentViewController:vc animated:true completion:^{
+                    
+                }];
+                
+            }else {
                 NSDictionary *resDict = responseDict;
                 if ([resDict[@"code"] integerValue] == 409) {
                     NSLog(@"Error responseDict:->  %@",resDict[@"message"]);
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self showErrorMessage:resDict[@"message"]];
+                    });
                 }  else if ([resDict[@"code"] integerValue] == 401) {
                     NSLog(@"Error responseDict:->  %@",resDict[@"message"]);
-                    [self showEnterPhoneNumberUI:resDict[@"message"]];
+//                    [self showEnterPhoneNumberUI:resDict[@"message"]];
                 }  else if ([resDict[@"code"] integerValue] == 402) {
                     NSLog(@"Error responseDict:->  %@",resDict[@"message"]);
                     [self showErrorMessage:resDict[@"message"]];
@@ -348,6 +364,7 @@
     if (![self isValidEmail:self.emailIdTextField.text]) {
         NSLog(@"Invalid Email Address");
         [self.emailIdTextField showErrorWithText:@"Please type a valid email id"];
+        [self showErrorMessage:@"Please type correct emailid"];
     } else if (self.passwordTextField.text.length == 0){
         [self.passwordTextField showErrorWithText:@"Password you entered is incorrect"];
     } else {
@@ -415,6 +432,18 @@
     //    [alertController addAction:saveAction];
     [self presentViewController:alertController animated:true completion:^{
     }];
+}
+
+#pragma mark - Location Search Selection delegate
+- (void)didSelectLocation:(id)locationobj {
+    
+    [[NSUserDefaults standardUserDefaults] setObject:[locationobj valueForKey:@"clientlocationid"] forKey:@"locationidselected"];
+    [[NSUserDefaults standardUserDefaults] setObject:[locationobj valueForKey:@"city"] forKey:@"locationnameselected"];
+    
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appDelegate loadhomeScreenWithSidemenu];
 }
 
 

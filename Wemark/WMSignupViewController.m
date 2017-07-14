@@ -275,7 +275,11 @@ userid password:(NSString *)password firstName:(NSString *)firstname lastName:(N
     if (![self isValidEmail:self.emailIdTextField.text]) {
         NSLog(@"Invalid Email Address");
         [self.emailIdTextField showErrorWithText:@"Please type a valid email id"];
-    } else if (self.passwordTextField.text.length < 6){
+    }
+    else if (![self myMobileNumberValidate:self.mobileNumberTextField.text]) {
+        [self.mobileNumberTextField showErrorWithText:@"Mobile number should be  10 characters long"];
+    }
+    else if (self.passwordTextField.text.length < 6){
         [self.passwordTextField showErrorWithText:@"Password should be atleast 6 characters long"];
     } else if (self.confirmPasswordTextField.text.length < 6){
         [self.confirmPasswordTextField showErrorWithText:@"Confirm Password should be atleast 6 characters long"];
@@ -300,6 +304,17 @@ userid password:(NSString *)password firstName:(NSString *)firstname lastName:(N
 }
 
 #pragma mark - UITextFieldDelegates
+
+- (BOOL)myMobileNumberValidate:(NSString*)number
+{
+    NSString *numberRegEx = @"[0-9]{10}";
+    NSPredicate *numberTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", numberRegEx];
+    if ([numberTest evaluateWithObject:number] == YES)
+        return TRUE;
+    else
+        return FALSE;
+}
+
 -(BOOL)isValidEmail:(NSString *)checkString
 {
     BOOL stricterFilter = NO;

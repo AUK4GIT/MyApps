@@ -9,7 +9,7 @@
 #import "WMLocationSearchViewController.h"
 #import "WMWebservicesHelper.h"
 #import "WMDataHelper.h"
-
+#import "WMLocation.h"
 
 @interface WMLocationSearchViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -41,7 +41,10 @@
         NSLog(@"result:-> %@",result ? @"success" : @"Failed");
         if (result) {
             self.locationsArray = [NSMutableArray arrayWithArray:[[WMDataHelper sharedInstance] saveLocations:responseDict]];
-           
+            WMLocation *location = [[WMLocation alloc] init];
+            location.city = @"All India";
+            location.clientlocationid = @"0";
+            [self.locationsArray insertObject:location atIndex:0];
         } else {
             NSDictionary *resDict = responseDict;
             if ([resDict[@"code"] integerValue] == 409) {

@@ -22,6 +22,8 @@
 //    @property (strong, nonatomic) IBOutlet ACFloatingTextField *dobTextField;
     @property (strong, nonatomic) ActionSheetDatePicker *actionSheetPicker;
 //    @property (strong, nonatomic) NSString *selectedDate;
+@property (strong, nonatomic) UIButton *prevButton;
+@property (strong, nonatomic) UIButton *nextButton;
 @end
 
 @implementation WMQuestionnairViewController
@@ -45,23 +47,23 @@
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[nextPrevButtonView]-0-|" options:NSLayoutFormatAlignAllTop metrics:nil views:NSDictionaryOfVariableBindings(nextPrevButtonView)]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[nextPrevButtonView(54)]-16-|" options:NSLayoutFormatAlignAllTop metrics:nil views:NSDictionaryOfVariableBindings(nextPrevButtonView)]];
 
-    UIButton *prevButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    prevButton.translatesAutoresizingMaskIntoConstraints = false;
-    [prevButton setTitle:@"BACK" forState:UIControlStateNormal];
-    [prevButton setBackgroundColor:[UIColor grayColor]];
-    [nextPrevButtonView addSubview:prevButton];
-    [prevButton addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
+    self.prevButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    _prevButton.translatesAutoresizingMaskIntoConstraints = false;
+    [_prevButton setTitle:@"BACK" forState:UIControlStateNormal];
+    [_prevButton setBackgroundColor:[UIColor grayColor]];
+    [nextPrevButtonView addSubview:_prevButton];
+    [_prevButton addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
     
-    UIButton *nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    nextButton.translatesAutoresizingMaskIntoConstraints = false;
-    [nextButton setTitle:@"NEXT" forState:UIControlStateNormal];
-    [nextButton setBackgroundColor:[UIColor colorWithRed:229/255.0 green:26/255.0 blue:75/255.0 alpha:1.0]];
-    [nextPrevButtonView addSubview:nextButton];
-    [nextButton addTarget:self action:@selector(nextAction:) forControlEvents:UIControlEventTouchUpInside];
+    self.nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    _nextButton.translatesAutoresizingMaskIntoConstraints = false;
+    [_nextButton setTitle:@"NEXT" forState:UIControlStateNormal];
+    [_nextButton setBackgroundColor:[UIColor colorWithRed:229/255.0 green:26/255.0 blue:75/255.0 alpha:1.0]];
+    [nextPrevButtonView addSubview:_nextButton];
+    [_nextButton addTarget:self action:@selector(nextAction:) forControlEvents:UIControlEventTouchUpInside];
     
-    [nextPrevButtonView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-24-[prevButton(==nextButton)]-4-[nextButton]-24-|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:NSDictionaryOfVariableBindings(prevButton, nextButton)]];
+    [nextPrevButtonView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-24-[prevButton(==nextButton)]-4-[nextButton]-24-|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:NSDictionaryOfVariableBindings(_prevButton, _nextButton)]];
     
-    [nextPrevButtonView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-2-[prevButton(==nextButton)]-2-|" options:NSLayoutFormatAlignmentMask metrics:nil views:NSDictionaryOfVariableBindings(prevButton, nextButton)]];
+    [nextPrevButtonView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-2-[prevButton(==nextButton)]-2-|" options:NSLayoutFormatAlignmentMask metrics:nil views:NSDictionaryOfVariableBindings(_prevButton, _nextButton)]];
 
 }
 
@@ -754,19 +756,37 @@
 }
 
 - (void)nextAction:(id)sender {
+   
+    [self disableButtons:nil];
     [self.view endEditing:true];
     if ((self.scrollView.contentSize.width - self.scrollView.contentOffset.x) <= self.scrollView.bounds.size.width) {
         return;
     }
     [self.scrollView setContentOffset:CGPointMake(self.scrollView.contentOffset.x+self.scrollView.bounds.size.width, 0.0f) animated:YES];
+    
+    [self performSelector:@selector(enableButtons:) withObject:nil afterDelay:0.8];
+}
+
+- (void)disableButtons:(id)sender {
+    self.nextButton.enabled = false;
+    self.prevButton.enabled = false;
+}
+
+
+- (void)enableButtons:(id)sender {
+    self.nextButton.enabled = true;
+    self.prevButton.enabled = true;
 }
 
 - (void)backAction:(id)sender {
     [self.view endEditing:true];
+    [self disableButtons:nil];
     if (self.scrollView.contentOffset.x <= 0) {
         return;
     }
     [self.scrollView setContentOffset:CGPointMake(self.scrollView.contentOffset.x-self.scrollView.bounds.size.width, 0.0f) animated:YES];
+    [self performSelector:@selector(enableButtons:) withObject:nil afterDelay:0.8];
+
 }
 
 - (UIStackView *)getStackView:(UIStackView *)horStackView {
